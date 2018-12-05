@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 import { store } from './store'
+import VueScrollactive from 'vue-scrollactive';
 import './components/globals/_globals';
 import './imgs/Icon_SVGs/global-icons/_globalIcons';
 import './pages/DMID/CMS/_cms-globals.js';
