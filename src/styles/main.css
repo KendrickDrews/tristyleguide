@@ -1,0 +1,710 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Cinzel');
+/* StyleSheet for Personal Testing/ Code Development and Practices */
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* FLEXBOX ABSOLUTE CENTER */
+html,
+body {
+  height: 100%;
+  padding: 0;
+  color: white; 
+}
+/* Set-up of Initial Flex Condition */
+.wrapper {
+  display: flex;  
+  flex-flow: row nowrap;
+  font-weight: normal;
+  text-align: left;
+  height: 100%;
+}
+
+.wrapper > * {
+  padding: 0px;
+}
+
+/* Side Navigation */
+.aside-1 {
+  flex: 1;
+  background: gold;
+}
+.contents {    
+  display: flex;  
+  align-items: center;
+  justify-content: center;  
+  background-color: #5923D5;  
+  width: 70%;
+}
+
+.testBox {  
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  background-color:#4017A2; 
+  width: 30%;    
+}
+
+/* Content Space */
+.main {
+  text-align: left;
+  background: #64B0FD;
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.componentContainer {
+  height: 50em;
+  width: 75em;
+  background-color: blue;  
+  align-items: center;
+  justify-content: center;
+}
+.componentHead {
+  height: 50%;
+  width: 100%;
+  background-color: #648AFD;
+}
+.componentTitle {
+  height: 50%;
+  width: 100%;
+  background-color: #6464FD;
+}
+.componentSubTitle {
+  height: 50%;
+  width: 100%;
+  background-color: #8B64FD;
+}
+.componentBody {
+  height: 50%;
+  width: 100%;
+  background-color: #D764FD;
+}
+.componentBodyDescription {
+  height: 50%;
+  width: 100%;
+  background-color: #B164FD;
+}
+.componentBodyCode {
+  height: 50%;
+  width: 100%;
+  background-color: #FD64D9;
+}
+.head-icon {
+  top: 10px;
+}
+.tab-button {
+  padding: 6px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f0f0f0;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+.tab {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* This CSS is Meant for the DMID CROMS Mainsite Template. */
+
+html {
+  height: 100vh;
+}
+body { 
+  height: 100vh;
+  margin: 0;  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)); 
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: #0060ff;
+}
+a:hover {
+  color: #0060ff;
+}
+a:visited {
+  color: #0060ff;
+}
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;    
+} 
+.vertical {     
+  display: block;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+  margin-top: auto;
+  margin-bottom: auto;        
+  border-width: 0.5px;  
+  height: 35%; 
+  border-color: var(--link-blue); 
+}
+
+/*```````````````*/
+/*  ##VARIABLES  */
+/*...............*/
+
+/*  ##ROOT VARIABLES */
+:root {
+  /* ##Colors - 20 */
+  /* ##blues - 11 */
+  --blue-01: #08476d;
+  --blue-02: #10424f;
+  --blue-03: #008299;
+  --blue-04: #c1d5e4;
+  --blue-05: #428bca;
+  --blue-06: #0099ff;
+  --blue-07: #42599c;
+  --services-requested: #395594;
+  --link-blue: #0072bc;
+  --blue-systemTools: #003399;
+  --link-blue: #0060ff;
+  /* ##reds - 1 */
+  --red-01: #d34c42;
+  --red-orange: #ff1d00; /*rgb(255, 29, 0)*/
+  --red-gold: #ffc700;
+  /* ##greens  - 5*/
+  --green-01: #67ad4c;
+  --green-02: #32a048;
+  --green-03: #9cc99c;
+  --green-background: #49a274;
+  --green-header: #244f1e;
+  /* ##neutral: - 3 */
+  --grey-01: #565656;
+  --grey-02: #cccccc;
+  --serviceTools-bg: #C7C8D8; /* (199,200,216) */
+  --link-visited: #663399;
+  --link-hover: #2a7a9e;
+
+  --color-primary: red;
+  --color-secondary: #157040;
+
+  /* ##TOOLS */
+  /* Multi-use Gradients */
+  --gradient:linear-gradient(to right, rgba(0,0,0,0.5),rgba(0,0,0,0));  
+  --content-gradient:linear-gradient(to right, rgba(0, 0, 0, 0.5) 35% ,rgba(0, 0, 0, 0.1) 55%,rgba(255,255,255,0.9)85%,rgba(255,255,255,1)95%);
+  --nav-gradient:linear-gradient(to left, rgba(0,0,0,0.2), rgba(255,255,255,1));
+
+}
+
+/*  ##CLASS VARIABLES */
+.hidden {
+  display: none;
+}
+
+/*```````````````````````````*/
+/*  ##NAVIGATION COMPONENTS  */
+/*...........................*/
+
+.DMID-main {
+  width: 1018px;
+  /*min-height: 900px;*/
+  background-color: white;  
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: stretch;
+  flex-direction: column;   
+}
+.main-head {    
+  height: 122px;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 5px 10px 0px 10px;
+  
+}
+
+.main-headIcon {    
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-basis: 10%;    
+  height: 100%;
+  padding: 5px;    
+  margin: 0;
+  position: relative;
+}
+.main-headRight {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-left: 9px;
+  padding-right: 5px;
+  padding-bottom: 3px; 
+}
+.main-headTop {  
+  height: 50%;    
+  display: flex;  
+  justify-content: space-around;
+  margin-left: 110px; 
+
+}
+.main-headBottom {  
+  height: 50%;    
+  display: flex;
+  justify-content: space-between;
+  margin-left: 110px;
+}
+.main-location {
+  display: flex;
+  margin-top: 15px;
+  align-self: flex-end;
+  color: var(--green-header);
+  font-family: 'Cinzel', 'Times New Roman', 'Times', serif;
+  font-weight: bold;
+  font-size: 28px;
+}
+.main-headBrand {
+  padding-top: 10px;
+}
+.main-headSearch {
+  height: 30px; 
+  display: flex;  
+  align-items: center;
+  position: relative;
+
+}
+.main-headSearch h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--green-header);
+  font-family:  Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.main-headSearch input {
+  width: 251px;
+  height: 26px;
+  padding: 2px 5px;
+  margin-left: 5px;
+}
+.main-headUser {
+  height: 32px;
+  display: flex;  
+  align-items: center;
+  position: relative;
+}
+.main-headUser * {
+  font-size: 0.75em;
+  font-weight: bold;
+}
+.main-headButtons {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.nav-Divide {
+  margin-top: 0px;     
+}
+/* vv NAV BTN PATTERN vv */
+.nav-button {
+  height: 37px;
+  width: 36px;
+  margin-left: 7px;
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);   
+  background-image: radial-gradient(farthest-corner at 50% 25%, rgba(0,0,0,0), rgba(0,0,0,0.3) 95%);
+  overflow: hidden;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+/* vv Animation controls for focus, click, hover vv */
+.nav-button:focus {
+  outline: 0;
+}
+.nav-button:after {
+  content: "";
+  border-radius: 4px;
+  background: #fff;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: 0px !important;
+  margin-top: 0%;
+  opacity: 0;
+  transition: all 1s
+}
+.nav-button:hover {
+  opacity: 0.7;
+  transform: translateY(0px);
+}
+.nav-button:active {
+  transform: translateY(4px);
+}
+.nav-button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 0.5;
+  transition: 0s
+}
+/* ^^ Animation controls for focus, click, hover ^^ */
+
+/* Circular Gradient */
+.navbtn-overlay {
+  height: 100%;
+  width: 150%!important;
+  position: absolute;
+  top:-40%;
+  left: -25%;
+  border-radius: 50%;
+  box-shadow: inset 0px 12px 4px 2px rgba(0,0,0,0.8);   
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0)35%, rgba(255,255,255,0.3) 100%);    
+}
+
+/* Inner Button Shadow */
+.navbtn-icon {
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3);
+  background-image: linear-gradient( rgba(0,0,0,0)65%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Individual Button Colors */
+/* Class Names are handles by the Props in buttonLayout.vue */
+/* Keep changes here to keep scoped CSS consistent */
+.CRS {
+  background-color: rgb(27, 146, 76); 
+}
+.CRSoverlay {
+  background-color: rgba(27, 146, 76, 0.8);  
+}
+.CSRS {
+  background-color: rgb(16, 66, 79 );
+}
+.CSRSoverlay {
+  background-color: rgba(16, 66, 79 , 0.8);
+}
+.GrantCapture {
+  background-color: rgb(158, 59, 223);
+}
+.GrantCaptureoverlay {
+  background-color: rgba(158, 59, 223, 0.8);
+}
+
+#nav-Protocols {
+  margin-left: 15px;
+}
+.Protocols {
+  background-color: rgb(117, 69, 207);
+}
+.Protocolsoverlay{
+  background-color: rgba(117, 69, 207, 0.8);
+}
+.Results {
+  background-color: rgb(223, 59, 209);
+}
+.Resultsoverlay {
+  background-color: rgba(223, 59, 209, 0.8);
+}
+.DocumentLibrary { 
+  background-color: rgb(241, 67, 55);
+}
+.DocumentLibraryoverlay { 
+  background-color: rgba(241, 67, 55, 0.8);
+}
+.Home { 
+  background-color: rgb(86, 86, 86);
+}
+.Homeoverlay { 
+  background-color: rgba(86, 86, 86, 0.8);
+}
+.PRT { 
+  background-color: rgb(0, 51, 153);
+}
+.PRToverlay { 
+  background-color: rgba(0, 51, 153, 0.8);
+}
+.ServiceRequests { 
+  background-color: rgb(52, 94, 192);
+}
+.ServiceRequestsoverlay { 
+  background-color: rgba(52, 94, 192, 0.8);
+}
+.SMART { 
+  background-color: rgb(0, 114, 188);
+}
+.SMARToverlay { 
+  background-color: rgba(0, 114, 188, 0.8);
+}
+.SOCSCMS { 
+  background-color: rgb(45, 206, 255);
+}
+.SOCSCMSoverlay { 
+  background-color: rgba(45, 206, 255, 0.8);
+}
+.Training { 
+  background-color: rgb(98, 160, 72);
+}
+.Trainingoverlay { 
+  background-color: rgba(98, 160, 72, 0.8);
+}
+.btn-Seven {
+  height: 16px;
+  width: 31px;
+  border-radius: 4px;
+  box-shadow:inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
+  background-color: var(--red-gold);   
+  background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.5)49%, rgba(255, 60, 0, 0.75) 61%);
+
+}
+.btn-Seven .navbtn-icon {
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 29, 0, 0.5);
+  background-image: none;
+  border-radius: 2px;
+}
+.btn-Seven h4 {
+  font-weight: bold;
+  color: black;
+  z-index: 10;
+  margin: 0;
+  display: flex;
+  font-size: 10px;
+}
+.navbtn-shadow {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  box-shadow: inset 0px 0px 0.5px 1px rgb(255, 90, 0);
+}
+
+/* VV For non-Nav Use VV */
+.btn-Container{
+  position: relative;
+  height: 96px;
+  width: 94px!important;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);    
+  background-color: var(--green-background);    
+  background-image: radial-gradient(farthest-corner at 50% 25%, rgba(0,0,0,0), rgba(0,0,0,0.7) 95%);
+  overflow: hidden;
+  }
+.btn-overlay {
+  height: 100%;
+  width: 150%!important;
+  position: absolute;
+  top:-40%;
+  left: -25%;
+  border-radius: 50%;
+  box-shadow: inset 0px 24px 16px 10px rgba(0,0,0,0.8);   
+  background-color: var(--green-background);    
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0)65%, rgba(255,255,255,0.3) 100%);    
+}
+.btn-icon {
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 4px 4px rgba(0,0,0,0.3);
+  background-image: linear-gradient( rgba(0,0,0,0)65%, rgba(0,0,0,0.9) 100%);
+}
+
+/* ^^ NAV BTN PATTERN ^^ */
+
+
+/*``````````*/
+/*  ##BODY  */
+/*..........*/
+
+.main-body {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 178px);
+}
+
+.main-bodyNav {
+  width: 192px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--grey-02);
+  border-left: none;
+}
+.main-bodyNav * {
+  width: 100%;
+}
+.contextNav ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  font-family:  Calibri, sans-serif;
+}
+.contextNav ul li {    
+  padding-right: 5px;
+}
+.contextNav ul li a {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+}
+.resources-and-tools {
+  height: 324px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.brandingNav {
+  height: 96px;
+}
+.main-bodyContent {    
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 192px);
+  align-items: stretch;
+  padding-left: 5px;
+}
+.locationContainer {
+  background-color: var(--green-background);
+  background-image: var(--content-gradient);
+  display: flex;
+  align-content: center;
+  height: 50px;
+  
+  margin: 0;
+}
+.bodyLocation {    
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 12px;
+  display: flex;
+  align-self: center;
+  margin: 0;
+}
+.bodyContent {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-top: 20px;
+  padding-left: 15px;
+  /* Not always 15px, when Services and Tools is present it is 12 px spread out between the two groups */
+  padding-right: 5px;    
+}
+.mainContent {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-width: calc(100% - 175px);  
+}
+
+/*``````````````````````*/
+/*  ##SERVICESANDTOOLS  */
+/*......................*/
+.servicesAndTools {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 175px;
+  max-width: 175px;
+  flex-basis: 175px;
+  border-left: 1px solid var(--grey-02);    
+  border-image-source: linear-gradient(to top, rgba(0,0,0,0), rgba(204,204,204,0.9) 75%, rgba(0,0,0,0));
+  border-image-slice: 20;    
+  background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(199,200,216,0.7)95%);
+}
+.servicesAndTools h4 {
+  color: white;
+  display: flex;    
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  height: 24px;
+  padding-left: 10px;
+  padding-top: 5px;
+  margin: 0;
+  text-shadow: #333333 1px 1px 2px;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: var(--blue-systemTools); 
+  background-image:  linear-gradient(to right, rgba(0,0,0,0.2) 55%, rgba(199,200,216,0.8));;    
+}
+.servicesTools-List {
+  display:flex;
+  flex-direction: column;
+  color: var(--blue-systemTools);
+  margin-top: 5px;
+  font-size: 0.8em;
+  padding-left: 25px;
+}
+.servicesTools-List li {
+  padding: 1px 0;
+}
+.servicesTools-List li:hover {
+  font-weight: bold;
+}
+
+/*````````````*/
+/*  ##FOOTER  */
+/*............*/
+
+.main-footer {
+  display:flex;
+  align-self: flex-end;
+  height: 56px;
+  width: 100%;    
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+/* TEST for RESPONSIVENESS FLEX FORMATTING */  
+@media all and (min-width: 600px) {
+  .menu { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 5 0px; }
+  .side-1 { order: 1; } 
+  .main    { order: 2; }
+  .side-2 { order: 3; }
+  .footer  { order: 4; }
+}
+

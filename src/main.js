@@ -1,12 +1,24 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { store } from './store'
+import './components/globals/_globals';
+import './imgs/Icon_SVGs/global-icons/_globalIcons';
+import './pages/DMID/CMS/_cms-globals.js';
+import './pages/DMID/CRS/_crs-globals.js';
+import './pages/DMID/DocLib/_doclib-globals.js';
+import './pages/DMID/SR/_sr-globals.js';
+import './pages/DMID/Training/_tr-globals.js';
 
+Vue.use(Vuex)
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  store,
+  data: {
+    store
+  },
+  
   render: h => h(App)
 }).$mount('#app')
