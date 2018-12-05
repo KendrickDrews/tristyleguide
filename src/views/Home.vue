@@ -1,8 +1,13 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div>
+    <p>Welcome to the DMID Styleguide. Currently under construction. : )</p>
+    <div> 
+      <p> 
+        
+      </p> 
+    </div>
+    
+    </div>
 </template>
 
 <script>

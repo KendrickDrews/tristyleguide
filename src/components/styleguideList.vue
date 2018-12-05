@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li 
+    <!-- <li 
       is="VLink"
       v-for="(item, index) in route"
       v-bind:item="item"
@@ -9,31 +9,35 @@
       v-bind:href="index"
     > 
       {{ item }} 
-    </li> 
-    <!-- <li       
+    </li>  -->
+    <li       
       v-for="(item, index) in route"
       v-bind:item="item"
       v-bind:index="index"
       v-bind:key="item.index"        
       v-bind:to=" item "
     > 
-      <router-link :to="item"></router-link> 
-    </li>  -->
+      <router-link :to="item"> {{ index }}</router-link> 
+    </li> 
   </ul>
 </template>
 
 <script>
   import VLink from '../components/VLink.vue'
-  import routes from '../routes'
+  
   
   export default {  
      
     components: {
       VLink
     },
+
     data: function() {
       return {         
-        route: routes,              
+           route: [
+             { Home: '/home' },
+
+           ],         
       }
     },  
     

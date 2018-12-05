@@ -11,12 +11,13 @@
                         :siteIcon="true"
                         :height="bigIcon"
                         :width="bigIcon"
-                    />                        
-                                       
+                    > 
+                        </dmidbutton> 
+                        <crs fill="white"/>              
                 </div>
             </div> 
             <div class="main-headTop icon-space">
-                <img src="/src/imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" style="margin-top:15px;"/>                
+                <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" style="margin-top:15px;"/>                
                 <div class="main-headRight">
                     <navSearch></navSearch>
                     <navUser></navUser>
@@ -41,7 +42,8 @@
                         :height="smallIcon"
                         :width="smallIcon"
                         :navIcon="true"                        
-                        />
+                        >
+                        </dmidbutton>
                     </template>
 
                 </div>    

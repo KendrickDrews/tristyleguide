@@ -16,13 +16,13 @@
           GrantCapture: true,
           Protocols: true,         
         }"
-      >      
+      >    
         <p slot="locationName" class="SR"> Service Requests  </p>
 
       </DMIDHeader>
 
       <div class="main-body">
-        <!-- <allNav/> -->
+        <allNav/>
 
         <div class="main-bodyContent">
           <div class="locationContainer">
@@ -31,19 +31,19 @@
           <div class="bodyContent">
             <div class="mainContent ">             
                 <ul class="indent">
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>Centers for Disease Control</a></li>                
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>ClinicalTrials.gov</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>EMMES CRID</a></li>                              
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>Food and Drug Administration</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>ICH/International Conference on Harmonization</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>National Institutes of Health</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>National Institute of Allergy and Infectious Diseases</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>NIAID ClinRegs</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Centers for Disease Control</a></li>                
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>ClinicalTrials.gov</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>EMMES CRID</a></li>                              
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Food and Drug Administration</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>ICH/International Conference on Harmonization</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>National Institutes of Health</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>National Institute of Allergy and Infectious Diseases</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>NIAID ClinRegs</a></li>
                   <li><p class="bodyText">The National Institute of Allergy and Infectious Diseases (NIAID) has launched ClinRegs, a website designed to help the research community explore clinical research regulations within specific countries and compare regulatory requirements across countries. <br/> Visit <a>clinregs.niaid.nih.gov.</a> </p></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>NIAID Division of Microbiology and Infectious Diseases</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>Office of Clinical Research Affairs</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>Office for Human Research Protection</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="src\imgs\extLink.png"/><a>World Health Organization</a></li>                
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>NIAID Division of Microbiology and Infectious Diseases</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Office of Clinical Research Affairs</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Office for Human Research Protection</a></li>
+                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>World Health Organization</a></li>                
                 </ul>           
                               
             </div>
@@ -82,12 +82,12 @@
       buttonList,
       VLink
     },
-    props: {
-      href: {
-        type:String,
-        required: true 
-      }
-    },
+    //props: {
+    //  href: {
+    //    type:String,
+    //    required: true 
+    //  }
+    //},
     
 
     data () {
@@ -108,7 +108,7 @@
           CSRS: true, 
         },
         subSiteIs: 'ServiceRequests',
-        //buttonList: buttonList,
+        buttonList: buttonList,
                 
       };
     },

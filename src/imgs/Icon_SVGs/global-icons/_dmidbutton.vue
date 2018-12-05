@@ -5,7 +5,9 @@
         :height="height" 
         :width="width" 
         fill="white" 
-        class="svg-icon" />
+        class="svg-icon">
+        <slot></slot>
+        </component>
   </div> 
 </template>
   
@@ -30,6 +32,7 @@
   import Training        from '../DMIDCROMS-WebIcon-Training.svg';  
 
   export default {
+    name: 'dmidButton',
     components: { 
       CRS,
       CSRS,
@@ -51,7 +54,7 @@
       width: String, 
       siteIcon: Boolean, 
       navIcon: Boolean
-    }  
+    },    
   }
 </script>
 <style scoped>

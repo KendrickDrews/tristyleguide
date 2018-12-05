@@ -18,8 +18,8 @@
       <li class="rt-nav-item"><a href="#contact">Related Links</a></li>
       <li class="rt-nav-item"><a href="#home">Support and FAQs</a></li>
       <li class="rt-nav-item"><a href="#about">Training</a></li>
-      <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="src/imgs/Button_AdobeReader.png"></a></li>
-      <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="src/imgs/Button_AdobeFlashPlayer.png"></a></li>
+      <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../imgs/Button_AdobeReader.png"></a></li>
+      <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../imgs/Button_AdobeFlashPlayer.png"></a></li>
       </ul>
     </div>
   </div>

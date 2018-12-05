@@ -1,7 +1,7 @@
 <template>  
   <div class="brandingNav">
       <div class="external">
-          <img class="brand-icon" src="src/imgs/HHS-NIH_NIAID_LogoSet_Web-Small_Black.png">
+          <img class="brand-icon" src="../imgs/HHS-NIH_NIAID_LogoSet_Web-Small_Black.png">
       </div>
       <div class="policy">
           <a href="#">Privacy Policy</a>

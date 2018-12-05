@@ -14,17 +14,20 @@
         <h2 class="styleguide-title"> Styleguide </h2>
         <h3 class="styleguide-title"> DMID CROMS </h3>
         <h3></h3>
-        <!-- <styleguideList/> -->
+        <styleguideList/>
         <ul>
-            <li> 
-              <router-link to="/">Home</router-link>                
-            </li>
-            <li>
-              <router-link to="/about">About</router-link>
-              </li>
-              <li>
-              <router-link to="/siteMirror">siteMirror</router-link>
-              </li>
+            
+              <router-link tag="li" to="/"> Home </router-link>                
+            
+           
+              <router-link tag="li" to="/about">About</router-link>
+              
+              
+              <router-link tag="li" to="/siteMirror">siteMirror</router-link>
+              
+              
+              <router-link tag="li" to="/components">Components</router-link>
+              
         </ul>
       </div>
     </aside>
@@ -81,9 +84,9 @@
             class="componentContent"
             v-bind:class="{'componentContent-mirror' : ViewLocation === '/siteMirror'  }"  
           >         
-          <!-- <Home/>  -->
-          <router-view></router-view> 
-            <!-- <component :is="ViewLocation"></component>  -->
+          
+          <router-view></router-view>
+          
           </div>
         </div>
       </div>      
@@ -92,7 +95,19 @@
 </template>
 <script>
 //import VLink from './components/VLink.vue'
-//import styleguideList from './components/styleguideList.vue' 
+import styleguideList from './components/styleguideList.vue'
+ import CRS             from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
+  import CSRS            from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg';
+  import GrantCapture    from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
+  import Protocols       from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
+  import Results         from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'; 
+  import DocumentLibrary from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
+  import Home            from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'; 
+  import PRT             from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'; 
+  import ServiceRequests from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg';
+  import SMART           from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'; 
+  import SOCSCMS         from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'; 
+  import Training        from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg';  
 //import routes from './routes.js'
 //import Home from './pages/Home.vue'
 //import { router } from './dmidroutes'
@@ -102,7 +117,7 @@ export default {  //name: 'mainLayout',
   components: {
     
    // VLink,
-   // styleguideList,  
+    styleguideList,  
    // Home,
     //router,    
   },  
@@ -115,7 +130,7 @@ export default {  //name: 'mainLayout',
     return {        
       open: true,
       //routes: routes,      
-      currentLocation: this.$root.currentRoute,      
+      currentLocation: this.$route.path,      
       topOffset: 0,
       //Home,
      // router,      
@@ -128,7 +143,7 @@ export default {  //name: 'mainLayout',
       return this.$root.ViewComponent
     },
     ViewLocation () {
-      const matchingView = this.$root.currentRoute
+      const matchingView = this.$route.path
       return matchingView
     },    
          
@@ -342,5 +357,17 @@ export default {  //name: 'mainLayout',
     padding-top: 0;
     transition: 0.4s ease-in-out;
   }
- 
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    border-right: 5px solid transparent;
+  }
+  li:hover {
+    background-color: rgba(0,0,0, 0.05);
+  }
 </style>

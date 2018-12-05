@@ -2,9 +2,10 @@
   <scrollactive
     active-class="activate"
     scroll-container-selector="#scrollContainer"    
-    :alwaysTrack = true
+    :alwaysTrack = false
     :offset="120"
     :duration="850"
+    :modifyUrl= false
     bezier-easing-value=".5,0,.35,1"
     v-on:itemchanged="onItemChanged"
   >
@@ -29,7 +30,7 @@
 </template>
 
 <script>    
-  import routes from '../routes'
+  //import routes from '../routes'
   import componentList from '../components/componentList/componentList.js'
   
   export default {  
