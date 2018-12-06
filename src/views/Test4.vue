@@ -1,12 +1,17 @@
 <template>
   
     <div class="componentLayout">
-      <!-- <p>
-      <router-link to="/routeTest"> test Link</router-link>
-      </p>
-      <router-view> </router-view> -->
+     
       
-    <route-test></route-test>
+    <dmidbutton
+      :button-color="buttonName"
+      :buttonName="buttonName"
+      :siteIcon="true"
+      :height="bigIcon"
+      :width="bigIcon"
+    > </dmidbutton>
+    <crs fill="white" height="45px" width="45px" class="svg-icon"/>
+     <CVS fill="white" style="height: 45px; width: 45px; fill: white;" class="svg-icon"/> 
 
 
     </div>
@@ -26,15 +31,29 @@
 </template>
 
 <script>
-import routeTest from './DMID/routeTest.vue'
+ import CVS             from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
+  import CSRS            from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg';
+  import GrantCapture    from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
+  import Protocols       from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
+  import Results         from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'; 
+  import DocumentLibrary from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
+  import Home            from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'; 
+  import PRT             from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'; 
+  import ServiceRequests from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg';
+  import SMART           from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'; 
+  import SOCSCMS         from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'; 
+  import Training        from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg'; 
+
   export default {
     components: {      
-      routeTest
+      CVS
     },   
 
 /////
     data: function(){
-      return {        
+      return { 
+        buttonName: 'CRS',
+        bigIcon: '65px',       
       }
     },
 
@@ -87,6 +106,7 @@ import routeTest from './DMID/routeTest.vue'
     font-size: 18px;
     background-color: #ccc;
     padding: 10px 0;
+    height: 600px;
   }
 
   .btn-01 {

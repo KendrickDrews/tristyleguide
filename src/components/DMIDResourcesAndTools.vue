@@ -54,6 +54,8 @@
 .menu-row h4 {
   font-size: 11px;
   font-weight: bold;
+  line-height: 2.5em;
+  vertical-align: middle;
     
 }
 .dropbtn{
@@ -107,7 +109,7 @@ font-family: Calibri;
   left: 0.5px;
 }
 .fa-rotate-180 {
-  top: -11px;
+  top: -9px;
 }
 .RATFlip {
   vertical-align: unset;

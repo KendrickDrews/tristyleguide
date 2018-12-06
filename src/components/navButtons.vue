@@ -4,13 +4,19 @@
       <template 
       v-for="(item,key) in buttonList"
       >
-          <NAVbutton 
-          v-bind:key="key"
-          v-bind:button-color="item"                                              
-          v-show="showNav[key]"                        
+          <dmidbutton 
+            :buttonName="item" 
+            :key="key"
+            :button-color="item"
+            :id="'nav-' + key"                                              
+            v-show="showNav[key]"
+            :height="smallIcon"
+            :width="smallIcon"
+            :navIcon="true"  
+                                
           >
-              <component :is="item"  fill="white" height="27px" width="27px"  class="svg-icon" />                            
-          </NAVbutton>
+                                         
+          </dmidbutton>
       </template>
     </div>  
 </template>
@@ -52,6 +58,7 @@
     data: function() {
       return {
         buttonList: buttonList,
+        smallIcon: '27px',
       }
     },
     props: {

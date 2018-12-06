@@ -1,5 +1,5 @@
 export default {
-    crs: [
+    CRS: [
       { id: 1, text: 'Clinical Monitoring' },
       { id: 2, text: 'Clinical Quality Management' },
       { id: 3, text: 'Essential Regulatory Documents' },

@@ -1,4 +1,5 @@
 <template>  
+<!-- DEPRECIATED :: You're looking for DMID RnT -->
   <div class="resources-and-tools">
       <div class="menu-row">
       <h4> Resources and Tools</h4>
@@ -30,11 +31,9 @@
 </template>
 
 <script>  
-  import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
-
   export default {
-    components: {      
-      CRS
+    components: {     
+      
     }
   }
 </script>

@@ -13,20 +13,18 @@
       >
         <h2 class="styleguide-title"> Styleguide </h2>
         <h3 class="styleguide-title"> DMID CROMS </h3>
-        <h3></h3>
-        <styleguideList/>
-        <ul>
-            
-              <router-link tag="li" to="/"> Home </router-link>                
-            
+        <h3></h3>        
+        <ul>            
+              <router-link tag="li" to="/"> Home </router-link> 
            
               <router-link tag="li" to="/about">About</router-link>
               
-              
               <router-link tag="li" to="/siteMirror">siteMirror</router-link>
               
-              
               <router-link tag="li" to="/components">Components</router-link>
+              
+              <router-link tag="li" to="/test">test</router-link>
+              <router-link tag="li" to="/testDMID">testDMID</router-link>
               
         </ul>
       </div>
@@ -94,32 +92,10 @@
   </div>
 </template>
 <script>
-//import VLink from './components/VLink.vue'
-import styleguideList from './components/styleguideList.vue'
- import CRS             from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
-  import CSRS            from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg';
-  import GrantCapture    from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
-  import Protocols       from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
-  import Results         from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'; 
-  import DocumentLibrary from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
-  import Home            from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'; 
-  import PRT             from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'; 
-  import ServiceRequests from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg';
-  import SMART           from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'; 
-  import SOCSCMS         from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'; 
-  import Training        from './imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg';  
 //import routes from './routes.js'
-//import Home from './pages/Home.vue'
-//import { router } from './dmidroutes'
-
-
 export default {  //name: 'mainLayout',
   components: {
     
-   // VLink,
-    styleguideList,  
-   // Home,
-    //router,    
   },  
   props: {
     
@@ -360,8 +336,11 @@ export default {  //name: 'mainLayout',
   ul {
     list-style: none;
     padding-left: 0;
+    padding-top: 15px;
   }
   li {
+    font-size: 16px;
+    font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 25px;
@@ -369,5 +348,23 @@ export default {  //name: 'mainLayout',
   }
   li:hover {
     background-color: rgba(0,0,0, 0.05);
+  }
+  
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;    
+    color: inherit;       
+  }
+  a:link, a:visited {
+    color: inherit;
+  }  
+  .router-link-exact-active {
+    background-color: rgba(216, 216, 216, 0.25);
+    border-right-color: rgb(57, 176, 255);
+    color: #000!important;
+  }
+  li {
+    color: #565656;
   }
 </style>

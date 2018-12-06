@@ -37,7 +37,7 @@
   }
 </script>
 <style scoped>
-.bodyNavStylecrs{
+.bodyNavStyleCRS{
   background-image: linear-gradient(to bottom,rgba(36, 79, 30, 0.05), transparent)
 }
 .bodyNavStyleServiceRequests{

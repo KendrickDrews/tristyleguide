@@ -12,8 +12,7 @@
                         :height="bigIcon"
                         :width="bigIcon"
                     > 
-                        </dmidbutton> 
-                        <crs fill="white"/>              
+                        </dmidbutton>                                      
                 </div>
             </div> 
             <div class="main-headTop icon-space">

@@ -9,12 +9,15 @@
             class="button-container"
           >
           <h4> {{ button }} </h4>
-            <DMIDbutton 
-              v-bind:key="key"
-              v-bind:button-color="button"             
-            >
-              <component :is="button" fill="white" height="75px" width="75px"  class="svg-icon" /> 
-            </DMIDbutton>
+            <dmidbutton 
+              :key="key"
+              :buttonName="button"
+              :button-color="button"
+              :height="bigIcon"
+              :width="bigIcon" 
+              :siteIcon="true"         
+            >              
+            </dmidbutton>
           </div> 
         </div>
       
@@ -77,6 +80,7 @@
     data: function() {
       return {
         buttonList: buttonList,
+        bigIcon: '75px'
       }
     }, 
     computed:{     

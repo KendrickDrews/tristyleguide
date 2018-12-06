@@ -4,7 +4,8 @@
         :is="buttonName" 
         :height="height" 
         :width="width" 
-        fill="white" 
+        fill="white"
+        :style="{ height: height, width: width, fill: 'white',}" 
         class="svg-icon">
         <slot></slot>
         </component>

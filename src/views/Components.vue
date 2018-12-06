@@ -98,8 +98,6 @@
   }
 </script>
 <style scoped>
-
-
 .components-container {
   position: relative;
   top: -1px;
