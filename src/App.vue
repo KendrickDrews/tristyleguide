@@ -1,6 +1,6 @@
 <template>
   <div class="container"
-    v-bind:class="{'container-mirror' : ViewLocation === '/siteMirror'  }"
+    v-bind:class="{'container-mirror' : ViewLocation === '/DMID'  }"
   >
   
     <aside 
@@ -24,7 +24,7 @@
               <router-link tag="li" to="/components">Components</router-link>
               
               <router-link tag="li" to="/test">test</router-link>
-              <router-link tag="li" to="/testDMID">testDMID</router-link>
+              <router-link tag="li" to="/DMID">DMID Home</router-link>
               
         </ul>
       </div>
@@ -41,8 +41,8 @@
     </div>
 
     <div 
-      class="styleguide-headingContainer"
-      v-bind:class="{'sghContainer-mirror' : ViewLocation === '/siteMirror','sgHeading-closed' : !open  }"        
+      class="styleguide-headingContainer"      
+      v-bind:class="{'sghContainer-mirror' : ViewLocation === '/DMID','sgHeading-closed' : !open  }"       
     >
         
       <div 
@@ -50,7 +50,7 @@
                     
       > 
         <h2 v-if="this.ViewLocation === '/'" class="location-heading"> Home </h2>
-        <h2 v-else-if="this.ViewLocation === '/siteMirror'" class="location-heading"> </h2>
+        <h2 v-else-if="this.ViewLocation === '/DMID'" class="location-heading"> </h2>
         <h2 v-else class="location-heading"> {{ this.ViewLocation | capitalize }} </h2>
       <!-- Renders active component based on scroll when on components page, displays blank for other pages -->
         <h3 class="location-heading"
@@ -69,7 +69,7 @@
     <div 
       id="styleguide-content" 
       class="styleguide-Content"
-      v-bind:class="{ 'sgContent-mirror' : ViewLocation === '/siteMirror'  }"
+      v-bind:class="{ 'sgContent-mirror' : ViewLocation === '/DMID'  }"
     >
       
        
@@ -80,7 +80,7 @@
         >
           <div 
             class="componentContent"
-            v-bind:class="{'componentContent-mirror' : ViewLocation === '/siteMirror'  }"  
+            v-bind:class="{'componentContent-mirror' : ViewLocation === '/DMID'  }"  
           >         
           
           <router-view></router-view>
@@ -109,7 +109,8 @@ export default {  //name: 'mainLayout',
       currentLocation: this.$route.path,      
       topOffset: 0,
       //Home,
-     // router,      
+     // router, 
+          
     }           
   },
 
@@ -118,21 +119,20 @@ export default {  //name: 'mainLayout',
     rootComponent () {
       return this.$root.ViewComponent
     },
-    ViewLocation () {
-      const matchingView = this.$route.path
-      return matchingView
-    },    
-         
+    ViewLocation ()  {      
+        const matchingView = this.$route.path
+        return matchingView      
+    },              
   },  
 
 ////  
   methods: {
       slideNav: function () {
         this.open = !this.open          
-      },
+      },      
       linkTo: function () {
           this.$router.push({ name: 'Home'})
-      }               
+      },                    
     },
 
   filters: {
@@ -331,6 +331,8 @@ export default {  //name: 'mainLayout',
   }
   .componentContent-mirror {
     padding-top: 0;
+    min-width: 1000px;
+    max-width: 1000px;
     transition: 0.4s ease-in-out;
   }
   ul {

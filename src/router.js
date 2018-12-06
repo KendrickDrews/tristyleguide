@@ -45,12 +45,12 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Test4.vue')
     },
     {
-      path: '/testDMID',
-      name: 'testDMID',
+      path: '/DMID',
+      name: 'DMID',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Test11.vue')
+      component: () => import(/* webpackChunkName: "about" */ './pages/DMID/DMIDHome.vue')
     },
     
   ]
