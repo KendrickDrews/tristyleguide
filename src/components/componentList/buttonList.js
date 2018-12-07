@@ -1,3 +1,6 @@
+// Global Buttonlist for components that use the related icons.
+// Keep default order = render order for buttons
+
 export default {     
 
   Home: 'Home',
@@ -5,13 +8,13 @@ export default {
   DocumentLibrary: 'DocumentLibrary',  
   Training: 'Training',
   ServiceRequests: 'ServiceRequests',
-  SOCSCMS: 'SOCSCMS',
-  Protocols: 'Protocols',
-  GrantCapture: 'GrantCapture',  
-  Results: 'Results',
+  SOCSCMS: 'SOCSCMS',  
   PRT: 'PRT',
   SMART: 'SMART',
   CSRS: 'CSRS',
+  Protocols: 'Protocols',
+  GrantCapture: 'GrantCapture',  
+  Results: 'Results',
             
      
 }

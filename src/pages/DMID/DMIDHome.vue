@@ -1,6 +1,5 @@
 <template>
-  <div class="DMID-main" style="width: 1000px; min-height: 953px; max-height: 953px; " >
-    <div class="home-main" style="position: relative;">     
+  <div class="DMID-main">  
 
         <div class="row Row1">
           <div class="left">            
@@ -13,16 +12,71 @@
         </div>
 
         <div class="row Row2">
-          <div class="left">
+          <div class="left icon-spacing">
+            <template v-for="(item,key) in buttonList">
+              <div 
+                class="home-Navigation"
+                :key="key"
+                v-if="showNavHOME[key]"
+              >
+                <dmidbutton 
+                  :buttonName="item" 
+                  :key="key"
+                  :button-color="item"
+                  :id="'nav-' + key"
+                  :height="bigIcon"
+                  :width="bigIcon"
+                  :siteIcon="true"
+                > 
+                </dmidbutton>
+                <h4> {{ item }} </h4>
+              </div>
+            </template>  
+                        
           </div>
-          <div class="right">
+          <div class="right DMART icon-spacing">
+            <template v-for="(item,key) in buttonList">
+              <div 
+                class="home-Navigation"
+                :key="key"
+                v-if="showNavDMART[key]"
+              >
+                <dmidbutton
+                  :buttonName="item" 
+                  :key="key"
+                  :button-color="item"
+                  :id="'nav-' + key"
+                  :height="bigIcon"
+                  :width="bigIcon"
+                  :siteIcon="true"                        
+                  > 
+                </dmidbutton>
+                <h4> {{ item }} </h4>
+              </div>
+            </template>
           </div>
         </div>
 
         <div class="row Row3">
           <div class="left">
+            <div class="sign-in"></div>
+            <div class="NIH">
+              <h4> Access for NIH Users </h4>
+              <button class="nav-button btn-Seven">
+              <h4> Sign IN </h4>          
+              <div class="navbtn-shadow"></div>
+            </button>
+
+            </div>
+            <p class="request">To request access, please submit a request using the <a> Systems Access Request Form</a> </p>
           </div>
           <div class="right">
+            <h2> Clinical Research Support Search</h2>
+            <input type="text" placeholder="" class="CRS-search"> 
+            <button class="nav-button btn-Seven">
+              <h4> Go </h4>          
+              <div class="navbtn-shadow"></div>
+            </button>
             </div>
         </div>
 
@@ -43,7 +97,7 @@
               </div>
               <div class="policy">
                   <a href="#">Privacy Policy</a>
-                  <hr class="vertical">
+                  <a class=pipe>|</a>
                   <a href="#">Disclaimers</a>
               </div>
           </div> 
@@ -51,15 +105,80 @@
 
       
 
-    </div>
+    
   </div>
 </template>
 
 <script>  
 
+import buttonList from '../../components/componentList/buttonList.js';
+
   export default {
     components: {
       
+    },
+    props: {
+      showNavHOME: {             
+        default: function(){
+          return {            
+            Home: false,                    
+            CRS: true,
+            DocumentLibrary: true,
+            SOCSCMS: false,
+            Training: true,
+            ServiceRequests: true,
+            GrantCapture: false,
+            Protocols: false,
+            Results: false,
+            PRT: false,
+            SMART: false,
+            CSRS: false,            
+          }
+        }
+      },
+      showNavDMART: {             
+        default: function(){
+          return {            
+            Home: false,                    
+            CRS: false,
+            DocumentLibrary: false,
+            SOCSCMS: false,
+            Training: false,
+            ServiceRequests: false,
+            GrantCapture: true,
+            Protocols: true,
+            Results: true,
+            PRT: false,
+            SMART: false,
+            CSRS: false,            
+          }
+        }
+      },
+    },
+    data: function(){
+      return {       
+        HOME: {          
+          CRS: 'CRS',
+          DocumentLibrary: 'DocumentLibrary',  
+          Training: 'Training',
+          ServiceRequests: 'ServiceRequests',
+          SOCSCMS: 'SOCSCMS',          
+          PRT: 'PRT',
+          SMART: 'SMART',
+          CSRS: 'CSRS',
+        },
+        DMART: {          
+          Protocols: 'Protocols',
+          GrantCapture: 'GrantCapture',  
+          Results: 'Results',
+        },
+        buttonList,
+        
+        navVisibiity: this.showNav,
+        bigIcon: '69px',
+        smallIcon: '27px',
+          
+      }
     },
     computed: {
       stateComponent: {
@@ -82,12 +201,12 @@
     },
   }
 </script>
-<style>
-body {
-  background-color: rgb(52, 94, 192)!important; 
-}
+<style lang="scss" scoped>
+@import url('../../styles/main.css');
 
-.home-main {
+
+.DMID-main {  
+  width: 1000px;
   min-height: 953px;
   max-height: 953px;
   position: relative;
@@ -147,6 +266,37 @@ body {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background-image: linear-gradient(to bottom, transparent , #e9e9e9 35%,#e9e9e9 65%, transparent );
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly
+}
+.home-Navigation {
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  width: 83px;
+}
+.icon-spacing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+.DMART {
+  width: 322px;
+  background-color: lightseagreen;
+  border: 1px solid #666;
+  border-radius: 8px;
+  
+}
+.dmid-button {
+  height: 82px;
+  width: 80px;
+  border-radius: 6px;
 }
 .Row3 {
   background-color: lightcoral;
@@ -173,18 +323,33 @@ body {
 .policy {
   display: flex;
   flex-direction: row;
-  line-height: 3.9em;
+  line-height: 3.7em;
   font-size: 11px;
   font-weight: bold;
   vertical-align: middle;
   flex-wrap: nowrap;
   align-items: baseline;
+  justify-content: space-between;
+  width: 136px;
+  font-family: Calibri;
 }
-.policy .vertical {
-  height: 27%;
+.policy a {
+  width: unset;
+  font-size: 12px;  
+  font-weight: bold;
+  text-decoration: none; 
 }
-.main-location {
-  
+.policy a:visited {
+  color: #0060ff;
+}
+.pipe {
+  width: 0px;  
+  color: #0060ff;
 }
 
+</style>
+<style>
+body {
+  background-color: rgb(52, 94, 192)!important; 
+} 
 </style>

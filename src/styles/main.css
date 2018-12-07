@@ -131,7 +131,7 @@ body {
   color: black;
   display: flex;
   justify-content: center;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)); 
   background-repeat: no-repeat;
   background-attachment: fixed; 

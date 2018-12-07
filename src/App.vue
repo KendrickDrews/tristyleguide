@@ -217,7 +217,7 @@ export default {  //name: 'mainLayout',
   }
   .control-closed {
     left: 25px;
-    opacity: 0.4s;
+    opacity: 0.4;
     transform: rotate(-180deg);
     transition: 0.45s ease-in-out;
   }

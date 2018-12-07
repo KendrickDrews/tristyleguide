@@ -1,64 +1,152 @@
 <template>
-  
-    <div class="componentLayout">
-     
-      
-    <dmidbutton
-      :button-color="buttonName"
-      :buttonName="buttonName"
-      :siteIcon="true"
-      :height="bigIcon"
-      :width="bigIcon"
-    > </dmidbutton>
-    <crs fill="white" height="45px" width="45px" class="svg-icon"/>
-     <CVS fill="white" style="height: 45px; width: 45px; fill: white;" class="svg-icon"/> 
+<div>
+
+  <div class="componentLayout">   
+   
+    <template
+      v-if="bLength.length"                
+    >
+      <template 
+        v-for="(item,key) in buttonList"                
+      >
+        <dmidbutton          
+          :buttonName="item" 
+          :key="key"
+          :button-color="item"
+          :id="'nav-' + key"                                              
+          v-if="showNav[key]"
+          :height="smallIcon"
+          :width="smallIcon"
+          :navIcon="true"                        
+        >
+        </dmidbutton>
+      </template>
+    </template>
+      <p v-else> does this work? </p>
+
+  </div>
 
 
-    </div>
-<!-- <button class="btn-01">
-      </button>
-        <button class="top-to-bottom">
-      </button> -->
-    <!-- Depreciated button -->
-    
-    <!--<div class="btn-Container head-icon" v-bind:class="buttonColor">      
-      <slot></slot>
-      <div class="btn-icon active-icon"></div>
-      <div class="btn-overlay" v-bind:class="overlayColor"></div>
-      <div class="btn-shadow" ></div>
-    </div> -->
+  <div class="componentLayout">
+
+
+<!--  <p v-for="n in 10" :key="n"> {{ buttonList | valueAt(n)}} </p> -->
+
+ </div>
+  <!-- <template v-for="n in bLength.length">
+    <template v-if=" n <= 5">
+      <p :key="n"> {{bLength[n]}} </p>
+    </template>
+    <template v-else-if="n === 6">
+      <div :key="n" style="background-color: aqua;">
+        <template v-for="n in bLength.length">      
+          <template v-if="n >= (bLength.length - 3)">
+            <p :key="n"> {{ bLength[n] }} </p>
+          </template>
+        </template>
+      </div>
+    </template>
+    <template v-else></template>
+  </template>  -->
+ 
+    <!-- <template v-for="(item,key) in buttonList">
+        <template v-for="n <= 10">
+          <dmidbutton          
+          :buttonName="item" 
+          :key="key"
+          :button-color="item"
+          :id="'nav2-' + key"                                              
+          v-if="showNav[key]"
+          :height="smallIcon"
+          :width="smallIcon"
+          :navIcon="true"                        
+        >
+        </dmidbutton>
+        </template>
+        <template v-else-if="n === 11">
+          <div style="background-color: aqua;" v-bind:key="'second' + n">
+            <template v-for="y in 25">
+              <template v-if="y >= 11">
+                <p style="color: white; font-weight: bold;" v-bind:key="'third' + y"> {{ y }} </p>
+              </template>
+            </template>
+          </div>
+        </template>
+        <template v-else> 
+        </template>
+      </template> -->
+
   
+
+
+  <div class="componentLayout">
+
+      <template v-for="n in 25">
+        <template v-if="n <= 10">
+          <p v-bind:key="'first' + n"> {{ bLength | atIndex(n) }} </p>
+        </template>
+        <template v-else-if="n === 11">
+          <div style="background-color: aqua;" v-bind:key="'second' + n">
+            <template v-for="y in 25">
+              <template v-if="y >= 11">
+                <p style="color: white; font-weight: bold;" v-bind:key="'third' + y"> {{ y }} </p>
+              </template>
+            </template>
+          </div>
+        </template>
+        <template v-else> 
+        </template>
+      </template> 
+
+  </div>
+
+</div>
 </template>
 
 <script>
- import CVS             from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
-  import CSRS            from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg';
-  import GrantCapture    from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
-  import Protocols       from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
-  import Results         from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'; 
-  import DocumentLibrary from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
-  import Home            from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'; 
-  import PRT             from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'; 
-  import ServiceRequests from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg';
-  import SMART           from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'; 
-  import SOCSCMS         from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'; 
-  import Training        from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg'; 
+ import buttonList from '../components/componentList/buttonList.js';
 
   export default {
     components: {      
-      CVS
+      buttonList
     },   
 
 /////
     data: function(){
       return { 
         buttonName: 'CRS',
-        bigIcon: '65px',       
+        smallIcon: '27px', 
+        buttonList      
       }
+    },
+    props: {
+      showNav:{ 
+            
+            default: function(){
+                return {            
+                    Home: true,                    
+                    CRS: true,
+                    DocumentLibrary: true,
+                    SOCSCMS: true,
+                    Training: true,
+                    ServiceRequests: true,                    
+                    PRT: true,
+                    SMART: true,
+                    CSRS: true, 
+                    GrantCapture: true,
+                    Protocols: true,
+                    Results: true,           
+                }
+            }
+        }
     },
 
 /////    
     computed: {
+      bLength () {
+        let list = Object.keys(buttonList)        
+        return list
+      },           
     },
 
 /////
@@ -74,6 +162,9 @@
       // Return element at given index
       atIndex: function (value, index) {
         return value[index];
+      },
+      valueAt: function (object, index) {
+        return (Object.entries(object)[index])
       }
 
     },

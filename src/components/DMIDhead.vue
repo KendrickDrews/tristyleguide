@@ -12,7 +12,7 @@
                         :height="bigIcon"
                         :width="bigIcon"
                     > 
-                        </dmidbutton>                                      
+                    </dmidbutton>                                      
                 </div>
             </div> 
             <div class="main-headTop icon-space">
@@ -37,7 +37,7 @@
                         :key="key"
                         :button-color="item"
                         :id="'nav-' + key"                                              
-                        v-show="showNav[key]"
+                        v-if="showNav[key]"
                         :height="smallIcon"
                         :width="smallIcon"
                         :navIcon="true"                        
