@@ -64,19 +64,23 @@
     props: {
       showNav: {             
         default: function() {
-            return {            
-              Home: true,                    
-              CRS: true,
-              DocumentLibrary: true,
-              SOCSCMS: true,
-              Training: true,
-              ServiceRequests: true,
-              GrantCapture: true,
-              Protocols: true,
-              Results: true,
-              PRT: true,
-              SMART: true,
-              CSRS: true,            
+          return {            
+            Home: true,                    
+            CRS: true,
+            DocumentLibrary: true,
+            SOCSCMS: true,
+            Training: true,
+            ServiceRequests: true,
+            GrantCapture: true,
+            Protocols: true,
+            Results: true,
+            PRT: true,
+            SMART: true,
+            CSRS: true,
+            Development: true, 
+            InProgress: true,
+            Initiation: true,
+            CloseOut: true,            
           }
         }
       }

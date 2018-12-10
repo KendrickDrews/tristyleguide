@@ -15,6 +15,10 @@ export default {
   Protocols: 'Protocols',
   GrantCapture: 'GrantCapture',  
   Results: 'Results',
+  Development: 'Development',
+  Initiation: 'Initiation',
+  InProgress: 'InProgress',
+  CloseOut: 'CloseOut',
             
      
 }

@@ -132,7 +132,7 @@ body {
   display: flex;
   justify-content: center;
   /* background-color: var(--color-secondary); */
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)); 
+  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(52, 94, 192,0.15)); 
   background-repeat: no-repeat;
   background-attachment: fixed; 
 }
@@ -475,7 +475,7 @@ hr {
   background-color: rgba(45, 206, 255, 0.8);
 }
 .Training { 
-  background-color: rgb(98, 160, 72);
+  background-color: rgb(44, 138, 49);
 }
 .Trainingoverlay { 
   background-color: rgba(98, 160, 72, 0.8);

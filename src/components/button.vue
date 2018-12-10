@@ -102,7 +102,7 @@
 }
 
 .Training { 
-  background-color: rgb(98, 160, 72);
+  background-color: rgb(44, 138, 49);
 }
 
 

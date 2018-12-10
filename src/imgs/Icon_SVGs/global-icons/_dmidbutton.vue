@@ -30,7 +30,11 @@
   import ServiceRequests from '../DMIDCROMS-WebIcon-ServiceRequests.svg';
   import SMART           from '../DMIDCROMS-WebIcon-SMART.svg'; 
   import SOCSCMS         from '../DMIDCROMS-WebIcon-SOCSCMS.svg'; 
-  import Training        from '../DMIDCROMS-WebIcon-Training.svg';  
+  import Training        from '../DMIDCROMS-WebIcon-Training.svg'; 
+  import Development     from '../DMIDCROMS-WebIcon-CRS-Stage-Development.svg'; 
+  import Initiation      from '../DMIDCROMS-WebIcon-CRS-Stage-Initiation.svg'; 
+  import CloseOut        from '../DMIDCROMS-WebIcon-CRS-Stage-CloseOut.svg'; 
+  import InProgress      from '../DMIDCROMS-WebIcon-CRS-Stage-InProgress.svg'; 
 
   export default {
     name: 'dmidButton',
@@ -46,7 +50,11 @@
       ServiceRequests,
       SMART,
       SOCSCMS,
-      Training,     
+      Training,
+      Development,
+      Initiation,
+      InProgress,
+      CloseOut,     
     },    
     props: {
       buttonColor: String, 
@@ -198,8 +206,19 @@
 }
 
 .Training { 
-  background-color: rgb(98, 160, 72);
+  background-color: rgb(44, 138, 49);
 }
-
+.Development {
+  background-color: rgb(21, 141, 27);
+}
+.InProgress {
+  background-color: rgb(37, 107, 107);
+}
+.CloseOut {
+  background-color: rgb(44, 53, 138);
+}
+.Initiation {
+  background-color: rgb(129, 138, 44);
+}
 
 </style>

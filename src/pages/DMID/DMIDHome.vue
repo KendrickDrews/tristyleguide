@@ -13,68 +13,148 @@
 
         <div class="row Row2">
           <div class="left icon-spacing">
-            <template v-for="(item,key) in buttonList">
-              <div 
-                class="home-Navigation"
-                :key="key"
-                v-if="showNavHOME[key]"
-              >
-                <dmidbutton 
-                  :buttonName="item" 
-                  :key="key"
-                  :button-color="item"
-                  :id="'nav-' + key"
-                  :height="bigIcon"
-                  :width="bigIcon"
-                  :siteIcon="true"
-                > 
-                </dmidbutton>
-                <h4> {{ item }} </h4>
-              </div>
-            </template>  
+            <div class="home-Navigation">
+              <dmidbutton 
+                :buttonName="buttonList.CRS" 
+                v-if="showNavHOME[buttonList.CRS]"
+                :button-color="buttonList.CRS"
+                :id="'nav-' + buttonList.CRS"
+                :height="bigIcon"
+                :width="bigIcon"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+              <h4> Clinical Research Support </h4>
+            </div>
+            <div class="home-Navigation">
+              <dmidbutton 
+                :buttonName="buttonList.DocumentLibrary" 
+                v-if="showNavHOME[buttonList.DocumentLibrary]"
+                :button-color="buttonList.DocumentLibrary"
+                :id="'nav-' + buttonList.DocumentLibrary"
+                :height="bigIcon"
+                :width="bigIcon"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+              <h4> Document Library </h4>
+            </div>
+            <div class="home-Navigation">
+              <dmidbutton 
+                :buttonName="buttonList.Training" 
+                v-if="showNavHOME[buttonList.Training]"
+                :button-color="buttonList.Training"
+                :id="'nav-' + buttonList.Training"
+                :height="bigIcon"
+                :width="bigIcon"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+              <h4> Training </h4>
+            </div>
+            <div class="home-Navigation">
+              <dmidbutton 
+                :buttonName="buttonList.ServiceRequests" 
+                v-if="showNavHOME[buttonList.ServiceRequests]"
+                :button-color="buttonList.ServiceRequests"
+                :id="'nav-' + buttonList.ServiceRequests"
+                :height="bigIcon"
+                :width="bigIcon"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+              <h4> Service Requests </h4>
+            </div>
                         
           </div>
+          <!-- DMART Buttons -->
           <div class="right DMART icon-spacing">
-            <template v-for="(item,key) in buttonList">
-              <div 
-                class="home-Navigation"
-                :key="key"
-                v-if="showNavDMART[key]"
-              >
+            
+              <div class="home-Navigation">
                 <dmidbutton
-                  :buttonName="item" 
-                  :key="key"
-                  :button-color="item"
-                  :id="'nav-' + key"
-                  :height="bigIcon"
-                  :width="bigIcon"
+                  :buttonName="buttonList.Protocols" 
+                  v-if="showNavDMART[buttonList.Protocols]"
+                  :button-color="buttonList.Protocols"
+                  :id="'nav-' + buttonList.Protocols"
+                  :height="smallIcon"
+                  :width="smallIcon"
                   :siteIcon="true"                        
                   > 
                 </dmidbutton>
-                <h4> {{ item }} </h4>
+                <h4> Protocols </h4>
               </div>
-            </template>
+              <div class="home-Navigation">
+                <dmidbutton
+                  :buttonName="buttonList.GrantCapture" 
+                  v-if="showNavDMART[buttonList.GrantCapture]"
+                  :button-color="buttonList.GrantCapture"
+                  :id="'nav-' + buttonList.GrantCapture"
+                  :height="smallIcon"
+                  :width="smallIcon"
+                  :siteIcon="true"                        
+                  > 
+                </dmidbutton>
+                <h4> Grant Capture </h4>
+              </div>
+              <div class="home-Navigation">
+                <dmidbutton
+                  :buttonName="buttonList.Results" 
+                  v-if="showNavDMART[buttonList.Results]"
+                  :button-color="buttonList.Results"
+                  :id="'nav-' + buttonList.Results"
+                  :height="smallIcon"
+                  :width="smallIcon"
+                  :siteIcon="true"                        
+                  > 
+                </dmidbutton>
+                <h4> Results </h4>
+              </div>
+              <div class="home-Navigation">
+                <div class="horizontal"></div>
+                <div>
+                <h4 class="dmart-label"> DMART </h4>
+                </div>
+              </div>
+            
+            <!-- DMART Buttons -->
           </div>
         </div>
 
         <div class="row Row3">
-          <div class="left">
-            <div class="sign-in"></div>
-            <div class="NIH">
-              <h4> Access for NIH Users </h4>
-              <button class="nav-button btn-Seven">
-              <h4> Sign IN </h4>          
-              <div class="navbtn-shadow"></div>
-            </button>
-
-            </div>
+          <div class="left">            
+            <div class="sign-in">
+              <div class="non-NIH">
+              <h4 class="signIn-title"> Access for <span class="underlined">Non-NIH </span> Users </h4>
+              <div class="username">
+                <h4> Username: </h4>
+                <input type="text" placeholder="" class="sign-in-input">
+                <button class="nav-button btn-Seven btn-nonNIH">
+                  <h4> Sign IN </h4>          
+                <div class="navbtn-shadow"></div>
+                </button>
+              </div>
+              <div class="pass">
+                <h4> Password: </h4> 
+                <input type="text" placeholder="" class="sign-in-input"> 
+                <a class="password">Forgot Password </a>
+              </div> 
+              </div>
+              <div class="NIH">
+              <h4 class="signIn-title"> Access for <span class="underlined">NIH </span> Users </h4>
+                <button class="nav-button btn-Seven btn-NIH">
+                  <div class="carrot"><div class="pentagon"> NIH </div></div>
+                    <h3> Sign In </h3>          
+                  <div class="navbtn-shadow"></div>
+                </button>
+              </div>               
+            </div>                      
             <p class="request">To request access, please submit a request using the <a> Systems Access Request Form</a> </p>
           </div>
           <div class="right">
             <h2> Clinical Research Support Search</h2>
             <input type="text" placeholder="" class="CRS-search"> 
-            <button class="nav-button btn-Seven">
-              <h4> Go </h4>          
+            <button class="nav-button btn-Seven btn-SEARCH">
+                <h4> Go </h4>          
               <div class="navbtn-shadow"></div>
             </button>
             </div>
@@ -82,10 +162,127 @@
 
         <div class="row Row4">
           <div class="left">
+            <div class="homeHeader news">
+              <h2> News and Announcements </h2>
+            </div>
+            <div class="homeContainer">
+              <div class="announcement">
+                <h5></h5>
+                <h4></h4>
+                <p>
+                </p>
+                <a></a>
+              </div>
+            </div>
           </div>
           <div class="center">
+            <div class="homeHeader tools">
+              <h2> Resources and Tools </h2>
+            </div>
+            <div class="homeContainer">
+              <ul>
+                <li class="rt-nav-item"><a href="#contacts">Contacts</a></li>
+                <li class="rt-nav-item"><a href="#about">DMID Information Sheets<br> Guidelines and Standards</a></li>
+                <li class="rt-nav-item"><a href="#contact">Forms and Temp</a></li>
+                <li class="rt-nav-item"><a href="#home">Hours of Operation</a></li>
+                <li class="rt-nav-item"><a href="#about">NIAID CIERS</a></li>
+                <li class="rt-nav-item"><a href="#contact">Related Links</a></li>
+                <li class="rt-nav-item"><a href="#home">Support and FAQs</a></li>
+                <li class="rt-nav-item"><a href="#about">Training</a></li>
+                <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../../imgs/Button_AdobeReader.png"></a></li>
+                <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../../imgs/Button_AdobeFlashPlayer.png"></a></li>
+              </ul>
+
+            </div>
           </div>
           <div class="right">
+            <div class="homeHeader support">
+              <h2> Support By Study Stage </h2>
+            </div>
+            <div class="homeContainer">
+              <div class="supportSEARCH">
+                <div class="devSEARCH">
+                <dmidbutton 
+                :buttonName="buttonList.Development" 
+                v-if="showNavHOME[buttonList.Development]"
+                :button-color="buttonList.Development"
+                :id="'nav-' + buttonList.Development"
+                :height="support"
+                :width="support"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+                <div class="supportRight">
+                  <h4></h4>
+                  <input type="text" placeholder="" class="">
+                  <button class="nav-button btn-Seven btn-supSEARCH">
+                    <h4> Go </h4>          
+                    <div class="navbtn-shadow"></div>
+                  </button>
+                </div>
+                </div>
+                <div class="devSEARCH">
+                <dmidbutton 
+                :buttonName="buttonList.Development" 
+                v-if="showNavHOME[buttonList.Development]"
+                :button-color="buttonList.Development"
+                :id="'nav-' + buttonList.Development"
+                :height="support"
+                :width="support"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+                <div class="supportRight">
+                  <h4></h4>
+                  <input type="text" placeholder="" class="">
+                  <button class="nav-button btn-Seven btn-supSEARCH">
+                    <h4> Go </h4>          
+                    <div class="navbtn-shadow"></div>
+                  </button>
+                </div>
+                </div>
+                <div class="devSEARCH">
+                <dmidbutton 
+                :buttonName="buttonList.Development" 
+                v-if="showNavHOME[buttonList.Development]"
+                :button-color="buttonList.Development"
+                :id="'nav-' + buttonList.Development"
+                :height="support"
+                :width="support"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+                <div class="supportRight">
+                  <h4></h4>
+                  <input type="text" placeholder="" class="">
+                  <button class="nav-button btn-Seven btn-supSEARCH">
+                    <h4> Go </h4>          
+                    <div class="navbtn-shadow"></div>
+                  </button>
+                </div>
+                </div>
+                <div class="devSEARCH">
+                <dmidbutton 
+                :buttonName="buttonList.Development" 
+                v-if="showNavHOME[buttonList.Development]"
+                :button-color="buttonList.Development"
+                :id="'nav-' + buttonList.Development"
+                :height="support"
+                :width="support"
+                :siteIcon="true"
+              > 
+              </dmidbutton>
+                <div class="supportRight">
+                  <h4></h4>
+                  <input type="text" placeholder="" class="">
+                  <button class="nav-button btn-Seven btn-supSEARCH">
+                    <h4> Go </h4>          
+                    <div class="navbtn-shadow"></div>
+                  </button>
+                </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -132,7 +329,11 @@ import buttonList from '../../components/componentList/buttonList.js';
             Results: false,
             PRT: false,
             SMART: false,
-            CSRS: false,            
+            CSRS: false,
+            Development: true, 
+            InProgress: true,
+            Initiation: true,
+            CloseOut: true,           
           }
         }
       },
@@ -172,11 +373,11 @@ import buttonList from '../../components/componentList/buttonList.js';
           GrantCapture: 'GrantCapture',  
           Results: 'Results',
         },
-        buttonList,
-        
+        buttonList,        
         navVisibiity: this.showNav,
-        bigIcon: '69px',
-        smallIcon: '27px',
+        bigIcon: '65px',
+        smallIcon: '60px',
+        support: '35px',
           
       }
     },
@@ -266,45 +467,250 @@ import buttonList from '../../components/componentList/buttonList.js';
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background-image: linear-gradient(to bottom, transparent , #e9e9e9 35%,#e9e9e9 65%, transparent );
-  padding: 15px 0;
+  padding: 15px 15px 15px 0px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-evenly
+  justify-content: space-around;
+}
+.Row2 .left {
+  flex-grow: 3;
+  
+}
+.dmart-label {
+  font-family: 'Cinzel';
+  color:#262a9a;
+  font-size: 18px!important;
+}
+.horizontal {
+  position: relative;
+  width: 311px;
+  top:-5px;
+  left: -113px;
+  border-top: 1px solid black;
 }
 .home-Navigation {
   display: flex;
   flex-direction: column;
+  width: 83px;    
   
-  justify-content: center;
-  width: 83px;
+}
+.home-Navigation h4 {
+  font-family: 'times new roman';
+  font-size: 12px;
+  text-align: center; 
+  margin: 0 auto;
+  width: 80px; 
+}
+.home-Navigation .dmid-button {  
+  margin: -5px auto 25px auto;
 }
 .icon-spacing {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding: 5px;
 }
 .DMART {
   width: 322px;
-  background-color: lightseagreen;
-  border: 1px solid #666;
+  background-color: #d9d9e7;
+  border: 1px solid #b1b1ce;
   border-radius: 8px;
   
 }
 .dmid-button {
-  height: 82px;
-  width: 80px;
+  height: 77px;
+  width: 75px;
   border-radius: 6px;
+  
 }
-.Row3 {
-  background-color: lightcoral;
-  height: 156px;
+.Row3 { 
+  height: 138px;
+  margin-bottom: 18px;
+  
+  
 }
-.Row4 {
-  background-color: aqua;
+.Row3 .left {
+  width: 570px;
+  padding: 7px 10px 10px 10px;
+  margin-left: 10px;
+  margin-right: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #eaeaea;
+  border-radius: 8px;
+}
+.Row3 .left .sign-in {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  margin: 5px 5px 0 5px;
+  padding: 2px;
+}
+
+.signIn-title {
+  color: #213e85;
+  font-family: 'Calibri';
+  font-size: 14px;
+}
+.username {
+  width: 100%;
+  padding: 4px 20px 3px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  vertical-align: middle;
+  line-height: 1.5em;
+}
+.username h4 {
+  padding-right: 6px;
+}
+.pass {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 6px 18px 3px 0;
+  vertical-align: middle;
+  line-height: 1.5em;
+}
+.pass h4 {
+  padding-right: 6px;
+}
+.underlined {
+  text-decoration: underline;
+}
+.non-NIH {
+  width: 63%;
+  font-size: 14px;
+  font-family: 'Calibri';
+}
+.non-NIH > h4 {
+  margin-bottom: 5px;
+}
+.non-NIH input {
+  width: 164px;
+  height: 21px;
+
+}
+.NIH {
+  border-left: 1px solid black;
+  width: 35%; 
+  padding: 0 15px; 
+}
+.request {
+  width: 100%;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Calibri';
+}
+.btn-nonNIH {
+  height: 24px;
+  width: 77px;
+  margin-top: -2px;
+}
+.btn-NIH {
+  height: 59px;
+  width: 126px;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+.password {
+  color: #0060ff;
+  font-size: 12px;
+  font-weight: bold;
+ 
+}
+.Row3 .right {
+  background-color: #e0f1d7;
+  width: 297px; 
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.Row3 .right h2 {
+  font-size: 18px;
+  color: #244f1e;
+  font-family: 'Calibri';
+  padding: 5px;
+}
+.Row3 .right input {
+  margin: 5px 2px; 
+  width: 243px;
+  height: 21px;
+}
+.btn-SEARCH {
+  height: 24px;
+  width: 47px;
+  margin: 2px;
+  
+}
+.btn-SEARCH h4 {
+  font-family: 'Calibri';
+  font-size: 18px;
+  
+}
+.Row4 {  
   height: 325px;
+}
+.Row4 .right, .Row4 .center,.Row4 .left {
+  display: flex;
+  width: 33%;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  flex-grow: 1;
+}
+.Row4 .center {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.Row4 .right {
+  background-color: #dbfdc8;
+}
+.homeHeader {
+  height: 36px;
+  margin: 0px;
+  padding-top: 0;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: bold; 
+  line-height: 15px; 
+  vertical-align: top;
+  font-family: 'Calibri';
+}
+.news {
+  border-top: 10px solid #c3c5f8;
+  background-color: #a1a4f3;
+  color: #262a9a;
+  
+}
+.tools {
+  border-top: 10px solid #eee;
+  background-color: #ccc;
+  color: #333;
+}
+.support {
+  border-top: 10px solid #bfdba8;
+  background-color: #9ebb87;
+  color: #244f1e;
+  
+}
+.supportSEARCH .dmid-button {
+  height: 42px;
+  width: 42px;
+  margin: 0 auto;
 }
 .main-footer {
   min-height: 49px;
@@ -346,10 +752,53 @@ import buttonList from '../../components/componentList/buttonList.js';
   width: 0px;  
   color: #0060ff;
 }
-
+#nav-Protocols {
+  margin-left: auto;
+}
+.pentagon {
+  background-color: #ccc;
+  height: 37px; 
+  width: 43px;
+  position: relative;
+  display: block;
+  &:after {
+    content: "";    
+    position: absolute;
+    top: 0;
+    left: 43px;
+    height: 0;
+    width: 0;
+    border-top: 19px solid transparent;
+    border-right: 11px solid transparent;
+    border-bottom: 19px solid transparent;
+    border-left: 11px solid black;
+  
+  }
+}
+.carrot {
+  position: relative;
+  display: block;
+  padding: 5px 15px 5px 5px;
+  margin-left: -10px; 
+  //margin-top: 50px;
+  &:before, &:after {
+    content: "";
+    position: absolute;
+  	top: 49%;
+    left: 42px;
+    width: 20px;
+    height: 3px;
+    background: #000;
+    transform: rotate(65deg);
+    transform-origin: right;
+  }
+  &:after {
+    transform: rotate(-65deg);
+  }
+}
 </style>
 <style>
 body {
-  background-color: rgb(52, 94, 192)!important; 
+  background-color: #445b9c!important; 
 } 
 </style>
