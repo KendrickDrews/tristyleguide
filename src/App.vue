@@ -11,8 +11,8 @@
       class="sg-openList" 
       v-bind:class="{ 'closed' : !open }"
       >
-        <h2 class="styleguide-title"> Styleguide </h2>
-        <h3 class="styleguide-title"> DMID CROMS </h3>
+        <h2 class="styleguide-title"> DMID CROMS </h2>
+        <h3 class="styleguide-title"> Styleguide </h3>
         <h3></h3>        
         <ul>            
               <router-link tag="li" to="/"> Home </router-link> 
@@ -180,10 +180,10 @@ export default {  //name: 'mainLayout',
   .sg-openList {
     position: fixed;
     height: 100vh;
-    background-color: rgb(250, 250, 250);
-    border-right: solid 1px #9b9b9b;
+    background-color: rgb(14, 14, 14);
+    border-right: solid 1px #161616;
     width: 225px;
-    padding-top:75px;
+    padding-top:25px;    
     left: 0;
     opacity: 1;
     transition: 0.4s ease-in-out;
@@ -196,6 +196,7 @@ export default {  //name: 'mainLayout',
   }
   .styleguide-title {
     margin: 0;
+    color: white;
     padding-left: 15px;
     padding-bottom: 5px;
     transition: 0.4s ease-in-out;
@@ -343,13 +344,15 @@ export default {  //name: 'mainLayout',
   li {
     font-size: 16px;
     font-weight: bold;
+    color: #ccc;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 25px;
+    padding-left: 45px;
     border-right: 5px solid transparent;
   }
   li:hover {
-    background-color: rgba(0,0,0, 0.05);
+    background-color: rgba(0, 103, 187, 0.514);
+    color: #eee;
   }
   
   a {
@@ -362,11 +365,9 @@ export default {  //name: 'mainLayout',
     color: inherit;
   }  
   .router-link-exact-active {
-    background-color: rgba(216, 216, 216, 0.25);
+    background-color: rgb(0, 103, 187);
     border-right-color: rgb(57, 176, 255);
-    color: #000!important;
+    color: white!important;
   }
-  li {
-    color: #565656;
-  }
+  
 </style>

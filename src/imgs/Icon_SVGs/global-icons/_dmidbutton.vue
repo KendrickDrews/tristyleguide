@@ -209,16 +209,16 @@
   background-color: rgb(44, 138, 49);
 }
 .Development {
-  background-color: rgb(21, 141, 27);
+  background-color: #09aa5f;
 }
 .InProgress {
-  background-color: rgb(37, 107, 107);
+  background-color: #a1db36;
 }
 .CloseOut {
-  background-color: rgb(44, 53, 138);
+  background-color: #7fd639;
 }
 .Initiation {
-  background-color: rgb(129, 138, 44);
+  background-color: #37924c;
 }
 
 </style>

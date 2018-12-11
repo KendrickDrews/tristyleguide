@@ -167,11 +167,11 @@
             </div>
             <div class="homeContainer">
               <div class="announcement">
-                <h5></h5>
-                <h4></h4>
-                <p>
+                <h5>November 26, 2018</h5>
+                <h4>Holiday Closure of DMID-CROMS Offices</h4>
+                <p>Dear DMID Stakeholders and Collaborators: Please be aware that in observance of the Thanksgiving Holiday, the offices of the DMID-CROMS Contractor are closed on Thursday, November 22 and Friday, November 23, 2018. Your questions and concerns will be addressed by the staff when they return on Monday
                 </p>
-                <a></a>
+                <a>Click here read more..</a>
               </div>
             </div>
           </div>
@@ -180,17 +180,17 @@
               <h2> Resources and Tools </h2>
             </div>
             <div class="homeContainer">
-              <ul>
-                <li class="rt-nav-item"><a href="#contacts">Contacts</a></li>
-                <li class="rt-nav-item"><a href="#about">DMID Information Sheets<br> Guidelines and Standards</a></li>
-                <li class="rt-nav-item"><a href="#contact">Forms and Temp</a></li>
-                <li class="rt-nav-item"><a href="#home">Hours of Operation</a></li>
-                <li class="rt-nav-item"><a href="#about">NIAID CIERS</a></li>
-                <li class="rt-nav-item"><a href="#contact">Related Links</a></li>
-                <li class="rt-nav-item"><a href="#home">Support and FAQs</a></li>
-                <li class="rt-nav-item"><a href="#about">Training</a></li>
-                <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../../imgs/Button_AdobeReader.png"></a></li>
-                <li class="rt-nav-item"><a href="#contact"><img class="rt-image" src="../../imgs/Button_AdobeFlashPlayer.png"></a></li>
+              <ul class="ulHome">
+                <li class="rt-nav-home"><a href="#contacts">Contacts</a></li>
+                <li class="rt-nav-home"><a href="#about">DMID Information Sheets Guidelines and Standards</a></li>
+                <li class="rt-nav-home"><a href="#contact">Forms and Templates</a></li>
+                <li class="rt-nav-home"><a href="#home">Hours of Operation</a></li>
+                <li class="rt-nav-home"><a href="#about">NIAID CIERS</a></li>
+                <li class="rt-nav-home"><a href="#contact">Related Links</a></li>
+                <li class="rt-nav-home"><a href="#home">Support and FAQs</a></li>
+                <li class="rt-nav-home"><a href="#about">Training</a></li>
+                <img class="rt-image" src="../../imgs/Button_AdobeReader.png">
+                <img class="rt-image" src="../../imgs/Button_AdobeFlashPlayer.png">
               </ul>
 
             </div>
@@ -202,84 +202,84 @@
             <div class="homeContainer">
               <div class="supportSEARCH">
                 <div class="devSEARCH">
-                <dmidbutton 
-                :buttonName="buttonList.Development" 
-                v-if="showNavHOME[buttonList.Development]"
-                :button-color="buttonList.Development"
-                :id="'nav-' + buttonList.Development"
-                :height="support"
-                :width="support"
-                :siteIcon="true"
-              > 
-              </dmidbutton>
-                <div class="supportRight">
-                  <h4></h4>
-                  <input type="text" placeholder="" class="">
-                  <button class="nav-button btn-Seven btn-supSEARCH">
-                    <h4> Go </h4>          
-                    <div class="navbtn-shadow"></div>
-                  </button>
-                </div>
-                </div>
-                <div class="devSEARCH">
-                <dmidbutton 
-                :buttonName="buttonList.Development" 
-                v-if="showNavHOME[buttonList.Development]"
-                :button-color="buttonList.Development"
-                :id="'nav-' + buttonList.Development"
-                :height="support"
-                :width="support"
-                :siteIcon="true"
-              > 
-              </dmidbutton>
-                <div class="supportRight">
-                  <h4></h4>
-                  <input type="text" placeholder="" class="">
-                  <button class="nav-button btn-Seven btn-supSEARCH">
-                    <h4> Go </h4>          
-                    <div class="navbtn-shadow"></div>
-                  </button>
-                </div>
+                  <dmidbutton 
+                    :buttonName="buttonList.Development" 
+                    v-if="showNavHOME[buttonList.Development]"
+                    :button-color="buttonList.Development"
+                    :id="'nav-' + buttonList.Development"
+                    :height="support"
+                    :width="support"
+                    :siteIcon="true"
+                  > 
+                  </dmidbutton>
+                  <div class="supportRight">
+                    <h4>Development</h4>
+                    <input type="text" placeholder="" class="">
+                    <button class="nav-button btn-supSEARCH">
+                      <h4> Go </h4>          
+                      <div class="navbtn-shadow"></div>
+                    </button>
+                  </div>
                 </div>
                 <div class="devSEARCH">
-                <dmidbutton 
-                :buttonName="buttonList.Development" 
-                v-if="showNavHOME[buttonList.Development]"
-                :button-color="buttonList.Development"
-                :id="'nav-' + buttonList.Development"
-                :height="support"
-                :width="support"
-                :siteIcon="true"
-              > 
-              </dmidbutton>
-                <div class="supportRight">
-                  <h4></h4>
-                  <input type="text" placeholder="" class="">
-                  <button class="nav-button btn-Seven btn-supSEARCH">
-                    <h4> Go </h4>          
-                    <div class="navbtn-shadow"></div>
-                  </button>
-                </div>
+                  <dmidbutton 
+                    :buttonName="buttonList.Initiation" 
+                    v-if="showNavHOME[buttonList.Initiation]"
+                    :button-color="buttonList.Initiation"
+                    :id="'nav-' + buttonList.Initiation"
+                    :height="support"
+                    :width="support"
+                    :siteIcon="true"
+                  > 
+                  </dmidbutton>
+                  <div class="supportRight">
+                    <h4>Initiation</h4>
+                    <input type="text" placeholder="" class="">
+                    <button class="nav-button btn-supSEARCH">
+                      <h4> Go </h4>          
+                      <div class="navbtn-shadow"></div>
+                    </button>
+                  </div>
                 </div>
                 <div class="devSEARCH">
-                <dmidbutton 
-                :buttonName="buttonList.Development" 
-                v-if="showNavHOME[buttonList.Development]"
-                :button-color="buttonList.Development"
-                :id="'nav-' + buttonList.Development"
-                :height="support"
-                :width="support"
-                :siteIcon="true"
-              > 
-              </dmidbutton>
-                <div class="supportRight">
-                  <h4></h4>
-                  <input type="text" placeholder="" class="">
-                  <button class="nav-button btn-Seven btn-supSEARCH">
-                    <h4> Go </h4>          
-                    <div class="navbtn-shadow"></div>
-                  </button>
+                  <dmidbutton 
+                    :buttonName="buttonList.InProgress" 
+                    v-if="showNavHOME[buttonList.InProgress]"
+                    :button-color="buttonList.InProgress"
+                    :id="'nav-' + buttonList.InProgress"
+                    :height="support"
+                    :width="support"
+                    :siteIcon="true"
+                  > 
+                  </dmidbutton>
+                  <div class="supportRight">
+                    <h4>In Progress</h4>
+                    <input type="text" placeholder="" class="">
+                    <button class="nav-button btn-supSEARCH">
+                      <h4> Go </h4>          
+                      <div class="navbtn-shadow"></div>
+                    </button>
+                  </div>
                 </div>
+                <div class="devSEARCH">
+                  <dmidbutton 
+                    :buttonName="buttonList.CloseOut" 
+                    v-if="showNavHOME[buttonList.CloseOut]"
+                    :button-color="buttonList.CloseOut"
+                    :id="'nav-' + buttonList.CloseOut"
+                    :height="'30px'"
+                    :width="'30px'"
+                    :siteIcon="true"
+                  > 
+                  </dmidbutton>
+                  <div class="supportRight">
+                    <h4>Close Out</h4>
+                    <input type="text" placeholder="" class="">
+                    <button class="nav-button btn-supSEARCH">
+                      <h4> Go </h4>          
+                      <div class="navbtn-shadow"></div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -667,7 +667,7 @@ import buttonList from '../../components/componentList/buttonList.js';
 .Row4 .right, .Row4 .center,.Row4 .left {
   display: flex;
   width: 33%;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap; 
   flex-grow: 1;
 }
@@ -676,7 +676,7 @@ import buttonList from '../../components/componentList/buttonList.js';
   border-right: 1px solid black;
 }
 .Row4 .right {
-  background-color: #dbfdc8;
+  background-color: #e0f1d7;
 }
 .homeHeader {
   height: 36px;
@@ -689,28 +689,96 @@ import buttonList from '../../components/componentList/buttonList.js';
   line-height: 15px; 
   vertical-align: top;
   font-family: 'Calibri';
+  width:100%;
+}
+.homeContainer {
+  width: 100%;
+  height: calc(100% - 36px);
+  overflow-y: scroll;
 }
 .news {
   border-top: 10px solid #c3c5f8;
   background-color: #a1a4f3;
-  color: #262a9a;
-  
+  color: #262a9a;  
 }
 .tools {
   border-top: 10px solid #eee;
   background-color: #ccc;
   color: #333;
 }
+.ulHome {
+  margin-left: 52px;
+  margin-top: 12px; 
+}
+.rt-nav-home {    
+  align-items: center;
+  padding-right: 5px;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+.rt-nav-home a {
+border:none !important; 
+color:#000!important;
+margin:0 !important;
+text-decoration:none !important;
+/*padding-right:5px;*/
+outline: 0;
+padding: 0px 0px;
+font-size: 14px;
+font-family: Calibri;
+}
+.rt-nav-home:hover {
+  font-weight: bold;
+}
+.rt-image {
+  padding-top: 15px;
+  padding-right: 18px;
+  margin-left: -15px;
+}
 .support {
   border-top: 10px solid #bfdba8;
   background-color: #9ebb87;
-  color: #244f1e;
-  
+  color: #244f1e;  
+}
+.devSEARCH {
+  width: 100;
+  display: flex;
 }
 .supportSEARCH .dmid-button {
   height: 42px;
   width: 42px;
-  margin: 0 auto;
+  margin: 0 10px;
+  border-radius: 3px;
+}
+.btn-supSEARCH {
+  height: 16px;
+  width: 31px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
+  align-self: flex-end;
+  /* background-color: var(--red-gold); */
+  /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(49%, rgba(255, 200, 0, 0.5)),color-stop(61%, rgba(255, 60, 0, 0.75))); */
+  /* background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.5)49%, rgba(255, 60, 0, 0.75) 61%); */
+}
+.btn-supSEARCH h4 {
+  font-weight: bold;
+  color: black;
+  z-index: 10;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 10px;
+  
+}
+.btn-supSEARCH .navbtn-shadow {
+  box-shadow: inset 0px 0px 0.5px 1px rgb(82, 82, 82);
+}
+.supportRight{
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
 }
 .main-footer {
   min-height: 49px;
