@@ -130,9 +130,7 @@ body {
   font-size: 14px;
   color: black;
   display: flex;
-  justify-content: center;
-  /* background-color: var(--color-secondary); */
-  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(52, 94, 192,0.15)); 
+  justify-content: center;   
   background-repeat: no-repeat;
   background-attachment: fixed; 
 }
@@ -675,6 +673,7 @@ hr {
   margin-top: 5px;
   font-size: 0.8em;
   padding-left: 25px;
+  padding-right: 5px;
 }
 .servicesTools-List li {
   padding: 1px 0;

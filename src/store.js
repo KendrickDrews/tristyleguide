@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
     count: 0,
     activeComponent: '',
     msg: 'testing01',
-    DMIDSite: ''
+    DMIDSite: '',
+    siteType: '',
   },
   mutations: {
     increment: state => state.count++,
@@ -21,6 +22,9 @@ export const store = new Vuex.Store({
     },
     setDMIDSubSite: function(state, subSite) {
       state.DMIDSite = subSite
+    },
+    setSiteType: function(state, type) {
+      state.siteType = type
     }
   },
   actions: {

@@ -13,7 +13,7 @@
 
         <div class="row Row2">
           <div class="left icon-spacing">
-            <div class="home-Navigation">
+            <router-link tag="div" to="/CRS" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.CRS" 
                 v-if="showNavHOME[buttonList.CRS]"
@@ -25,8 +25,8 @@
               > 
               </dmidbutton>
               <h4> Clinical Research Support </h4>
-            </div>
-            <div class="home-Navigation">
+            </router-link>
+            <router-link tag="div" to="/DocumentLibrary" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.DocumentLibrary" 
                 v-if="showNavHOME[buttonList.DocumentLibrary]"
@@ -38,8 +38,8 @@
               > 
               </dmidbutton>
               <h4> Document Library </h4>
-            </div>
-            <div class="home-Navigation">
+            </router-link>
+            <router-link tag="div" to="Training"  class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.Training" 
                 v-if="showNavHOME[buttonList.Training]"
@@ -51,8 +51,8 @@
               > 
               </dmidbutton>
               <h4> Training </h4>
-            </div>
-            <div class="home-Navigation">
+            </router-link>
+            <router-link tag="div" to="/ServiceRequests" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.ServiceRequests" 
                 v-if="showNavHOME[buttonList.ServiceRequests]"
@@ -64,13 +64,13 @@
               > 
               </dmidbutton>
               <h4> Service Requests </h4>
-            </div>
+            </router-link>
                         
           </div>
           <!-- DMART Buttons -->
           <div class="right DMART icon-spacing">
             
-              <div class="home-Navigation">
+              <router-link tag="div" to="/Protocols" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.Protocols" 
                   v-if="showNavDMART[buttonList.Protocols]"
@@ -82,8 +82,8 @@
                   > 
                 </dmidbutton>
                 <h4> Protocols </h4>
-              </div>
-              <div class="home-Navigation">
+              </router-link>
+              <router-link tag="div" to="/GrantCapture" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.GrantCapture" 
                   v-if="showNavDMART[buttonList.GrantCapture]"
@@ -95,8 +95,8 @@
                   > 
                 </dmidbutton>
                 <h4> Grant Capture </h4>
-              </div>
-              <div class="home-Navigation">
+              </router-link>
+              <router-link tag="div" to="/Results" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.Results" 
                   v-if="showNavDMART[buttonList.Results]"
@@ -108,7 +108,7 @@
                   > 
                 </dmidbutton>
                 <h4> Results </h4>
-              </div>
+              </router-link>
               <div class="home-Navigation">
                 <div class="horizontal"></div>
                 <div>
@@ -390,15 +390,30 @@ import buttonList from '../../components/componentList/buttonList.js';
           this.$root.store.commit('isActiveComponent', value )
         }
       },
+      //Set SiteType 01
+      stateType: {
+        get: function() {
+          return this.$root.store.state.siteType 
+        },
+        set: function(value) {
+          this.$root.store.commit('setSiteType', value )
+        }
+      },
     },
 ///////
     mounted: function () {      
       this.stateActiveComponent('');
+      //Set SiteType 02
+      this.stateSiteType('HOME');
     },
     methods: {
       stateActiveComponent (value) {
       return  this.stateComponent = value
-      }
+      },
+      //set SiteType 03
+      stateSiteType (value) {
+      return  this.stateType = value
+      } 
     },
   }
 </script>
@@ -492,8 +507,10 @@ import buttonList from '../../components/componentList/buttonList.js';
 .home-Navigation {
   display: flex;
   flex-direction: column;
-  width: 83px;    
-  
+  width: 83px;   
+}
+.home-Navigation:hover {
+  cursor: pointer;
 }
 .home-Navigation h4 {
   font-family: 'times new roman';
@@ -865,8 +882,8 @@ font-family: Calibri;
   }
 }
 </style>
-<style>
+<style scoped>
 body {
-  background-color: #445b9c!important; 
+  background-color: #445b9c; 
 } 
 </style>

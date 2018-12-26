@@ -22,8 +22,7 @@
 
   export default {
     components: {   
-      pageNavigation   
-      
+      pageNavigation      
     },
     props: 
       ['page'],
@@ -37,7 +36,7 @@
     computed: {
       subSite: {
         get: function() {
-          return this.$root.store.state.DMIDSite
+          return this.$root.store.state.siteType
         },
         set: function() {
 

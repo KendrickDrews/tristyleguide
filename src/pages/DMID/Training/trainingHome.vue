@@ -1,5 +1,7 @@
 <template>
-  <div class="DMID-main">    
+  <div class="DMID-main">
+    
+
       <DMIDHeader     
         :type="thisSite"
         :button-Color="thisSite"
@@ -9,13 +11,13 @@
           DocumentLibrary: true,
           CRS: true,
           SOCSCMS: true,
-          Training: true,
-          ServiceRequests: false,
+          Training: false,
+          ServiceRequests: true,
           GrantCapture: true,
           Protocols: true,         
         }"
       >    
-        <p slot="locationName" class="SR"> Service Requests  </p>
+        <p slot="locationName"> Training  </p>
 
       </DMIDHeader>
 
@@ -24,7 +26,7 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer">
-            <h2 class="bodyLocation">Essential Regulatory Documents Services</h2>
+            <h2 class="bodyLocation">Training</h2>
           </div>
           <div class="bodyContent">
           <div class="mainContent "> 
@@ -219,7 +221,7 @@
               
                         
           </div>
-          <!--<div class="servicesAndTools">
+          <div class="servicesAndTools">
             <h4> SERVICES AND TOOLS </h4>
               <ul class="servicesTools-List">
                   <li class="servicesTools-Item">Request Essential Regulatory Documents Services</li>
@@ -228,30 +230,10 @@
               </ul>
           </div>
           
-          <li>Fax: <span class="gray">301-897-7482</span></li>
-          -->
-        </div>
-          <!-- <div class="bodyContent">
-            <div class="mainContent ">             
-                <ul class="indent">
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a><span data-descr="Centers for Disease Control on external site">Centers for Disease Control</span></a></li>                
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>ClinicalTrials.gov</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>EMMES CRID</a></li>                              
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Food and Drug Administration</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>ICH/International Conference on Harmonization</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>National Institutes of Health</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>National Institute of Allergy and Infectious Diseases</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>NIAID ClinRegs</a></li>
-                  <li><p class="bodyText">The National Institute of Allergy and Infectious Diseases (NIAID) has launched ClinRegs, a website designed to help the research community explore clinical research regulations within specific countries and compare regulatory requirements across countries. <br/> Visit <a>clinregs.niaid.nih.gov.</a> </p></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>NIAID Division of Microbiology and Infectious Diseases</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Office of Clinical Research Affairs</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>Office for Human Research Protection</a></li>
-                  <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a>World Health Organization</a></li>                
-                </ul>           
-                              
-            </div>
-          </div> -->
-        </div>        
+          
+         
+        </div>          
+    </div>        
 
       </div>
       <div class="main-footer">
@@ -264,14 +246,13 @@
   </div> 
 </template>
 
-<script>    
-  import VLink from '../components/VLink.vue';
-  import DMIDHeader from "../components/DMIDhead.vue";
-  import colors from "../layouts/colors.vue"
-  import navList from "../components/navLists.vue";
-  import allNav from "../components/DMIDsideNav.vue";
-  import Modal from "../components/modalTemplate.vue";
-  import buttonList from '../components/componentList/buttonList.js';
+<script>   
+  import DMIDHeader from "../../../components/DMIDhead.vue";
+  import colors from "../../../layouts/colors.vue"
+  import navList from "../../../components/navLists.vue";
+  import allNav from "../../../components/DMIDsideNav.vue";
+  import Modal from "../../../components/modalTemplate.vue";
+  import buttonList from '../../../components/componentList/buttonList.js';
   
 
   export default {
@@ -283,7 +264,7 @@
       allNav,
       Modal,
       buttonList,
-      VLink
+      
     },
     //props: {
     //  href: {
@@ -310,7 +291,7 @@
           SMART: true,
           CSRS: true, 
         },
-        subSiteIs: 'ServiceRequests',
+        subSiteIs: this.$route.name,
         buttonList: buttonList,
                 
       };
@@ -339,6 +320,14 @@
           this.$root.store.commit('isActiveComponent', value )
         }
       },
+      stateType: {
+        get: function() {
+          return this.$root.store.state.siteType 
+        },
+        set: function(value) {
+          this.$root.store.commit('setSiteType', value )
+        }
+      },
      
       isActive () {
         return this.href === this.$root.currentRoute
@@ -350,6 +339,7 @@
       this.setStateSubSite();
       this.stateActiveComponent('');
       this.scrollReset(0);
+      this.stateSiteType('CRS');
     },
 ///////
     methods: {
@@ -365,10 +355,7 @@
       },
       stateSubSite (value) {
         return  this.subSite = value
-      },  
-      showCRS () {
-        return this.showNav.CRS = true
-      }, 
+      },        
       stateActiveComponent (value) {
       return  this.stateComponent = value
       },
@@ -384,136 +371,20 @@
           routes[this.href],
           this.href
         )
-      },     
+      }, 
+      stateSiteType (value) {
+      return  this.stateType = value
+      }    
                    
     },
   }
 
 </script>
 <style>
-/*  body {
-  background-color: rgb(52, 94, 192)!important;
-} 
-.SR {
-  color:  rgb(52, 94, 192)!important; 
-}
- .locationContainer {
-  background-color: rgb(52, 94, 192)!important;
-} 
-.indent {
-  margin-left: 25px;
-  list-style-type: none;
-}
-.indent li  {
-  font-size: 13.5px;
-  font-family: Calibri;
-  padding: 4px 0;
-  width: auto;
-  float: left;
-  clear: both;
-}
-.indent li:hover  {
-  cursor: pointer;  
-}
-a:hover {
-  color: #337ab7;
-}
-.bodyText {
-  font-family: Calibri;
-}
-.indent2x {
-  margin-left: 25px; 
-}
-.indent2x li  {
-  font-size: 13.5px;
-  font-family: Calibri;
-  padding: 2px 0;
-}
-.titleHead {
-  color:#244f1e;
-  font-weight: bold;
-  font-size: 15px;
-  margin-left: -15px;
-  font-family: Verdana;
-  
-}
-.protoIcon {
-  margin-left: -28px;
-  margin-right: 11px;
-  margin-top: -5px;
-}
-.fa-pushed {
-  width: 13px;
-  color: #49a274;
-  margin-left: -12px;
-}
-.servicesTools-List {
-  padding-right: 5px;
-}
-.gray {
-  background-color: #ccc;
-}
-.extLink {
-  margin-left: 5px;
-  margin-top: -15px;
-}
-/*.extLink {
-  position: relative;
-  z-index: 1;
-  margin-right: 0px;
-  margin-left: -10px;
-  margin-top: -20px;
-}
-.protoIconExtLink {
-  position: relative;
-  z-index: 1;
-  margin-left: -28px;
-  margin-right: 0px;
-  margin-top: -7px;
-  border: 1px solid transparent;
-     
-}
-.two-icons a  {
-margin-left: 3px;
-}
-.two-icons a  {
-margin-left: 3px;
-}
-.break {
-  height: 14px;
+body {
+  background-color: rgb(140, 175, 255)!important; 
 }
 
-span[data-descr] {
-  position: relative; 
-  cursor: help;
-}
-
-span[data-descr]:hover::after {
-  content: attr(data-descr);
-  position: absolute;
-  left: 100px;
-  top: 24px;
-  min-width: 250px;
-  border: 1px #aaaaaa solid;
-  border-radius: 10px;
-  background-color: #ffffcc;
-  padding: 12px;
-  color: #000000;
-  font-size: 14px;
-  z-index: 1;
-}
- */
-
-</style>
-<style>
-
-.locationContainer {
-  background-color: rgb(52, 94, 192);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 35% ,rgba(0, 0, 0, 0.1) 55%,rgba(255,255,255,0.9)85%,rgba(255,255,255,1)95%)!important;
-}
-.SR {
-  color:  rgb(52, 94, 192)!important; 
-}
 .mainContent {
   padding: 10px 20px 10px 10px!important;
   font-family: calibri!important;
@@ -649,4 +520,9 @@ span[data-descr]:hover::after {
   height: 26px;
   margin-left: 40%;
 }
+</style>
+<style>
+body {
+  background-color: #445b9c!important; 
+} 
 </style>

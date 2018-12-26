@@ -1,6 +1,6 @@
 <template>
   <div class="container"
-    v-bind:class="{'container-mirror' : ViewLocation === '/DMID'  }"
+    v-bind:class="{'container-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
   >
   
     <aside 
@@ -15,16 +15,12 @@
         <h3 class="styleguide-title"> Styleguide </h3>
         <h3></h3>        
         <ul>            
-              <router-link tag="li" to="/"> Home </router-link> 
-           
-              <router-link tag="li" to="/about">About</router-link>
-              
-              <router-link tag="li" to="/siteMirror">siteMirror</router-link>
-              
-              <router-link tag="li" to="/components">Components</router-link>
-              
+              <router-link tag="li" to="/"> Home </router-link>            
+              <router-link tag="li" to="/about">About</router-link>              
+              <router-link tag="li" to="/siteMirror">siteMirror</router-link>              
+              <router-link tag="li" to="/components">Components</router-link>              
               <router-link tag="li" to="/test">test</router-link>
-              <router-link tag="li" to="/DMID">DMID Home</router-link>
+              <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
               
         </ul>
       </div>
@@ -42,7 +38,7 @@
 
     <div 
       class="styleguide-headingContainer"      
-      v-bind:class="{'sghContainer-mirror' : ViewLocation === '/DMID','sgHeading-closed' : !open  }"       
+      v-bind:class="{'sghContainer-mirror' : SPLIT(ViewLocation) === 'DMID','sgHeading-closed' : !open  }"       
     >
         
       <div 
@@ -50,7 +46,7 @@
                     
       > 
         <h2 v-if="this.ViewLocation === '/'" class="location-heading"> Home </h2>
-        <h2 v-else-if="this.ViewLocation === '/DMID'" class="location-heading"> </h2>
+        <h2 v-else-if="SPLIT(ViewLocation) === 'DMID'" class="location-heading"> </h2>
         <h2 v-else class="location-heading"> {{ this.ViewLocation | capitalize }} </h2>
       <!-- Renders active component based on scroll when on components page, displays blank for other pages -->
         <h3 class="location-heading"
@@ -60,7 +56,7 @@
         </h3>
         <h3 class="location-heading" v-else>  </h3>
 
-        <h4 class="location-heading">  </h4>
+        <h4 class="location-heading">   </h4>
 
       </div>
 
@@ -69,7 +65,7 @@
     <div 
       id="styleguide-content" 
       class="styleguide-Content"
-      v-bind:class="{ 'sgContent-mirror' : ViewLocation === '/DMID'  }"
+      v-bind:class="{ 'sgContent-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
     >
       
        
@@ -80,7 +76,7 @@
         >
           <div 
             class="componentContent"
-            v-bind:class="{'componentContent-mirror' : ViewLocation === '/DMID'  }"  
+            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'  }"  
           >         
           
           <router-view></router-view>
@@ -122,8 +118,12 @@ export default {  //name: 'mainLayout',
     ViewLocation ()  {      
         const matchingView = this.$route.path
         return matchingView      
-    },              
-  },  
+    },                 
+  },
+//// 
+  mounted: function () {      
+      this.SPLIT();
+    }, 
 
 ////  
   methods: {
@@ -132,7 +132,13 @@ export default {  //name: 'mainLayout',
       },      
       linkTo: function () {
           this.$router.push({ name: 'Home'})
-      },                    
+      }, 
+      SPLIT: function (value) {
+      if (!value) return 'noValue'
+      var toSplit = value;
+      var splitString = toSplit.split("/", 2);
+      return splitString[1];
+    }                   
     },
 
   filters: {
@@ -140,6 +146,12 @@ export default {  //name: 'mainLayout',
       if (!value) return ''
       value = value.toString()
       return value.charAt(1).toUpperCase() + value.slice(2)
+    },
+    truncate: function (value) {
+      if (!value) return 'noValue'
+      var toSplit = value;
+      var splitString = toSplit.split("/", 2);
+      return splitString[1];
     }
   }
       
@@ -318,6 +330,7 @@ export default {  //name: 'mainLayout',
   }
   .sgContent-mirror {
     background-color: transparent;
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(52, 94, 192,0.15));
     transition: 0.4s ease-in-out;  
   }
   .sghContainer-mirror {

@@ -11,47 +11,47 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+    },
+    {
+      path: '/about',
+      name: 'about',      
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
       path: '/siteMirror',
-      name: 'siteMirror',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      name: 'siteMirror',      
       component: () => import(/* webpackChunkName: "about" */ './views/siteMirror.vue')
     },
     {
       path: '/components',
-      name: 'components',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      name: 'components',     
       component: () => import(/* webpackChunkName: "about" */ './views/Components.vue')
     },
     {
       path: '/test',
-      name: 'test',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      name: 'test',     
       component: () => import(/* webpackChunkName: "about" */ './views/Test4.vue')
     },
     {
       path: '/DMID',
-      name: 'DMID',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './pages/DMID/DMIDHome.vue')
-    },
+      name: 'DMID',     
+      component: () => import(/* webpackChunkName: "about" */ './pages/DMID/DMID.vue'),
+      children: [
+        {
+          path: 'Home',
+          name: 'DMIDHome',     
+          component: () => import(/* webpackChunkName: "about" */ './pages/DMID/DMIDHome.vue')
+        },
+        {
+          path: 'Training',
+          name: 'Training', 
+          component: () => import(/* webpackChunkName: "about" */ './pages/DMID/Training/trainingHome.vue'),        
+        }
+      ]
+    },   
     
   ]
 })

@@ -29,7 +29,7 @@
     // A Prop Passed to navLists from any page which uses it
     computed: {
       subSite() {       
-          return this.$root.store.state.DMIDSite
+          return this.$root.store.state.siteType
         }
       },
     

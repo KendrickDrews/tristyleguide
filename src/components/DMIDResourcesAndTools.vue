@@ -41,7 +41,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
 .menu-row {
   display: flex;
   flex-direction: row;
