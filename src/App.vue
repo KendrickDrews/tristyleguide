@@ -65,7 +65,7 @@
     <div 
       id="styleguide-content" 
       class="styleguide-Content"
-      v-bind:class="{ 'sgContent-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
+      v-bind:class="[{ 'sgContent-mirror' : SPLIT(ViewLocation) === 'DMID' }, siteBG]"
     >
       
        
@@ -100,13 +100,9 @@ export default {  //name: 'mainLayout',
 ////    
   data: function(){
     return {        
-      open: true,
-      //routes: routes,      
+      open: true,           
       currentLocation: this.$route.path,      
       topOffset: 0,
-      //Home,
-     // router, 
-          
     }           
   },
 
@@ -118,7 +114,11 @@ export default {  //name: 'mainLayout',
     ViewLocation ()  {      
         const matchingView = this.$route.path
         return matchingView      
-    },                 
+    }, 
+    siteBG () {
+      const color = this.$root.store.state.siteType
+      return color
+    }                
   },
 //// 
   mounted: function () {      
@@ -161,6 +161,9 @@ export default {  //name: 'mainLayout',
 <style scoped>
  body {
    margin: 0px;
+ }
+ .HOME {
+   background-color: #445b9c;
  }
   .container {
     width: 100vw;
@@ -328,8 +331,7 @@ export default {  //name: 'mainLayout',
     visibility: 0;
     transition: 0.4s ease-in-out;
   }
-  .sgContent-mirror {
-    background-color: transparent;
+  .sgContent-mirror {    
     background-image: linear-gradient(rgba(0,0,0,0.45), rgba(52, 94, 192,0.15));
     transition: 0.4s ease-in-out;  
   }

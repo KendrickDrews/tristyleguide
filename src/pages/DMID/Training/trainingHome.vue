@@ -1,6 +1,6 @@
 <template>
   <div class="DMID-main">
-    
+    <div style="position: relative">
 
       <DMIDHeader     
         :type="thisSite"
@@ -30,188 +30,36 @@
           </div>
           <div class="bodyContent">
           <div class="mainContent "> 
-            <p class="form-text" style="margin-bottom: 10px;">To submit a Essential Regulatory Documents Services request, complete the form below.Fields marked with red asterisks are mandatory for completion. An electronic confirmation of receipt will be sent via email to the requestor.</p>
-            <p class="form-text">The following will auto-populate from DMID-CROMS Website:</p>
-            <ul class="indent2x">
+            <p class="form-text" style="margin-bottom: 10px;">The information provided on this Training page applies to all sites and to all key personnel engaged in DMID-supported clinical research.</p>
+            <h3 class="lmsTitle">TRAINING AND LEARNING MANAGEMENT SYSTEM (LMS)</h3>
+            <p>Training courses are now available through the LMS allowing authorized users to access Course Completion Certificates and transcripts through a user-friendly interface. To access the LMS, please select the following button: </p>
+            <br/>
+            <div class="LMS">
+                <h4 align="center"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4> 
+            </div>
+            <br/>
+            <p>Please reference the LMS Quick Start Guide for assistance with navigating through the LMS.</p>  
+            <br />
+            <p> <strong>Important note: </strong></p>
+            
+            <p>
+Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID). Documentation of training should be current and retained on site.</p>  
+             
+           
+
+              <br/>
+              <hr style="width: 100%">
               
-              <!-- <li>To submit a Essential Regulatory Documents Services request, complete the form below.Fields marked with red asterisks are mandatory for completion.</li> -->
-              <!-- <li>Fields marked with red asterisks are mandatory for completion.</li> -->
-              <!-- <li>The following will auto-populate from DMID-CROMS Website:</li>                -->
-                <ul class="indent2x">
-                  <li>Requestor's Name</li>
-                  <li>Requestor's Email</li>
-                  <li>Abbreviated Protocol Title and Clinical Project Manager (if the Protocol Number is selected)</li>
-                  <!--<li>Anticipated Activation Date</li>-->
-                  <li>Site Contact Information (if the Site Name is selected)</li>
-                  <li>Principal Investigator contact Information (if the Principal Investigator is selected)</li>
-                </ul>
-              <!-- <li>An electronic confirmation of receipt will be sent via email to the requestor.</li> -->
-            </ul>
-
+              <p> <strong> Other training requirements: </strong> </p>
+                <br/>
+              <p>All investigators and site staff responsible for the conduct, management and oversight of NIH-funded clinical trials are required to complete training in the protection of human research participants and Good Clinical Practice (GCP). </p>
               <br/>
+              <p>Training may be completed through a class or course, academic training program, or certification from a recognized clinical research professional organization. GCP refresher training should be completed at least every three years in order for applicable site staff to remain current with regulations, standards and guidelines.</p>
+              <br/>
+              <p>The NIAID GCP and NIH Protecting Human Research Participants training may be accessed via the links provided, below, or per site institutional requirements. Please retain the certificate of completion at the end of the training course. The NIH Protecting Human Research Participants course will no longer be available after September 26, 2018. Please complete the course and/or print your certificate by this date. As of September 27, 2018, please refer to your institution, professional organization, or other training program for equivalent training, and retain certificates of courses completed.</p>
+
               
-              <div class="forms F01">
-                <div class="form-Row">
-                  <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=" User Name"/>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=" uName@tech-res.com"/>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Protocol Number  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <form class="form-input">
-                    <select name="Protocol" class="form-input">
-                      <option value="volvo">--Select Protocol--</option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select> 
-                  </form>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Abbreviated Protocol Title  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=""/>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Clinical Project Manager <span class="red">*</span><span class="unset"> :</span></p>   <input class="form-input" placeholder=""/>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Anticipated Activation Date <span class="red">*</span><span class="unset"> :</span></p> <form class="form-input">
-                    <select name="Protocol" class="form-input">
-                      <option value="volvo"> </option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select> 
-                  </form> 
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Protocol version approved by DMID for document <br/> collection <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=""/>
-                </div>
-                <div class="form-Row">
-                  <p class="form-text">Number of Sites <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=""/>
-                </div>
-              </div>
-              <br/>
-
-              <p style="font-weight: bold;"> Information about Sites Requiring Collection (Please do not include satellite sites)</p>
-              <ul class="indent">                
-                <ul class="indent2x">
-                  <li>Select the Site Name from the dropdown list.</li>
-                  <li>If your site is not listed, select the "View Complete List of Sites" checkbox to select a site from all sites listed in NIAID CRMS. Select "Add New Site" option if your site is not listed in the dropdown list.</li>
-                  <li>Select “Add New Principal Investigator” option if the Principal Investigator is not listed in the dropdown list.</li>
-                  </ul>
-              </ul>
-              <br/>
-              <div>
-                <input type="checkbox" id="scales" name="scales">
-                <label for="scales" style="font-weight: unset;">View Complete List Of Sites</label>
-              </div>
-
-              <div class="forms F02">
-                
-                <div class="column">
-                  <div class="form-Column">
-                    <p class="form-text">Site Name  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <form class="input-column">
-                    <select name="Protocol" class="input-column">
-                      <option value="volvo"> </option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select> 
-                  </form> 
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Address1  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Address2 <span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Address3 <span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">City  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Country  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">State <span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Zip Code <span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                </div>
-                <div class="column">
-                  <br/>
-                  <div class="form-Column">
-                    <p class="form-text">Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <form class="input-column">
-                    <select name="Protocol" class="input-column">
-                      <option value="volvo"> </option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select> 
-                  </form>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Principal Investigator Email  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Principal Investigator Phone  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <input class="input-column" placeholder=""/>
-                  </div>
-                  <div class="form-Column">
-                    <p class="form-text">Type Of Site  <span class="red">*</span><span class="unset"> :</span></p> 
-                    <form class="input-column">
-                    <select name="Protocol" class="input-column">
-                      <option value="volvo"> -- Select TypeOfSite --</option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select> 
-                  </form>
-                  </div>
-                  <div class="form-Column-Btn">
-                   <button class="form-Btn"> Click here to Add/Update Site </button>
-                    <button class="form-Btn"> Cancel/Reset </button>
-                  </div>
-                  <div class="form-Column-Btn">
-                  
-                  </div>
-                
-                </div>
-                
-                
-
-              </div>
-              <div>
-                <input type="checkbox" id="Please" name="please">
-                <label for="please" style="font-weight: unset; position: relative; top: -22px; z-index: -1;"> &nbsp; &nbsp; &nbsp; Please check here if the administrating site will be responsible for collecting documents from the other sites and sending to CROMS. In this case the administrating site will be the only site contacted for document collection. Please list any further comments/instructions below.</label>
-              </div>
-              <div class="forms F01">
-                <div class="form-Final">
-                  <p class="form-text">Comments/Special Instructions<span class="unset"> :</span></p> 
-                  <textarea class="form-input" rows="6" cols="20" name="comment" form="usrform">
-                  </textarea>
-                </div>
-                
-              </div>
+              
               <br/>              
               <button class="submit-Btn"> Submit </button>
               <br/>
@@ -224,9 +72,10 @@
           <div class="servicesAndTools">
             <h4> SERVICES AND TOOLS </h4>
               <ul class="servicesTools-List">
-                  <li class="servicesTools-Item">Request Essential Regulatory Documents Services</li>
-                  <li class="servicesTools-Item">Essential Regulatory Documents Report</li>
-                  <li class="servicesTools-Item">Essential Regulatory Document FAQ</li>
+                  <li class="servicesTools-Item">Ad hoc Training Request Report</li>
+                  <li class="servicesTools-Item">Ad Hoc Training Request Form</li>
+                  <li class="servicesTools-Item">Ad Hoc Training Registration</li>
+                  <li class="servicesTools-Item">Ad Hoc Training Request Approval</li>
               </ul>
           </div>
           
@@ -242,7 +91,7 @@
         v-show="isModalVisible"
         @close="closeModal"
       />
-     
+     </div>
   </div> 
 </template>
 
@@ -381,20 +230,14 @@
 
 </script>
 <style>
-body {
-  background-color: rgb(140, 175, 255)!important; 
-}
 
 .mainContent {
-  padding: 10px 20px 10px 10px!important;
+  padding: 10px 10px 10px 5px!important;
   font-family: calibri!important;
 }
-
-
 .bodyText {
   font-family: Calibri;
 }
-
 .indent li  {
   font-size: 13.5px;
   font-family: Calibri;
@@ -520,9 +363,23 @@ body {
   height: 26px;
   margin-left: 40%;
 }
-</style>
-<style>
-body {
-  background-color: #445b9c!important; 
-} 
+.lmsTitle {
+    font-family: Verdana;
+    font-size: 16px;
+    text-align: center;
+    color: #244f1e;
+}
+.LMS {
+    background-color: #4f81bd;
+    border: 2px solid #003471;
+    border-radius: 6px; 
+    width: 445px;
+    height: 33px;
+    line-height: 2em;
+    vertical-align: center; 
+    margin: 0 auto;  
+}
+.LMS h4 {
+    color: white;    
+}
 </style>

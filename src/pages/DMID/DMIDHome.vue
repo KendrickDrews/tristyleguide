@@ -882,8 +882,3 @@ font-family: Calibri;
   }
 }
 </style>
-<style scoped>
-body {
-  background-color: #445b9c; 
-} 
-</style>
