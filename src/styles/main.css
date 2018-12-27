@@ -606,8 +606,7 @@ hr {
   background-image: var(--content-gradient);
   display: flex;
   align-content: center;
-  min-height: 50px;
-  
+  min-height: 50px;  
   margin: 0;
 }
 .bodyLocation {    

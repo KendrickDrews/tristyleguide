@@ -9,15 +9,15 @@
         :showNav="{ 
           Home: true,
           DocumentLibrary: true,
-          CRS: true,
+          CRS: false,
           SOCSCMS: true,
-          Training: false,
+          Training: true,
           ServiceRequests: true,
           GrantCapture: true,
           Protocols: true,         
         }"
       >    
-        <p slot="locationName"> Training  </p>
+        <p slot="locationName"> Clinical Research Support </p>
 
       </DMIDHeader>
 
@@ -26,18 +26,16 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer">
-            <h2 class="bodyLocation">Training</h2>
+            <h2 class="bodyLocation">Welcome to Clinical Research Support</h2>
           </div>
           <div class="bodyContent">
           <div class="mainContent "> 
             <p class="form-text" style="margin-bottom: 10px;">The information provided on this Training page applies to all sites and to all key personnel engaged in DMID-supported clinical research.</p>
-            <br/>
             <h3 class="lmsTitle">TRAINING AND LEARNING MANAGEMENT SYSTEM (LMS)</h3>
-            <br/>
             <p>Training courses are now available through the LMS allowing authorized users to access Course Completion Certificates and transcripts through a user-friendly interface. To access the LMS, please select the following button: </p>
             <br/>
             <div class="LMS">
-                <h4 align="center" style="font-weight: normal; font-size: 16px;"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4> 
+                <h4 align="center"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4> 
             </div>
             <br/>
             <p>Please reference the LMS Quick Start Guide for assistance with navigating through the LMS.</p>  
@@ -50,7 +48,7 @@ Sites should maintain training records for all courses required by the Division 
            
 
               <br/>
-              <hr style="width: 100%; margin-bottom: 20px;">
+              <hr style="width: 100%">
               
               <p> <strong> Other training requirements: </strong> </p>
                 <br/>
@@ -59,39 +57,13 @@ Sites should maintain training records for all courses required by the Division 
               <p>Training may be completed through a class or course, academic training program, or certification from a recognized clinical research professional organization. GCP refresher training should be completed at least every three years in order for applicable site staff to remain current with regulations, standards and guidelines.</p>
               <br/>
               <p>The NIAID GCP and NIH Protecting Human Research Participants training may be accessed via the links provided, below, or per site institutional requirements. Please retain the certificate of completion at the end of the training course. The NIH Protecting Human Research Participants course will no longer be available after September 26, 2018. Please complete the course and/or print your certificate by this date. As of September 27, 2018, please refer to your institution, professional organization, or other training program for equivalent training, and retain certificates of courses completed.</p>
-<br/>
-              <div class="trainingCourses">
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <p> <strong> Courses </strong> </p>
-                  </div>
-                  <div style="width: calc(100% - 80px);">
-                    <p> <strong> Description </strong> </p>
-                  </div>
-                </div>
-                <br/>
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <a> Good Clinical Practice  </a>
-                  </div>
-                  
-                  <div style="width: calc(100% - 80px);">
-                    <p>This course is offered by NIAID and covers the scientific and ethical standards of human subject research, including NIH, FDA, HHS, and international clinical trial policies, guidelines, and regulations. For detailed information, please refer to the NIH Policy on Good Clinical Practice Training for NIH Awardees Involved in NIH-funded Clinical Trials.​​ </p>
-                  </div>
-                  </div>
-                  <br/>
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <a>Protecting Human Research Participants</a>
-                  </div>
-                  <div style="width: calc(100% - 80px);">
-                    <p>This course is offered by the NIH Office of Extramural Research. Your institution/IRB/IEC equivalent training is also  acceptable. </p>
-                  </div>
-                </div>
-              </div>
 
-                            
               
+              
+              <br/>              
+              <button class="submit-Btn"> Submit </button>
+              <br/>
+              <br/>
               
 
               
@@ -103,8 +75,7 @@ Sites should maintain training records for all courses required by the Division 
                   <li class="servicesTools-Item">Ad hoc Training Request Report</li>
                   <li class="servicesTools-Item">Ad Hoc Training Request Form</li>
                   <li class="servicesTools-Item">Ad Hoc Training Registration</li>
-                  <!-- <li class="servicesTools-Item">Ad Hoc Training Request Approval</li> -->
-                  <li class="servicesTools-Item">Training FAQ</li>
+                  <li class="servicesTools-Item">Ad Hoc Training Request Approval</li>
               </ul>
           </div>
           
@@ -134,7 +105,7 @@ Sites should maintain training records for all courses required by the Division 
   
 
   export default {
-    name: 'Training',
+    name: 'CRS',
     components: {      
       DMIDHeader,
       colors,
@@ -259,12 +230,12 @@ Sites should maintain training records for all courses required by the Division 
   min-height: 50px;  
   margin: 0;
 }
-.main-location {
-  color: var(--green-header);
-}
 .mainContent {
   padding: 10px 10px 10px 5px!important;
   font-family: calibri!important;
+}
+.main-location {
+  color: var(--green-header);
 }
 .main-headSearch h4 {
   color: var(--green-header);
@@ -415,11 +386,5 @@ Sites should maintain training records for all courses required by the Division 
 }
 .LMS h4 {
     color: white;    
-}
-.courseRow {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
 }
 </style>

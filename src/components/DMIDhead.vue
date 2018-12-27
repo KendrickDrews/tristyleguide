@@ -27,24 +27,104 @@
                 <h2 class="main-location">
                     <p><slot name="locationName"> CLINICAL RESEARCH SUPPORT</slot></p>
                 </h2> 
-                <div class="main-headButtons">
-                    
-                    <template 
-                    v-for="(item,key) in buttonList"                
-                    >
+                <div class="main-headButtons">                   
+                   <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="item" 
-                        :key="key"
-                        :button-color="item"
-                        :id="'nav-' + key"                                              
-                        v-if="showNav[key]"
+                        :buttonName="buttonList.Home"                         
+                        :button-color="buttonList.Home"
+                        :id="'nav-' + buttonList.Home"                                              
+                        v-if="showNav[buttonList.Home]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+
+                        </dmidbutton>
+                   </router-link>
+                   <router-link tag="div" to="/DMID/CRS">
+                        <dmidbutton
+                        :buttonName="buttonList.CRS"                         
+                        :button-color="buttonList.CRS"
+                        :id="'nav-' + buttonList.CRS"                                              
+                        v-if="showNav[buttonList.CRS]"
                         :height="smallIcon"
                         :width="smallIcon"
                         :navIcon="true"                        
                         >
                         </dmidbutton>
-                    </template>
-
+                    </router-link>
+                    <router-link tag="div" to="/DMID/Home">
+                        <dmidbutton
+                        :buttonName="buttonList.DocumentLibrary"                         
+                        :button-color="buttonList.DocumentLibrary"
+                        :id="'nav-' + buttonList.DocumentLibrary"                                              
+                        v-if="showNav[buttonList.DocumentLibrary]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+                        </dmidbutton>
+                    </router-link>
+                    <router-link tag="div" to="/DMID/Training">
+                        <dmidbutton
+                        :buttonName="buttonList.Training"                         
+                        :button-color="buttonList.Training"
+                        :id="'nav-' + buttonList.Training"                                              
+                        v-if="showNav[buttonList.Training]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+                        </dmidbutton>
+                    </router-link>
+                    <router-link tag="div" to="/DMID/ServiceRequests">
+                        <dmidbutton
+                        :buttonName="buttonList.ServiceRequests"                         
+                        :button-color="buttonList.ServiceRequests"
+                        :id="'nav-' + buttonList.ServiceRequests"                                              
+                        v-if="showNav[buttonList.ServiceRequests]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+                        </dmidbutton>
+                    </router-link>
+                    <router-link tag="div" to="/DMID/Home">
+                        <dmidbutton
+                        :buttonName="buttonList.SOCSCMS"                         
+                        :button-color="buttonList.SOCSCMS"
+                        :id="'nav-' + buttonList.SOCSCMS"                                              
+                        v-if="showNav[buttonList.SOCSCMS]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                       >
+                        </dmidbutton>
+                    </router-link>
+                    <router-link tag="div" to="/DMID/Home">
+                        <dmidbutton
+                        :buttonName="buttonList.Protocols"                         
+                        :button-color="buttonList.Protocols"
+                        :id="'nav-' + buttonList.Protocols"                                              
+                        v-if="showNav[buttonList.Protocols]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+                        </dmidbutton>
+                    </router-link>
+                    <router-link tag="div" to="/DMID/Home">
+                        <dmidbutton
+                        :buttonName="buttonList.GrantCapture"                         
+                        :button-color="buttonList.GrantCapture"
+                        :id="'nav-' + buttonList.GrantCapture"                                              
+                        v-if="showNav[buttonList.GrantCapture]"
+                        :height="smallIcon"
+                        :width="smallIcon"
+                        :navIcon="true"                        
+                        >
+                        </dmidbutton>
+                    </router-link>
                 </div>    
             </div>
         </div>

@@ -11,13 +11,13 @@
           DocumentLibrary: true,
           CRS: true,
           SOCSCMS: true,
-          Training: false,
-          ServiceRequests: true,
+          Training: true,
+          ServiceRequests: false,
           GrantCapture: true,
           Protocols: true,         
         }"
       >    
-        <p slot="locationName"> Training  </p>
+        <p slot="locationName" style="color: rgb(52, 94, 192);"> Service Requests </p>
 
       </DMIDHeader>
 
@@ -25,91 +25,79 @@
         <allNav/>
 
         <div class="main-bodyContent">
-          <div class="locationContainer">
-            <h2 class="bodyLocation">Training</h2>
+          <div class="locationContainer" style="background-color: rgb(62, 151, 253)">
+            <h2 class="bodyLocation">Ad Hoc Training Request Form</h2>
           </div>
           <div class="bodyContent">
           <div class="mainContent "> 
-            <p class="form-text" style="margin-bottom: 10px;">The information provided on this Training page applies to all sites and to all key personnel engaged in DMID-supported clinical research.</p>
+            <p style="padding: 10px 20px 10px 55px;"> Please submit any ad hoc DMID-CROMS training requst using the form below for any training needs not found within the LMS </p>
             <br/>
-            <h3 class="lmsTitle">TRAINING AND LEARNING MANAGEMENT SYSTEM (LMS)</h3>
-            <br/>
-            <p>Training courses are now available through the LMS allowing authorized users to access Course Completion Certificates and transcripts through a user-friendly interface. To access the LMS, please select the following button: </p>
-            <br/>
-            <div class="LMS">
-                <h4 align="center" style="font-weight: normal; font-size: 16px;"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4> 
-            </div>
-            <br/>
-            <p>Please reference the LMS Quick Start Guide for assistance with navigating through the LMS.</p>  
-            <br />
-            <p> <strong>Important note: </strong></p>
-            
-            <p>
-Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID). Documentation of training should be current and retained on site.</p>  
-             
-           
-
-              <br/>
-              <hr style="width: 100%; margin-bottom: 20px;">
-              
-              <p> <strong> Other training requirements: </strong> </p>
-                <br/>
-              <p>All investigators and site staff responsible for the conduct, management and oversight of NIH-funded clinical trials are required to complete training in the protection of human research participants and Good Clinical Practice (GCP). </p>
-              <br/>
-              <p>Training may be completed through a class or course, academic training program, or certification from a recognized clinical research professional organization. GCP refresher training should be completed at least every three years in order for applicable site staff to remain current with regulations, standards and guidelines.</p>
-              <br/>
-              <p>The NIAID GCP and NIH Protecting Human Research Participants training may be accessed via the links provided, below, or per site institutional requirements. Please retain the certificate of completion at the end of the training course. The NIH Protecting Human Research Participants course will no longer be available after September 26, 2018. Please complete the course and/or print your certificate by this date. As of September 27, 2018, please refer to your institution, professional organization, or other training program for equivalent training, and retain certificates of courses completed.</p>
-<br/>
-              <div class="trainingCourses">
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <p> <strong> Courses </strong> </p>
-                  </div>
-                  <div style="width: calc(100% - 80px);">
-                    <p> <strong> Description </strong> </p>
-                  </div>
+          <div class="forms F01">
+                <div class="form-Row">
+                  <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p> 
+                  <input class="form-input" placeholder=" User Name"/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <input class="form-input" placeholder=" uName@tech-res.com"/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Requestor's Phone  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <input class="form-input" placeholder=""/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Site Name <span class="red">*</span><span class="unset"> :</span></p> 
+                  <form class="form-input">
+                    <select name="Protocol" class="form-input">
+                      <option value="volvo">--Select Site Name--</option>
+                      <option value="saab">Saab</option>
+                      <option value="fiat">Fiat</option>
+                      <option value="audi">Audi</option>
+                    </select> 
+                  </form>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Site Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <br/>
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <a> Good Clinical Practice  </a>
-                  </div>
+                <p style="width: 93%">Provide sufficient detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS:</p>
+                <br/> 
+                <div class="form-Final">
                   
-                  <div style="width: calc(100% - 80px);">
-                    <p>This course is offered by NIAID and covers the scientific and ethical standards of human subject research, including NIH, FDA, HHS, and international clinical trial policies, guidelines, and regulations. For detailed information, please refer to the NIH Policy on Good Clinical Practice Training for NIH Awardees Involved in NIH-funded Clinical Trials.​​ </p>
-                  </div>
-                  </div>
-                  <br/>
-                <div class="courseRow">
-                  <div style="width: 70px; margin-right: 8px;">
-                    <a>Protecting Human Research Participants</a>
-                  </div>
-                  <div style="width: calc(100% - 80px);">
-                    <p>This course is offered by the NIH Office of Extramural Research. Your institution/IRB/IEC equivalent training is also  acceptable. </p>
-                  </div>
+                  <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                  </textarea>
+                  
                 </div>
+                <div class="btn-row">
+                <button class="submit-Btn"> Save </button>
+                  <button class="submit-Btn"> Email </button>
+                  </div>
+
+                  <div class="adminView">
+                    <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
+                    <br/>
+                    <p> To accept or reject the Request, select the decision and provide your comments.</p>
+                    <br/>
+                <div class="decisions" style="padding-left: 40%">
+                  <p  style="margin-right: 33px;" class="form-text">Decision<span class="unset"> :</span></p> 
+                  <input type="checkbox" id="scales" name="scales">
+                  <label  for="scales" style="font-weight: unset;margin-right: 15px;">Approved</label>
+                  <input type="checkbox" id="scales" name="scales">
+                  <label for="scales" style="font-weight: unset;">Rejected</label>
+                </div>
+                    <div class="forms F01">
+                <div class="form-Final" style="justify-content: unset; margin-left: 33.4%; margin-top: 10px;">
+                  <p class="form-text">Comments<span class="unset"> :</span></p> 
+                  <textarea style="width: 312px; margin-left: 33px" class="form-input" rows="6" cols="20" name="comment" form="usrform">
+                  </textarea>
+                </div>
+                </div>
+                <button class="submit-Btn" style="margin-left: 51.9%; margin-top: 10px;"> Submit </button>
               </div>
-
-                            
-              
-              
-
-              
+              </div>
                         
           </div>
-          <div class="servicesAndTools">
-            <h4> SERVICES AND TOOLS </h4>
-              <ul class="servicesTools-List">
-                  <li class="servicesTools-Item">Ad hoc Training Request Report</li>
-                  <li class="servicesTools-Item">Ad Hoc Training Request Form</li>
-                  <li class="servicesTools-Item">Ad Hoc Training Registration</li>
-                  <!-- <li class="servicesTools-Item">Ad Hoc Training Request Approval</li> -->
-                  <li class="servicesTools-Item">Training FAQ</li>
-              </ul>
-          </div>
-          
-          
-         
         </div>          
     </div>        
 
@@ -134,7 +122,7 @@ Sites should maintain training records for all courses required by the Division 
   
 
   export default {
-    name: 'Training',
+    name: 'ServiceRequests',
     components: {      
       DMIDHeader,
       colors,
@@ -209,7 +197,7 @@ Sites should maintain training records for all courses required by the Division 
       this.setStateSubSite();
       this.stateActiveComponent('');
       this.scrollReset(0);
-      this.stateSiteType('CRS');
+      this.stateSiteType('ServiceRequests');
     },
 ///////
     methods: {
@@ -251,23 +239,20 @@ Sites should maintain training records for all courses required by the Division 
 
 </script>
 <style>
-.locationContainer {
-  background-color: var(--green-background);
-  background-image: var(--content-gradient);
-  display: flex;
-  align-content: center;
-  min-height: 50px;  
-  margin: 0;
+.main-headSearch h4{
+  color: #2a469d;
 }
 .main-location {
-  color: var(--green-header);
+  color: rgb(52, 94, 192);
+  
+}
+.locationContainer {
+  background-color: rgb(62, 151, 253); 
 }
 .mainContent {
-  padding: 10px 10px 10px 5px!important;
+  padding: 0px 10px 10px 0px!important;
   font-family: calibri!important;
-}
-.main-headSearch h4 {
-  color: var(--green-header);
+  width: 100%;
 }
 .bodyText {
   font-family: Calibri;
@@ -306,7 +291,9 @@ Sites should maintain training records for all courses required by the Division 
 .F01 {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;  
+  flex-wrap: nowrap;
+  padding-left: 55px;
+    
 }
 .form-Row {
   display: flex;
@@ -314,7 +301,7 @@ Sites should maintain training records for all courses required by the Division 
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  width: 93%;
   padding-bottom: 3px;
   margin: 0;
 }
@@ -367,12 +354,12 @@ Sites should maintain training records for all courses required by the Division 
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  width: 85%;
+  width: 93%;
   padding-bottom: 3px;
   margin: 0;
 }
 .form-Final .form-input {
-  width: 312px;  
+  width: 100%;  
   color: #777;
 }
 .form-Column-Btn {  
@@ -392,34 +379,101 @@ Sites should maintain training records for all courses required by the Division 
   height: 26px;
   margin-bottom: 5px;
 }
-.submit-Btn {
-  width: 150px;
-  height: 26px;
-  margin-left: 40%;
-}
-.lmsTitle {
-    font-family: Verdana;
-    font-size: 16px;
-    text-align: center;
-    color: #244f1e;
-}
-.LMS {
-    background-color: #4f81bd;
-    border: 2px solid #003471;
-    border-radius: 6px; 
-    width: 445px;
-    height: 33px;
-    line-height: 2em;
-    vertical-align: center; 
-    margin: 0 auto;  
-}
-.LMS h4 {
-    color: white;    
-}
-.courseRow {
+.btn-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  width: 663.84px;
+  margin-top: 15px;
+  justify-content: center;
+}
+.submit-Btn {  
+  width: 150px;
+  height: 23px;
+  margin-left: 2%;
+  margin-bottom: 20px;
+}
+#scrollTable {
   width: 100%;
+  overflow:scroll;
+  height: 574px;
+  border: 1px solid #9F9F9F;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 768px;
+  margin-top: -1px;
+  margin-left: -1px;  
+  border: 1px solid #9F9F9F;
+}
+table thead tr {
+  display:block;
+}
+table tbody {
+  display: block;
+  overflow: auto;
+}
+.tableHeader {
+  margin: 2px 8px ;
+}
+.short {
+  width: 100px;
+}
+.long {
+  width: 180px;
+}
+th {
+  background-color: #DCDCDC;
+  border: 1px solid #9F9F9F;
+  height: 37px;
+}
+td, th {
+  font-weight: normal;
+  text-align: left;
+  padding: 0px;
+
+}
+td {
+  border: 1px solid #dddddd;
+  padding: 3px 6px 4px;
+  min-height: 50px;
+}
+tr:nth-child(even) {
+  background-color: #EDEDEB;
+}
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;  
+  background-color: #aaa; /* or add it to the track */
+}
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+  background: #000; 
+}
+
+.pagination {
+  display: inline-block;
+  border-left: 1px solid #9F9F9F;
+  border-right: 1px solid #9F9F9F;
+  border-bottom: 1px solid #9F9F9F;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.decisions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 </style>

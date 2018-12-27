@@ -13,7 +13,7 @@
 
         <div class="row Row2">
           <div class="left icon-spacing">
-            <router-link tag="div" to="/CRS" class="home-Navigation">
+            <router-link tag="div" to="CRS" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.CRS" 
                 v-if="showNavHOME[buttonList.CRS]"
@@ -26,7 +26,7 @@
               </dmidbutton>
               <h4> Clinical Research Support </h4>
             </router-link>
-            <router-link tag="div" to="/DocumentLibrary" class="home-Navigation">
+            <router-link tag="div" to="DocumentLibrary" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.DocumentLibrary" 
                 v-if="showNavHOME[buttonList.DocumentLibrary]"
@@ -52,7 +52,7 @@
               </dmidbutton>
               <h4> Training </h4>
             </router-link>
-            <router-link tag="div" to="/ServiceRequests" class="home-Navigation">
+            <router-link tag="div" to="ServiceRequests" class="home-Navigation">
               <dmidbutton 
                 :buttonName="buttonList.ServiceRequests" 
                 v-if="showNavHOME[buttonList.ServiceRequests]"
@@ -70,7 +70,7 @@
           <!-- DMART Buttons -->
           <div class="right DMART icon-spacing">
             
-              <router-link tag="div" to="/Protocols" class="home-Navigation">
+              <router-link tag="div" to="Protocols" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.Protocols" 
                   v-if="showNavDMART[buttonList.Protocols]"
@@ -83,7 +83,7 @@
                 </dmidbutton>
                 <h4> Protocols </h4>
               </router-link>
-              <router-link tag="div" to="/GrantCapture" class="home-Navigation">
+              <router-link tag="div" to="GrantCapture" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.GrantCapture" 
                   v-if="showNavDMART[buttonList.GrantCapture]"
@@ -96,7 +96,7 @@
                 </dmidbutton>
                 <h4> Grant Capture </h4>
               </router-link>
-              <router-link tag="div" to="/Results" class="home-Navigation">
+              <router-link tag="div" to="Results" class="home-Navigation">
                 <dmidbutton
                   :buttonName="buttonList.Results" 
                   v-if="showNavDMART[buttonList.Results]"

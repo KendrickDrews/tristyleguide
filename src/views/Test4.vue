@@ -3,26 +3,209 @@
 
   <div class="componentLayout">   
    
-    <template
-      v-if="bLength.length"                
-    >
-      <template 
-        v-for="(item,key) in buttonList"                
-      >
-        <dmidbutton          
-          :buttonName="item" 
-          :key="key"
-          :button-color="item"
-          :id="'nav-' + key"                                              
-          v-if="showNav[key]"
-          :height="smallIcon"
-          :width="smallIcon"
-          :navIcon="true"                        
-        >
-        </dmidbutton>
-      </template>
-    </template>
-      <p v-else> does this work? </p>
+    <table>
+    <thead>
+        <tr>
+            <th>col1</th>
+            <th>col2</th>
+            <th>col1</th>
+            <th>col2</th>
+          
+            
+            <th>col2</th>
+            <th>col1</th>
+            <th>col2</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>one</td>
+            <td>two</td>
+            <td>one</td>
+            <td>two</td>
+            <td>one</td>
+            <td>two</td>
+            <td>one</td>
+            
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+                <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+                <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+                <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+            <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+                <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+        <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+    </tbody>
+ </table>
+   
 
   </div>
 
@@ -258,5 +441,20 @@
   top: 620px;
   left: 50px;
   width: 150px;  
+}
+table thead tr{
+    display:block;
+    width: 100%;
+}
+
+table th,table td{
+    width:100px; 
+}
+
+
+table  tbody{
+  display:block;
+  height:200px;
+  overflow:auto; 
 }
 </style>

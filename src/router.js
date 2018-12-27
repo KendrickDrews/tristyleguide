@@ -46,10 +46,25 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './pages/DMID/DMIDHome.vue')
         },
         {
+          path: 'CRS',
+          name: 'CRS', 
+          component: () => import(/* webpackChunkName: "about" */ './pages/DMID/CRS/CRSHome.vue'),        
+        },
+        {
           path: 'Training',
           name: 'Training', 
           component: () => import(/* webpackChunkName: "about" */ './pages/DMID/Training/trainingHome.vue'),        
-        }
+        },
+        {
+          path: 'ServiceRequests',
+          name: 'ServiceRequests', 
+          component: () => import(/* webpackChunkName: "about" */ './pages/DMID/SR/serviceRequestsHome.vue'),        
+        },
+        {
+          path: 'ServiceRequestsFORM',
+          name: 'ServiceRequests', 
+          component: () => import(/* webpackChunkName: "about" */ './pages/DMID/SR/adHocTrainingRequestForm.vue'),        
+        },
       ]
     },   
     
