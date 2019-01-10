@@ -26,30 +26,31 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer" style="background-color: rgb(62, 151, 253)">
-            <h2 class="bodyLocation">Ad Hoc Training Request Form</h2>
+            <h2 class="bodyLocation">Ad Hoc Training Request</h2>
           </div>
           <div class="bodyContent">
           <div class="mainContent "> 
-            <p style="padding: 10px 20px 10px 55px;"> Please submit any ad hoc DMID-CROMS training requst using the form below for any training needs not found within the LMS </p>
+            <p style="padding: 10px 20px 10px 55px;"> Please submit any ad hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
             <br/>
           <div class="forms F01">
                 <div class="form-Row">
                   <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=" User Name"/>
+                  <input class="form-input" placeholder=" Olson, Dorie"/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=" uName@tech-res.com"/>
+                  <input class="form-input" placeholder=" dolson@tech-res.com"/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Phone  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=""/>
+                  <input class="form-input" placeholder=" 301-897-7142"/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Name <span class="red">*</span><span class="unset"> :</span></p> 
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
-                      <option value="volvo">--Select Site Name--</option>
+                      <option value="volvo"> AAIPharma Inc.</option>
+                      <option value="select">--Select Site Name--</option>
                       <option value="saab">Saab</option>
                       <option value="fiat">Fiat</option>
                       <option value="audi">Audi</option>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p> 
-                  <input class="form-input" placeholder=""/>
+                  <input class="form-input" placeholder=" Dr. Gregory Storch"/>
                 </div>
                 <br/>
                 <p style="width: 93%">Provide sufficient detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS:</p>
@@ -75,8 +76,8 @@
                   </div>
 
                   <div class="adminView">
-                    <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
-                    <br/>
+                    <!-- <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
+                    <br/> -->
                     <p> To accept or reject the Request, select the decision and provide your comments.</p>
                     <br/>
                 <div class="decisions" style="padding-left: 40%">
