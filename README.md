@@ -1,5 +1,9 @@
 # tristyleguide
 
+## Node Installation
+https://nodejs.org/en/download/
+
+
 ## Project setup
 ```
 npm install

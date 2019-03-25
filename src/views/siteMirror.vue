@@ -231,7 +231,7 @@
           <li>Fax: <span class="gray">301-897-7482</span></li>
           -->
         </div>
-          <!-- <div class="bodyContent">
+          <div class="bodyContent">
             <div class="mainContent ">             
                 <ul class="indent">
                   <li @click="showModal"><img class="protoIcon" src="../imgs/extLink.png"/><a><span data-descr="Centers for Disease Control on external site">Centers for Disease Control</span></a></li>                
@@ -250,7 +250,7 @@
                 </ul>           
                               
             </div>
-          </div> -->
+          </div>
         </div>        
 
       </div>
