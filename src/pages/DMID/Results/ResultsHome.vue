@@ -8,27 +8,47 @@
         </div>
       </div>
       <div class="results-header--navigation">
+        <p 
+        v-bind:class="{ 'active': activeItem == 'Console' }"
+        @click="activeMenuItem('Console')"
+        >Console</p>
         <div class="vertical-spacer"></div>
-        <p> Console</p>
+        <p
+        v-bind:class="{ 'active': activeItem == 'ResultsView' }"
+        @click="activeMenuItem('ResultsView')"
+        >Results</p>
         <div class="vertical-spacer"></div>
-        <p> Results</p>
+        <p
+        v-bind:class="{ 'active': activeItem == 'Reports' }"
+        @click="activeMenuItem('Reports')"
+        >Reports</p>
         <div class="vertical-spacer"></div>
-        <p> Reports</p>
+        <p
+        v-bind:class="{ 'active': activeItem == 'Support' }"
+        @click="activeMenuItem('Support')"
+        >Support</p>
         <div class="vertical-spacer"></div>
-        <p> Support</p>
+        <p
+        v-bind:class="{ 'active': activeItem == 'Communications' }"
+        @click="activeMenuItem('Communications')"
+        >Communications</p>
         <div class="vertical-spacer"></div>
-        <p> DMID-CROMS</p>
+        <p
+        v-bind:class="{ 'active': activeItem == 'Extensions' }"
+        @click="activeMenuItem('Extensions')"
+        >Extensions</p>
         <div class="vertical-spacer"></div>
-        <p> Exit</p>
+        <router-link tag="p" to="Home">DMID-CROMS</router-link>
+        <div class="vertical-spacer"></div>
+        <router-link tag="p" to="Home">Exit</router-link>
         <div class="vertical-spacer"></div>
       </div>
     </div>
+
     <div class="results-body--container">
-      <div class="results-body--columnHeaders">
-      </div>
-      <div class="results-body--ColumnContent">
-      </div>
-    </div>
+      <component :is="activeComponent"/>
+    </div>   
+
     <div class="results-body--footer">
     </div>
   </div>
@@ -36,44 +56,32 @@
 </template>
 
 <script>
-  import DMIDHeader from "../../../components/DMIDhead.vue";
-  import colors from "../../../layouts/colors.vue"
-  import navList from "../../../components/navLists.vue";
-  import allNav from "../../../components/DMIDsideNav.vue";
-  import Modal from "../../../components/modalTemplate.vue";
-  import buttonList from '../../../components/componentList/buttonList.js';
+  import Modal from "../../../components/modalTemplate.vue";  
+  import Console from "../Results/Console.vue";
+  import ResultsView from "../Results/ResultsView.vue";
+  import Reports from "../Results/Reports.vue";
+  import Support from "../Results/Support.vue";
+  import Extensions from "../Results/Extensions.vue";
+  import Communications from "../Results/Communications.vue";
 
 
   export default {
     name: 'Results',
     components: {
-      DMIDHeader,
-      colors,
-      navList,
-      allNav,
-      Modal,
-      buttonList,
+      Modal,      
+      Console,
+      ResultsView,
+      Reports,
+      Support,
+      Extensions,
+      Communications,
 
     },
     data () {
       return {
-        isModalVisible: false,
-        showNav: {
-          Home: true,
-          DocumentLibrary: true,
-          CRS: true,
-          SOCSCMS: true,
-          Training: true,
-          ServiceRequests: true,
-          GrantCapture: true,
-          Protocols: true,
-          Results: true,
-          PRT: true,
-          SMART: true,
-          CSRS: true,
-        },
-        subSiteIs: this.$route.name,
-        buttonList: buttonList,
+        isModalVisible: false,                
+        subSiteIs: this.$route.name,        
+        activeItem: 'Console',
 
       };
     },
@@ -82,7 +90,9 @@
       thisSite: function() {
         return this.subSiteIs
       },
-
+      activeComponent: function() {       
+        return this.activeItem
+      },
       //
       subSite: {
         get: function() {
@@ -118,7 +128,7 @@
 ///////
     mounted: function () {
       this.setStateSubSite();
-      this.stateActiveComponent('');
+      this.stateActiveComponent('Console');
       this.scrollReset(0);
       this.stateSiteType('ResultsPage');
     },
@@ -155,7 +165,14 @@
       },
       stateSiteType (value) {
       return  this.stateType = value
-      }
+      },
+      setActiveItem: function(value){
+      return this.activeItem = value
+      },
+      activeMenuItem (itemName) {
+        this.stateActiveComponent(itemName);
+        this.setActiveItem(itemName);
+      },
 
     },
   }
@@ -164,9 +181,11 @@
 <style  scoped>
 .DMID-main {
   background-color: transparent;
+  width: 1035px;
 }
 </style>
 <style>
+
 .ResultsPage {
   background-image: url(../../../imgs/Results_background.jpg)!important;
   background-size: cover;
@@ -175,6 +194,8 @@
 .results-header--container {
   height: 100px;
   width: 100%;
+  min-width: 1035px;
+  max-width: fit-content;
   background-color:white;
   border-bottom: 1px solid black;
   background-image: url(../../../imgs/Results_header.jpg);
@@ -182,8 +203,8 @@
   background-repeat: no-repeat;
   display: flex;
 }
-.results-body--container {
-  width: 100%;
+.results-body--container {  
+  min-width: 1035px;  
   min-height: 500px;
   background-color:white;
   border: 1px solid black;
@@ -203,6 +224,7 @@
 .results-header--navigation {
  width: 100%;
  height: 20px;
+ margin-right: 5px;
  font-weight: bold;
  display: flex;
  flex-direction: row;
@@ -211,10 +233,13 @@
  align-self: flex-end;
 }
 .results-header--navigation p {
-  line-height: 1.5em;
+  line-height: 1.6em;
   vertical-align: middle;
   cursor: default;
-  height: 18px;
+  height: 16px;
+  font-family: Verdana;
+  font-size: 11.2px;
+  margin: 0 5px;
 }
 .results-header--navigation p:hover {
   border-bottom: 1px solid white;
@@ -222,9 +247,13 @@
 }
 .vertical-spacer{
   width: 0px;
-  height: 16px;
+  height: 13px;
   border-left: 1px solid black;
   margin: 2px 5px;
+}
+.active {
+  border-bottom: 1px solid white;
+  color: white;  
 }
 </style>
 

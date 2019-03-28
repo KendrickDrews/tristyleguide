@@ -44,7 +44,7 @@
       return {
         componentList: componentList,
         topSet: '',        
-        activeItem: -1,
+        activeItem: 'Colors',
 
       }
     },
@@ -68,7 +68,10 @@
       },
 
     },
-
+///////
+    mounted: function () {      
+      this.stateActiveComponent('Colors');
+    },
 ///////
     methods: {
       onItemChanged(event, currentItem, lastActiveItem) {

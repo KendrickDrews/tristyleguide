@@ -8,7 +8,7 @@ export default {
       { id: 6, text: 'Protocol Deviation Reporting' },
       { id: 7, text: 'SAE Reporting' },
       { id: 8, text: 'Safety Oversight Committee' },
-      { id: 9, text: 'Study Product Services' },
+      { id: 9, text: 'Study Product Information' },
       { id: 10, text: 'Teleconference Support' },
     ],
     ServiceRequests: [
@@ -34,5 +34,5 @@ export default {
       { id: 20, text: 'Teleconference Support Report' },
       { id: 21, text: 'Training' },
       { id: 22, text: 'Training Report' },
-    ]    
+    ]
   }

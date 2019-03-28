@@ -75,8 +75,18 @@
           class="content smooth"
         >
           <div
+            v-if="siteBG == 'ResultsPage'"
+            class="componentContent resultsMargin"
+            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"                       
+          >
+
+          <router-view></router-view>
+
+          </div>
+          <div
+            v-else
             class="componentContent"
-            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
+            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"                       
           >
 
           <router-view></router-view>
@@ -310,6 +320,9 @@ export default {  //name: 'mainLayout',
     min-width: 1010px;
     max-width: 1018px;
     transition: 0.4s ease-in-out;
+  }
+  .resultsMargin {
+    margin: 0 auto 0 8px;
   }
   .smooth {
     transition: 0.4s ease-in-out;
