@@ -53,9 +53,6 @@
   border-left: 1px solid black;
   margin: 2px 5px;
 }
-.active {
-  border-bottom: 1px solid white;
-  color: white;  
-}
+
 </style>
 

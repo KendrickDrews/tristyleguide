@@ -8,14 +8,14 @@
         </div>
       </div>
       <div class="results-header--navigation">
-        <p 
+        <p
         v-bind:class="{ 'active': activeItem == 'Console' }"
         @click="activeMenuItem('Console')"
         >Console</p>
         <div class="vertical-spacer"></div>
         <p
-        v-bind:class="{ 'active': activeItem == 'ResultsView' }"
-        @click="activeMenuItem('ResultsView')"
+        v-bind:class="{ 'active': activeItem == 'ResultsExt' }"
+        @click="activeMenuItem('ResultsExt')"
         >Results</p>
         <div class="vertical-spacer"></div>
         <p
@@ -47,7 +47,7 @@
 
     <div class="results-body--container">
       <component :is="activeComponent"/>
-    </div>   
+    </div>
 
     <div class="results-body--footer">
     </div>
@@ -56,9 +56,10 @@
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";  
+  import Modal from "../../../components/modalTemplate.vue";
   import Console from "../Results/Console.vue";
   import ResultsView from "../Results/ResultsView.vue";
+  import ResultsExt from "../Results/ResultsExtensions.vue";
   import Reports from "../Results/Reports.vue";
   import Support from "../Results/Support.vue";
   import Extensions from "../Results/Extensions.vue";
@@ -68,9 +69,10 @@
   export default {
     name: 'Results',
     components: {
-      Modal,      
+      Modal,
       Console,
       ResultsView,
+      ResultsExt,
       Reports,
       Support,
       Extensions,
@@ -79,8 +81,8 @@
     },
     data () {
       return {
-        isModalVisible: false,                
-        subSiteIs: this.$route.name,        
+        isModalVisible: false,
+        subSiteIs: this.$route.name,
         activeItem: 'Console',
 
       };
@@ -90,7 +92,7 @@
       thisSite: function() {
         return this.subSiteIs
       },
-      activeComponent: function() {       
+      activeComponent: function() {
         return this.activeItem
       },
       //
@@ -194,7 +196,8 @@
 .results-header--container {
   height: 100px;
   width: 100%;
-  min-width: 1035px;
+  margin-top: 8px;
+  min-width: 1041px;
   max-width: fit-content;
   background-color:white;
   border-bottom: 1px solid black;
@@ -203,8 +206,8 @@
   background-repeat: no-repeat;
   display: flex;
 }
-.results-body--container {  
-  min-width: 1035px;  
+.results-body--container {
+  min-width: 1041px;
   min-height: 500px;
   background-color:white;
   border: 1px solid black;
@@ -253,7 +256,7 @@
 }
 .active {
   border-bottom: 1px solid white;
-  color: white;  
+  color: white;
 }
 </style>
 

@@ -3,137 +3,107 @@
     <div class="currentProtocol">
       <p> {{ createdProtocolArray[currentProtocol] }} </p>
     </div>
-    <div 
-    class="console-body--columnHeaders"    
-    >  
-     
-      <div 
+    <div
+    class="console-body--columnHeaders"
+    >
+
+      <div
       v-for="item in columnList"
       v-bind:key="item.id"
       v-bind:id="item.id"
       class="console-col--Header">
-        <p v-bind:class="item.id"> 
+        <p v-bind:class="item.id">
         {{ item.name }} </p>
       </div>
     </div>
     <div class="console-body--ColumnContent">
-      <!-- edit -->
-      <div                  
-      class="content--flex ">
-        <p
-        v-for="n in columnLength"
-        v-bind:key="n" 
-        class="console-col--edit content--border"
-        >Edit</p>
-      </div>
       <!-- Protocol Number -->
-      <div                  
+      <div
       class="content--flex ">
-       <!-- why no referencing computed property here? -->
         <p
         v-for="n in columnLength"
-        v-bind:key="n"       
+        v-bind:key="n"
         v-on:click="setCurrentProtocol( n )"
         class="console-col--protocolNumber content--border"
         >{{ createdProtocolArray[n] }}</p>
       </div>
-      <!-- Status -->
-      <div                  
+
+      <!-- Extension Type -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
-        class="console-col--status content--border"
-        >Posted</p>
-      </div>
-      <!-- NCT Number -->
-      <div                  
-      class="content--flex ">
-        <p
-        v-for="n in columnLength"
-        v-bind:key="n" 
-        class="console-col--NCTNumber content--border"
-        >{{ generateNCTNumber() }}</p>
-      </div>
-      <!-- Data Collection Entity -->
-      <div                  
-      class="content--flex ">
-        <p
-        v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--DCE content--border"
-        > {{ generateDataCollectionEntity(0,4) }} </p>
+        > {{ generateExtension(0,2) }} </p>
       </div>
-      <!-- DCE XML Upload Date -->
-      <div                  
+      <!-- Requested By -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--uploadDate  content--border"
-        >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+        >{{ generatePerson(0,4) }}</p>
       </div>
-      <!-- DCE Approval Date -->      
-      <div                  
+      <!-- Date Requested -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--approvalDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
-      <!-- NLM Submission Date -->
-      <div                  
+      <!-- Decision -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--submissionDate content--border"
-        >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+        >{{ generateApproval(0,1) }}</p>
       </div>
-      <!-- NLM Release Date -->
-      <div                  
+      <!-- DecisionDate -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--releaseDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
-      <!-- NLM Due Date -->
-      <div                  
+      <!-- ApprovedBy -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--dueDate content--border"
-        >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+        >{{ generatePerson(0,4) }}</p>
       </div>
-      <!-- NLM Posted Date -->
-      <div                  
+      <!-- Communications -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--postedDate content--border"
-        >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+        >Communications</p>
       </div>
-      <!-- Connections -->
-      <div                  
+      <!-- Comments -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         v-bind:class="{ 'activeEmail': activeItem == 'Communications' }"
         @click="activeMenuItem('Communications')"
         class="console-col--connections content--border"
-        >Emails</p>
+        >Comments</p>
       </div>
-      
+
     </div>
-    <div class="buttonRow">
-      <button class="resultsButton" type="button"></button>
-      </div>   
   </div>
 </template>
 
@@ -143,36 +113,33 @@
     name: 'Console',
     components: {
       Modal,
-    },    
+    },
     data () {
       return {
-        isModalVisible: false,        
-        subSiteIs: this.$route.name,        
+        isModalVisible: false,
+        subSiteIs: this.$route.name,
         activeItem: 'Console',
         columnLength: 25,
         columnList: [
-          {id: 'Edit', name: ''},
-          {id: 'ProtocolNumber', name: 'Protocol Number'},
-          {id: 'Status', name: 'Status'},
-          {id: 'NCTNumber', name: 'NCT Number'},
-          {id: 'DataCollectionEntity', name: 'Data Collection Entity'},
-          {id: 'DCEXMLUploadDate', name: 'DCE XML Upload Date'},
-          {id: 'DCEApprovalDate', name: 'DCE Approval Date'},
-          {id: 'NLMSubmissionDate', name: 'NLM Submission Date'},
-          {id: 'NLMReleaseDate', name: 'NLM Release Date'},
-          {id: 'NLMDueDate', name: 'NLM Due Date'},
-          {id: 'NLMPostedDate', name: 'NLM Posted Date'},
+          {id: 'ProtocolNumber', name: 'Protocol'},
+          {id: 'ExtensionType', name: 'Extension Type'},
+          {id: 'RequestedBy', name: 'Requested By'},
+          {id: 'DateRequested', name: 'Date Requested'},
+          {id: 'Decision', name: 'Decision'},
+          {id: 'DecisionDate', name: 'Decision Date'},
+          {id: 'ApprovedBy', name: 'Approved By'},
           {id: 'Communications', name: 'Communications'},
-        ],   
-        protocols: [],     
+          {id: 'Comments', name: 'Comments'},
+        ],
+        protocols: [],
         currentProtocol: -1,
 
       };
     },
 ///////
-    computed: {      
+    computed: {
       createdProtocolArray: function() {
-        return this.protocols        
+        return this.protocols
       },
       currentProtocolValue: function() {
         return this.currentProtocol
@@ -180,7 +147,7 @@
       thisSite: function() {
         return this.subSiteIs
       },
-      activeComponent: function() {       
+      activeComponent: function() {
         return this.activeItem
       },
       stateComponent: {
@@ -213,22 +180,22 @@
 
       closeModal() {
         this.isModalVisible = false;
-      },  
+      },
 
       getRandomInt: function(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
       },
 
       randomDate: function (start, end) {
-        
+
         var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
-          
-          //month = '' + (d.getMonth() + 1),          
-          day = '' + d.getDate(),          
+
+          //month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
           year = d.getFullYear();
-          var month = new Array();         
+          var month = new Array();
 
           month[0] = "Jan";
           month[1] = "Feb";
@@ -251,18 +218,41 @@
         return [day, monthName, year].join('-');
       },
 
-      generateDataCollectionEntity: function(start, end) {
-        
+      generateExtension: function(start, end) {
+
         var DCE = new Array();
 
-          DCE[0] = "EMMES";
-          DCE[1] = "FHI";
-          DCE[2] = "CASG";
-          DCE[3] = "CWRU";
-          DCE[4] = "CHP";
+          DCE[0] = "New Use";
+          DCE[1] = "Initial Approval";
+          DCE[2] = "Good Cause";
 
         //var entityNum = ;
         var entityName = DCE[this.getRandomInt(start, end)];
+        return entityName;
+      },
+      generateApproval: function(start, end) {
+
+        var Appr = new Array();
+
+          Appr[0] = "Approved";
+          Appr[1] = "Denied";
+
+        //var entityNum = ;
+        var entityName = Appr[this.getRandomInt(start, end)];
+        return entityName;
+      },
+      generatePerson: function(start, end) {
+
+        var Person = new Array();
+
+          Person[0] = "Kendrick Drews";
+          Person[1] = "Dorie Olson";
+          Person[2] = "Perry Gonella";
+          Person[3] = "Mounika Pylla";
+          Person[4] = "Rita Ranjit";
+
+        //var entityNum = ;
+        var entityName = Person[this.getRandomInt(start, end)];
         return entityName;
       },
 
@@ -273,8 +263,8 @@
         var NCTLength = 8;
 
         for (var i = 0; i < NCTLength; i++) {
-          var randomNumber = this.getRandomInt(0,9); 
-          num.push(randomNumber); 
+          var randomNumber = this.getRandomInt(0,9);
+          num.push(randomNumber);
         }
         var numOrganized = num.join('');
         return [NCT, numOrganized].join('');
@@ -285,16 +275,16 @@
         var XXXX = '00' + this.getRandomInt(0,9) + this.getRandomInt(0,9);
         return [XX, XXXX].join('-');
       },
-      generateProtocolArray: function() {  
+      generateProtocolArray: function() {
 
           var arraySize = this.columnLength;
           var protocolList = this.createdProtocolArray;
-  
+
           for(var i = 0; i <= arraySize; i++) {
             var protocolNumber = this.generateProtocolNumber();
-            protocolList.push(protocolNumber); 
-          }         
-        
+            protocolList.push(protocolNumber);
+          }
+
       },
       clickedProtocolValue (value) {
       return  this.currentProtocol = value
@@ -335,14 +325,15 @@
         this.stateActiveComponent(itemName);
         this.setActiveItem(itemName);
       },
-      
+
     },
   }
 
 </script>
-<style>
+<style scoped>
 .results--container {
   position: relative;
+  padding-bottom: 20px;
 }
 .vertical-spacer{
   width: 0px;
@@ -355,10 +346,10 @@
   display:flex;
   flex-direction: row;
   flex-wrap: nowrap;
-
+  justify-content: space-between;
 }
 .currentProtocol {
-  color: white;  
+  color: white;
   font-family: Verdana;
   font-size: 9pt;
   font-weight: bold;
@@ -367,7 +358,7 @@
   left: 13px;
 }
 .console-col--Header {
-  background-color: #728776;  
+  background-color: #728776;
   border-right: 1px solid #999999;
   height: 52px;
   padding: 5px;
@@ -375,48 +366,13 @@
   font-family: Verdana;
   font-size: 8.5pt;
   font-weight: bold;
-  max-width: 120px;
+  max-width: unset;
+  width: 100%;
 }
 .console-col--Header p {
   margin: 0;
 }
-#Edit {
-  width: 30px;
-}
-#ProtocolNumber {
-width: 63px;
-}
-#Status {
-width: 43px;
-}
-#NCTNumber {
-width: 85px;
-}
-#DataCollectionEntity { 
-width: 65px;
-}
-#DCEXMLUploadDate {
-width: 85px;
-}
-#DCEApprovalDate{ 
-width: 84px;
-}
-#NLMSubmissionDate {
-width: 84px;
-}
-#NLMReleaseDate {
-width: 85px;
-}
-#NLMDueDate {
-width: 85px;
-}
-#NLMPostedDate {
-width :85px;
-}
-#Communications {
-  width: 119px;
-  border-right: unset;
-}
+
 .console-body--ColumnContent {
   display: flex;
   flex-direction: row;
@@ -435,19 +391,20 @@ width :85px;
   padding: 3px;
   color: #666666;
 }
-.content--border { 
+.content--border {
   border-right: 1px solid #999999;
   border-bottom: 1px solid #999999;
 }
-.console-col--edit {
-  text-decoration: underline;
-  text-align: center;
-  width: 33.7px;
+#Communications {
+  border-right: 1px solid #999999;
+}
+#ProtocolNumber {
+  width: 100%;
 }
 .console-col--protocolNumber{
-  width: 67.05px;
+  width: 109.05px;
   text-decoration: underline;
-  text-align: center;
+  text-align: left;
 }
 .console-col--status {
   width: 47.16px;
@@ -460,30 +417,31 @@ width :85px;
   text-decoration: underline;
 }
 .console-col--DCE {
-  width: 68.17px;
+  width: 108.17px;
 }
 .console-col--uploadDate {
-  width: 89.05px;
+  width: 109.05px;
 }
 .console-col--approvalDate {
-  width: 87.17px;
+  width: 108.17px;
 }
 .console-col--submissionDate {
-  width: 88.05px;
+  width: 109.05px;
 }
 .console-col--releaseDate {
-  width: 88.05px;
+  width: 107.05px;
 }
 .console-col--dueDate {
-  width: 88.02px;
+  width: 109.02px;
 }
 .console-col--postedDate {
-  width: 89.05px;
+  width: 109.05px;
+  text-decoration: underline;
 }
 .console-col--connections {
-  width: 123px;
+  width: 110px;
+  text-decoration: underline;
   border-right: unset;
-  text-decoration: underline;  
 }
 .buttonRow {
   display: flex;

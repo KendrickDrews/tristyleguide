@@ -13,8 +13,8 @@
           id="modalTitle"
         >
           <slot name="header">
-            <h2>You are leaving the DMID-CROMS website.</h2>
-
+            <!-- <h2>You are leaving the DMID-CROMS website.</h2> -->
+            <h2> Document Title </h2>
             <button
               type="button"
               class="btn-close"
@@ -30,20 +30,29 @@
           id="modalDescription"
         >
           <slot name="body">
-            <p>This external Link provides additional information that is consistent with the intended purpose of this site. NIH cannot attest to the accuracy of a non-federal site.</p>
+            <!-- <p>This external Link provides additional information that is consistent with the intended purpose of this site. NIH cannot attest to the accuracy of a non-federal site.</p>
             <br/>
-            <p>Linking to a non-federal site does not constitute an endorsement by DMID-CROMS IT Systems or any of its employees of the sponsors or the information and products presented on the site. You will be subject to the destination site's privacy policy when you follow the link.</p>
+            <p>Linking to a non-federal site does not constitute an endorsement by DMID-CROMS IT Systems or any of its employees of the sponsors or the information and products presented on the site. You will be subject to the destination site's privacy policy when you follow the link.</p> -->
+            <div class="form-Row">
+                  <p class="form-text">Comments:</p>
+                  <div class="form-Final">
+                  <!-- <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform" placeholder="(Character limit = 5000)"> -->
+                  <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform" placeholder="(Character limit = 5000)">
+                  </textarea>
+
+                </div>
+                </div>
           </slot>
         </section>
         <footer class="modal-footer">
-          <slot name="footer">  
+          <slot name="footer">
               <button
               type="button"
-              class="btn-hidden"
+              class="btn-closeFoot"
               @click="close"
               aria-label="Close modal"
             >
-              Close
+              Edit
             </button>
 
               <!-- Change @click and Aria-Label in actual production -->
@@ -53,8 +62,8 @@
               @click="close"
               aria-label="Close modal"
             >
-              Continue to site
-            </button>       
+              <!-- Continue to site --> Save
+            </button>
 
             <button
               type="button"
@@ -62,13 +71,13 @@
               @click="close"
               aria-label="Close modal"
             >
-              Close
+              <!-- Close --> Cancel
             </button>
-            
+
           </slot>
         </footer>
       </div>
-        
+
     </div>
   </transition>
 </template>
@@ -103,7 +112,7 @@
       width: 100vw;
       position: absolute;
   }
-  .modal {    
+  .modal {
     width: 650px;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.5);
@@ -125,11 +134,12 @@
   .modal-header {
     border-bottom: 1px solid #eeeeee;
     color: white;
-    background-color: #445b9c;   
-    font-weight: bold; 
+    /* background-color: #445b9c; */
+    background-color: #728776;
+    font-weight: bold;
     justify-content: flex-start;
-    
-    
+
+
   }
   .modal-header h2 {
       margin: 0;
@@ -137,21 +147,21 @@
       font-weight: bold;
       width: calc(100% - 28px);
       line-height: 28px;
-      vertical-align: middle;      
+      vertical-align: middle;
   }
 
   .btn-close {
-    
+
     border: 1px solid white;
     font-size: 18px;
-    width: 28px;  
-    border-radius: 50%;      
+    width: 28px;
+    border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
     color: white;
     background: transparent;
     line-height: 26px;
-    vertical-align: top; 
+    vertical-align: top;
   }
 
   .modal-body {
@@ -176,10 +186,13 @@
   }
   .btn-continue {
     color: white;
-    background: #445b9c;
-    border: 1px solid #445b9c;
+    /* background: #445b9c;
+    border: 1px solid #445b9c; */
+    background: #728776;
+    border: 1px solid #728776;
     border-radius: 2px;
-    padding: 0 5px;
+    /* padding: 0 5px; */
+    padding: 5px 10px;
     margin: auto;
   }
   .btn-closeFoot {
@@ -189,4 +202,7 @@
     border-radius: 2px;
     padding: 0 5px;
   }
+  .gray {
+  background-color: #ccc;
+}
 </style>
