@@ -194,7 +194,8 @@
 .results-header--container {
   height: 100px;
   width: 100%;
-  min-width: 1035px;
+  margin-top: 8px;
+  min-width: 1041px;
   max-width: fit-content;
   background-color:white;
   border-bottom: 1px solid black;
@@ -204,7 +205,7 @@
   display: flex;
 }
 .results-body--container {  
-  min-width: 1035px;  
+  min-width: 1041px;  
   min-height: 500px;
   background-color:white;
   border: 1px solid black;

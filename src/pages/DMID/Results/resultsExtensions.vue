@@ -414,7 +414,7 @@ width: 85px;
 width :85px;
 }
 #Communications {
-  width: 119px;
+  width: 112px;
   border-right: unset;
 }
 .console-body--ColumnContent {
@@ -460,7 +460,7 @@ width :85px;
   text-decoration: underline;
 }
 .console-col--DCE {
-  width: 68.17px;
+  width: 69.17px;
 }
 .console-col--uploadDate {
   width: 89.05px;
@@ -481,7 +481,7 @@ width :85px;
   width: 89.05px;
 }
 .console-col--connections {
-  width: 123px;
+  width: 116px;
   border-right: unset;
   text-decoration: underline;  
 }
