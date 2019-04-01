@@ -3,137 +3,137 @@
     <div class="currentProtocol">
       <p> {{ createdProtocolArray[currentProtocol] }} </p>
     </div>
-    <div 
-    class="console-body--columnHeaders"    
-    >  
-     
-      <div 
+    <div
+    class="console-body--columnHeaders"
+    >
+
+      <div
       v-for="item in columnList"
       v-bind:key="item.id"
       v-bind:id="item.id"
       class="console-col--Header">
-        <p v-bind:class="item.id"> 
+        <p v-bind:class="item.id">
         {{ item.name }} </p>
       </div>
     </div>
     <div class="console-body--ColumnContent">
       <!-- edit -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--edit content--border"
         >Edit</p>
       </div>
       <!-- Protocol Number -->
-      <div                  
+      <div
       class="content--flex ">
        <!-- why no referencing computed property here? -->
         <p
         v-for="n in columnLength"
-        v-bind:key="n"       
+        v-bind:key="n"
         v-on:click="setCurrentProtocol( n )"
         class="console-col--protocolNumber content--border"
         >{{ createdProtocolArray[n] }}</p>
       </div>
       <!-- Status -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--status content--border"
         >Posted</p>
       </div>
       <!-- NCT Number -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--NCTNumber content--border"
         >{{ generateNCTNumber() }}</p>
       </div>
       <!-- Data Collection Entity -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--DCE content--border"
         > {{ generateDataCollectionEntity(0,4) }} </p>
       </div>
       <!-- DCE XML Upload Date -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--uploadDate  content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
-      <!-- DCE Approval Date -->      
-      <div                  
+      <!-- DCE Approval Date -->
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--approvalDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
       <!-- NLM Submission Date -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--submissionDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
       <!-- NLM Release Date -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--releaseDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
       <!-- NLM Due Date -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--dueDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
       <!-- NLM Posted Date -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         class="console-col--postedDate content--border"
         >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
       </div>
       <!-- Connections -->
-      <div                  
+      <div
       class="content--flex ">
         <p
         v-for="n in columnLength"
-        v-bind:key="n" 
+        v-bind:key="n"
         v-bind:class="{ 'activeEmail': activeItem == 'Communications' }"
         @click="activeMenuItem('Communications')"
         class="console-col--connections content--border"
         >Emails</p>
       </div>
-      
+
     </div>
     <div class="buttonRow">
       <button class="resultsButton" type="button"></button>
-      </div>   
+      </div>
   </div>
 </template>
 
@@ -143,11 +143,11 @@
     name: 'Console',
     components: {
       Modal,
-    },    
+    },
     data () {
       return {
-        isModalVisible: false,        
-        subSiteIs: this.$route.name,        
+        isModalVisible: false,
+        subSiteIs: this.$route.name,
         activeItem: 'Console',
         columnLength: 25,
         columnList: [
@@ -163,16 +163,16 @@
           {id: 'NLMDueDate', name: 'NLM Due Date'},
           {id: 'NLMPostedDate', name: 'NLM Posted Date'},
           {id: 'Communications', name: 'Communications'},
-        ],   
-        protocols: [],     
+        ],
+        protocols: [],
         currentProtocol: -1,
 
       };
     },
 ///////
-    computed: {      
+    computed: {
       createdProtocolArray: function() {
-        return this.protocols        
+        return this.protocols
       },
       currentProtocolValue: function() {
         return this.currentProtocol
@@ -180,7 +180,7 @@
       thisSite: function() {
         return this.subSiteIs
       },
-      activeComponent: function() {       
+      activeComponent: function() {
         return this.activeItem
       },
       stateComponent: {
@@ -213,22 +213,22 @@
 
       closeModal() {
         this.isModalVisible = false;
-      },  
+      },
 
       getRandomInt: function(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
       },
 
       randomDate: function (start, end) {
-        
+
         var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
-          
-          //month = '' + (d.getMonth() + 1),          
-          day = '' + d.getDate(),          
+
+          //month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
           year = d.getFullYear();
-          var month = new Array();         
+          var month = new Array();
 
           month[0] = "Jan";
           month[1] = "Feb";
@@ -252,7 +252,7 @@
       },
 
       generateDataCollectionEntity: function(start, end) {
-        
+
         var DCE = new Array();
 
           DCE[0] = "EMMES";
@@ -273,8 +273,8 @@
         var NCTLength = 8;
 
         for (var i = 0; i < NCTLength; i++) {
-          var randomNumber = this.getRandomInt(0,9); 
-          num.push(randomNumber); 
+          var randomNumber = this.getRandomInt(0,9);
+          num.push(randomNumber);
         }
         var numOrganized = num.join('');
         return [NCT, numOrganized].join('');
@@ -285,16 +285,16 @@
         var XXXX = '00' + this.getRandomInt(0,9) + this.getRandomInt(0,9);
         return [XX, XXXX].join('-');
       },
-      generateProtocolArray: function() {  
+      generateProtocolArray: function() {
 
           var arraySize = this.columnLength;
           var protocolList = this.createdProtocolArray;
-  
+
           for(var i = 0; i <= arraySize; i++) {
             var protocolNumber = this.generateProtocolNumber();
-            protocolList.push(protocolNumber); 
-          }         
-        
+            protocolList.push(protocolNumber);
+          }
+
       },
       clickedProtocolValue (value) {
       return  this.currentProtocol = value
@@ -335,7 +335,7 @@
         this.stateActiveComponent(itemName);
         this.setActiveItem(itemName);
       },
-      
+
     },
   }
 
@@ -358,7 +358,7 @@
 
 }
 .currentProtocol {
-  color: white;  
+  color: white;
   font-family: Verdana;
   font-size: 9pt;
   font-weight: bold;
@@ -367,7 +367,7 @@
   left: 13px;
 }
 .console-col--Header {
-  background-color: #728776;  
+  background-color: #728776;
   border-right: 1px solid #999999;
   height: 52px;
   padding: 5px;
@@ -392,13 +392,13 @@ width: 43px;
 #NCTNumber {
 width: 85px;
 }
-#DataCollectionEntity { 
+#DataCollectionEntity {
 width: 65px;
 }
 #DCEXMLUploadDate {
 width: 85px;
 }
-#DCEApprovalDate{ 
+#DCEApprovalDate{
 width: 84px;
 }
 #NLMSubmissionDate {
@@ -435,7 +435,7 @@ width :85px;
   padding: 3px;
   color: #666666;
 }
-.content--border { 
+.content--border {
   border-right: 1px solid #999999;
   border-bottom: 1px solid #999999;
 }
@@ -483,7 +483,7 @@ width :85px;
 .console-col--connections {
   width: 116px;
   border-right: unset;
-  text-decoration: underline;  
+  text-decoration: underline;
 }
 .buttonRow {
   display: flex;
