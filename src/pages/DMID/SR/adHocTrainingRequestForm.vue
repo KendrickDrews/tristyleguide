@@ -2,11 +2,11 @@
   <div class="DMID-main">
     <div style="position: relative">
 
-      <DMIDHeader     
+      <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
         :buttonName="thisSite"
-        :showNav="{ 
+        :showNav="{
           Home: true,
           DocumentLibrary: true,
           CRS: true,
@@ -14,9 +14,9 @@
           Training: true,
           ServiceRequests: false,
           GrantCapture: true,
-          Protocols: true,         
+          Protocols: true,
         }"
-      >    
+      >
         <p slot="locationName" style="color: rgb(52, 94, 192);"> Service Requests </p>
 
       </DMIDHeader>
@@ -26,62 +26,122 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer" style="background-color: rgb(62, 151, 253)">
-            <h2 class="bodyLocation">Ad Hoc Training Request</h2>
+            <h2 class="bodyLocation">Ad Hoc Training Request Form</h2>
           </div>
           <div class="bodyContent">
-          <div class="mainContent "> 
-            <p style="padding: 10px 20px 10px 55px;"> Please submit any ad hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
+          <div class="mainContent ">
+            <p style="padding: 10px 20px 10px 40px;"> Please submit any Ad Hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
             <br/>
           <div class="forms F01">
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p> 
+                  <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p>
                   <input class="form-input" placeholder=" Olson, Dorie"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p>
                   <input class="form-input" placeholder=" dolson@tech-res.com"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Phone  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <p class="form-text">Requestor's Phone  <span class="red">*</span><span class="unset"> :</span></p>
                   <input class="form-input" placeholder=" 301-897-7142"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Site Name <span class="red">*</span><span class="unset"> :</span></p> 
+                  <p class="form-text">Site Name <span class="red">*</span><span class="unset"> :</span></p>
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
-                      <option value="volvo"> AAIPharma Inc.</option>
                       <option value="select">--Select Site Name--</option>
+                      <option value="volvo"> AAIPharma Inc.</option>
                       <option value="saab">Saab</option>
                       <option value="fiat">Fiat</option>
                       <option value="audi">Audi</option>
-                    </select> 
+                    </select>
                   </form>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Site Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p> 
+                  <p class="form-text">Site Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p>
                   <input class="form-input" placeholder=" Dr. Gregory Storch"/>
                 </div>
-                <br/>
-                <p style="width: 93%">Provide sufficient detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS:</p>
-                <br/> 
-                <div class="form-Final">
-                  
-                  <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
-                  </textarea>
-                  
+                <div class="form-Row">
+                  <p class="form-text">Request Type<span class="red">*</span><span class="unset"> :</span></p>
+                  <form class="form-input">
+                    <select name="Protocol" class="form-input">
+                      <option value="select">--Select Request Type--</option>
+                      <option value="volvo">Web Conference</option>
+                      <option value="saab">In-Person</option>
+                      <option value="fiat">On-Demand</option>
+                      <option value="audi">Job Aid (Ex. Brochures, Infographics)</option>
+                      <option value="fiat">Quick Start Guide</option>
+                    </select>
+                  </form>
                 </div>
-                <div class="btn-row">
+                <br/>
+                <div>
+                  <p class="form-text" style="width: 94%">What is the goal for the training?</p>
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+                <br/>
+                <div>
+                  <p class="form-text"  style="width: 94%">What are the expected learner/participant outcomes for the training? (give 2 to 3 expectations)</p>
+
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+                <br/>
+                <div>
+                  <p class="form-text"  style="width: 94%">What triggered the need for this training?</p>
+
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+                <br/>
+                <div>
+                  <p class="form-text"  style="width: 94%">Who is the target audience?</p>
+
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+                <br/>
+                <div>
+                  <p class="form-text"  style="width: 94%">What is the expected training delivery date?</p>
+
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+                <br/>
+                <div>
+                  <p class="form-text"  style="width: 94%">Provide sufficient detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS.</p>
+
+                  <div class="form-Final">
+                    <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
+                    </textarea>
+                  </div>
+                </div>
+
+                <!-- <div class="btn-row">
                 <button class="submit-Btn"> Save </button>
                   <button class="submit-Btn"> Email </button>
-                  </div>
-
-                  <div class="adminView">
-                    <!-- <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
-                    <br/> -->
-                    <p> To accept or reject the Request, select the decision and provide your comments.</p>
+                  </div> -->
+<!--
+                <div class="adminView">
+                  -->
+<!--            <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
+                    <br/>
+                    -->
+<!--              <p> To accept or reject the Request, select the decision and provide your comments.</p>
                     <br/>
                 <div class="decisions" style="padding-left: 40%">
-                  <p  style="margin-right: 33px;" class="form-text">Decision<span class="unset"> :</span></p> 
+                  <p  style="margin-right: 33px;" class="form-text">Decision<span class="unset"> :</span></p>
                   <input type="checkbox" id="scales" name="scales">
                   <label  for="scales" style="font-weight: unset;margin-right: 15px;">Approved</label>
                   <input type="checkbox" id="scales" name="scales">
@@ -89,53 +149,54 @@
                 </div>
                     <div class="forms F01">
                 <div class="form-Final" style="justify-content: unset; margin-left: 33.4%; margin-top: 10px;">
-                  <p class="form-text">Comments<span class="unset"> :</span></p> 
+                  <p class="form-text">Comments<span class="unset"> :</span></p>
                   <textarea style="width: 312px; margin-left: 33px" class="form-input" rows="6" cols="20" name="comment" form="usrform">
                   </textarea>
                 </div>
                 </div>
-                <button class="submit-Btn" style="margin-left: 51.9%; margin-top: 10px;"> Submit </button>
+
               </div>
+              -->
               </div>
-                        
+            <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
           </div>
-        </div>          
-    </div>        
+        </div>
+    </div>
 
       </div>
       <div class="main-footer">
-      </div> 
+      </div>
        <Modal
         v-show="isModalVisible"
         @close="closeModal"
       />
      </div>
-  </div> 
+  </div>
 </template>
 
-<script>   
+<script>
   import DMIDHeader from "../../../components/DMIDhead.vue";
   import colors from "../../../layouts/colors.vue"
   import navList from "../../../components/navLists.vue";
   import allNav from "../../../components/DMIDsideNav.vue";
   import Modal from "../../../components/modalTemplate.vue";
   import buttonList from '../../../components/componentList/buttonList.js';
-  
+
 
   export default {
     name: 'ServiceRequests',
-    components: {      
+    components: {
       DMIDHeader,
       colors,
       navList,
       allNav,
       Modal,
       buttonList,
-      
+
     },
     data () {
       return {
-        isModalVisible: false,        
+        isModalVisible: false,
         showNav: {
           Home: true,
           DocumentLibrary: true,
@@ -148,20 +209,20 @@
           Results: true,
           PRT: true,
           SMART: true,
-          CSRS: true, 
+          CSRS: true,
         },
         subSiteIs: this.$route.name,
         buttonList: buttonList,
-                
+
       };
     },
-///////    
-    computed: {  
-      thisSite: function() {       
+///////
+    computed: {
+      thisSite: function() {
         return this.subSiteIs
       },
-        
-      //     
+
+      //
       subSite: {
         get: function() {
           return this.$root.store.state.DMIDSite
@@ -169,11 +230,11 @@
         set: function(value) {
           this.$root.store.commit('setDMIDSubSite', value )
         },
-        
+
       },
       stateComponent: {
         get: function() {
-          return this.$root.store.state.activeComponent 
+          return this.$root.store.state.activeComponent
         },
         set: function(value) {
           this.$root.store.commit('isActiveComponent', value )
@@ -181,13 +242,13 @@
       },
       stateType: {
         get: function() {
-          return this.$root.store.state.siteType 
+          return this.$root.store.state.siteType
         },
         set: function(value) {
           this.$root.store.commit('setSiteType', value )
         }
       },
-     
+
       isActive () {
         return this.href === this.$root.currentRoute
       },
@@ -214,14 +275,14 @@
       },
       stateSubSite (value) {
         return  this.subSite = value
-      },        
+      },
       stateActiveComponent (value) {
       return  this.stateComponent = value
       },
       scrollReset (value) {
         var element = document.querySelector('#scrollContainer');
         return element.scrollTop = value;
-      },      
+      },
       goTo (event) {
         event.preventDefault()
         this.$root.currentRoute = this.href
@@ -230,11 +291,11 @@
           routes[this.href],
           this.href
         )
-      }, 
+      },
       stateSiteType (value) {
       return  this.stateType = value
-      }    
-                   
+      }
+
     },
   }
 
@@ -245,10 +306,10 @@
 }
 .main-location {
   color: rgb(52, 94, 192);
-  
+
 }
 .locationContainer {
-  background-color: rgb(62, 151, 253); 
+  background-color: rgb(62, 151, 253);
 }
 .mainContent {
   padding: 0px 10px 10px 0px!important;
@@ -266,7 +327,7 @@
   list-style: none;
 }
 .indent2x {
-  margin-left: 45px; 
+  margin-left: 45px;
 }
 .indent2x li  {
   font-size: 13.5px;
@@ -281,7 +342,7 @@
   font-weight: bold;
   font-size: 15px;
   margin-left: -15px;
-  font-family: Verdana;  
+  font-family: Verdana;
 }
 .gray {
   background-color: #ccc;
@@ -293,8 +354,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  padding-left: 55px;
-    
+  padding-left: 40px;
+
 }
 .form-Row {
   display: flex;
@@ -302,7 +363,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 93%;
+  width: 94%;
   padding-bottom: 3px;
   margin: 0;
 }
@@ -331,7 +392,7 @@
   height: 350px;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
 }
 .column {
   width: 41%;
@@ -344,10 +405,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-content: center;  
+  align-content: center;
   padding-bottom: 0px;
   margin: 0px;
-  margin-bottom: 2px; 
+  margin-bottom: 2px;
 }
 .form-Final {
   display: flex;
@@ -355,22 +416,22 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  width: 93%;
+  width: 94%;
   padding-bottom: 3px;
   margin: 0;
 }
 .form-Final .form-input {
-  width: 100%;  
+  width: 100%;
   color: #777;
 }
-.form-Column-Btn {  
-  height: 70px;  
+.form-Column-Btn {
+  height: 70px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
-  align-items: center;  
+  align-items: center;
   padding-bottom: 0px;
   margin: 0px;
   margin-top: 70px;
@@ -388,11 +449,12 @@
   margin-top: 15px;
   justify-content: center;
 }
-.submit-Btn {  
+.submit-Btn {
   width: 150px;
   height: 23px;
-  margin-left: 2%;
-  margin-bottom: 20px;
+  margin: 0 auto;
+  /*margin-left: 2%;
+  margin-bottom: 20px;*/
 }
 #scrollTable {
   width: 100%;
@@ -405,7 +467,7 @@ table {
   border-collapse: collapse;
   width: 768px;
   margin-top: -1px;
-  margin-left: -1px;  
+  margin-left: -1px;
   border: 1px solid #9F9F9F;
 }
 table thead tr {
@@ -451,11 +513,11 @@ tr:nth-child(even) {
 }
 .mostly-customized-scrollbar::-webkit-scrollbar {
   width: 10px;
-  height: 10px;  
+  height: 10px;
   background-color: #aaa; /* or add it to the track */
 }
 .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-  background: #000; 
+  background: #000;
 }
 
 .pagination {

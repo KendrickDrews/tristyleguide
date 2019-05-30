@@ -62,7 +62,7 @@ export default new Router({
         },
         {
           path: 'ServiceRequestsFORM',
-          name: 'ServiceRequests02',
+          name: 'ServiceRequests',
           component: () => import(/* webpackChunkName: "about" */ './pages/DMID/SR/adHocTrainingRequestForm.vue'),
         },
         {
