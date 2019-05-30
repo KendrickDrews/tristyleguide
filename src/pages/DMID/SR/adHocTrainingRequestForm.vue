@@ -34,19 +34,19 @@
             <br/>
           <div class="forms F01">
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Name <span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Requestor's Name<span class="unset"> :</span><span class="red"> *</span></p>
                   <input class="form-input" placeholder=" Olson, Dorie"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Email  <span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Requestor's Email<span class="unset"> :</span><span class="red"> *</span></p>
                   <input class="form-input" placeholder=" dolson@tech-res.com"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Requestor's Phone  <span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Requestor's Phone<span class="unset"> :</span><span class="red"> *</span></p>
                   <input class="form-input" placeholder=" 301-897-7142"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Site Name <span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Site Name<span class="unset"> :</span><span class="red"> *</span></p>
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
                       <option value="select">--Select Site Name--</option>
@@ -58,11 +58,11 @@
                   </form>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Site Principal Investigator  <span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Site Principal Investigator<span class="unset"> :</span><span class="red"> *</span></p>
                   <input class="form-input" placeholder=" Dr. Gregory Storch"/>
                 </div>
                 <div class="form-Row">
-                  <p class="form-text">Request Type<span class="red">*</span><span class="unset"> :</span></p>
+                  <p class="form-text">Request Type<span class="unset"> :</span><span class="red"> *</span></p>
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
                       <option value="select">--Select Request Type--</option>
