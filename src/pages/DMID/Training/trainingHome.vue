@@ -40,7 +40,7 @@
                 <h4 align="center" style="font-weight: normal; font-size: 16px;"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4>
             </div>
             <br/>
-            <p>Please reference the LMS Quick Start Guide for assistance with navigating through the LMS.</p>
+            <p>Please reference the <a>LMS Quick Start Guide</a> for assistance with navigating through the LMS.</p>
             <br />
             <p>To request additional Web Conference, In-Person or On-Demand training not found within the Learning Management System, please use the Ad Hoc Training Request Form found in the Services and Tools menu on the right side of this page.</p>
             <br />
