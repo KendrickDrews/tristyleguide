@@ -20,23 +20,39 @@
       </DMIDHeader>
 
       <div class="main-body">
-        <allNav/>
+        <div class="main-bodyNav"
+        v-bind:class='"bodyNavStyle" + subSite'>
+          <navList
+          v-bind:page='subSite'
+          />
+          <resAndTools/>
+          <brandingNav/>
+        </div>
 
         <div class="main-bodyContent">
           <div class="locationContainer">
             <h2 class="bodyLocation">Welcome to Clinical Research Support</h2>
           </div>
           <div class="bodyContent">
-            <div  class="mainContent">
-            <component :is="stateComponent"/>
+            <div class="mainContent">
+            <!--<component :is="stateComponent"/>-->
+            <clinical-research-home/>
             </div>
+            <div class="servicesAndTools">
+                <h4> SERVICES AND TOOLS </h4>
+                <ul class="servicesTools-List">
+                    <li class="servicesTools-Item"></li>
+                    <li class="servicesTools-Item"></li>
+                    <li class="servicesTools-Item"></li>
+                    <li class="servicesTools-Item"></li>
+                </ul>
+              </div>
+          </div>
         </div>
-    </div>
 
       </div>
-      <div class="main-footer">
-      </div>
-       <Modal
+      <div class="main-footer"></div>
+      <Modal
         v-show="isModalVisible"
         @close="closeModal"
       />
@@ -49,9 +65,11 @@
   import colors from "../../../layouts/colors.vue"
   import navList from "../../../components/navLists.vue";
   import allNav from "../../../components/DMIDsideNav.vue";
+  import resAndTools from "../../../components/DMIDResourcesAndTools.vue"
+  import brandingNav from "../../../components/DMIDBrandingNav.vue"
   import Modal from "../../../components/modalTemplate.vue";
   import buttonList from '../../../components/componentList/buttonList.js';
-  import Landing from "../CRS/Landing.vue";
+  import ClinicalResearchHome from "../CRS/ClinicalResearchHome.vue";
 
 
   export default {
@@ -63,7 +81,9 @@
       allNav,
       Modal,
       buttonList,
-      Landing,
+      brandingNav,
+      resAndTools,
+      ClinicalResearchHome,
 
     },
     data () {
@@ -337,5 +357,11 @@
 }
 .LMS h4 {
     color: white;
+}
+.bodyNavStyleCRS{
+  background-image: linear-gradient(to bottom,rgba(36, 79, 30, 0.05), transparent)
+}
+.bodyNavStyleServiceRequests{
+  background-image: linear-gradient(to bottom,rgba(52, 94, 192, 0.05), transparent)
 }
 </style>

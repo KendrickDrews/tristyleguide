@@ -31,6 +31,7 @@
           active: 'active',
           thisSubSite: '',
           pageNavigation: pageNavigation,
+          activeItem: "clinical-research-home",
       }
     },
     computed: {
@@ -45,6 +46,9 @@
       Component: function() {
         return this.active.text
       },
+      currentPage: function() {
+        return this.activeItem
+      },
       //
       stateComponent: {
         get: function() {
@@ -57,7 +61,7 @@
     },
     mounted: function () {
       this.setActiveStateComponent();
-      this.activeStateComponent("landing");
+      this.activeStateComponent("clinical-research-home");
     },
     methods: {
 
