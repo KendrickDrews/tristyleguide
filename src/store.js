@@ -25,7 +25,7 @@ export const store = new Vuex.Store({
     },
     setSiteType: function(state, type) {
       state.siteType = type
-    }
+    },
   },
   actions: {
 

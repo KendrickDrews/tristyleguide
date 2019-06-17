@@ -1,7 +1,7 @@
 <template>
   <scrollactive
     active-class="activate"
-    scroll-container-selector="#scrollContainer"    
+    scroll-container-selector="#scrollContainer"
     :alwaysTrack = false
     :offset="120"
     :duration="850"
@@ -9,58 +9,58 @@
     bezier-easing-value=".5,0,.35,1"
     v-on:itemchanged="onItemChanged"
   >
-    <ul >    
-      <li       
-        v-for="item in componentList"      
-        v-bind:key="item.key"  
-        v-bind:id="'list-item' + item" 
+    <ul >
+      <li
+        v-for="item in componentList"
+        v-bind:key="item.key"
+        v-bind:id="'list-item' + item"
         v-bind:class="{'active': activeItem === item }"
       >
-        <a 
-          v-bind:href="'#' + item " 
+        <a
+          v-bind:href="'#' + item "
           class="scrollactive-item"
           :name="item"
           @click="activeItem = activeItem !== item ? item : item"
-        > 
-        {{ item }} 
+        >
+        {{ item }}
         </a>
       </li>
     </ul>
   </scrollactive>
 </template>
 
-<script>    
+<script>
   //import routes from '../routes'
   import componentList from '../components/componentList/componentList.js'
-  
-  export default {  
-    
+
+  export default {
+
     components: {
       componentList,
     },
 
-///////  
+///////
     data: function () {
       return {
         componentList: componentList,
-        topSet: '',        
+        topSet: '',
         activeItem: 'Colors',
 
       }
     },
 
-///////    
+///////
     computed: {
       scrollContainer: function() {
         return this.topSet = document.querySelector('#scrollContainer')
-      }, 
-      activeComponent: function() {       
+      },
+      activeComponent: function() {
         return this.activeItem
       },
-      //     
+      //
       stateComponent: {
         get: function() {
-          return this.$root.store.state.activeComponent 
+          return this.$root.store.state.activeComponent
         },
         set: function(value) {
           this.$root.store.commit('isActiveComponent', value )
@@ -69,23 +69,23 @@
 
     },
 ///////
-    mounted: function () {      
+    mounted: function () {
       this.stateActiveComponent('Colors');
     },
 ///////
     methods: {
       onItemChanged(event, currentItem, lastActiveItem) {
         const activeComponent = this.activeComponent
-        return this.stateActiveComponent(currentItem.name)       
+        return this.stateActiveComponent(currentItem.name)
       },
       stateActiveComponent (value) {
       return  this.stateComponent = value
-      }      
+      }
     },
 
   }
-  
-  
+
+
 </script>
 
 <style scoped>
@@ -97,7 +97,7 @@
 }
 .list li {
   font-size: 16px;
-  color: #565656; 
+  color: #565656;
   height: 24px;
   width: 100%;
   display: table;
@@ -121,13 +121,13 @@ a:link {
   text-decoration: none;
   color: inherit;
 }
-.activate {    
+.activate {
   font-weight: bold;
-  color: black;    
+  color: black;
 }
 a.activate {
   border-left: 2px solid indigo!important;
-  color: black;  
+  color: black;
 }
 
 </style>

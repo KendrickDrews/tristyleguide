@@ -1,30 +1,30 @@
-<template>  
+<template>
   <div class="contextNav">
-      <ul id="nav-group">        
+      <ul id="nav-group">
           <li class="nav-item"
-          v-bind:page="page"           
+          v-bind:page="page"
           v-for="(post, index) in pageNavigation[page]"
-          v-bind:key="index" 
-          @click="active = post" 
+          v-bind:key="index"
+          v-on:click="active = post"
           v-bind:class="{ active: active == post }"
           >
           <!-- Need to set up a State HREF Routing Situation -->
           <!-- When State == active post -->
           <!-- MainBody Component is PageContent.Post -->
           <a href="#">{{ post.text }}</a>
-          </li>        
+          </li>
       </ul>
-  </div>  
+  </div>
 </template>
 
-<script>  
-  import pageNavigation from '../components/componentList/DMIDsideNavigation.js';  
+<script>
+  import pageNavigation from '../components/componentList/DMIDsideNavigation.js';
 
   export default {
-    components: {   
-      pageNavigation      
+    components: {
+      pageNavigation
     },
-    props: 
+    props:
       ['page'],
     data: function () {
       return {
@@ -42,9 +42,33 @@
 
         }
       },
+      Component: function() {
+        return this.active.text
+      },
+      //
+      stateComponent: {
+        get: function() {
+          return this.$root.store.state.activeComponent
+        },
+        set: function(value) {
+          this.$root.store.commit('isActiveComponent', value)
+        }
+      },
     },
-   
-    
+    mounted: function () {
+      this.setActiveStateComponent();
+      this.activeStateComponent("landing");
+    },
+    methods: {
+
+      setActiveStateComponent (Component) {
+      let activeComponent = this.Component
+        return this.activeStateComponent(activeComponent)
+      },
+      activeStateComponent (value) {
+        return this.stateComponent = value
+      }
+    },
   }
 </script>
 
@@ -55,7 +79,7 @@
   align-items: center;
 }
 .nav-item a {
-  border:none !important; 
+  border:none !important;
   color:#244f1e!important;
   margin:0 !important;
   text-decoration:none !important;

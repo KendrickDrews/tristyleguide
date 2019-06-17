@@ -120,7 +120,7 @@
                 </div>
                 <br/>
                 <div>
-                  <p class="form-text"  style="width: 94%">Provide sufficient detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS.</p>
+                  <p class="form-text"  style="width: 94%">Please provide any additional detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS.</p>
 
                   <div class="form-Final">
                     <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">

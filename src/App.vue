@@ -2,7 +2,6 @@
   <div class="container"
     v-bind:class="{'container-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
   >
-
     <aside
     class="styleguide-Sidebar"
     v-bind:class="{ 'sg-closed' : !open }"
@@ -17,7 +16,6 @@
         <ul>
               <router-link tag="li" to="/"> Home </router-link>
               <router-link tag="li" to="/about">About</router-link>
-              <router-link tag="li" to="/siteMirror">siteMirror</router-link>
               <router-link tag="li" to="/components">Components</router-link>
               <router-link tag="li" to="/test">test</router-link>
               <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
@@ -77,7 +75,7 @@
           <div
             v-if="siteBG == 'ResultsPage'"
             class="componentContent resultsMargin"
-            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"                       
+            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
 
           <router-view></router-view>
@@ -86,7 +84,7 @@
           <div
             v-else
             class="componentContent"
-            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"                       
+            v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
 
           <router-view></router-view>

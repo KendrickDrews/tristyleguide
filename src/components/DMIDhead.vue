@@ -1,22 +1,21 @@
-<template>  
+<template>
 <div style="margin-bottom: 10px;">
-    <div class="main-head">           
+    <div class="main-head">
         <div class="main-headContent">
             <div style="position: absolute;">
                 <div style="position: relative; left: 3px; top: -5px;">
-
-                    <dmidbutton 
+                    <dmidbutton
                         :button-color="buttonName"
                         :buttonName="buttonName"
                         :siteIcon="true"
                         :height="bigIcon"
                         :width="bigIcon"
-                    > 
-                    </dmidbutton>                                      
+                    >
+                    </dmidbutton>
                 </div>
-            </div> 
+            </div>
             <div class="main-headTop icon-space">
-                <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" style="margin-top:15px;"/>                
+                <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" style="margin-top:15px;"/>
                 <div class="main-headRight">
                     <navSearch></navSearch>
                     <navUser></navUser>
@@ -26,146 +25,146 @@
             <div class="main-headBottom icon-space">
                 <h2 class="main-location">
                     <p><slot name="locationName"> CLINICAL RESEARCH SUPPORT</slot></p>
-                </h2> 
-                <div class="main-headButtons">                   
+                </h2>
+                <div class="main-headButtons">
                    <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="buttonList.Home"                         
+                        :buttonName="buttonList.Home"
                         :button-color="buttonList.Home"
-                        :id="'nav-' + buttonList.Home"                                              
+                        :id="'nav-' + buttonList.Home"
                         v-if="showNav[buttonList.Home]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
 
                         </dmidbutton>
                    </router-link>
                    <router-link tag="div" to="/DMID/CRS">
                         <dmidbutton
-                        :buttonName="buttonList.CRS"                         
+                        :buttonName="buttonList.CRS"
                         :button-color="buttonList.CRS"
-                        :id="'nav-' + buttonList.CRS"                                              
+                        :id="'nav-' + buttonList.CRS"
                         v-if="showNav[buttonList.CRS]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="buttonList.DocumentLibrary"                         
+                        :buttonName="buttonList.DocumentLibrary"
                         :button-color="buttonList.DocumentLibrary"
-                        :id="'nav-' + buttonList.DocumentLibrary"                                              
+                        :id="'nav-' + buttonList.DocumentLibrary"
                         v-if="showNav[buttonList.DocumentLibrary]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/Training">
                         <dmidbutton
-                        :buttonName="buttonList.Training"                         
+                        :buttonName="buttonList.Training"
                         :button-color="buttonList.Training"
-                        :id="'nav-' + buttonList.Training"                                              
+                        :id="'nav-' + buttonList.Training"
                         v-if="showNav[buttonList.Training]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/ServiceRequests">
                         <dmidbutton
-                        :buttonName="buttonList.ServiceRequests"                         
+                        :buttonName="buttonList.ServiceRequests"
                         :button-color="buttonList.ServiceRequests"
-                        :id="'nav-' + buttonList.ServiceRequests"                                              
+                        :id="'nav-' + buttonList.ServiceRequests"
                         v-if="showNav[buttonList.ServiceRequests]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="buttonList.SOCSCMS"                         
+                        :buttonName="buttonList.SOCSCMS"
                         :button-color="buttonList.SOCSCMS"
-                        :id="'nav-' + buttonList.SOCSCMS"                                              
+                        :id="'nav-' + buttonList.SOCSCMS"
                         v-if="showNav[buttonList.SOCSCMS]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                        >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="buttonList.Protocols"                         
+                        :buttonName="buttonList.Protocols"
                         :button-color="buttonList.Protocols"
-                        :id="'nav-' + buttonList.Protocols"                                              
+                        :id="'nav-' + buttonList.Protocols"
                         v-if="showNav[buttonList.Protocols]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
                     <router-link tag="div" to="/DMID/Home">
                         <dmidbutton
-                        :buttonName="buttonList.GrantCapture"                         
+                        :buttonName="buttonList.GrantCapture"
                         :button-color="buttonList.GrantCapture"
-                        :id="'nav-' + buttonList.GrantCapture"                                              
+                        :id="'nav-' + buttonList.GrantCapture"
                         v-if="showNav[buttonList.GrantCapture]"
                         :height="smallIcon"
                         :width="smallIcon"
-                        :navIcon="true"                        
+                        :navIcon="true"
                         >
                         </dmidbutton>
                     </router-link>
-                </div>    
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 </template>
 
-<script>  
-  
+<script>
+
   import navSearch from '../components/navSearch.vue';
   import navUser from '../components/navUser.vue';
   import buttonList from '../components/componentList/buttonList.js';
 
 export default {
-    components: { 
+    components: {
       navSearch,
       navUser,
       buttonList
     },
 
     data: function(){
-        return {       
+        return {
             buttonList: buttonList,
             navVisibiity: this.showNav,
             bigIcon: '75px',
             smallIcon: '27px',
-            
+
         }
     },
     props: {
         buttonName: {
             default: 'CRS'
-        },    
+        },
         type: {
             default: 'CRS',
-        }, 
-        showNav:{ 
-            
+        },
+        showNav:{
+
             default: function(){
-                return {            
-                    Home: true,                    
+                return {
+                    Home: true,
                     CRS: true,
                     DocumentLibrary: true,
                     SOCSCMS: true,
@@ -176,11 +175,11 @@ export default {
                     Results: false,
                     PRT: false,
                     SMART: false,
-                    CSRS: false,            
+                    CSRS: false,
                 }
             }
-        }                 
-    },    
+        }
+    },
 };
 
 </script>

@@ -47,7 +47,7 @@
             <p> <strong>Important note: </strong></p>
 
             <p>
-Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID). Documentation of training should be current and retained on site.</p>
+Sites should maintain current documentation of completed trainings for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID).</p>
 
 
 
