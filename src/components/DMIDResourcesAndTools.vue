@@ -35,7 +35,7 @@
     methods: {
       myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
-        document.getElementById("RT").classList.toggle("short");
+        document.getElementById("RT").classList.toggle("shorty");
         document.getElementById("RATFlip").classList.toggle("fa-rotate-180");
       }
     }
@@ -115,7 +115,7 @@ font-family: Calibri;
   vertical-align: unset;
 }
 button:focus {outline:0;}
-.short {
+.shorty {
   height: 44px;
 }
 </style>

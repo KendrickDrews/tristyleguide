@@ -4,10 +4,11 @@
           <li class="nav-item"
           v-bind:page="page"
           v-for="(post, index) in pageNavigation[page]"
-          v-bind:key="index"
-          v-on:click="active = post"
+          v-bind:key="index"          
+          v-on:click="active = post"           
           v-bind:class="{ active: active == post }"
           >
+          <!-- active = post -->
           <!-- Need to set up a State HREF Routing Situation -->
           <!-- When State == active post -->
           <!-- MainBody Component is PageContent.Post -->
@@ -19,6 +20,7 @@
 
 <script>
   import pageNavigation from '../components/componentList/DMIDsideNavigation.js';
+  import { mapState } from 'vuex';
 
   export default {
     components: {
@@ -34,7 +36,12 @@
           activeItem: "clinical-research-home",
       }
     },
-    computed: {
+    watch: {
+      active: function () {
+        return this.$root.store.commit('isActiveComponent', this.active.text);
+      }
+    },
+    computed: {     
       subSite: {
         get: function() {
           return this.$root.store.state.siteType
@@ -43,7 +50,7 @@
 
         }
       },
-      Component: function() {
+      activeComponent: function() {
         return this.active.text
       },
       currentPage: function() {
@@ -68,7 +75,7 @@
       setActiveStateComponent (Component) {
       let activeComponent = this.Component
         return this.activeStateComponent(activeComponent)
-      },
+      },      
       activeStateComponent (value) {
         return this.stateComponent = value
       }
