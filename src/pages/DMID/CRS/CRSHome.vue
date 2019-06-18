@@ -1,6 +1,6 @@
 <template>
   <div class="DMID-main">
-    <div style="position: relative">
+    <div style="position: relative; width: 100%;">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
@@ -24,15 +24,14 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer">
-            <h2 class="bodyLocation">Welcome to Clinical Research Support</h2>
+            <h2 class="bodyLocation">CQPM Status Report</h2>
+            <!-- <h2 class="bodyLocation">{{ stateComponent | splitStrings('-',' ') }}</h2> -->
           </div>
           <div class="bodyContent">
             <div class="mainContent">
             <component :is="stateComponent" />
-            <clinical-research-home/>
-            <p>  {{ stateComponent }} </p>
             </div>
-            <div class="servicesAndTools">
+            <!--<div class="servicesAndTools">
                 <h4> SERVICES AND TOOLS </h4>
                 <ul class="servicesTools-List">
                     <li class="servicesTools-Item"></li>
@@ -40,7 +39,7 @@
                     <li class="servicesTools-Item"></li>
                     <li class="servicesTools-Item"></li>
                 </ul>
-              </div>
+              </div> -->
           </div>
         </div>
 
@@ -119,7 +118,6 @@
         },
         subSiteIs: this.$route.name,
         buttonList: buttonList,
-        testValue: 'testing one two three',
 
       };
     },
@@ -209,6 +207,14 @@
       return  this.stateType = value
       }
     },
+    filters: {
+      splitStrings: function (value, separator, connector) {
+        if (!value) return 'noValue'
+        var toSplit = value;
+        var splitString = toSplit.split(separator);
+        return splitString.join(connector);
+      }
+    },
   }
 
 </script>
@@ -222,8 +228,9 @@
   margin: 0;
 }
 .mainContent {
-  padding: 10px 10px 10px 5px!important;
+  padding: 10px 0px 10px 0px!important;
   font-family: calibri!important;
+  width: 100%;
 }
 .main-location {
   color: var(--green-header);
