@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      HELLO WORLD HOME
+      HELLO WORLD Safety Oversight Committee
     </div>
 
 
@@ -11,7 +11,7 @@
 <script>
 
   export default {
-    name: 'ClinicalResearchHome',
+    name: 'SafetyOversightCommittee',
     components: {
 
     },

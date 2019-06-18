@@ -20,14 +20,7 @@
       </DMIDHeader>
 
       <div class="main-body">
-        <div class="main-bodyNav"
-        v-bind:class='"bodyNavStyle" + subSite'>
-          <navList
-          v-bind:page='subSite'
-          />
-          <resAndTools/>
-          <brandingNav/>
-        </div>
+        <all-nav/>
 
         <div class="main-bodyContent">
           <div class="locationContainer">
@@ -35,8 +28,9 @@
           </div>
           <div class="bodyContent">
             <div class="mainContent">
-            <!--<component :is="stateComponent"/>-->
+            <component :is="stateComponent" />
             <clinical-research-home/>
+            <p>  {{ stateComponent }} </p>
             </div>
             <div class="servicesAndTools">
                 <h4> SERVICES AND TOOLS </h4>
@@ -70,6 +64,16 @@
   import Modal from "../../../components/modalTemplate.vue";
   import buttonList from '../../../components/componentList/buttonList.js';
   import ClinicalResearchHome from "../CRS/ClinicalResearchHome.vue";
+  import ClinicalMonitoring from "../CRS/ClinicalMonitoring.vue";
+  import ClinicalQualityManagement from "../CRS/ClinicalQualityManagement.vue";
+  import EssentialRegulatoryDocuments from "../CRS/EssentialRegulatoryDocuments.vue";
+  import MedicalWriting from "../CRS/MedicalWriting.vue";
+  import ProtocolDevelopment from "../CRS/ProtocolDevelopment.vue";
+  import ProtocolDeviationReporting from "../CRS/ProtocolDeviationReporting.vue";
+  import SAEReporting from "../CRS/SAEReporting.vue";
+  import SafetyOversightCommittee from "../CRS/SafetyOversightCommittee.vue";
+  import StudyProductInformation from "../CRS/StudyProductInformation.vue";
+  import TeleconferenceSupport from "../CRS/TeleconferenceSupport.vue";
 
 
   export default {
@@ -84,6 +88,16 @@
       brandingNav,
       resAndTools,
       ClinicalResearchHome,
+      ClinicalMonitoring,
+      ClinicalQualityManagement,
+      EssentialRegulatoryDocuments,
+      MedicalWriting,
+      ProtocolDevelopment,
+      ProtocolDeviationReporting,
+      SAEReporting,
+      SafetyOversightCommittee,
+      StudyProductInformation,
+      TeleconferenceSupport
 
     },
     data () {
@@ -105,6 +119,7 @@
         },
         subSiteIs: this.$route.name,
         buttonList: buttonList,
+        testValue: 'testing one two three',
 
       };
     },
@@ -147,9 +162,15 @@
 
     },
 ///////
+    beforeMount: function(){
+    this.stateActiveComponent('Clinical-Research-Home');
+    },
+///////
     mounted: function () {
       this.setStateSubSite();
-      this.stateActiveComponent('');
+      this.$nextTick(function () {
+        this.stateActiveComponent('Clinical-Research-Home');
+      });
       this.scrollReset(0);
       this.stateSiteType('CRS');
     },
@@ -187,7 +208,6 @@
       stateSiteType (value) {
       return  this.stateType = value
       }
-
     },
   }
 

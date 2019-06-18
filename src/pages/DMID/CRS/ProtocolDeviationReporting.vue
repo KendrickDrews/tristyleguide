@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      HELLO WORLD HOME
+      HELLO WORLD Protocol Deviation Reporting
     </div>
 
 
@@ -11,7 +11,7 @@
 <script>
 
   export default {
-    name: 'ClinicalResearchHome',
+    name: 'ProtocolDeviationReporting',
     components: {
 
     },

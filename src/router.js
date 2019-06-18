@@ -55,6 +55,7 @@ export default new Router({
           name: 'ServiceRequests',
           component: () => import( './pages/DMID/SR/serviceRequestsHome.vue'),
         },
+        // Can be deprecated due to sidenav component switching
         {
           path: 'ServiceRequestsFORM',
           name: 'ServiceRequests',

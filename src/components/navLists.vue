@@ -4,15 +4,11 @@
           <li class="nav-item"
           v-bind:page="page"
           v-for="(post, index) in pageNavigation[page]"
-          v-bind:key="index"          
-          v-on:click="active = post"           
+          v-bind:key="index"
+          v-on:click="active = post"
           v-bind:class="{ active: active == post }"
           >
-          <!-- active = post -->
-          <!-- Need to set up a State HREF Routing Situation -->
-          <!-- When State == active post -->
-          <!-- MainBody Component is PageContent.Post -->
-          <a href="#">{{ post.text }}</a>
+          <a v-bind:href="'#/' + post.text | concatenate">{{ post.text }}</a>
           </li>
       </ul>
   </div>
@@ -33,28 +29,30 @@
           active: 'active',
           thisSubSite: '',
           pageNavigation: pageNavigation,
-          activeItem: "clinical-research-home",
       }
     },
     watch: {
       active: function () {
-        return this.$root.store.commit('isActiveComponent', this.active.text);
+        function kebabCase(value, separator, connector) {
+          if (!value) return ''
+          var stringArray = value.split(separator);
+          return stringArray.join(connector);
+        }
+        var string = this.active.text;
+        var componentString = kebabCase(string,' ','-');
+        return this.$root.store.commit('isActiveComponent', componentString);
       }
     },
-    computed: {     
+    computed: {
       subSite: {
         get: function() {
           return this.$root.store.state.siteType
         },
         set: function() {
-
         }
       },
       activeComponent: function() {
         return this.active.text
-      },
-      currentPage: function() {
-        return this.activeItem
       },
       //
       stateComponent: {
@@ -66,18 +64,12 @@
         }
       },
     },
-    mounted: function () {
-      this.setActiveStateComponent();
-      this.activeStateComponent("clinical-research-home");
-    },
-    methods: {
-
-      setActiveStateComponent (Component) {
-      let activeComponent = this.Component
-        return this.activeStateComponent(activeComponent)
-      },      
-      activeStateComponent (value) {
-        return this.stateComponent = value
+    filters: {
+      concatenate: function (value) {
+        if (!value) return 'noValue'
+        var toSplit = value;
+        var splitString = toSplit.split(' ');
+        return splitString.join('');
       }
     },
   }

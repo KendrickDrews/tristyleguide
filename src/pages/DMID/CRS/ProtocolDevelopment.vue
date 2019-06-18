@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      HELLO WORLD HOME
+      HELLO WORLD Protocol Development
+
     </div>
 
 
@@ -11,7 +12,7 @@
 <script>
 
   export default {
-    name: 'ClinicalResearchHome',
+    name: 'ProtocolDevelopment',
     components: {
 
     },

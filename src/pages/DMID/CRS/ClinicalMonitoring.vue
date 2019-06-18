@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      HELLO WORLD HOME
+      HELLO WORLD CLINICAL Monitoring
+
     </div>
 
 
@@ -11,7 +12,7 @@
 <script>
 
   export default {
-    name: 'ClinicalResearchHome',
+    name: 'ClinicalMonitoring',
     components: {
 
     },
