@@ -111,11 +111,12 @@
       <h2> New Record </h2>
       <div class="horizontal-line "></div>
       <div class="CQMP-form--row form--btnRow">
-        <button class="recordType selectedButton"> Site Specific CQMP </button>
-        <button class="recordType"> Protocol Specific CQMP </button>
+        <button class="recordType" @click="selectedForm('site')" :class="[siteHidden ? '' : 'selectedButton']"> Site Specific CQMP </button>
+        <button class="recordType" @click="selectedForm('protocol')" :class="[protocolHidden ? '' : 'selectedButton']"> Protocol Specific CQMP </button>
       </div>
       <div class="horizontal-line short"></div>
-      <div class="CQMP-form--fields siteSpecific">
+<!-- Site Specific Form -->
+      <div class="CQMP-form--fields siteSpecific" :class="{ 'hidden': siteHidden }">
         <!-- Lead Site - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
@@ -270,101 +271,187 @@
           <textarea  rows="5" cols="51" type="text"/>
         </div>
       </div>
-      <div class="CQMP-form--fields protocolSpecific hidden">
-        <!-- Field Name - Protocol Specific -->
+<!-- Protocol Specific Form Elements -->
+      <div class="CQMP-form--fields protocolSpecific" :class="{ 'hidden': protocolHidden }">
+        <!-- Protocol Number - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
+          <label for=""> Protocol Number </label>
+          <select>
+            <option v-for="(item, index) in protocols" v-bind:key="index" v-bind:value="item"> {{ item }} </option>
+          </select>
+        </div>
+        <!-- Lead Site - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Lead Site </label>
+          <div class="select-list">
+            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Protocol(s) </div>
+            <div class="select-options" :class="{ 'hidden': dropDownHidden }">
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option1" value=""/>
+                <label for="option1"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option2" value=""/>
+                <label for="option2"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option3" value=""/>
+                <label for="option3"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option4" value=""/>
+                <label for="option4"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option5" value=""/>
+                <label for="option5"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option6" value=""/>
+                <label for="option6"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option7" value=""/>
+                <label for="option7"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option8" value=""/>
+                <label for="option8"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option9" value=""/>
+                <label for="option9"> {{ generateSiteName(0,4) }} </label>
+              </div>
+              <div class="option">
+                <input type="checkbox" name="protocols" id="option0" value=""/>
+                <label for="option0"> {{ generateSiteName(0,4) }} </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- CQMP reviewed by - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Reviewed by </label>
+           <div class="checkbox--row">
+            <div class="checkbox--container" v-for="(item, index) in todos" :key="index">
+              <input type="checkbox" :name="item.title | concatenate" :id="item.title | concatenate" value="Site1"/>
+              <label :for="item.title | concatenate" >{{ item.title }} </label>
+            </div>
+          </div>
+        </div>
+        <!-- Affiliated Sites - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Affiliated Site </label>
+          <select>
+            <option value="volvo">Site 1</option>
+            <option value="saab">Site 2</option>
+            <option value="mercedes">Site 3</option>
+            <option value="audi">Site 4</option>
+          </select>
+        </div>
+        <!-- CQMP reviewed by - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Reviewed by </label>
+          <div class="checkbox--row">
+            <div class="checkbox--container" v-for="(item, index) in todos" :key="index">
+              <input type="checkbox" :name="item.title | concatenate" :id="item.title | concatenate" value="Site2"/>
+              <label :for="item.title | concatenate" >{{ item.title }} </label>
+            </div>
+          </div>
+        </div>
+        <!-- Funding Agreement - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Funding Agreement </label>
+          <input type="text" disabled=""/>
+        </div>
+        <!-- DMID Branch - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> DMID Branch </label>
+          <input type="text" v-bind:value="generateBranch(0,4)" disabled=""/>
+        </div>
+        <!-- DMID Clinical Project Manager - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> DMID Clinical Project Manager </label>
+          <input type="text" v-bind:value="randomCPM(0,4)" disabled=""/>
+        </div>
+        <!-- Resource Level - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Resource Level </label>
+          <input type="text" disabled=""/>
+        </div>
+        <!-- Group Affiliation - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Group Affiliation </label>
+          <input type="text" disabled=""/>
+        </div>
+        <!-- DMID IND Yes/No - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> DMID IND Yes/No </label>
+          <input type="text" value="" disabled=""/>
+        </div>
+        <!-- Date of Initial Acceptance - Protocol Specific-->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Initial Acceptance Date </label>
+          <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2018-12-31">
+        </div>
+        <!-- Version Number - Protocol Specific-->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Version Number <span class="error">*</span> </label>
           <input type="text"/>
         </div>
-        <!-- Field Name - Protocol Specific -->
+        <!-- Version Date - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
+          <label for=""> Version Date </label>
+          <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2018-12-31">
+        </div>
+        <!-- CQMP Status - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Status </label>
+          <div class="checkbox--row">
+            <div class="checkbox--container">
+              <input type="radio" name="CQMPStatus" value="Site1"/> Accepted Initial
+            </div>
+            <div class="checkbox--container">
+              <input type="radio" name="CQMPStatus" value="Site1"/> Accepted Revised
+            </div>
+            <div class="checkbox--container">
+              <input type="radio" name="CQMPStatus" value="Site1"/> In Progress
+            </div>
+            <div class="checkbox--container">
+              <input type="radio" name="CQMPStatus" value="Site1"/> Canceled
+            </div>
+            <div class="checkbox--container">
+              <input type="radio" name="CQMPStatus" value="Site1"/> None
+            </div>
+          </div>
+        </div>
+        <!-- Effective Date - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Effective Date </label>
+          <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2018-12-31">
+        </div>
+        <!-- Version Number - Protocol Specific-->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> Version Number <span class="error">*</span> </label>
           <input type="text"/>
         </div>
-        <!-- Field Name - Protocol Specific -->
+        <!-- Version Date - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
+          <label for=""> Version Date </label>
+          <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2018-12-31">
         </div>
-        <!-- Field Name - Protocol Specific -->
+        <!-- Reviewer Comments - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <textarea type="text"  rows="2" cols="20" />
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
-        </div>
-        <!-- Field Name - Protocol Specific-->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Label Text </label>
-          <input type="text"/>
+          <label for=""> Reviewer Comments </label>
+          <textarea  rows="5" cols="51" type="text"/>
         </div>
       </div>
       <div class="horizontal-line short"></div>
@@ -407,8 +494,27 @@
           {id: 'Monitored', name: 'Monitored by ICON?'},
         ],
         protocols: [],
+        newTodoText: '',
+        todos: [
+          {
+            id: 1,
+            title: 'Site 1',
+          },
+          {
+            id: 2,
+            title: 'Site 2',
+          },
+          {
+            id: 3,
+            title: 'Site 3'
+          }
+        ],
+        nextTodoId: 4,
         currentProtocol: -1,
         planView: "All",
+        protocolHidden: true,
+        siteHidden: true,
+        dropDownHidden: true,
       };
     },
 ///////
@@ -429,6 +535,13 @@
     },
 ///////
     methods: {
+      addNewTodo: function () {
+        this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText
+        })
+        this.newTodoText = ''
+      },
       clickedProtocolValue (value) {
       return  this.currentProtocol = value
       },
@@ -440,6 +553,22 @@
       },
       closeModal() {
         this.isModalVisible = false;
+      },
+      selectedForm: function (value) {
+        if (value == 'site') {
+          this.siteHidden = false;
+          this.protocolHidden = true;
+        }
+        else if (value == 'protocol') {
+          this.protocolHidden = false;
+          this.siteHidden = true;
+        }
+        else {
+        return console.log(value);
+        }
+      },
+      hideDropDown: function() {
+        return this.dropDownHidden = !this.dropDownHidden;
       },
       getRandomInt: function(min, max) {
         min = Math.ceil(min);
@@ -569,6 +698,14 @@
         }
       }
     },
+    filters: {
+      concatenate: function (value) {
+        if (!value) return 'noValue'
+        var toSplit = value;
+        var splitString = toSplit.split(' ');
+        return splitString.join('');
+      }
+    },
   }
 
 </script>
@@ -680,7 +817,7 @@
   padding: 3px;
   color: #666666;
   height: 24px;
-    overflow: hidden;
+  overflow: hidden;
 }
 .content--border {
   border-right: 1px solid #999999;
@@ -833,6 +970,73 @@
 .checkbox--container input {
   height: 15px;
   width: 45px;
-  margin-top: 7px;
+  margin-top: 7px;}
+
+/* Multi-select Drop Down List */
+.select-title {
+  border-radius: 4px;
+  height: 30px;
+  padding: 7px;
+  width: 375px;
+  border: 1px solid #666;
+}
+.select-list {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  background: #fff;
+}
+.select-list .title {
+  display: inline-block;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #eaeaec;
+  border-radius: 5px;
+  padding: 10px 15px 10px 15px;
+}
+.select-list .title::after {
+  display: inline-block;
+  content: '>';
+  margin-left: 15px;
+  font-size: 11px;
+  transform: rotate(90deg) scale(1, 2);
+}
+.select-list .title:hover {
+  background: #eaeaec;
+}
+.option input {
+  height: unset;
+  width: unset;
+}
+.select-list .select-options {
+  margin-top: 5px;
+  position: absolute;
+  z-index: 500;
+  border: 1px solid #eaeaec;
+  background: #fff;
+  max-height: 200px;
+  overflow: scroll;
+}
+.select-options::-webkit-scrollbar {
+  color: rgb(36, 36, 36);
+  background: #123456;
+  background-color: #ccc; /* or add it to the track */
+  height: 0px;
+  width: 8px;
+  border-radius: 5px;
+}
+.select-options::-webkit-scrollbar-thumb {
+  background-color: #008299;
+  border-radius: 5px;
+}
+.select-list .select-options .option label {
+  display: inline-block;
+  width: calc(100% - 28px);
+  padding: 10px 30px 10px 10px;
+}
+.select-list .select-options .option:hover {
+  background: #eaeaec;
+}
+.select-list .select-options .option input {
+  margin: 10px 0 12px 15px;
 }
 </style>
