@@ -1,9 +1,8 @@
 <template>
-  <div class="DMID-main">  
-
+  <div class="DMID-main">
         <div class="row Row1">
-          <div class="left">            
-            <img src="../../imgs/DMIDCROMS_BrandGraphic_Home.png"/>            
+          <div class="left">
+            <img src="../../imgs/DMIDCROMS_BrandGraphic_Home.png"/>
           </div>
           <div class="right">
             <h3> WELCOME TO THE DMID-CROMS WEBLIBRARY </h3>
@@ -14,98 +13,98 @@
         <div class="row Row2">
           <div class="left icon-spacing">
             <router-link tag="div" to="CRS" class="home-Navigation">
-              <dmidbutton 
-                :buttonName="buttonList.CRS" 
+              <dmidbutton
+                :buttonName="buttonList.CRS"
                 v-if="showNavHOME[buttonList.CRS]"
                 :button-color="buttonList.CRS"
                 :id="'nav-' + buttonList.CRS"
                 :height="bigIcon"
                 :width="bigIcon"
                 :siteIcon="true"
-              > 
+              >
               </dmidbutton>
               <h4> Clinical Research Support </h4>
             </router-link>
             <router-link tag="div" to="DocumentLibrary" class="home-Navigation">
-              <dmidbutton 
-                :buttonName="buttonList.DocumentLibrary" 
+              <dmidbutton
+                :buttonName="buttonList.DocumentLibrary"
                 v-if="showNavHOME[buttonList.DocumentLibrary]"
                 :button-color="buttonList.DocumentLibrary"
                 :id="'nav-' + buttonList.DocumentLibrary"
                 :height="bigIcon"
                 :width="bigIcon"
                 :siteIcon="true"
-              > 
+              >
               </dmidbutton>
               <h4> Document Library </h4>
             </router-link>
             <router-link tag="div" to="Training"  class="home-Navigation">
-              <dmidbutton 
-                :buttonName="buttonList.Training" 
+              <dmidbutton
+                :buttonName="buttonList.Training"
                 v-if="showNavHOME[buttonList.Training]"
                 :button-color="buttonList.Training"
                 :id="'nav-' + buttonList.Training"
                 :height="bigIcon"
                 :width="bigIcon"
                 :siteIcon="true"
-              > 
+              >
               </dmidbutton>
               <h4> Training </h4>
             </router-link>
             <router-link tag="div" to="ServiceRequests" class="home-Navigation">
-              <dmidbutton 
-                :buttonName="buttonList.ServiceRequests" 
+              <dmidbutton
+                :buttonName="buttonList.ServiceRequests"
                 v-if="showNavHOME[buttonList.ServiceRequests]"
                 :button-color="buttonList.ServiceRequests"
                 :id="'nav-' + buttonList.ServiceRequests"
                 :height="bigIcon"
                 :width="bigIcon"
                 :siteIcon="true"
-              > 
+              >
               </dmidbutton>
               <h4> Service Requests </h4>
             </router-link>
-                        
+
           </div>
           <!-- DMART Buttons -->
           <div class="right DMART icon-spacing">
-            
+
               <router-link tag="div" to="Protocols" class="home-Navigation">
                 <dmidbutton
-                  :buttonName="buttonList.Protocols" 
+                  :buttonName="buttonList.Protocols"
                   v-if="showNavDMART[buttonList.Protocols]"
                   :button-color="buttonList.Protocols"
                   :id="'nav-' + buttonList.Protocols"
                   :height="smallIcon"
                   :width="smallIcon"
-                  :siteIcon="true"                        
-                  > 
+                  :siteIcon="true"
+                  >
                 </dmidbutton>
                 <h4> Protocols </h4>
               </router-link>
               <router-link tag="div" to="GrantCapture" class="home-Navigation">
                 <dmidbutton
-                  :buttonName="buttonList.GrantCapture" 
+                  :buttonName="buttonList.GrantCapture"
                   v-if="showNavDMART[buttonList.GrantCapture]"
                   :button-color="buttonList.GrantCapture"
                   :id="'nav-' + buttonList.GrantCapture"
                   :height="smallIcon"
                   :width="smallIcon"
-                  :siteIcon="true"                        
-                  > 
+                  :siteIcon="true"
+                  >
                 </dmidbutton>
                 <h4> Grant Capture </h4>
               </router-link>
               <router-link tag="div" to="Results" class="home-Navigation">
                 <dmidbutton
-                  :buttonName="buttonList.Results" 
+                  :buttonName="buttonList.Results"
                   v-if="showNavDMART[buttonList.Results]"
                   :button-color="buttonList.Results"
                   :id="'nav-' + buttonList.Results"
                   :height="smallIcon"
                   :width="smallIcon"
-                  :siteIcon="true"                        
-                  > 
+                  :siteIcon="true"
+                  >
                 </dmidbutton>
                 <h4> Results </h4>
               </router-link>
@@ -115,13 +114,13 @@
                 <h4 class="dmart-label"> DMART </h4>
                 </div>
               </div>
-            
+
             <!-- DMART Buttons -->
           </div>
         </div>
 
         <div class="row Row3">
-          <div class="left">            
+          <div class="left">
             <div class="sign-in">
               <div class="non-NIH">
               <h4 class="signIn-title"> Access for <span class="underlined">Non-NIH </span> Users </h4>
@@ -129,32 +128,32 @@
                 <h4> Username: </h4>
                 <input type="text" placeholder="" class="sign-in-input">
                 <button class="nav-button btn-Seven btn-nonNIH">
-                  <h4> Sign IN </h4>          
+                  <h4> Sign IN </h4>
                 <div class="navbtn-shadow"></div>
                 </button>
               </div>
               <div class="pass">
-                <h4> Password: </h4> 
-                <input type="text" placeholder="" class="sign-in-input"> 
+                <h4> Password: </h4>
+                <input type="text" placeholder="" class="sign-in-input">
                 <a class="password">Forgot Password </a>
-              </div> 
+              </div>
               </div>
               <div class="NIH">
               <h4 class="signIn-title"> Access for <span class="underlined">NIH </span> Users </h4>
                 <button class="nav-button btn-Seven btn-NIH">
                   <div class="carrot"><div class="pentagon"> NIH </div></div>
-                    <h3> Sign In </h3>          
+                    <h3> Sign In </h3>
                   <div class="navbtn-shadow"></div>
                 </button>
-              </div>               
-            </div>                      
+              </div>
+            </div>
             <p class="request">To request access, please submit a request using the <a> Systems Access Request Form</a> </p>
           </div>
           <div class="right">
             <h2> Clinical Research Support Search</h2>
-            <input type="text" placeholder="" class="CRS-search"> 
+            <input type="text" placeholder="" class="CRS-search">
             <button class="nav-button btn-Seven btn-SEARCH">
-                <h4> Go </h4>          
+                <h4> Go </h4>
               <div class="navbtn-shadow"></div>
             </button>
             </div>
@@ -202,81 +201,81 @@
             <div class="homeContainer">
               <div class="supportSEARCH">
                 <div class="devSEARCH">
-                  <dmidbutton 
-                    :buttonName="buttonList.Development" 
+                  <dmidbutton
+                    :buttonName="buttonList.Development"
                     v-if="showNavHOME[buttonList.Development]"
                     :button-color="buttonList.Development"
                     :id="'nav-' + buttonList.Development"
                     :height="support"
                     :width="support"
                     :siteIcon="true"
-                  > 
+                  >
                   </dmidbutton>
                   <div class="supportRight">
                     <h4>Development</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
-                      <h4> Go </h4>          
+                      <h4> Go </h4>
                       <div class="navbtn-shadow"></div>
                     </button>
                   </div>
                 </div>
                 <div class="devSEARCH">
-                  <dmidbutton 
-                    :buttonName="buttonList.Initiation" 
+                  <dmidbutton
+                    :buttonName="buttonList.Initiation"
                     v-if="showNavHOME[buttonList.Initiation]"
                     :button-color="buttonList.Initiation"
                     :id="'nav-' + buttonList.Initiation"
                     :height="support"
                     :width="support"
                     :siteIcon="true"
-                  > 
+                  >
                   </dmidbutton>
                   <div class="supportRight">
                     <h4>Initiation</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
-                      <h4> Go </h4>          
+                      <h4> Go </h4>
                       <div class="navbtn-shadow"></div>
                     </button>
                   </div>
                 </div>
                 <div class="devSEARCH">
-                  <dmidbutton 
-                    :buttonName="buttonList.InProgress" 
+                  <dmidbutton
+                    :buttonName="buttonList.InProgress"
                     v-if="showNavHOME[buttonList.InProgress]"
                     :button-color="buttonList.InProgress"
                     :id="'nav-' + buttonList.InProgress"
                     :height="support"
                     :width="support"
                     :siteIcon="true"
-                  > 
+                  >
                   </dmidbutton>
                   <div class="supportRight">
                     <h4>In Progress</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
-                      <h4> Go </h4>          
+                      <h4> Go </h4>
                       <div class="navbtn-shadow"></div>
                     </button>
                   </div>
                 </div>
                 <div class="devSEARCH">
-                  <dmidbutton 
-                    :buttonName="buttonList.CloseOut" 
+                  <dmidbutton
+                    :buttonName="buttonList.CloseOut"
                     v-if="showNavHOME[buttonList.CloseOut]"
                     :button-color="buttonList.CloseOut"
                     :id="'nav-' + buttonList.CloseOut"
                     :height="'30px'"
                     :width="'30px'"
                     :siteIcon="true"
-                  > 
+                  >
                   </dmidbutton>
                   <div class="supportRight">
                     <h4>Close Out</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
-                      <h4> Go </h4>          
+                      <h4> Go </h4>
                       <div class="navbtn-shadow"></div>
                     </button>
                   </div>
@@ -297,28 +296,28 @@
                   <a class=pipe>|</a>
                   <a href="#">Disclaimers</a>
               </div>
-          </div> 
-        </div> 
+          </div>
+        </div>
 
-      
 
-    
+
+
   </div>
 </template>
 
-<script>  
+<script>
 
 import buttonList from '../../components/componentList/buttonList.js';
 
   export default {
     components: {
-      
+
     },
     props: {
-      showNavHOME: {             
+      showNavHOME: {
         default: function(){
-          return {            
-            Home: false,                    
+          return {
+            Home: false,
             CRS: true,
             DocumentLibrary: true,
             SOCSCMS: false,
@@ -330,17 +329,17 @@ import buttonList from '../../components/componentList/buttonList.js';
             PRT: false,
             SMART: false,
             CSRS: false,
-            Development: true, 
+            Development: true,
             InProgress: true,
             Initiation: true,
-            CloseOut: true,           
+            CloseOut: true,
           }
         }
       },
-      showNavDMART: {             
+      showNavDMART: {
         default: function(){
-          return {            
-            Home: false,                    
+          return {
+            Home: false,
             CRS: false,
             DocumentLibrary: false,
             SOCSCMS: false,
@@ -351,40 +350,40 @@ import buttonList from '../../components/componentList/buttonList.js';
             Results: true,
             PRT: false,
             SMART: false,
-            CSRS: false,            
+            CSRS: false,
           }
         }
       },
     },
     data: function(){
-      return {       
-        HOME: {          
+      return {
+        HOME: {
           CRS: 'CRS',
-          DocumentLibrary: 'DocumentLibrary',  
+          DocumentLibrary: 'DocumentLibrary',
           Training: 'Training',
           ServiceRequests: 'ServiceRequests',
-          SOCSCMS: 'SOCSCMS',          
+          SOCSCMS: 'SOCSCMS',
           PRT: 'PRT',
           SMART: 'SMART',
           CSRS: 'CSRS',
         },
-        DMART: {          
+        DMART: {
           Protocols: 'Protocols',
-          GrantCapture: 'GrantCapture',  
+          GrantCapture: 'GrantCapture',
           Results: 'Results',
         },
-        buttonList,        
+        buttonList,
         navVisibiity: this.showNav,
         bigIcon: '65px',
         smallIcon: '60px',
         support: '35px',
-          
+
       }
     },
     computed: {
       stateComponent: {
         get: function() {
-          return this.$root.store.state.activeComponent 
+          return this.$root.store.state.activeComponent
         },
         set: function(value) {
           this.$root.store.commit('isActiveComponent', value )
@@ -393,7 +392,7 @@ import buttonList from '../../components/componentList/buttonList.js';
       //Set SiteType 01
       stateType: {
         get: function() {
-          return this.$root.store.state.siteType 
+          return this.$root.store.state.siteType
         },
         set: function(value) {
           this.$root.store.commit('setSiteType', value )
@@ -401,7 +400,7 @@ import buttonList from '../../components/componentList/buttonList.js';
       },
     },
 ///////
-    mounted: function () {      
+    mounted: function () {
       this.stateActiveComponent('');
       //Set SiteType 02
       this.stateSiteType('HOME');
@@ -413,7 +412,7 @@ import buttonList from '../../components/componentList/buttonList.js';
       //set SiteType 03
       stateSiteType (value) {
       return  this.stateType = value
-      } 
+      }
     },
   }
 </script>
@@ -421,7 +420,7 @@ import buttonList from '../../components/componentList/buttonList.js';
 @import url('../../styles/main.css');
 
 
-.DMID-main {  
+.DMID-main {
   width: 1000px;
   min-height: 953px;
   max-height: 953px;
@@ -435,33 +434,33 @@ import buttonList from '../../components/componentList/buttonList.js';
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 35% ,rgba(0, 0, 0, 0.1) 55%,rgba(255,255,255,0.9)85%,rgba(255,255,255,1)95%)!important;
 }
 .SR {
-  color:  rgb(52, 94, 192)!important; 
+  color:  rgb(52, 94, 192)!important;
 }
 .mainContent {
   padding: 10px 20px 10px 10px!important;
   font-family: calibri!important;
 }
 .row {
-  width: 100%;  
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 
 }
-.Row1 {  
+.Row1 {
   height: 142px;
 }
 .Row1 .left {
   height: 102px;
   padding-right: 25px;
-  border-right: 2px solid #999; 
+  border-right: 2px solid #999;
 }
 .Row1 .right {
   height: 129px;
   width: 565px;
   padding-right: 10px;
   padding-left: 25px;
- 
+
 }
 .Row1 .right h3 {
   font-family: 'Cinzel';
@@ -476,7 +475,7 @@ import buttonList from '../../components/componentList/buttonList.js';
   font-family: Calibri;
   font-size: 14px;
 }
-.Row2 {  
+.Row2 {
   height: 191px;
   margin: 15px 0;
   border-top: 1px solid black;
@@ -490,7 +489,7 @@ import buttonList from '../../components/componentList/buttonList.js';
 }
 .Row2 .left {
   flex-grow: 3;
-  
+
 }
 .dmart-label {
   font-family: 'Cinzel';
@@ -507,7 +506,7 @@ import buttonList from '../../components/componentList/buttonList.js';
 .home-Navigation {
   display: flex;
   flex-direction: column;
-  width: 83px;   
+  width: 83px;
 }
 .home-Navigation:hover {
   cursor: pointer;
@@ -515,11 +514,11 @@ import buttonList from '../../components/componentList/buttonList.js';
 .home-Navigation h4 {
   font-family: 'times new roman';
   font-size: 12px;
-  text-align: center; 
+  text-align: center;
   margin: 0 auto;
-  width: 80px; 
+  width: 80px;
 }
-.home-Navigation .dmid-button {  
+.home-Navigation .dmid-button {
   margin: -5px auto 25px auto;
 }
 .icon-spacing {
@@ -534,19 +533,19 @@ import buttonList from '../../components/componentList/buttonList.js';
   background-color: #d9d9e7;
   border: 1px solid #b1b1ce;
   border-radius: 8px;
-  
+
 }
 .dmid-button {
   height: 77px;
   width: 75px;
   border-radius: 6px;
-  
+
 }
-.Row3 { 
+.Row3 {
   height: 138px;
   margin-bottom: 18px;
-  
-  
+
+
 }
 .Row3 .left {
   width: 570px;
@@ -564,7 +563,7 @@ import buttonList from '../../components/componentList/buttonList.js';
   height: 96px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   margin: 5px 5px 0 5px;
   padding: 2px;
 }
@@ -618,8 +617,8 @@ import buttonList from '../../components/componentList/buttonList.js';
 }
 .NIH {
   border-left: 1px solid black;
-  width: 35%; 
-  padding: 0 15px; 
+  width: 35%;
+  padding: 0 15px;
 }
 .request {
   width: 100%;
@@ -643,11 +642,11 @@ import buttonList from '../../components/componentList/buttonList.js';
   color: #0060ff;
   font-size: 12px;
   font-weight: bold;
- 
+
 }
 .Row3 .right {
   background-color: #e0f1d7;
-  width: 297px; 
+  width: 297px;
   border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 10px;
@@ -663,7 +662,7 @@ import buttonList from '../../components/componentList/buttonList.js';
   padding: 5px;
 }
 .Row3 .right input {
-  margin: 5px 2px; 
+  margin: 5px 2px;
   width: 243px;
   height: 21px;
 }
@@ -671,21 +670,21 @@ import buttonList from '../../components/componentList/buttonList.js';
   height: 24px;
   width: 47px;
   margin: 2px;
-  
+
 }
 .btn-SEARCH h4 {
   font-family: 'Calibri';
   font-size: 18px;
-  
+
 }
-.Row4 {  
+.Row4 {
   height: 325px;
 }
 .Row4 .right, .Row4 .center,.Row4 .left {
   display: flex;
   width: 33%;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   flex-grow: 1;
 }
 .Row4 .center {
@@ -702,8 +701,8 @@ import buttonList from '../../components/componentList/buttonList.js';
   padding-bottom: 0px;
   padding-left: 12px;
   font-size: 14px;
-  font-weight: bold; 
-  line-height: 15px; 
+  font-weight: bold;
+  line-height: 15px;
   vertical-align: top;
   font-family: 'Calibri';
   width:100%;
@@ -716,7 +715,7 @@ import buttonList from '../../components/componentList/buttonList.js';
 .news {
   border-top: 10px solid #c3c5f8;
   background-color: #a1a4f3;
-  color: #262a9a;  
+  color: #262a9a;
 }
 .tools {
   border-top: 10px solid #eee;
@@ -725,16 +724,16 @@ import buttonList from '../../components/componentList/buttonList.js';
 }
 .ulHome {
   margin-left: 52px;
-  margin-top: 12px; 
+  margin-top: 12px;
 }
-.rt-nav-home {    
+.rt-nav-home {
   align-items: center;
   padding-right: 5px;
   list-style-type: disc;
   list-style-position: outside;
 }
 .rt-nav-home a {
-border:none !important; 
+border:none !important;
 color:#000!important;
 margin:0 !important;
 text-decoration:none !important;
@@ -755,7 +754,7 @@ font-family: Calibri;
 .support {
   border-top: 10px solid #bfdba8;
   background-color: #9ebb87;
-  color: #244f1e;  
+  color: #244f1e;
 }
 .devSEARCH {
   width: 100;
@@ -787,7 +786,7 @@ font-family: Calibri;
   display: -ms-flexbox;
   display: flex;
   font-size: 10px;
-  
+
 }
 .btn-supSEARCH .navbtn-shadow {
   box-shadow: inset 0px 0px 0.5px 1px rgb(82, 82, 82);
@@ -809,7 +808,7 @@ font-family: Calibri;
   width: 100%;
   height: 49px;
   padding-top: 6px;
-  
+
 }
 .policy {
   display: flex;
@@ -826,15 +825,15 @@ font-family: Calibri;
 }
 .policy a {
   width: unset;
-  font-size: 12px;  
+  font-size: 12px;
   font-weight: bold;
-  text-decoration: none; 
+  text-decoration: none;
 }
 .policy a:visited {
   color: #0060ff;
 }
 .pipe {
-  width: 0px;  
+  width: 0px;
   color: #0060ff;
 }
 #nav-Protocols {
@@ -842,12 +841,12 @@ font-family: Calibri;
 }
 .pentagon {
   background-color: #ccc;
-  height: 37px; 
+  height: 37px;
   width: 43px;
   position: relative;
   display: block;
   &:after {
-    content: "";    
+    content: "";
     position: absolute;
     top: 0;
     left: 43px;
@@ -857,14 +856,14 @@ font-family: Calibri;
     border-right: 11px solid transparent;
     border-bottom: 19px solid transparent;
     border-left: 11px solid black;
-  
+
   }
 }
 .carrot {
   position: relative;
   display: block;
   padding: 5px 15px 5px 5px;
-  margin-left: -10px; 
+  margin-left: -10px;
   //margin-top: 50px;
   &:before, &:after {
     content: "";

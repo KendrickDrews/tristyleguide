@@ -1,6 +1,6 @@
 <template>
   <div class="DMID-main">
-    <div style="position: relative; width: 100%;">
+    <div class="crs--home">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
@@ -219,6 +219,10 @@
 
 </script>
 <style>
+.crs--home {
+  position: relative;
+  width: 100%;
+}
 .locationContainer {
   background-color: var(--green-background);
   background-image: var(--content-gradient);

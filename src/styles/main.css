@@ -239,7 +239,9 @@ hr {
   padding: 5px 10px 0px 10px;
   
 }
-
+.brand-graphic {
+  margin-top:15px;
+}
 .main-headIcon {    
   display: flex;
   justify-content: center;
@@ -249,6 +251,17 @@ hr {
   padding: 5px;    
   margin: 0;
   position: relative;
+}
+.main-head--container {
+  margin-bottom: 10px;
+}
+.main-headIcon--pos1 {
+  position: absolute;
+}
+.main-headIcon--pos2 {
+  position: relative; 
+  left: 3px; 
+  top: -5px;
 }
 .main-headRight {
   display: flex;

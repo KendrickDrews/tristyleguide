@@ -23,8 +23,6 @@
         </ul>
       </div>
     </aside>
-
-
     <!-- Click Controls for StyleGuide MainMenu -->
     <div
       class="mainMenuControl"
@@ -65,8 +63,6 @@
       class="styleguide-Content"
       v-bind:class="[{ 'sgContent-mirror' : SPLIT(ViewLocation) === 'DMID' }, siteBG]"
     >
-
-
 <!-- Display Component -->
       <div class="contentArea" id="scrollContainer">
         <div
@@ -77,16 +73,13 @@
             class="componentContent resultsMargin"
             v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
-
           <router-view></router-view>
-
           </div>
           <div
             v-else
             class="componentContent"
             v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
-
           <router-view></router-view>
 
           </div>

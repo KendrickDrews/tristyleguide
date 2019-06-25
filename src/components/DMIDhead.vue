@@ -1,9 +1,9 @@
 <template>
-<div style="margin-bottom: 10px;">
+<div class="main-head--container">
     <div class="main-head">
         <div class="main-headContent">
-            <div style="position: absolute;">
-                <div style="position: relative; left: 3px; top: -5px;">
+            <div class="main-headIcon--pos1">
+                <div class="main-headIcon--pos2">
                     <dmidbutton
                         :button-color="buttonName"
                         :buttonName="buttonName"
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="main-headTop icon-space">
-                <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" style="margin-top:15px;"/>
+                <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" class="brand-graphic"/>
                 <div class="main-headRight">
                     <navSearch></navSearch>
                     <navUser></navUser>
