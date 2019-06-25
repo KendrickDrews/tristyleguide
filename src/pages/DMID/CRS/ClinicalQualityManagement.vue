@@ -285,7 +285,7 @@
         <div class="CQMP-form--row content--flex">
           <label for=""> Affiliated Site </label>
           <div class="select-list">
-            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Protocol(s) </div>
+            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
             <div class="select-options" :class="{ 'hidden': dropDownHidden }">
               <div class="option" v-for="n in 10" :key="n">
                 <input type="checkbox" name="protocols" :id="'option' + n" value=""/>
@@ -965,12 +965,13 @@
   width: unset;
 }
 .select-list .select-options {
-  margin-top: 5px;
+  margin-top: -105px;
   position: absolute;
   z-index: 500;
-  border: 1px solid #eaeaec;
+  border: 1px solid #666;
   background: #fff;
   max-height: 200px;
+  right: -140px;
   overflow: scroll;
 }
 .select-options::-webkit-scrollbar {
@@ -988,6 +989,7 @@
 .select-list .select-options .option label {
   display: inline-block;
   width: calc(100% - 28px);
+  vertical-align: middle;
   padding: 10px 30px 10px 10px;
 }
 .select-list .select-options .option:hover {
@@ -995,5 +997,6 @@
 }
 .select-list .select-options .option input {
   margin: 10px 0 12px 15px;
+  vertical-align: middle;
 }
 </style>
