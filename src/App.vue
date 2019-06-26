@@ -1,61 +1,36 @@
 <template>
-  <div class="container"
-    v-bind:class="{'container-mirror' : SPLIT(ViewLocation) === 'DMID'  }"
-  >
-    <aside
-    class="styleguide-Sidebar"
-    v-bind:class="{ 'sg-closed' : !open }"
-    >
-      <div
-      class="sg-openList"
-      v-bind:class="{ 'closed' : !open }"
-      >
+  <div class="container" v-bind:class="{'container-mirror' : SPLIT(ViewLocation) === 'DMID'  }">
+    <aside class="styleguide-Sidebar" v-bind:class="{ 'sg-closed' : !open }">
+      <div class="sg-openList" v-bind:class="{ 'closed' : !open }">
         <h2 class="styleguide-title"> DMID CROMS </h2>
         <h3 class="styleguide-title"> Styleguide </h3>
         <h3></h3>
         <ul>
-              <router-link tag="li" to="/"> Home </router-link>
-              <router-link tag="li" to="/about">About</router-link>
-              <router-link tag="li" to="/components">Components</router-link>
-              <router-link tag="li" to="/test">test</router-link>
-              <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
-
+          <router-link tag="li" to="/"> Home </router-link>
+          <router-link tag="li" to="/about">About</router-link>
+          <router-link tag="li" to="/components">Components</router-link>
+          <router-link tag="li" to="/test">test</router-link>
+          <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
         </ul>
       </div>
     </aside>
     <!-- Click Controls for StyleGuide MainMenu -->
-    <div
-      class="mainMenuControl"
-      v-on:click="slideNav"
-      v-bind:class="{ 'control-closed' : !open }"
-    >
+    <div class="mainMenuControl" v-on:click="slideNav" v-bind:class="{ 'control-closed' : !open }">
       <img src='https:icon.now.sh/chevron/32/left'/>
     </div>
 
-    <div
-      class="styleguide-headingContainer"
-      v-bind:class="{'sghContainer-mirror' : SPLIT(ViewLocation) === 'DMID','sgHeading-closed' : !open  }"
-    >
-
-      <div
-      class="styleguide-heading"
-
-      >
+    <div class="styleguide-headingContainer" v-bind:class="{'sghContainer-mirror' : SPLIT(ViewLocation) === 'DMID','sgHeading-closed' : !open  }">
+      <div class="styleguide-heading">
         <h2 v-if="this.ViewLocation === '/'" class="location-heading"> Home </h2>
         <h2 v-else-if="SPLIT(ViewLocation) === 'DMID'" class="location-heading"> </h2>
         <h2 v-else class="location-heading"> {{ this.ViewLocation | capitalize }} </h2>
       <!-- Renders active component based on scroll when on components page, displays blank for other pages -->
-        <h3 class="location-heading"
-          v-if="ViewLocation === '/components'"
-        >
+        <h3 class="location-heading" v-if="ViewLocation === '/components'">
         {{ this.$root.store.state.activeComponent   }}
         </h3>
         <h3 class="location-heading" v-else>  </h3>
-
         <h4 class="location-heading">   </h4>
-
       </div>
-
     </div>
     <!-- The slot is for the 'name.vue' component content -->
     <div
@@ -65,23 +40,20 @@
     >
 <!-- Display Component -->
       <div class="contentArea" id="scrollContainer">
-        <div
-          class="content smooth"
-        >
+        <div class="content smooth">
           <div
             v-if="siteBG == 'ResultsPage'"
             class="componentContent resultsMargin"
             v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
-          <router-view></router-view>
+            <router-view></router-view>
           </div>
           <div
             v-else
             class="componentContent"
             v-bind:class="{'componentContent-mirror' : SPLIT(ViewLocation) === 'DMID'}"
           >
-          <router-view></router-view>
-
+            <router-view></router-view>
           </div>
         </div>
       </div>
@@ -92,11 +64,8 @@
 //import routes from './routes.js'
 export default {  //name: 'mainLayout',
   components: {
-
   },
   props: {
-
-
   },
 ////
   data: function(){
@@ -106,7 +75,6 @@ export default {  //name: 'mainLayout',
       topOffset: 0,
     }
   },
-
 ////
   computed: {
     rootComponent () {
@@ -155,10 +123,8 @@ export default {  //name: 'mainLayout',
       return splitString[1];
     }
   }
-
-  }
+}
 </script>
-
 <style scoped>
  body {
    margin: 0px;

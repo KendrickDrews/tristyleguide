@@ -138,48 +138,45 @@
   import buttonList from '../components/componentList/buttonList.js';
 
 export default {
-    components: {
-      navSearch,
-      navUser,
-      buttonList
+  components: {
+    navSearch,
+    navUser,
+    buttonList
+  },
+  data: function(){
+    return {
+      buttonList: buttonList,
+      navVisibiity: this.showNav,
+      bigIcon: '75px',
+      smallIcon: '27px',
+    }
+  },
+  props: {
+    buttonName: {
+      default: 'CRS'
     },
-
-    data: function(){
+    type: {
+      default: 'CRS',
+    },
+    showNav:{
+      default: function(){
         return {
-            buttonList: buttonList,
-            navVisibiity: this.showNav,
-            bigIcon: '75px',
-            smallIcon: '27px',
-
+          Home: true,
+          CRS: true,
+          DocumentLibrary: true,
+          SOCSCMS: true,
+          Training: true,
+          ServiceRequests: true,
+          GrantCapture: true,
+          Protocols: true,
+          Results: false,
+          PRT: false,
+          SMART: false,
+          CSRS: false,
         }
-    },
-    props: {
-        buttonName: {
-            default: 'CRS'
-        },
-        type: {
-            default: 'CRS',
-        },
-        showNav:{
-
-            default: function(){
-                return {
-                    Home: true,
-                    CRS: true,
-                    DocumentLibrary: true,
-                    SOCSCMS: true,
-                    Training: true,
-                    ServiceRequests: true,
-                    GrantCapture: true,
-                    Protocols: true,
-                    Results: false,
-                    PRT: false,
-                    SMART: false,
-                    CSRS: false,
-                }
-            }
-        }
-    },
+      }
+    }
+  },
 };
 
 </script>

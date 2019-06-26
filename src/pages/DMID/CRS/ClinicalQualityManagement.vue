@@ -121,16 +121,13 @@
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
           <select>
-            <option value="volvo">Site 1</option>
-            <option value="saab">Site 2</option>
-            <option value="mercedes">Site 3</option>
-            <option value="audi">Site 4</option>
+            <option :value="n" v-for="n in 5" :key="n">{{ generateSiteName((n-1),(n-1)) }}</option>
           </select>
         </div>
         <!-- CQMP Reviewed By - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Reviewed By </label>
-          <div class="checkbox--row">
+          <div class="checkbox--row row--column">
             <div class="checkbox--container">
               <input type="checkbox" name="Site 1" id="Site1LeadSite" value="Site1"/>
               <label for="Site1LeadSite"> Site 1 </label>
@@ -148,17 +145,20 @@
         <!-- Affiliated Sites - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Affiliated Sites </label>
-          <select>
-            <option value="volvo">Site 1</option>
-            <option value="saab">Site 2</option>
-            <option value="mercedes">Site 3</option>
-            <option value="audi">Site 4</option>
-          </select>
+          <div class="select-list">
+            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
+            <div class="select-options" :class="{ 'hidden': dropDownHidden }">
+              <div class="option" v-for="n in 5" :key="n">
+                <input type="checkbox" name="protocols" :id="'option' + n" value=""/>
+                <label :for="'option' + n"> {{ generateSiteName((n-1),(n-1)) }} </label>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- CQMP Reviewed By - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Reviewed By </label>
-          <div class="checkbox--row">
+          <div class="checkbox--row row--column">
             <div class="checkbox--container">
               <input type="checkbox" name="Site 1" id="Site1AffSite" value="Site1"/>
               <label for="Site1AffSite"> Site 1 </label>
@@ -190,7 +190,7 @@
         <!-- Group Affiliation - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Group Affiliation </label>
-          <div class="checkbox--row">
+          <div class="checkbox--row row--column">
             <div class="checkbox--container" v-for="item in groupAffiliation" :key="item.id">
               <input type="radio" name="groupAffiliation" :id="item.title | concatenate" :value="item.title | concatenate"/>
               <label :for="item.title | concatenate" >{{ item.title }} </label>
@@ -219,7 +219,7 @@
         <!-- CQMP Status - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Status </label>
-          <div class="checkbox--row">
+          <div class="checkbox--row row--column">
             <div class="checkbox--container" v-for="item in CQMPStatus" :key="item.id">
               <input type="radio" name="CQMPStatus" :id="item.title | concatenate | plus('1')" :value="item.title | concatenate | plus('1')"/>
               <label :for="item.title | concatenate | plus('1')">{{ item.title }} </label>
@@ -263,49 +263,7 @@
         <!-- Lead Site - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
-          <select>
-            <option :value="n" v-for="n in 5" :key="n">{{ generateSiteName((n-1),(n-1)) }}</option>
-          </select>
-        </div>
-        <!-- CQMP reviewed by - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> CQMP Reviewed by Lead Site </label>
-           <div class="checkbox--row">
-              <div class="checkbox--container">
-              <input type="radio" name="CQMPPLead" id="YesProtLead" value="Yes" checked>
-              <label for="YesProtLead" >Yes </label>
-            </div>
-            <div class="checkbox--container">
-              <input type="radio" name="CQMPPLead" id="NoProtLead" value="No">
-              <label for="NoProtLead">No </label>
-            </div>
-          </div>
-        </div>
-        <!-- Affiliated Sites - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Affiliated Site </label>
-          <div class="select-list">
-            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
-            <div class="select-options" :class="{ 'hidden': dropDownHidden }">
-              <div class="option" v-for="n in 10" :key="n">
-                <input type="checkbox" name="protocols" :id="'option' + n" value=""/>
-                <label :for="'option' + n"> {{ generateSiteName(0,4) }} </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- CQMP reviewed by - Protocol Specific -->
-        <div class="CQMP-form--row content--flex">
-          <div>
-            <label for=""> CQMP Reviewed by Affiliated Sites </label>
-            <p class="subText"> Please select all that apply</p>
-          </div>
-          <div class="checkbox--row">
-            <div class="checkbox--container" v-for="(item, index) in todos" :key="index">
-              <input type="checkbox" :name="item.title | concatenate" :id="item.title | concatenate" value="Site2"/>
-              <label :for="item.title | concatenate" >{{ item.title }} </label>
-            </div>
-          </div>
+          <input type="text" v-bind:value="generateSiteName(0,3)" disabled=""/>
         </div>
         <!-- Funding Agreement - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
@@ -337,6 +295,48 @@
           <label for=""> DMID IND Yes/No </label>
           <input type="text" value="" disabled=""/>
         </div>
+        <!-- CQMP reviewed by - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Reviewed by Lead Site </label>
+            <div class="checkbox--row">
+              <div class="checkbox--container">
+                <input type="radio" name="CQMPPLead" id="YesProtLead" value="Yes" checked>
+                <label for="YesProtLead"> Yes </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="radio" name="CQMPPLead" id="NoProtLead" value="No">
+                <label for="NoProtLead"> No </label>
+            </div>
+          </div>
+        </div>
+        <!-- Affiliated Sites - Protocol Specific -->
+        <div class="CQMP-form--row content--flex">
+          <div>
+          <label for=""> Affiliated Site </label>
+          <!-- <div class="select-list">
+            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
+            <div class="select-options" :class="{ 'hidden': dropDownHidden }">
+              <div class="option" v-for="n in 10" :key="n">
+                <input type="checkbox" name="protocols" :id="'option' + n" value=""/>
+                <label :for="'option' + n"> {{ generateSiteName(0,4) }} </label>
+              </div>
+            </div>
+          </div> -->
+        <!-- </div> -->
+        <!-- CQMP reviewed by - Protocol Specific -->
+        <!-- <div class="CQMP-form--row content--flex"> -->
+          <!-- <div> -->
+            <br>
+            <label for=""> CQMP Reviewed by Affiliated Sites </label>
+            <p class="subText"> Please select all that apply</p>
+          </div>
+          <div class="checkbox--row row--column">
+            <div class="checkbox--container" v-for="(item, index) in siteList" :key="index" :class="item.index">
+              <input type="checkbox" :name="item.title | concatenate" :id="item.title | concatenate" :value="item.title | concatenate" v-model="selected[index]" />
+              <label :for="item.title | concatenate" >{{ item.title }}</label>
+            </div>
+          </div>
+        </div>
         <!-- Date of Initial Acceptance - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Initial Acceptance Date </label>
@@ -359,7 +359,7 @@
         <!-- CQMP Status - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Status </label>
-          <div class="checkbox--row">
+          <div class="checkbox--row row--column">
             <div class="checkbox--container" v-for="item in CQMPStatus" :key="item.id +'2'">
               <input type="radio" name="CQMPStatus2" :id="item.title | concatenate " :value="item.title | concatenate"/>
               <label :for="item.title | concatenate " >{{ item.title }} </label>
@@ -432,10 +432,11 @@
         ],
         protocols: [],
         newTodoText: '',
-        todos: [
-          { id: 1, title: 'Site 1', },
-          { id: 2, title: 'Site 2', },
-          { id: 3, title: 'Site 3' }
+        siteList: [
+          { id: 1, title: 'Crucell Holland BV', },
+          { id: 2, title: 'Emory University', },
+          { id: 3, title: 'Mayo Clinic', },
+          { id: 4, title: 'Quintiles, Inc.' }
         ],
         CQMPStatus: [
           { id: 1, title: 'Accepted Initial', },
@@ -459,6 +460,7 @@
         protocolHidden: true,
         siteHidden: true,
         dropDownHidden: true,
+        selected: [],
       };
     },
 ///////
@@ -479,8 +481,11 @@
     },
 ///////
     methods: {
+      isSelected: function() {
+        return this.selected;
+      },
       addNewTodo: function () {
-        this.todos.push({
+        this.siteList.push({
             id: this.nextTodoId++,
             title: this.newTodoText
         })
@@ -594,8 +599,8 @@
           sites[0] = "Crucell Holland BV";
           sites[1] = "Emory University";
           sites[2] = "Mayo Clinic";
-          sites[3] = "N/A";
-          sites[4] = "Quintiles, Inc.";
+          sites[3] = "Quintiles, Inc.";
+          sites[4] = "N/A";
 
         //var entityNum = ;
         var siteName = sites[this.getRandomInt(start, end)];
@@ -658,6 +663,7 @@
 
 </script>
 <style>
+
 .subText {
   padding: 0px!important;
   font-style: italic;
@@ -899,10 +905,13 @@
   font-size: 0.875rem;
   vertical-align: middle;
 }
+.CQMP-form--row > label {
+  margin-top: 5px;
+}
 .CQMP-form--row input, .CQMP-form--row select {
   border-radius: 4px;
-  height: 30px;
-  padding: 7px;
+  height: 28px;
+  padding: 5px;
   width: 375px;
   border: 1px solid #666;
 }
@@ -914,21 +923,28 @@
   width: 375px;
 }
 .checkbox--container {
-  border: 1px solid blue;
+  border: 1px solid #666;
   border-radius: 5px;
-  padding: 5px 7px;
-  height: 30px;
-  margin: 5px 5px;
+  height: 28px;
+  margin: 5px 0px;
+  background-color: white;
 }
 .checkbox--container input {
   height: 15px;
   width: 15px;
   vertical-align: middle;
+  margin: 5px 0 5px 7px;
   }
 .checkbox--container label {
-  padding-left: 5px;
+  padding: 5px 7px 5px 5px;
+  display: inline-block;
+  width: calc(100% - 22px);
+  font-weight: unset;
 }
-
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+  font-weight: bold;
+}
 /* Multi-select Drop Down List */
 .select-title {
   border-radius: 4px;
@@ -999,4 +1015,8 @@
   margin: 10px 0 12px 15px;
   vertical-align: middle;
 }
+.row--column {
+  flex-direction: column;
+}
+
 </style>
