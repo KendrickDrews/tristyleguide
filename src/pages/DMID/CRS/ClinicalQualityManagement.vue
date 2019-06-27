@@ -54,7 +54,7 @@
         </div>
         <!-- GroupAffiliation -->
         <div class="content--flex ">
-          <p class="console-col--GroupAffiliation content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+          <p class="console-col--GroupAffiliation content--border" >{{ randomAffiliation(0,6) }}</p>
         </div>
         <!-- DMIDIND -->
         <div class="content--flex ">
@@ -116,16 +116,32 @@
       </div>
       <div class="horizontal-line short"></div>
 <!-- Site Specific Form -->
-      <div class="CQMP-form--fields siteSpecific" :class="{ 'hidden': siteHidden }">
+      <div class="CQMP-form--fields form--bg siteSpecific" :class="{ 'hidden': siteHidden }">
         <!-- Lead Site - Site Specific -->
-        <div class="CQMP-form--row content--flex">
-          <label for=""> Lead Site </label>
-          <select>
-            <option :value="n" v-for="n in 5" :key="n">{{ generateSiteName((n-1),(n-1)) }}</option>
-          </select>
-        </div>
+        <div class="CQMP-form--row">
+          <div class="CQMP-form--col content--flex">
+            <label for=""> Lead Site(s) </label>
+            <autocomplete :items="siteMasterList" />
+          </div>        
+          <div class="checkbox--row row--column">
+            <label for=""> CQMP Reviewed By </label>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 1" id="Site1LeadSite" value="Site1"/>
+                <label for="Site1LeadSite"> Site 1 </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 3" id="Site2LeadSite" value="Site1"/>
+                <label for="Site2LeadSite"> Site 2 </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 4" id="Site3LeadSite" value="Site1"/>
+                <label for="Site3LeadSite"> Site 3 </label>
+              </div>
+            </div>
+          </div>
+        <div class="form--separator"></div>
         <!-- CQMP Reviewed By - Site Specific -->
-        <div class="CQMP-form--row content--flex">
+        <!-- <div class="CQMP-form--row content--flex ">
           <label for=""> CQMP Reviewed By </label>
           <div class="checkbox--row row--column">
             <div class="checkbox--container">
@@ -141,9 +157,31 @@
               <label for="Site3LeadSite"> Site 3 </label>
             </div>
           </div>
-        </div>
+        </div> -->
+        <!-- <div class="form--separator"></div> -->
         <!-- Affiliated Sites - Site Specific -->
-        <div class="CQMP-form--row content--flex">
+        <div class="CQMP-form--row">
+          <div class="CQMP-form--col content--flex">
+            <label for=""> Affiliated Site(s) </label>
+            <autocomplete :items="siteMasterList" />
+          </div>        
+          <div class="checkbox--row row--column">
+            <label for=""> CQMP Reviewed By </label>
+              <div class="checkbox--container">
+              <input type="checkbox" name="Site 1" id="Site1AffSite" value="Site1"/>
+              <label for="Site1AffSite"> Site 1 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 3" id="Site2AffSite" value="Site1"/>
+              <label for="Site2AffSite"> Site 2 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 4" id="Site3AffSite" value="Site1"/>
+              <label for="Site3AffSite"> Site 3 </label>
+            </div>
+            </div>
+          </div>
+        <!-- <div class="CQMP-form--row content--flex">
           <label for=""> Affiliated Sites </label>
           <div class="select-list">
             <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
@@ -154,9 +192,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+        <!-- <div class="form--separator"></div> -->
         <!-- CQMP Reviewed By - Site Specific -->
-        <div class="CQMP-form--row content--flex">
+        <!-- <div class="CQMP-form--row  content--flex">
           <label for=""> CQMP Reviewed By </label>
           <div class="checkbox--row row--column">
             <div class="checkbox--container">
@@ -172,7 +211,117 @@
               <label for="Site3AffSite"> Site 3 </label>
             </div>
           </div>
+        </div> -->
+      </div>
+      <div class="CQMP-form--fields">
+        <button class="site-form--searchbox" :class="{ 'hidden': siteHidden }"> Search </button>
+      </div>
+      <div class="CQMP-page--container siteTable"  :class="{ 'hidden': siteHidden }">
+        <div class="console-body--columnHeaders">
+          <div v-for="item in columnListSite" v-bind:key="item.id" v-bind:id="item.id" class="console-col--Header">
+            <p v-bind:class="item.id"> {{ item.name }} </p>
+          </div>
         </div>
+        <div class="CQMP-table--container">
+          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">  
+            <!-- Edit-->
+            <div class="content--flex content--border console-col--Edit">          
+              <input class="edit" type="checkbox" :name="'editSite' + n" :id="'editSite' + n" :value="'searchedSiteTable'"/>
+            </div>      
+            <!-- LeadSite -->
+            <div class="content--flex ">
+              <p class="console-col--LeadSite content--border">{{ generateSiteName(0,4) }}</p>
+            </div>
+            <!-- AffiliatedSite -->
+            <div class="content--flex ">
+              <p class="console-col--AffiliatedSite content--border" >{{ generateSiteName(0,4) }}</p>
+            </div>
+            <!-- FundingAgreement -->
+            <div class="content--flex ">
+              <p class="console-col--FundingAgreement content--border" >Contract</p>
+            </div>        
+            <!-- GroupAffiliation -->
+            <div class="content--flex ">
+              <p class="console-col--GroupAffiliation content--border" >{{ randomAffiliation(0,6) }}</p>
+            </div>
+            <!-- CQMPStatus -->
+            <div class="content--flex">
+              <p class="console-col--CQMPStatus content--border" > Waiting </p>
+            </div>
+            <!-- EffectiveDate -->
+            <div class="content--flex ">
+              <p class="console-col--EffectiveDate  content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- VersionNumber -->
+            <div class="content--flex ">
+              <p class="console-col--VersionNumber content--border" >{{ getRandomInt(1,3) }}.0</p>
+            </div>
+            <!-- VersionDT -->
+            <div class="content--flex ">
+              <p class="console-col--VersionDT content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- ReviewerComments -->
+            <div class="content--flex ">
+              <p class="console-col--ReviewerComments content--border" > Lorem Ipsum </p>
+            </div>        
+          </div>
+        </div>
+      </div>
+      <div class="CQMP-form--fields form--bg siteSpecific" :class="{ 'hidden': siteHidden }">
+        <!-- Lead Site - Site Specific -->
+        <!-- <div class="CQMP-form--row content--flex">
+          <label for=""> Lead Site </label>
+            <autocomplete :items="siteMasterList" />
+        </div> -->
+        <!-- CQMP Reviewed By - Site Specific -->
+        <!-- <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Reviewed By </label>
+          <div class="checkbox--row row--column">
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 1" id="Site1LeadSite" value="Site1"/>
+              <label for="Site1LeadSite"> Site 1 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 3" id="Site2LeadSite" value="Site1"/>
+              <label for="Site2LeadSite"> Site 2 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 4" id="Site3LeadSite" value="Site1"/>
+              <label for="Site3LeadSite"> Site 3 </label>
+            </div>
+          </div>
+        </div> -->
+        <!-- Affiliated Sites - Site Specific -->
+        <!-- <div class="CQMP-form--row content--flex">
+          <label for=""> Affiliated Sites </label>
+          <div class="select-list">
+            <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
+            <div class="select-options" :class="{ 'hidden': dropDownHidden }">
+              <div class="option" v-for="n in 5" :key="n">
+                <input type="checkbox" name="protocols" :id="'option' + n" value=""/>
+                <label :for="'option' + n"> {{ generateSiteName((n-1),(n-1)) }} </label>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- CQMP Reviewed By - Site Specific -->
+        <!-- <div class="CQMP-form--row content--flex">
+          <label for=""> CQMP Reviewed By </label>
+          <div class="checkbox--row row--column">
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 1" id="Site1AffSite" value="Site1"/>
+              <label for="Site1AffSite"> Site 1 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 3" id="Site2AffSite" value="Site1"/>
+              <label for="Site2AffSite"> Site 2 </label>
+            </div>
+            <div class="checkbox--container">
+              <input type="checkbox" name="Site 4" id="Site3AffSite" value="Site1"/>
+              <label for="Site3AffSite"> Site 3 </label>
+            </div>
+          </div>
+        </div> -->
         <!-- Funding Agreement - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Funding Agreement </label>
@@ -187,6 +336,7 @@
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Group Affiliation - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Group Affiliation </label>
@@ -197,6 +347,7 @@
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Date of Initial Acceptance - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Date of Initial Acceptance </label>
@@ -204,11 +355,13 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Version Number - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Number <span class="error">*</span></label>
           <input type="text"/>
         </div>
+        <div class="form--separator"></div>
         <!-- Version Date - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Date </label>
@@ -216,6 +369,7 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- CQMP Status - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Status </label>
@@ -226,6 +380,7 @@
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Effective Date - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Effective Date </label>
@@ -233,11 +388,13 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Version Number - Site Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Number <span class="error">*</span> </label>
           <input type="text"/>
         </div>
+        <div class="form--separator"></div>
         <!-- Version Date - Site Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Date </label>
@@ -245,6 +402,7 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Reviewer Comments - Site Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Reviewer Comments </label>
@@ -252,49 +410,113 @@
         </div>
       </div>
 <!-- Protocol Specific Form Elements -->
-      <div class="CQMP-form--fields protocolSpecific" :class="{ 'hidden': protocolHidden }">
+      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }">
         <!-- Protocol Number - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Protocol Number </label>
-          <select>
-            <option v-for="(item, index) in protocols" v-bind:key="index" v-bind:value="item"> {{ item }} </option>
-          </select>
+          <autocomplete :items="protocols" />
         </div>
+        <div class="form--separator thin"></div>
         <!-- Lead Site - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
           <input type="text" v-bind:value="generateSiteName(0,3)" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- Funding Agreement - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Funding Agreement </label>
           <input type="text" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- DMID Branch - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> DMID Branch </label>
           <input type="text" v-bind:value="generateBranch(0,4)" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- DMID Clinical Project Manager - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> DMID Clinical Project Manager </label>
           <input type="text" v-bind:value="randomCPM(0,4)" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- Resource Level - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Resource Level </label>
           <input type="text" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- Group Affiliation - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Group Affiliation </label>
           <input type="text" disabled=""/>
         </div>
+        <div class="form--separator thin"></div>
         <!-- DMID IND Yes/No - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> DMID IND Yes/No </label>
           <input type="text" value="" disabled=""/>
         </div>
+      </div>
+      <!-- Returned Active CQMPs -->
+      <div class="CQMP-form--fields" :class="{ 'hidden': protocolHidden }">
+        <h2> Active CQMP's for Protocol </h2>
+        <div class="horizontal-line "></div>
+      </div>
+      <!-- Start of 'Returned Table' -->
+      <div class="CQMP-page--container protocolTable"  :class="{ 'hidden': protocolHidden }">
+        <div class="console-body--columnHeaders">
+          <div v-for="item in columnListProtocols" v-bind:key="item.id" v-bind:id="item.id" class="console-col--Header">
+            <p v-bind:class="item.id"> {{ item.name }} </p>
+          </div>
+        </div>
+        <div class="CQMP-table--container">
+          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">  
+            <!-- Edit-->
+            <div class="content--flex content--border console-col--Edit">          
+              <input class="edit" type="checkbox" :name="'editSite' + n" :id="'editSite' + n" :value="'searchedSiteTable'"/>
+            </div>            
+            <!-- AffiliatedSite -->
+            <div class="content--flex ">
+              <p class="console-col--AffiliatedSite content--border" >{{ generateSiteName(0,4) }}</p>
+            </div>        
+            <!-- AcceptDate -->
+            <div class="content--flex ">
+              <p class="console-col--AcceptDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- VersionNum -->
+            <div class="content--flex ">
+              <p class="console-col--VersionNum content--border" >{{ getRandomInt(1,3) }}.0</p>
+            </div>
+            <!-- VersionDate -->
+            <div class="content--flex ">
+              <p class="console-col--VersionDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- CQMPStatus -->
+            <div class="content--flex">
+              <p class="console-col--CQMPStatus content--border" > Waiting </p>
+            </div>
+            <!-- EffectiveDate -->
+            <div class="content--flex ">
+              <p class="console-col--EffectiveDate  content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- VersionNumber -->
+            <div class="content--flex ">
+              <p class="console-col--VersionNumber content--border" >{{ getRandomInt(1,3) }}.0</p>
+            </div>
+            <!-- VersionDT -->
+            <div class="content--flex ">
+              <p class="console-col--VersionDT content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
+            </div>
+            <!-- ReviewerComments -->
+            <div class="content--flex ">
+              <p class="console-col--ReviewerComments content--border" > Lorem Ip... </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }">        
         <!-- CQMP reviewed by - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Reviewed by Lead Site </label>
@@ -309,10 +531,11 @@
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Affiliated Sites - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <div>
-          <label for=""> Affiliated Site </label>
+          <label for=""> Affiliated Site(s) </label>
           <!-- <div class="select-list">
             <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
             <div class="select-options" :class="{ 'hidden': dropDownHidden }">
@@ -333,10 +556,11 @@
           <div class="checkbox--row row--column">
             <div class="checkbox--container" v-for="(item, index) in siteList" :key="index" :class="item.index">
               <input type="checkbox" :name="item.title | concatenate" :id="item.title | concatenate" :value="item.title | concatenate" v-model="selected[index]" />
-              <label :for="item.title | concatenate" >{{ item.title }}</label>
+              <label :for="item.title | concatenate" >{{ item.num }} - {{ item.title }}</label>
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Date of Initial Acceptance - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Initial Acceptance Date </label>
@@ -344,11 +568,13 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Version Number - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Number <span class="error">*</span> </label>
           <input type="text"/>
         </div>
+        <div class="form--separator"></div>
         <!-- Version Date - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Date </label>
@@ -356,6 +582,7 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- CQMP Status - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> CQMP Status </label>
@@ -366,6 +593,7 @@
             </div>
           </div>
         </div>
+        <div class="form--separator"></div>
         <!-- Effective Date - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Effective Date </label>
@@ -373,11 +601,13 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Version Number - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Number <span class="error">*</span> </label>
           <input type="text"/>
         </div>
+        <div class="form--separator"></div>
         <!-- Version Date - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Version Date </label>
@@ -385,6 +615,7 @@
             value="2018-07-22"
             min="2018-01-01" max="2018-12-31">
         </div>
+        <div class="form--separator"></div>
         <!-- Reviewer Comments - Protocol Specific-->
         <div class="CQMP-form--row content--flex">
           <label for=""> Reviewer Comments </label>
@@ -398,11 +629,13 @@
 </template>
 
 <script>
-
+import autocomplete from '../../../components/autoComplete.vue'
+import siteMaster from '../CRS/siteMaster.js'
   export default {
     name: 'ClinicalQualityManagement',
     components: {
-
+      autocomplete,
+      siteMaster
     },
     data () {
       return {
@@ -430,13 +663,37 @@
           {id: 'DMIDAcceptVersion', name: 'DMID Accepted Version'},
           {id: 'Monitored', name: 'Monitored by ICON?'},
         ],
+        columnListSite: [  
+          {id: 'Edit', name: 'Edit'},        
+          {id: 'LeadSite', name: 'Lead Site'},
+          {id: 'AffiliatedSite', name: 'Affiliated Site'},
+          {id: 'FundingAgreement', name: 'Funding Agreement'},          
+          {id: 'GroupAffiliation', name: 'Group Affiliation'}, 
+          {id: 'CQMPStatus', name: 'CQMP Status'},
+          {id: 'EffectiveDate', name: 'Effective Date'},
+          {id: 'VersionNumber', name: 'Version Number'},
+          {id: 'VersionDT', name: 'Version Date', },
+          {id: 'ReviewerComments', name: 'Reviewer Comments'},          
+        ],
+        columnListProtocols: [
+          {id: 'Edit', name: 'Edit'},
+          {id: 'AffiliatedSite', name: 'Affiliated Site'},
+          {id: 'AcceptDate', name: 'Accepted Date'},
+          {id: 'VersionNum', name: 'Version Number'},
+          {id: 'VersionDate', name: 'Version Date'},
+          {id: 'CQMPStatus', name: 'CQMP Status'},
+          {id: 'EffectiveDate', name: 'Effective Date'},
+          {id: 'VersionNumber', name: 'Version Number'},
+          {id: 'VersionDT', name: 'Version Date'},
+          {id: 'ReviewerComments', name: 'Reviewer Comments'},          
+        ],
         protocols: [],
         newTodoText: '',
         siteList: [
-          { id: 1, title: 'Crucell Holland BV', },
-          { id: 2, title: 'Emory University', },
-          { id: 3, title: 'Mayo Clinic', },
-          { id: 4, title: 'Quintiles, Inc.' }
+          { id: 1, title: 'Crucell Holland BV', num: 'MI-0023', },
+          { id: 2, title: 'Emory University', num: 'MI-1234', },
+          { id: 3, title: 'Mayo Clinic', num: 'MI-4265', },
+          { id: 4, title: 'Quintiles, Inc.', num: 'MI-2222', }
         ],
         CQMPStatus: [
           { id: 1, title: 'Accepted Initial', },
@@ -461,6 +718,8 @@
         siteHidden: true,
         dropDownHidden: true,
         selected: [],
+        siteMasterList: Object.keys(siteMaster).map(function(key) {
+           return siteMaster[key] }),        
       };
     },
 ///////
@@ -471,20 +730,20 @@
       currentProtocolValue: function() {
         return this.currentProtocol
       },
-
     },
 ///////
     mounted: function () {
       this.generateProtocolArray();
       this.setCurrentProtocol();
       this.isValueEven();
+
     },
 ///////
     methods: {
       isSelected: function() {
         return this.selected;
       },
-      addNewTodo: function () {
+      addNewTodo: function() {
         this.siteList.push({
             id: this.nextTodoId++,
             title: this.newTodoText
@@ -540,6 +799,7 @@
           //month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
+          year = year.toString().substr(-2);
           var month = new Array();
 
           month[0] = "Jan";
@@ -589,6 +849,22 @@
 
         //var entityNum = ;
         var entityName = CPM[this.getRandomInt(start, end)];
+        return entityName;
+      },
+      randomAffiliation: function(start, end) {
+
+        var Aff = new Array();
+
+          Aff[0] = "CEIRS";
+          Aff[1] = "N/A";
+          Aff[2] = "Phase 1";
+          Aff[3] = "RPRC";
+          Aff[4] = "TB-CDRC";
+          Aff[5] = "TBRU";
+          Aff[6] = "VTEU";
+
+        //var entityNum = ;
+        var entityName = Aff[this.getRandomInt(start, end)];
         return entityName;
       },
 
@@ -645,7 +921,7 @@
         else {
           return 'odd-row'
         }
-      }
+      },
     },
     filters: {
       concatenate: function (value) {
@@ -662,8 +938,13 @@
   }
 
 </script>
-<style>
 
+<style>
+.site-form--searchbox {  
+  padding: 5px 20px;  
+  margin-bottom: 15px;
+  margin-left: calc(100% - 87px);
+}
 .subText {
   padding: 0px!important;
   font-style: italic;
@@ -697,7 +978,7 @@
 }
 .CQMP-table--container {
   overflow: scroll;
-  height: 600px;
+  max-height: 600px;
   width: max-content;
 }
 .CQMP-page--container::-webkit-scrollbar {
@@ -752,7 +1033,7 @@
   padding: 5px 12px 5px 12px;
   color: white;
   font-weight: bold;
-  max-width: fit-content;
+  /*max-width: fit-content;*/
   display: flex;
   align-items: center;
 }
@@ -777,69 +1058,82 @@
   height: 24px;
   overflow: hidden;
 }
+.content--flex .edit {
+  margin: 0 auto;
+  padding: 3px;
+  color: #666666;
+  height: 24px;
+  overflow: hidden;
+}
 .content--border {
   border-right: 1px solid #999999;
   border-bottom: 1px solid #999999;
 }
-.console-col--ProtocolNumber {
+.console-col--Edit {
+  width: 49px;
+  height: 24px; 
+  margin: 0 auto;
+}
+.console-col--ProtocolNumber, #ProtocolNumber {
   width: 128px;
 }
-.console-col--LeadSite {
+.console-col--LeadSite, #LeadSite {
   width: 81px;
 }
-.console-col--AffiliatedSite {
+.console-col--AffiliatedSite, #AffiliatedSite {
   width: 106px;
 }
-.console-col--FundingAgreement {
-  width: 143px;
+.console-col--FundingAgreement, #FundingAgreement  {
+  width: 88px;
 }
-.console-col--DMIDBranch {
+.console-col--DMIDBranch, #DMIDBranch {
   width: 105px;
 }
-.console-col--DMIDCPM {
+.console-col--DMIDCPM, #DMIDCPM {
   width: 206px;
 }
-.console-col--ResourceLevel {
+.console-col--ResourceLevel, #ResourceLevel {
   width: 114px;
 }
-.console-col--GroupAffiliation {
-  width: 125px;
+.console-col--GroupAffiliation, #GroupAffiliation {
+  width: 80px;
 }
-.console-col--DMIDIND {
+.console-col--DMIDIND, #DMIDIND {
   width: 86px;
 }
-.console-col--AcceptDate {
-  width: 113px;
+.console-col--AcceptDate, #AcceptDate {
+  width: 78px;
 }
-.console-col--VersionNum {
-  width: 123px;
+.console-col--VersionNum, #VersionNum {
+  width: 69px;
 }
-.console-col--VersionDate {
-  width: 102px;
+.console-col--VersionDate, #VersionDate {
+  width: 78px;
 }
-.console-col--CQMPStatus {
-  width: 103px;
+.console-col--CQMPStatus, #CQMPStatus {
+  width: 70px;
 }
-.console-col--EffectiveDate {
-  width: 109px;
+.console-col--EffectiveDate, #EffectiveDate {
+  width: 73px;
 }
-.console-col--VersionNumber {
-  width: 122px;
+.console-col--VersionNumber, #VersionNumber {
+  width: 69px;
 }
-.console-col--VersionDT {
-  width: 102px;
+.console-col--VersionDT, #VersionDT {
+  width: 73px;
 }
-.console-col--ReviewerComments {
-  width: 148px;
+.console-col--ReviewerComments, #ReviewerComments {
+  width: 149px;
+  border-right: unset;
 }
-.console-col--CurrentAcceptDate {
+.console-col--CurrentAcceptDate, #CurrentAcceptDate {
   width: 160px;
 }
-.console-col--DMIDAcceptVersion {
+.console-col--DMIDAcceptVersion, #DMIDAcceptVersion {
   width: 165px;
 }
-.console-col--Monitored {
-  width: 149px;
+.console-col--Monitored, #Monitored {
+  width: 150px;
   border-right: unset;
 }
 #Monitored {
@@ -877,18 +1171,22 @@
   width: 90%;
   margin: 0 auto;
   padding: 10px 25px;
+
+}
+ .form--bg {
   background-color: rgba(245,245,245, 0.5);
   border-radius: 5px;
   border: 1px solid #ddd;
-}
+ }
 .CQMP-form--row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-between;  
+}
+.form--separator {
   margin: 15px 0;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
 }
 .form--btnRow {
   width: 90%;
@@ -1018,5 +1316,16 @@ input[type="radio"]:checked + label {
 .row--column {
   flex-direction: column;
 }
-
+.siteTable {
+  width: 90%;
+  margin: 0 auto 15px;
+}
+.protocolTable {
+  width: 90%;
+  margin: 15px auto 15px;
+}
+.thin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 </style>
