@@ -116,7 +116,7 @@
       </div>
       <div class="horizontal-line short"></div>
 <!-- Site Specific Form -->
-      <div class="CQMP-form--fields form--bg siteSpecific" :class="{ 'hidden': siteHidden }">
+      <div class="CQMP-form--fields form--bg siteSpecific hidden" :class="{ 'hidden': siteHidden }">
         <!-- Lead Site - Site Specific -->
         <div class="CQMP-form--row">
           <div class="CQMP-form--col content--flex">
@@ -213,16 +213,16 @@
           </div>
         </div> -->
       </div>
-      <div class="CQMP-form--fields">
+      <div class="CQMP-form--fields hidden">
         <button class="site-form--searchbox" :class="{ 'hidden': siteHidden }"> Search </button>
       </div>
-      <div class="CQMP-page--container siteTable"  :class="{ 'hidden': siteHidden }">
+      <div class="CQMP-page--container siteTable hidden"  :class="{ 'hidden': siteHidden }">
         <div class="console-body--columnHeaders">
           <div v-for="item in columnListSite" v-bind:key="item.id" v-bind:id="item.id" class="console-col--Header">
             <p v-bind:class="item.id"> {{ item.name }} </p>
           </div>
         </div>
-        <div class="CQMP-table--container">
+        <div class="CQMP-table--container hidden">
           <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">  
             <!-- Edit-->
             <div class="content--flex content--border console-col--Edit">          
@@ -322,12 +322,57 @@
             </div>
           </div>
         </div> -->
+         <!-- Lead Site - Site Specific -->
+        <div class="CQMP-form--row">
+          <div class="CQMP-form--col content--flex">
+            <label for=""> Lead Site(s) </label>
+            <autocomplete :items="siteMasterList" />
+          </div>        
+          <div class="checkbox--row row--column">
+            <label for=""> CQMP Reviewed By </label>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 1" id="Site1LeadSite" value="Site1"/>
+                <label for="Site1LeadSite"> Johns Hopkins University </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 3" id="Site2LeadSite" value="Site1"/>
+                <label for="Site2LeadSite"> Selected Lead Site 2 </label>
+              </div> 
+              <!-- <div class="checkbox--container">
+                <input type="checkbox" name="Site 4" id="Site3LeadSite" value="Site1"/>
+                <label for="Site3LeadSite"> Selected Lead Site 3 </label>
+              </div>  -->
+            </div>
+          </div>
+        <div class="form--separator"></div>
+        <div class="CQMP-form--row">
+          <div class="CQMP-form--col content--flex">
+            <label for=""> Affiliated Site(s) </label>
+            <autocomplete :items="siteMasterList" />
+          </div>        
+          <div class="checkbox--row row--column">
+            <label for=""> CQMP Reviewed By </label>
+               <div class="checkbox--container">
+                <input type="checkbox" name="Site 1" id="Site1AffSite" value="Site1"/>
+                <label for="Site1AffSite"> Selected Affiliated Site 1 </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 3" id="Site2AffSite" value="Site1"/>
+                <label for="Site2AffSite"> Selected Affiliated Site 2 </label>
+              </div>
+              <div class="checkbox--container">
+                <input type="checkbox" name="Site 4" id="Site3AffSite" value="Site1"/>
+                <label for="Site3AffSite"> Selected Affiliated Site 3 </label>
+              </div>
+            </div>
+          </div>
+          <div class="form--separator"></div>
         <!-- Funding Agreement - Site Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Funding Agreement </label>
           <div class="checkbox--row">
             <div class="checkbox--container">
-              <input type="radio" name="fundAgree" id="contract" value="contract" checked>
+              <input type="radio" name="fundAgree" id="contract" value="contract">
               <label for="contract">Contract </label>
             </div>
             <div class="checkbox--container">
@@ -408,6 +453,11 @@
           <label for=""> Reviewer Comments </label>
           <textarea  rows="5" cols="51" type="text"/>
         </div>
+        <div class="form--separator hidden"></div>
+        <div class="CQMP-form--row content--flex button-row hidden">
+          <button class="form-button cancelRecord hidden" :class="{ 'hidden': siteHidden }"> Cancel </button>
+          <button class="form-button updateRecord hidden" :class="{ 'hidden': siteHidden }"> Add/Update Record </button>
+        </div>
       </div>
 <!-- Protocol Specific Form Elements -->
       <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }">
@@ -420,13 +470,13 @@
         <!-- Lead Site - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
-          <input type="text" v-bind:value="generateSiteName(0,3)" disabled=""/>
+          <input type="text" value="MI-4667 - Duke University" disabled=""/> <!-- v-bind:value="generateSiteName(0,3)" -->          
         </div>
         <div class="form--separator thin"></div>
         <!-- Funding Agreement - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Funding Agreement </label>
-          <input type="text" disabled=""/>
+          <input type="text" value="Contract" disabled=""/>
         </div>
         <div class="form--separator thin"></div>
         <!-- DMID Branch - Protocol Specific -->
@@ -444,24 +494,24 @@
         <!-- Resource Level - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Resource Level </label>
-          <input type="text" disabled=""/>
+          <input type="text" value="0 - Low" disabled=""/>
         </div>
         <div class="form--separator thin"></div>
         <!-- Group Affiliation - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Group Affiliation </label>
-          <input type="text" disabled=""/>
+          <input type="text" value="VTEU" disabled=""/>
         </div>
         <div class="form--separator thin"></div>
         <!-- DMID IND Yes/No - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> DMID IND Yes/No </label>
-          <input type="text" value="" disabled=""/>
+          <input type="text" value="No" disabled=""/>
         </div>
       </div>
       <!-- Returned Active CQMPs -->
-      <div class="CQMP-form--fields" :class="{ 'hidden': protocolHidden }">
-        <h2> Active CQMP's for Protocol </h2>
+      <div class="CQMP-form--fields noPadding" :class="{ 'hidden': protocolHidden }">
+        <h3> Active CQMP's for Protocol </h3>
         <div class="horizontal-line "></div>
       </div>
       <!-- Start of 'Returned Table' -->
@@ -516,26 +566,29 @@
           </div>
         </div>
       </div>
-      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }">        
+      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }"> 
+               
+        <!-- CQMP reviewed by - Protocol Specific -->
+        <div class="CQMP-form--row content--flex row--column">
+          <label for="">CQMP Reviewed by</label>
+          <p class="subText"> Please select all that apply</p>
+          <br/>          
+        </div>      
         <!-- CQMP reviewed by - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
-          <label for=""> CQMP Reviewed by Lead Site </label>
-            <div class="checkbox--row">
-              <div class="checkbox--container">
-                <input type="radio" name="CQMPPLead" id="YesProtLead" value="Yes" checked>
-                <label for="YesProtLead"> Yes </label>
-              </div>
-              <div class="checkbox--container">
-                <input type="radio" name="CQMPPLead" id="NoProtLead" value="No">
-                <label for="NoProtLead"> No </label>
-            </div>
+          <label for=""> Lead Site </label>
+          <div class="checkbox--row  row--column">
+            <div class="checkbox--container">
+              <input type="checkbox" name="CQMPPLead" id="YesProtLead" value="Yes" checked>
+              <label for="YesProtLead"> MI-4667 - Duke University </label>
+            </div>              
           </div>
         </div>
         <div class="form--separator"></div>
         <!-- Affiliated Sites - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <div>
-          <label for=""> Affiliated Site(s) </label>
+            <label for=""> Affiliated Site(s) </label>
           <!-- <div class="select-list">
             <div class="select-title" @click="dropDownHidden = !dropDownHidden"> Select Affiliated Site(s) </div>
             <div class="select-options" :class="{ 'hidden': dropDownHidden }">
@@ -549,9 +602,6 @@
         <!-- CQMP reviewed by - Protocol Specific -->
         <!-- <div class="CQMP-form--row content--flex"> -->
           <!-- <div> -->
-            <br>
-            <label for=""> CQMP Reviewed by Affiliated Sites </label>
-            <p class="subText"> Please select all that apply</p>
           </div>
           <div class="checkbox--row row--column">
             <div class="checkbox--container" v-for="(item, index) in siteList" :key="index" :class="item.index">
@@ -620,6 +670,12 @@
         <div class="CQMP-form--row content--flex">
           <label for=""> Reviewer Comments </label>
           <textarea  rows="5" cols="51" type="text"/>
+        </div>
+        <div class="form--separator"></div>
+        <!-- Button Row - Protocol Specific -->
+        <div class="CQMP-form--row content--flex button-row">
+          <button class="form-button cancelRecord" :class="{ 'hidden': protocolHidden }"> Cancel </button>
+          <button class="form-button updateRecord" :class="{ 'hidden': protocolHidden }"> Update Record </button>
         </div>
       </div>
       <div class="horizontal-line short"></div>
@@ -1322,10 +1378,28 @@ input[type="radio"]:checked + label {
 }
 .protocolTable {
   width: 90%;
-  margin: 15px auto 15px;
+  margin: 0px auto 15px;
+}
+.noPadding {
+  padding: 0;
+  margin-top: 10px;
 }
 .thin {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.button-row {
+  justify-content: flex-end;
+}
+.form-button {
+  padding: 5px 20px;
+}
+.cancelRecord {
+  margin-right: 15px;
+}
+.updateRecord {
+  background-color: #0099ff;
+  color: white;
+  /* border: 1px solid teal; */
 }
 </style>
