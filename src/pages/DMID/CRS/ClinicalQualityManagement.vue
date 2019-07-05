@@ -122,7 +122,7 @@
           <div class="CQMP-form--col content--flex">
             <label for=""> Lead Site(s) </label>
             <autocomplete :items="siteMasterList" />
-          </div>        
+          </div>
           <div class="checkbox--row row--column">
             <label for=""> CQMP Reviewed By </label>
               <div class="checkbox--container">
@@ -164,7 +164,7 @@
           <div class="CQMP-form--col content--flex">
             <label for=""> Affiliated Site(s) </label>
             <autocomplete :items="siteMasterList" />
-          </div>        
+          </div>
           <div class="checkbox--row row--column">
             <label for=""> CQMP Reviewed By </label>
               <div class="checkbox--container">
@@ -223,11 +223,11 @@
           </div>
         </div>
         <div class="CQMP-table--container hidden">
-          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">  
+          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">
             <!-- Edit-->
-            <div class="content--flex content--border console-col--Edit">          
+            <div class="content--flex content--border console-col--Edit">
               <input class="edit" type="checkbox" :name="'editSite' + n" :id="'editSite' + n" :value="'searchedSiteTable'"/>
-            </div>      
+            </div>
             <!-- LeadSite -->
             <div class="content--flex ">
               <p class="console-col--LeadSite content--border">{{ generateSiteName(0,4) }}</p>
@@ -239,7 +239,7 @@
             <!-- FundingAgreement -->
             <div class="content--flex ">
               <p class="console-col--FundingAgreement content--border" >Contract</p>
-            </div>        
+            </div>
             <!-- GroupAffiliation -->
             <div class="content--flex ">
               <p class="console-col--GroupAffiliation content--border" >{{ randomAffiliation(0,6) }}</p>
@@ -263,7 +263,7 @@
             <!-- ReviewerComments -->
             <div class="content--flex ">
               <p class="console-col--ReviewerComments content--border" > Lorem Ipsum </p>
-            </div>        
+            </div>
           </div>
         </div>
       </div>
@@ -327,7 +327,7 @@
           <div class="CQMP-form--col content--flex">
             <label for=""> Lead Site(s) </label>
             <autocomplete :items="siteMasterList" />
-          </div>        
+          </div>
           <div class="checkbox--row row--column">
             <label for=""> CQMP Reviewed By </label>
               <div class="checkbox--container">
@@ -337,7 +337,7 @@
               <div class="checkbox--container">
                 <input type="checkbox" name="Site 3" id="Site2LeadSite" value="Site1"/>
                 <label for="Site2LeadSite"> Selected Lead Site 2 </label>
-              </div> 
+              </div>
               <!-- <div class="checkbox--container">
                 <input type="checkbox" name="Site 4" id="Site3LeadSite" value="Site1"/>
                 <label for="Site3LeadSite"> Selected Lead Site 3 </label>
@@ -349,7 +349,7 @@
           <div class="CQMP-form--col content--flex">
             <label for=""> Affiliated Site(s) </label>
             <autocomplete :items="siteMasterList" />
-          </div>        
+          </div>
           <div class="checkbox--row row--column">
             <label for=""> CQMP Reviewed By </label>
                <div class="checkbox--container">
@@ -470,7 +470,7 @@
         <!-- Lead Site - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
-          <input type="text" value="MI-4667 - Duke University" disabled=""/> <!-- v-bind:value="generateSiteName(0,3)" -->          
+          <input type="text" value="MI-4667 - Duke University" disabled=""/> <!-- v-bind:value="generateSiteName(0,3)" -->
         </div>
         <div class="form--separator thin"></div>
         <!-- Funding Agreement - Protocol Specific -->
@@ -522,15 +522,15 @@
           </div>
         </div>
         <div class="CQMP-table--container">
-          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">  
+          <div class="console-body--ColumnContent" v-for="n in 6" v-bind:key="n" v-bind:class="isValueEven(n)">
             <!-- Edit-->
-            <div class="content--flex content--border console-col--Edit">          
+            <div class="content--flex content--border console-col--Edit">
               <input class="edit" type="checkbox" :name="'editSite' + n" :id="'editSite' + n" :value="'searchedSiteTable'"/>
-            </div>            
+            </div>
             <!-- AffiliatedSite -->
             <div class="content--flex ">
               <p class="console-col--AffiliatedSite content--border" >{{ generateSiteName(0,4) }}</p>
-            </div>        
+            </div>
             <!-- AcceptDate -->
             <div class="content--flex ">
               <p class="console-col--AcceptDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
@@ -566,14 +566,14 @@
           </div>
         </div>
       </div>
-      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }"> 
-               
+      <div class="CQMP-form--fields form--bg protocolSpecific" :class="{ 'hidden': protocolHidden }">
+
         <!-- CQMP reviewed by - Protocol Specific -->
         <div class="CQMP-form--row content--flex row--column">
           <label for="">CQMP Reviewed by</label>
           <p class="subText"> Please select all that apply</p>
-          <br/>          
-        </div>      
+          <br/>
+        </div>
         <!-- CQMP reviewed by - Protocol Specific -->
         <div class="CQMP-form--row content--flex">
           <label for=""> Lead Site </label>
@@ -581,7 +581,7 @@
             <div class="checkbox--container">
               <input type="checkbox" name="CQMPPLead" id="YesProtLead" value="Yes" checked>
               <label for="YesProtLead"> MI-4667 - Duke University </label>
-            </div>              
+            </div>
           </div>
         </div>
         <div class="form--separator"></div>
@@ -719,17 +719,17 @@ import siteMaster from '../CRS/siteMaster.js'
           {id: 'DMIDAcceptVersion', name: 'DMID Accepted Version'},
           {id: 'Monitored', name: 'Monitored by ICON?'},
         ],
-        columnListSite: [  
-          {id: 'Edit', name: 'Edit'},        
+        columnListSite: [
+          {id: 'Edit', name: 'Edit'},
           {id: 'LeadSite', name: 'Lead Site'},
           {id: 'AffiliatedSite', name: 'Affiliated Site'},
-          {id: 'FundingAgreement', name: 'Funding Agreement'},          
-          {id: 'GroupAffiliation', name: 'Group Affiliation'}, 
+          {id: 'FundingAgreement', name: 'Funding Agreement'},
+          {id: 'GroupAffiliation', name: 'Group Affiliation'},
           {id: 'CQMPStatus', name: 'CQMP Status'},
           {id: 'EffectiveDate', name: 'Effective Date'},
           {id: 'VersionNumber', name: 'Version Number'},
           {id: 'VersionDT', name: 'Version Date', },
-          {id: 'ReviewerComments', name: 'Reviewer Comments'},          
+          {id: 'ReviewerComments', name: 'Reviewer Comments'},
         ],
         columnListProtocols: [
           {id: 'Edit', name: 'Edit'},
@@ -741,7 +741,7 @@ import siteMaster from '../CRS/siteMaster.js'
           {id: 'EffectiveDate', name: 'Effective Date'},
           {id: 'VersionNumber', name: 'Version Number'},
           {id: 'VersionDT', name: 'Version Date'},
-          {id: 'ReviewerComments', name: 'Reviewer Comments'},          
+          {id: 'ReviewerComments', name: 'Reviewer Comments'},
         ],
         protocols: [],
         newTodoText: '',
@@ -775,7 +775,7 @@ import siteMaster from '../CRS/siteMaster.js'
         dropDownHidden: true,
         selected: [],
         siteMasterList: Object.keys(siteMaster).map(function(key) {
-           return siteMaster[key] }),        
+           return siteMaster[key] }),
       };
     },
 ///////
@@ -965,7 +965,7 @@ import siteMaster from '../CRS/siteMaster.js'
 
           for(var i = 0; i <= arraySize; i++) {
             var protocolNumber = this.generateProtocolNumber();
-            protocolList.push(protocolNumber);
+            protocolList.push({'ProtNum': protocolNumber,});
           }
 
       },
@@ -996,8 +996,8 @@ import siteMaster from '../CRS/siteMaster.js'
 </script>
 
 <style>
-.site-form--searchbox {  
-  padding: 5px 20px;  
+.site-form--searchbox {
+  padding: 5px 20px;
   margin-bottom: 15px;
   margin-left: calc(100% - 87px);
 }
@@ -1127,7 +1127,7 @@ import siteMaster from '../CRS/siteMaster.js'
 }
 .console-col--Edit {
   width: 49px;
-  height: 24px; 
+  height: 24px;
   margin: 0 auto;
 }
 .console-col--ProtocolNumber, #ProtocolNumber {
@@ -1238,7 +1238,7 @@ import siteMaster from '../CRS/siteMaster.js'
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 .form--separator {
   margin: 15px 0;
