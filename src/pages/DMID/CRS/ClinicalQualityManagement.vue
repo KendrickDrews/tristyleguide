@@ -685,16 +685,19 @@
 </template>
 
 <script>
-import autocomplete from '../../../components/autoComplete.vue'
-import siteMaster from '../CRS/siteMaster.js'
+import autocomplete from '../../../components/autoComplete.vue';
+import siteMaster from '../CRS/siteMaster.js';
+import protocolBased from '../CRS/protocolRecords.js';
   export default {
     name: 'ClinicalQualityManagement',
     components: {
       autocomplete,
-      siteMaster
+      siteMaster,
+      protocolBased
     },
     data () {
       return {
+        tempProtRecords: protocolBased,
         activeItem: 'Console',
         columnLength: 35,
         columnList: [
