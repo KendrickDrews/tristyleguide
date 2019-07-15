@@ -102,7 +102,7 @@
         </div>
         <!-- Monitored -->
         <div class="content--flex ">
-          <p class="console-col--Monitored content--border" >{{ headsOrTails() }}</p>
+          <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes", "No") }}</p>
         </div>
       </div>
     </div>
@@ -687,19 +687,17 @@
 <script>
 import autocomplete from '../../../components/autoComplete.vue';
 import siteMaster from '../CRS/siteMaster.js';
-import protocolBased from '../CRS/protocolRecords.js';
+
   export default {
     name: 'ClinicalQualityManagement',
     components: {
       autocomplete,
       siteMaster,
-      protocolBased
     },
     data () {
       return {
-        tempProtRecords: protocolBased,
         activeItem: 'Console',
-        columnLength: 35,
+        columnLength: 10,
         columnList: [
           {id: 'ProtocolNumber', name: 'Protocol Number'},
           {id: 'LeadSite', name: 'Lead Site'},
@@ -747,7 +745,22 @@ import protocolBased from '../CRS/protocolRecords.js';
           {id: 'ReviewerComments', name: 'Reviewer Comments'},
         ],
         protocols: [],
-        newTodoText: '',
+        protocolRecordStatus: [
+          //Open
+          { open: true, status: 'Active'},
+          { open: true, status: 'Active-Enrollment Complete'},
+          { open: true, status: 'Concept Approved'},
+          { open: true, status: 'Concept Proposed'},
+          { open: true, status: 'On Hold'},
+          { open: true, status: 'In Development'},
+          { open: true, status: 'Completed'},
+          //Closed
+          { open: false, status: 'Closed'},
+          { open: false, status: 'Terminated by Sponsor'},
+          { open: false, status: 'Concept Deferred'},
+          { open: false, status: 'Concept Denied'},
+          { open: false, status: 'Void'},
+        ],
         siteList: [
           { id: 1, title: 'Crucell Holland BV', num: 'MI-0023', },
           { id: 2, title: 'Emory University', num: 'MI-1234', },
@@ -770,6 +783,7 @@ import protocolBased from '../CRS/protocolRecords.js';
           { id: 6, title: 'VTEU', },
           { id: 7, title: 'N/A' }
         ],
+        newTodoText: '',
         nextTodoId: 4,
         currentProtocol: -1,
         planView: "All",
@@ -779,6 +793,8 @@ import protocolBased from '../CRS/protocolRecords.js';
         selected: [],
         siteMasterList: Object.keys(siteMaster).map(function(key) {
            return siteMaster[key] }),
+        siteBased: [],
+        protocolBased: [],
       };
     },
 ///////
@@ -789,13 +805,20 @@ import protocolBased from '../CRS/protocolRecords.js';
       currentProtocolValue: function() {
         return this.currentProtocol
       },
+      siteBasedRecords: function () {
+        return this.siteBased
+      },
+      protocolBasedRecords: function() {
+        return this.protocolBased
+      }
     },
 ///////
     mounted: function () {
       this.generateProtocolArray();
       this.setCurrentProtocol();
       this.isValueEven();
-
+      this.generateSiteRecords();
+      this.generateProtocolRecords();
     },
 ///////
     methods: {
@@ -842,13 +865,13 @@ import protocolBased from '../CRS/protocolRecords.js';
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
       },
-      headsOrTails: function() {
+      headsOrTails: function(a,b) {
         var myNumber = this.getRandomInt(0,1);
         if (myNumber == 0) {
-          return 'Yes'
+          return a
         }
         else {
-          return 'No'
+          return b
         }
       },
       randomDate: function (start, end) {
@@ -957,20 +980,99 @@ import protocolBased from '../CRS/protocolRecords.js';
       },
 
       generateProtocolNumber: function() {
-        var XX = '0' + this.getRandomInt(0,9);
-        var XXXX = '00' + this.getRandomInt(0,9) + this.getRandomInt(0,9);
+        var start = this.getRandomInt(0,19);
+        var end = this.getRandomInt(0,1150);
+        var XX = (start >= 10 ) ? start : "0" + start;
+        var XXXX = (end >= 1000) ? end : (end >= 100) ? "0" + end :(end >= 10) ? "00" + end : "000" + end;
         return [XX, XXXX].join('-');
       },
       generateProtocolArray: function() {
+        var arraySize = this.columnLength;
+        var protocolList = this.createdProtocolArray;
+        for(var i = 0; i <= arraySize; i++) {
+          var protocolNumber = this.generateProtocolNumber();
+          protocolList.push(protocolNumber);
+        }
+      },
+      generateSiteRecords: function() {
+        const sites = this.siteMasterList;
+        var numOfRecords = this.columnLength;
+        var output = this.siteBasedRecords;
+        for (var i = 0; i < numOfRecords; i++) {
+          var leadSite = {
+            leadSiteName: { siteName: "siteName", reviewed: false},
+            CQMPS: [
+              { reviewedBy: "Test RB" + i,
+                fundingAgreement: "testFund" + i,
+                affiliatedSites: ["A","B","C"],
+                legacyData: {
+                  dateAccept: "siteName",
+                  vNumber: "siteName",
+                  vDate: "siteName",
+                },
+                currentData: {
+                  cqmpStatus: "siteName",
+                  effDate: "siteName",
+                  cvNumber: "siteName",
+                  cvDate: "siteName",
+                  Comments: "siteName",
+                },
+              },
+            ]
+          };
+          output.push(leadSite);
+        }
+      },
+      generateProtocolRecords: function() {
+        const sites = this.siteMasterList;
+        const recordStatus = this.protocolRecordStatus;
+        const groupAff = this.groupAffiliation
+        var numOfRecords = this.columnLength;
+        var output = this.protocolBasedRecords;
+        for (var i = 0; i < numOfRecords; i++) {
 
-          var arraySize = this.columnLength;
-          var protocolList = this.createdProtocolArray;
-
-          for(var i = 0; i <= arraySize; i++) {
-            var protocolNumber = this.generateProtocolNumber();
-            protocolList.push({'ProtNum': protocolNumber,});
+          var numOfCQMPS = this.getRandomInt(1,5);
+          var thisLeadSite = { id: 0, siteName: sites[this.getRandomInt(0,sites.length)], reviewed: false,}
+          var protocolNum = {
+            protocolNum: "12345",
+            protocolStatus: recordStatus[this.getRandomInt(0,recordStatus.length)],
+            leadSite:  thisLeadSite,
+            fundingAgreement: this.headsOrTails("Contract","Grant/Cooperative Agreement"),
+            branch: "Olive",
+            cpm: "400",
+            resourceLevel: "Gold",
+            groupAffiliation: this.randomAffiliation(0,6),
+            dmidIND: "Yes",
+            CQMPS: [],
+          };
+          // Fills CQMPS[]
+          for(var j = 1; j <= numOfCQMPS; j++) {
+            var aRecord =
+              {
+                id: j,
+                affiliatedSites: [],
+                legacyData: {
+                  dateAccept: "siteName",
+                  vNumber: "siteName",
+                  vDate: "siteName",
+                },
+                currentData: {
+                  cqmpStatus: "siteName",
+                  effDate: "siteName",
+                  cvNumber: "siteName",
+                  cvDate: "siteName",
+                  Comments: "siteName",
+                },
+              }
+              // Fills affiliatedSites{}
+            for(var n = 1; n < numOfCQMPS; n++) {
+              var numAffSites = { id: n, siteName: "siteName", reviewed: false }
+              aRecord.affiliatedSites.push(numAffSites);
+            }
+            protocolNum.CQMPS.push(aRecord);
           }
-
+          output.push(protocolNum);
+        }
       },
       isValueEven: function (value) {
         var myNumber = value;
