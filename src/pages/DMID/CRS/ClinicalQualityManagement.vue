@@ -964,19 +964,52 @@ import siteMaster from '../CRS/siteMaster.js';
         var siteName = sites[this.getRandomInt(start, end)];
         return siteName;
       },
+      randomCQMPStatus: function(start, end) {
 
-      generateNCTNumber: function() {
+         var status = new Array();
 
-        var NCT = 'NCT0';
-        var num = new Array();
-        var NCTLength = 8;
+          status[0] = 'Accepted Initial';
+          status[1] = 'Accepted Revised';
+          status[2] = 'In Progress';
+          status[3] = 'Cancelled';
+          status[4] = 'None';
 
-        for (var i = 0; i < NCTLength; i++) {
-          var randomNumber = this.getRandomInt(0,9);
-          num.push(randomNumber);
+        //var entityNum = ;
+        var recordStatus = status[this.getRandomInt(start, end)];
+        return recordStatus;
+      },
+      randomResource: function(start, end) {
+
+         var resource = new Array();
+
+          resource[0] = '1 - Low';
+          resource[1] = '2 - Low';
+          resource[2] = '3 - Medium';
+          resource[3] = '4 - Medium';
+          resource[4] = '5 - High';
+          resource[5] = '6 - High';
+          resource[6] = '7 - High';
+          resource[7] = '8 - High';
+
+
+        //var entityNum = ;
+        var resourceLevel = resource[this.getRandomInt(start, end)];
+        return resourceLevel;
+      },
+      shuffle: function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
         }
-        var numOrganized = num.join('');
-        return [NCT, numOrganized].join('');
+        return array;
       },
 
       generateProtocolNumber: function() {
@@ -989,60 +1022,84 @@ import siteMaster from '../CRS/siteMaster.js';
       generateProtocolArray: function() {
         var arraySize = this.columnLength;
         var protocolList = this.createdProtocolArray;
-        for(var i = 0; i <= arraySize; i++) {
+        for(var i = 0; i < arraySize; i++) {
           var protocolNumber = this.generateProtocolNumber();
           protocolList.push(protocolNumber);
         }
       },
       generateSiteRecords: function() {
-        const sites = this.siteMasterList;
+        var sites = this.siteMasterList;
         var numOfRecords = this.columnLength;
         var output = this.siteBasedRecords;
-        for (var i = 0; i < numOfRecords; i++) {
+
+        for (var i = 0; i < sites.length, i < numOfRecords; i++) {
+          var shuffledSites = this.shuffle(sites);
+          var numOfCQMPS = this.getRandomInt(0,5);
+          var x = this.getRandomInt(1,8);
+          var j = 1;
+
           var leadSite = {
-            leadSiteName: { siteName: "siteName", reviewed: false},
-            CQMPS: [
-              { reviewedBy: "Test RB" + i,
-                fundingAgreement: "testFund" + i,
-                affiliatedSites: ["A","B","C"],
-                legacyData: {
-                  dateAccept: "siteName",
-                  vNumber: "siteName",
-                  vDate: "siteName",
-                },
-                currentData: {
-                  cqmpStatus: "siteName",
-                  effDate: "siteName",
-                  cvNumber: "siteName",
-                  cvDate: "siteName",
-                  Comments: "siteName",
-                },
-              },
-            ]
+            leadSiteName: { id: 0, siteName: sites[i], reviewed: false,},
+            CQMPS: [],
           };
+          // Fills CQMPS[]
+          if ( j > numOfCQMPS){
+            // Break
+          }
+          else {
+            for( j ; j <= numOfCQMPS; j++) {
+              var aRecord =
+                {
+                  id: j,
+                  affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS ? true : false, siteLead: true,},],
+                  legacyData: {
+                    dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+                    vNumber: this.getRandomInt(1,x) + ".0",
+                    vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+                  },
+                  currentData: {
+                    cqmpStatus: this.randomCQMPStatus(0,4),
+                    effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                    cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1,5)))) + ".0",
+                    cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                    Comments: "Reviewer comments go here.",
+                  },
+                }
+              // Fills affiliatedSites{}
+              for(var n = 1; n < numOfCQMPS; n++) {
+                var numAffSites = { id: n, siteName: shuffledSites[(n-1)], reviewed: j === n ? true : false, }
+                aRecord.affiliatedSites.push(numAffSites);
+              }
+              leadSite.CQMPS.push(aRecord);
+            }
+          }
           output.push(leadSite);
         }
       },
       generateProtocolRecords: function() {
-        const sites = this.siteMasterList;
-        const recordStatus = this.protocolRecordStatus;
-        const groupAff = this.groupAffiliation
+
+        var sites = this.siteMasterList;
+        var recordStatus = this.protocolRecordStatus;
+        var groupAff = this.groupAffiliation
         var numOfRecords = this.columnLength;
         var output = this.protocolBasedRecords;
-        for (var i = 0; i < numOfRecords; i++) {
+        var protNum = this.protocols;
 
+        for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
+          var shuffledSites = this.shuffle(sites);
           var numOfCQMPS = this.getRandomInt(1,5);
-          var thisLeadSite = { id: 0, siteName: sites[this.getRandomInt(0,sites.length)], reviewed: false,}
+          var x = this.getRandomInt(1,8);
+
           var protocolNum = {
-            protocolNum: "12345",
+            protocolNum: protNum[this.getRandomInt(i,i)],
             protocolStatus: recordStatus[this.getRandomInt(0,recordStatus.length)],
-            leadSite:  thisLeadSite,
+            leadSite:  { id: 0, siteName: sites[this.getRandomInt(0,sites.length)], reviewed: false,},
             fundingAgreement: this.headsOrTails("Contract","Grant/Cooperative Agreement"),
-            branch: "Olive",
-            cpm: "400",
-            resourceLevel: "Gold",
+            branch: this.generateBranch(0,4),
+            cpm: this.randomCPM(0,4),
+            resourceLevel: this.randomResource(0,7),
             groupAffiliation: this.randomAffiliation(0,6),
-            dmidIND: "Yes",
+            dmidIND: this.headsOrTails("Yes","No"),
             CQMPS: [],
           };
           // Fills CQMPS[]
@@ -1050,23 +1107,23 @@ import siteMaster from '../CRS/siteMaster.js';
             var aRecord =
               {
                 id: j,
-                affiliatedSites: [],
+                affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS ? true : false, siteLead: true,},],
                 legacyData: {
-                  dateAccept: "siteName",
-                  vNumber: "siteName",
-                  vDate: "siteName",
+                  dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+                  vNumber: this.getRandomInt(1,x) + ".0",
+                  vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
                 },
                 currentData: {
-                  cqmpStatus: "siteName",
-                  effDate: "siteName",
-                  cvNumber: "siteName",
-                  cvDate: "siteName",
-                  Comments: "siteName",
+                  cqmpStatus: this.randomCQMPStatus(0,4),
+                  effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                  cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1,5)))) + ".0",
+                  cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                  Comments: "Reviewer comments go here.",
                 },
               }
               // Fills affiliatedSites{}
             for(var n = 1; n < numOfCQMPS; n++) {
-              var numAffSites = { id: n, siteName: "siteName", reviewed: false }
+              var numAffSites = { id: n, siteName: shuffledSites[this.getRandomInt(i,i)], reviewed: j === n ? true : false, }
               aRecord.affiliatedSites.push(numAffSites);
             }
             protocolNum.CQMPS.push(aRecord);
@@ -1074,6 +1131,7 @@ import siteMaster from '../CRS/siteMaster.js';
           output.push(protocolNum);
         }
       },
+
       isValueEven: function (value) {
         var myNumber = value;
         if (myNumber % 2 === 0) {
