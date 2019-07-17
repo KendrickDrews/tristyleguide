@@ -7,9 +7,7 @@
         <h3></h3>
         <ul>
           <router-link tag="li" to="/"> Home </router-link>
-          <router-link tag="li" to="/about">About</router-link>
           <router-link tag="li" to="/components">Components</router-link>
-          <router-link tag="li" to="/test">test</router-link>
           <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
         </ul>
       </div>

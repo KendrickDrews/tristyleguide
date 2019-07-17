@@ -7,7 +7,7 @@
       <button > Closed </button>
       <button class="addNewReport"> Add New </button>
     </div>
-  <div class="CQMP-page--container" style="display: none;">
+  <div class="CQMP-page--container">
     <div class="console-body--columnHeaders">
       <div
       v-for="item in columnList"
@@ -19,6 +19,15 @@
       </div>
     </div>
     <div class="CQMP-table--container">
+        <div class="CQMP-table--row"
+        v-for="(item, index) in protocolBasedRecords"
+        :key="index">
+        <p>{{ item.protocolNum }}</p>
+
+        </div>
+
+    </div>
+    <div class="CQMP-table--container"  style="display: none;">
       <div
       class="console-body--ColumnContent"
       v-for="n in columnLength"
@@ -26,7 +35,7 @@
       v-bind:class="isValueEven(n)">
          <!-- ProtocolNumber -->
         <div class="content--flex ">
-          <p class="console-col--ProtocolNumber content--border">{{ createdProtocolArray[n] }}</p>
+          <p class="console-col--ProtocolNumber content--border">{{ createdProtocolArray[(n-1)] }}</p>
         </div>
         <!-- LeadSite -->
         <div class="content--flex ">
@@ -107,7 +116,8 @@
       </div>
     </div>
   </div>
-    <div class="CQMP-form--container">
+
+    <div class="CQMP-form--container"  style="display: none;">
       <h2> New Record </h2>
       <div class="horizontal-line "></div>
       <div class="CQMP-form--row form--btnRow">
@@ -1030,18 +1040,21 @@ export default {
         var x = this.getRandomInt(1, 8)
         var j = 1
 
-        var leadSite = {
-          leadSiteName: { id: 0, siteName: sites[i], reviewed: false },
-          CQMPS: []
-        }
+        var leadSite = []
         // Fills CQMPS[]
         if (j > numOfCQMPS) {
-          // Break
-        } else {
+          var aRecord = {
+            leadSite: sites[i],
+            NumofRecords: numOfCQMPS,
+          }
+          output.push(aRecord)
+        }
+        else {
           for (j; j <= numOfCQMPS; j++) {
-            var aRecord =
-                {
+            var aRecord = {
+                  leadSite: sites[i],
                   id: j,
+                  NumofRecords: numOfCQMPS,
                   affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
                   legacyData: {
                     dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
@@ -1056,17 +1069,17 @@ export default {
                     Comments: 'Reviewer comments go here.'
                   }
                 }
-            // Fills affiliatedSites{}
+            // Fills affiliatedSites[]
             for (var n = 1; n < numOfCQMPS; n++) {
               var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n }
               aRecord.affiliatedSites.push(numAffSites)
             }
-            leadSite.CQMPS.push(aRecord)
+            output.push(aRecord)
           }
         }
-        output.push(leadSite)
       }
     },
+
     generateProtocolRecords: function () {
       var sites = this.siteMasterList
       var recordStatus = this.protocolRecordStatus
@@ -1080,24 +1093,22 @@ export default {
         var numOfCQMPS = this.getRandomInt(1, 5)
         var x = this.getRandomInt(1, 8)
 
-        var protocolNum = {
-          protocolNum: protNum[this.getRandomInt(i, i)],
-          protocolStatus: recordStatus[this.getRandomInt(0, recordStatus.length)],
-          leadSite: { id: 0, siteName: sites[this.getRandomInt(0, sites.length)], reviewed: false },
-          fundingAgreement: this.headsOrTails('Contract', 'Grant/Cooperative Agreement'),
-          branch: this.generateBranch(0, 4),
-          cpm: this.randomCPM(0, 4),
-          resourceLevel: this.randomResource(0, 7),
-          groupAffiliation: this.randomAffiliation(0, 6),
-          dmidIND: this.headsOrTails('Yes', 'No'),
-          CQMPS: []
-        }
+        var protocolNum = []
+
         // Fills CQMPS[]
         for (var j = 1; j <= numOfCQMPS; j++) {
-          var aRecord =
-              {
+          var aRecord = {
+                protocolNum: protNum[this.getRandomInt(i, i)],
+                protocolStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
+                leadSite: shuffledSites[i],
+                fundingAgreement: this.headsOrTails('Contract', 'Grant/Cooperative Agreement'),
+                branch: this.generateBranch(0, 4),
+                cpm: this.randomCPM(0, 4),
+                resourceLevel: this.randomResource(0, 7),
+                groupAffiliation: this.randomAffiliation(0, 6),
+                dmidIND: this.headsOrTails('Yes', 'No'),
                 id: j,
-                affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
+                affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === numOfCQMPS, siteLead: true }],
                 legacyData: {
                   dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
                   vNumber: this.getRandomInt(1, x) + '.0',
@@ -1113,12 +1124,11 @@ export default {
               }
               // Fills affiliatedSites{}
           for (var n = 1; n < numOfCQMPS; n++) {
-            var numAffSites = { id: n, siteName: shuffledSites[this.getRandomInt(i, i)], reviewed: j === n }
+            var numAffSites = { id: n, siteName: shuffledSites[n], reviewed: j === n }
             aRecord.affiliatedSites.push(numAffSites)
           }
-          protocolNum.CQMPS.push(aRecord)
+          output.push(aRecord)
         }
-        output.push(protocolNum)
       }
     },
 
@@ -1553,5 +1563,22 @@ input[type="radio"]:checked + label {
   background-color: #0099ff;
   color: white;
   /* border: 1px solid teal; */
+}
+.CQMP-table--row {
+  display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 </style>
