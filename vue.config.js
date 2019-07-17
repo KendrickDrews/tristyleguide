@@ -1,6 +1,6 @@
 // vue.config.js
 
-//module.exports = {
+// module.exports = {
 //    chainWebpack: config => {
 //      config.module.rules.delete("svg");
 //    },
@@ -8,11 +8,11 @@
 //      module: {
 //        rules: [
 //          {
-//            test: /\.svg$/, 
-//            loader: 'vue-svg-loader', 
+//            test: /\.svg$/,
+//            loader: 'vue-svg-loader',
 //          },
 //        ],
-//      }      
+//      }
 //    }
 //  };
 // vue.config.js
@@ -28,6 +28,6 @@ module.exports = {
     // add replacement loader(s)
     svgRule
       .use('vue-svg-loader')
-        .loader('vue-svg-loader')
+      .loader('vue-svg-loader')
   }
 }

@@ -1,4 +1,4 @@
-<template>  
+<template>
 <!-- contextNav -->
     <div class="contextNav">
       <ul>
@@ -13,16 +13,16 @@
           <li><a href="#">Study Product Services</a></li>
           <li><a href="#">Teleconference Support</a></li>
       </ul>\
-  </div>  
+  </div>
 </template>
 
-<script>  
-  import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
+<script>
+import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg'
 
-  export default {
-    components: {      
-      CRS
-    }
+export default {
+  components: {
+    CRS
   }
+}
 </script>
 <style></style>

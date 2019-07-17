@@ -4,44 +4,43 @@
       TEST RESULTS
       </div>
     <div class="results-body--ColumnContent">
-    </div>    
+    </div>
   </div>
 
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";
+import Modal from '../../../components/modalTemplate.vue'
 
-  export default {
-    name: 'ResultsView',
-    components: {
-      Modal, 
-    },
-    data () {
-      return {
-        isModalVisible: false,        
-        subSiteIs: this.$route.name,
-      };
-    },
-///////
-    computed: {
-      
+export default {
+  name: 'ResultsView',
+  components: {
+    Modal
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      subSiteIs: this.$route.name
+    }
+  },
+  /// ////
+  computed: {
 
+  },
+  /// ////
+  mounted: function () {
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
     },
-///////
-    mounted: function () {      
-    },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      
-    },
+    closeModal () {
+      this.isModalVisible = false
+    }
+
   }
+}
 
 </script>
 
@@ -55,4 +54,3 @@
 }
 
 </style>
-

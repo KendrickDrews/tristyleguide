@@ -303,118 +303,117 @@
 
 <script>
 
-import buttonList from '../../components/componentList/buttonList.js';
+import buttonList from '../../components/componentList/buttonList.js'
 
-  export default {
-    components: {
+export default {
+  components: {
 
-    },
-    props: {
-      showNavHOME: {
-        default: function(){
-          return {
-            Home: false,
-            CRS: true,
-            DocumentLibrary: true,
-            SOCSCMS: false,
-            Training: true,
-            ServiceRequests: true,
-            GrantCapture: false,
-            Protocols: false,
-            Results: false,
-            PRT: false,
-            SMART: false,
-            CSRS: false,
-            Development: true,
-            InProgress: true,
-            Initiation: true,
-            CloseOut: true,
-          }
+  },
+  props: {
+    showNavHOME: {
+      default: function () {
+        return {
+          Home: false,
+          CRS: true,
+          DocumentLibrary: true,
+          SOCSCMS: false,
+          Training: true,
+          ServiceRequests: true,
+          GrantCapture: false,
+          Protocols: false,
+          Results: false,
+          PRT: false,
+          SMART: false,
+          CSRS: false,
+          Development: true,
+          InProgress: true,
+          Initiation: true,
+          CloseOut: true
         }
-      },
-      showNavDMART: {
-        default: function(){
-          return {
-            Home: false,
-            CRS: false,
-            DocumentLibrary: false,
-            SOCSCMS: false,
-            Training: false,
-            ServiceRequests: false,
-            GrantCapture: true,
-            Protocols: true,
-            Results: true,
-            PRT: false,
-            SMART: false,
-            CSRS: false,
-          }
-        }
-      },
-    },
-    data: function(){
-      return {
-        HOME: {
-          CRS: 'CRS',
-          DocumentLibrary: 'DocumentLibrary',
-          Training: 'Training',
-          ServiceRequests: 'ServiceRequests',
-          SOCSCMS: 'SOCSCMS',
-          PRT: 'PRT',
-          SMART: 'SMART',
-          CSRS: 'CSRS',
-        },
-        DMART: {
-          Protocols: 'Protocols',
-          GrantCapture: 'GrantCapture',
-          Results: 'Results',
-        },
-        buttonList,
-        navVisibiity: this.showNav,
-        bigIcon: '65px',
-        smallIcon: '60px',
-        support: '35px',
-
       }
     },
-    computed: {
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
+    showNavDMART: {
+      default: function () {
+        return {
+          Home: false,
+          CRS: false,
+          DocumentLibrary: false,
+          SOCSCMS: false,
+          Training: false,
+          ServiceRequests: false,
+          GrantCapture: true,
+          Protocols: true,
+          Results: true,
+          PRT: false,
+          SMART: false,
+          CSRS: false
         }
+      }
+    }
+  },
+  data: function () {
+    return {
+      HOME: {
+        CRS: 'CRS',
+        DocumentLibrary: 'DocumentLibrary',
+        Training: 'Training',
+        ServiceRequests: 'ServiceRequests',
+        SOCSCMS: 'SOCSCMS',
+        PRT: 'PRT',
+        SMART: 'SMART',
+        CSRS: 'CSRS'
       },
-      //Set SiteType 01
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
+      DMART: {
+        Protocols: 'Protocols',
+        GrantCapture: 'GrantCapture',
+        Results: 'Results'
       },
-    },
-///////
-    mounted: function () {
-      this.stateActiveComponent('');
-      //Set SiteType 02
-      this.stateSiteType('HOME');
-    },
-    methods: {
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
+      buttonList,
+      navVisibiity: this.showNav,
+      bigIcon: '65px',
+      smallIcon: '60px',
+      support: '35px'
+
+    }
+  },
+  computed: {
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
       },
-      //set SiteType 03
-      stateSiteType (value) {
-      return  this.stateType = value
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
       }
     },
+    // Set SiteType 01
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
+    }
+  },
+  /// ////
+  mounted: function () {
+    this.stateActiveComponent('')
+    // Set SiteType 02
+    this.stateSiteType('HOME')
+  },
+  methods: {
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    // set SiteType 03
+    stateSiteType (value) {
+      return this.stateType = value
+    }
   }
+}
 </script>
 <style lang="scss" scoped>
 @import url('../../styles/main.css');
-
 
 .DMID-main {
   width: 1000px;
@@ -540,7 +539,6 @@ import buttonList from '../../components/componentList/buttonList.js';
 .Row3 {
   height: 138px;
   margin-bottom: 18px;
-
 
 }
 .Row3 .left {

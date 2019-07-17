@@ -1,21 +1,21 @@
 <template>
 
-    <div>      
+    <div>
       Thumbnail Placeholder
       <div></div>
       <div></div>
       <div></div>
-  </div>  
+  </div>
 
 </template>
 
-<script>    
+<script>
 
-  export default {
-    components: {           
-    },     
-    
+export default {
+  components: {
   }
+
+}
 
 </script>
 

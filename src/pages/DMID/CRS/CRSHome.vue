@@ -54,168 +54,167 @@
 </template>
 
 <script>
-  import DMIDHeader from "../../../components/DMIDhead.vue";
-  import colors from "../../../layouts/colors.vue"
-  import navList from "../../../components/navLists.vue";
-  import allNav from "../../../components/DMIDsideNav.vue";
-  import resAndTools from "../../../components/DMIDResourcesAndTools.vue"
-  import brandingNav from "../../../components/DMIDBrandingNav.vue"
-  import Modal from "../../../components/modalTemplate.vue";
-  import buttonList from '../../../components/componentList/buttonList.js';
-  import ClinicalResearchHome from "../CRS/ClinicalResearchHome.vue";
-  import ClinicalMonitoring from "../CRS/ClinicalMonitoring.vue";
-  import ClinicalQualityManagement from "../CRS/ClinicalQualityManagement.vue";
-  import EssentialRegulatoryDocuments from "../CRS/EssentialRegulatoryDocuments.vue";
-  import MedicalWriting from "../CRS/MedicalWriting.vue";
-  import ProtocolDevelopment from "../CRS/ProtocolDevelopment.vue";
-  import ProtocolDeviationReporting from "../CRS/ProtocolDeviationReporting.vue";
-  import SAEReporting from "../CRS/SAEReporting.vue";
-  import SafetyOversightCommittee from "../CRS/SafetyOversightCommittee.vue";
-  import StudyProductInformation from "../CRS/StudyProductInformation.vue";
-  import TeleconferenceSupport from "../CRS/TeleconferenceSupport.vue";
+import DMIDHeader from '../../../components/DMIDhead.vue'
+import colors from '../../../layouts/colors.vue'
+import navList from '../../../components/navLists.vue'
+import allNav from '../../../components/DMIDsideNav.vue'
+import resAndTools from '../../../components/DMIDResourcesAndTools.vue'
+import brandingNav from '../../../components/DMIDBrandingNav.vue'
+import Modal from '../../../components/modalTemplate.vue'
+import buttonList from '../../../components/componentList/buttonList.js'
+import ClinicalResearchHome from '../CRS/ClinicalResearchHome.vue'
+import ClinicalMonitoring from '../CRS/ClinicalMonitoring.vue'
+import ClinicalQualityManagement from '../CRS/ClinicalQualityManagement.vue'
+import EssentialRegulatoryDocuments from '../CRS/EssentialRegulatoryDocuments.vue'
+import MedicalWriting from '../CRS/MedicalWriting.vue'
+import ProtocolDevelopment from '../CRS/ProtocolDevelopment.vue'
+import ProtocolDeviationReporting from '../CRS/ProtocolDeviationReporting.vue'
+import SAEReporting from '../CRS/SAEReporting.vue'
+import SafetyOversightCommittee from '../CRS/SafetyOversightCommittee.vue'
+import StudyProductInformation from '../CRS/StudyProductInformation.vue'
+import TeleconferenceSupport from '../CRS/TeleconferenceSupport.vue'
 
+export default {
+  name: 'CRS',
+  components: {
+    DMIDHeader,
+    colors,
+    navList,
+    allNav,
+    Modal,
+    buttonList,
+    brandingNav,
+    resAndTools,
+    ClinicalResearchHome,
+    ClinicalMonitoring,
+    ClinicalQualityManagement,
+    EssentialRegulatoryDocuments,
+    MedicalWriting,
+    ProtocolDevelopment,
+    ProtocolDeviationReporting,
+    SAEReporting,
+    SafetyOversightCommittee,
+    StudyProductInformation,
+    TeleconferenceSupport
 
-  export default {
-    name: 'CRS',
-    components: {
-      DMIDHeader,
-      colors,
-      navList,
-      allNav,
-      Modal,
-      buttonList,
-      brandingNav,
-      resAndTools,
-      ClinicalResearchHome,
-      ClinicalMonitoring,
-      ClinicalQualityManagement,
-      EssentialRegulatoryDocuments,
-      MedicalWriting,
-      ProtocolDevelopment,
-      ProtocolDeviationReporting,
-      SAEReporting,
-      SafetyOversightCommittee,
-      StudyProductInformation,
-      TeleconferenceSupport
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      showNav: {
+        Home: true,
+        DocumentLibrary: true,
+        CRS: true,
+        SOCSCMS: true,
+        Training: true,
+        ServiceRequests: true,
+        GrantCapture: true,
+        Protocols: true,
+        Results: true,
+        PRT: true,
+        SMART: true,
+        CSRS: true
+      },
+      subSiteIs: this.$route.name,
+      buttonList: buttonList
+
+    }
+  },
+  /// ////
+  computed: {
+    thisSite: function () {
+      return this.subSiteIs
+    },
+
+    //
+    subSite: {
+      get: function () {
+        return this.$root.store.state.DMIDSite
+      },
+      set: function (value) {
+        this.$root.store.commit('setDMIDSubSite', value)
+      }
 
     },
-    data () {
-      return {
-        isModalVisible: false,
-        showNav: {
-          Home: true,
-          DocumentLibrary: true,
-          CRS: true,
-          SOCSCMS: true,
-          Training: true,
-          ServiceRequests: true,
-          GrantCapture: true,
-          Protocols: true,
-          Results: true,
-          PRT: true,
-          SMART: true,
-          CSRS: true,
-        },
-        subSiteIs: this.$route.name,
-        buttonList: buttonList,
-
-      };
-    },
-///////
-    computed: {
-      thisSite: function() {
-        return this.subSiteIs
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
       },
-
-      //
-      subSite: {
-        get: function() {
-          return this.$root.store.state.DMIDSite
-        },
-        set: function(value) {
-          this.$root.store.commit('setDMIDSubSite', value )
-        },
-
-      },
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
-
-      isActive () {
-        return this.href === this.$root.currentRoute
-      },
-
-    },
-///////
-    beforeMount: function(){
-    this.stateActiveComponent('Clinical-Research-Home');
-    },
-///////
-    mounted: function () {
-      this.setStateSubSite();
-      this.$nextTick(function () {
-        this.stateActiveComponent('Clinical-Research-Home');
-      });
-      this.scrollReset(0);
-      this.stateSiteType('CRS');
-    },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(DMIDSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      },
-      stateSiteType (value) {
-      return  this.stateType = value
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
       }
     },
-    filters: {
-      splitStrings: function (value, separator, connector) {
-        if (!value) return 'noValue'
-        var toSplit = value;
-        var splitString = toSplit.split(separator);
-        return splitString.join(connector);
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
       }
     },
+
+    isActive () {
+      return this.href === this.$root.currentRoute
+    }
+
+  },
+  /// ////
+  beforeMount: function () {
+    this.stateActiveComponent('Clinical-Research-Home')
+  },
+  /// ////
+  mounted: function () {
+    this.setStateSubSite()
+    this.$nextTick(function () {
+      this.stateActiveComponent('Clinical-Research-Home')
+    })
+    this.scrollReset(0)
+    this.stateSiteType('CRS')
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
+    },
+    closeModal () {
+      this.isModalVisible = false
+    },
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(DMIDSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    }
+  },
+  filters: {
+    splitStrings: function (value, separator, connector) {
+      if (!value) return 'noValue'
+      var toSplit = value
+      var splitString = toSplit.split(separator)
+      return splitString.join(connector)
+    }
   }
+}
 
 </script>
 <style>

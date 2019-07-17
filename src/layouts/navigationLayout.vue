@@ -1,7 +1,6 @@
 <template>
-  
-    
-    <div> 
+
+    <div>
         <h1> Blank! </h1 ><hr/>
         <navButtons>
         </navButtons>
@@ -20,32 +19,31 @@
         <h1> Do's and Don'ts </h1> <hr/>
         <p> a paragraph explaining the component </p>
 
-    </div>       
-      
+    </div>
 
 </template>
 
-<script>   
+<script>
 import navButtons from '../components/navButtons.vue'
 
-  export default {
-    components: {           
-              navButtons
-    }, 
+export default {
+  components: {
+    navButtons
+  },
 
-    data: function() {
-      return {
-                        
-      }
-    }, 
-    computed:{     
-      
-    },
-    methods:{     
+  data: function () {
+    return {
 
-    },    
-  
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+
   }
+
+}
 
 </script>
 

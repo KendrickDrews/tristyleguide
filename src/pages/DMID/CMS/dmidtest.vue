@@ -1,33 +1,33 @@
 <template>
-  
+
     <p>THIS IS DMID TEST</p>
-  
+
 </template>
 
-<script>  
+<script>
 
-  export default {
-    components: {
-      
-    },
-    computed: {
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent 
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
+export default {
+  components: {
+
+  },
+  computed: {
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
       },
-    },
-///////
-    mounted: function () {      
-      this.stateActiveComponent('');
-    },
-    methods: {
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
       }
-    },
+    }
+  },
+  /// ////
+  mounted: function () {
+    this.stateActiveComponent('')
+  },
+  methods: {
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    }
   }
+}
 </script>

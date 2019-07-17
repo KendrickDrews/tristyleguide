@@ -133,9 +133,9 @@
 
 <script>
 
-  import navSearch from '../components/navSearch.vue';
-  import navUser from '../components/navUser.vue';
-  import buttonList from '../components/componentList/buttonList.js';
+import navSearch from '../components/navSearch.vue'
+import navUser from '../components/navUser.vue'
+import buttonList from '../components/componentList/buttonList.js'
 
 export default {
   components: {
@@ -143,12 +143,12 @@ export default {
     navUser,
     buttonList
   },
-  data: function(){
+  data: function () {
     return {
       buttonList: buttonList,
       navVisibiity: this.showNav,
       bigIcon: '75px',
-      smallIcon: '27px',
+      smallIcon: '27px'
     }
   },
   props: {
@@ -156,10 +156,10 @@ export default {
       default: 'CRS'
     },
     type: {
-      default: 'CRS',
+      default: 'CRS'
     },
-    showNav:{
-      default: function(){
+    showNav: {
+      default: function () {
         return {
           Home: true,
           CRS: true,
@@ -172,12 +172,12 @@ export default {
           Results: false,
           PRT: false,
           SMART: false,
-          CSRS: false,
+          CSRS: false
         }
       }
     }
-  },
-};
+  }
+}
 
 </script>
 <style src="../styles/main.css"></style>

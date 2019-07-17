@@ -56,128 +56,127 @@
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";
-  import Console from "../Results/Console.vue";
-  import ResultsView from "../Results/ResultsView.vue";
-  import ResultsExt from "../Results/ResultsExtensions.vue";
-  import Reports from "../Results/Reports.vue";
-  import Support from "../Results/Support.vue";
-  import Extensions from "../Results/Extensions.vue";
-  import Communications from "../Results/Communications.vue";
+import Modal from '../../../components/modalTemplate.vue'
+import Console from '../Results/Console.vue'
+import ResultsView from '../Results/ResultsView.vue'
+import ResultsExt from '../Results/ResultsExtensions.vue'
+import Reports from '../Results/Reports.vue'
+import Support from '../Results/Support.vue'
+import Extensions from '../Results/Extensions.vue'
+import Communications from '../Results/Communications.vue'
 
+export default {
+  name: 'Results',
+  components: {
+    Modal,
+    Console,
+    ResultsView,
+    ResultsExt,
+    Reports,
+    Support,
+    Extensions,
+    Communications
 
-  export default {
-    name: 'Results',
-    components: {
-      Modal,
-      Console,
-      ResultsView,
-      ResultsExt,
-      Reports,
-      Support,
-      Extensions,
-      Communications,
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      subSiteIs: this.$route.name,
+      activeItem: 'Console'
+
+    }
+  },
+  /// ////
+  computed: {
+    thisSite: function () {
+      return this.subSiteIs
+    },
+    activeComponent: function () {
+      return this.activeItem
+    },
+    //
+    subSite: {
+      get: function () {
+        return this.$root.store.state.DMIDSite
+      },
+      set: function (value) {
+        this.$root.store.commit('setDMIDSubSite', value)
+      }
 
     },
-    data () {
-      return {
-        isModalVisible: false,
-        subSiteIs: this.$route.name,
-        activeItem: 'Console',
-
-      };
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
+      },
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
+      }
     },
-///////
-    computed: {
-      thisSite: function() {
-        return this.subSiteIs
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
       },
-      activeComponent: function() {
-        return this.activeItem
-      },
-      //
-      subSite: {
-        get: function() {
-          return this.$root.store.state.DMIDSite
-        },
-        set: function(value) {
-          this.$root.store.commit('setDMIDSubSite', value )
-        },
-
-      },
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
-
-      isActive () {
-        return this.href === this.$root.currentRoute
-      },
-
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
     },
-///////
-    mounted: function () {
-      this.setStateSubSite();
-      this.stateActiveComponent('Console');
-      this.scrollReset(0);
-      this.stateSiteType('ResultsPage');
+
+    isActive () {
+      return this.href === this.$root.currentRoute
+    }
+
+  },
+  /// ////
+  mounted: function () {
+    this.setStateSubSite()
+    this.stateActiveComponent('Console')
+    this.scrollReset(0)
+    this.stateSiteType('ResultsPage')
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
     },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(this.thisSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      },
-      stateSiteType (value) {
-      return  this.stateType = value
-      },
-      setActiveItem: function(value){
+    closeModal () {
+      this.isModalVisible = false
+    },
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(this.thisSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    },
+    setActiveItem: function (value) {
       return this.activeItem = value
-      },
-      activeMenuItem (itemName) {
-        this.stateActiveComponent(itemName);
-        this.setActiveItem(itemName);
-      },
-
     },
+    activeMenuItem (itemName) {
+      this.stateActiveComponent(itemName)
+      this.setActiveItem(itemName)
+    }
+
   }
+}
 
 </script>
 <style  scoped>
@@ -259,4 +258,3 @@
   color: white;
 }
 </style>
-

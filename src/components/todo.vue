@@ -7,8 +7,8 @@
 <script>
 export default {
   components: {
-    },
-  data: function(){
+  },
+  data: function () {
     return {
 
     }

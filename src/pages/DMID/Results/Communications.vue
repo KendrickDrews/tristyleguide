@@ -82,86 +82,86 @@
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";
-  export default {
-    name: 'Communications',
-    components: {
-      Modal,
-    },
-    data () {
-      return {
-        isModalVisible: false,
-        subSiteIs: this.$route.name,
-        activeItem: 'Console',
-        emailList: [
-          {id: 'S.No', name: 'S.No'},
-          {id: 'FileName', name: 'File Name'},
-          {id: 'UploadedBy', name: 'Uploaded By'},
-          {id: 'UploadedDate', name: 'Uploaded Date'},
-          {id: 'Comments', name: 'Comments'},
-          {id: 'Delete', name: 'Delete'},
-        ],
-        columnLength: 4,
-      };
-    },
-///////
-    computed: {
+import Modal from '../../../components/modalTemplate.vue'
+export default {
+  name: 'Communications',
+  components: {
+    Modal
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      subSiteIs: this.$route.name,
+      activeItem: 'Console',
+      emailList: [
+        { id: 'S.No', name: 'S.No' },
+        { id: 'FileName', name: 'File Name' },
+        { id: 'UploadedBy', name: 'Uploaded By' },
+        { id: 'UploadedDate', name: 'Uploaded Date' },
+        { id: 'Comments', name: 'Comments' },
+        { id: 'Delete', name: 'Delete' }
+      ],
+      columnLength: 4
+    }
+  },
+  /// ////
+  computed: {
 
+  },
+  /// ////
+  mounted: function () {
+    this.setStateSubSite()
+    this.stateActiveComponent('Console')
+    this.scrollReset(0)
+    this.stateSiteType('ResultsPage')
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
     },
-///////
-    mounted: function () {
-      this.setStateSubSite();
-      this.stateActiveComponent('Console');
-      this.scrollReset(0);
-      this.stateSiteType('ResultsPage');
+    closeModal () {
+      this.isModalVisible = false
     },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(this.thisSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      },
-      stateSiteType (value) {
-      return  this.stateType = value
-      },
-      setActiveItem: function(value){
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(this.thisSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    },
+    setActiveItem: function (value) {
       return this.activeItem = value
-      },
-      activeMenuItem (itemName) {
-        this.stateActiveComponent(itemName);
-        this.setActiveItem(itemName);
-      },
-      confirmDelete () {
-        confirm("Delete 'Document Title' from upload list?");
-      }
-
     },
+    activeMenuItem (itemName) {
+      this.stateActiveComponent(itemName)
+      this.setActiveItem(itemName)
+    },
+    confirmDelete () {
+      confirm("Delete 'Document Title' from upload list?")
+    }
+
   }
+}
 </script>
 
 <style scoped>

@@ -138,206 +138,203 @@
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";
-  export default {
-    name: 'Console',
-    components: {
-      Modal,
+import Modal from '../../../components/modalTemplate.vue'
+export default {
+  name: 'Console',
+  components: {
+    Modal
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      subSiteIs: this.$route.name,
+      activeItem: 'Console',
+      columnLength: 25,
+      columnList: [
+        { id: 'Edit', name: '' },
+        { id: 'ProtocolNumber', name: 'Protocol Number' },
+        { id: 'Status', name: 'Status' },
+        { id: 'NCTNumber', name: 'NCT Number' },
+        { id: 'DataCollectionEntity', name: 'Data Collection Entity' },
+        { id: 'DCEXMLUploadDate', name: 'DCE XML Upload Date' },
+        { id: 'DCEApprovalDate', name: 'DCE Approval Date' },
+        { id: 'NLMSubmissionDate', name: 'NLM Submission Date' },
+        { id: 'NLMReleaseDate', name: 'NLM Release Date' },
+        { id: 'NLMDueDate', name: 'NLM Due Date' },
+        { id: 'NLMPostedDate', name: 'NLM Posted Date' },
+        { id: 'Communications', name: 'Communications' }
+      ],
+      protocols: [],
+      currentProtocol: -1
+
+    }
+  },
+  /// ////
+  computed: {
+    createdProtocolArray: function () {
+      return this.protocols
     },
-    data () {
-      return {
-        isModalVisible: false,
-        subSiteIs: this.$route.name,
-        activeItem: 'Console',
-        columnLength: 25,
-        columnList: [
-          {id: 'Edit', name: ''},
-          {id: 'ProtocolNumber', name: 'Protocol Number'},
-          {id: 'Status', name: 'Status'},
-          {id: 'NCTNumber', name: 'NCT Number'},
-          {id: 'DataCollectionEntity', name: 'Data Collection Entity'},
-          {id: 'DCEXMLUploadDate', name: 'DCE XML Upload Date'},
-          {id: 'DCEApprovalDate', name: 'DCE Approval Date'},
-          {id: 'NLMSubmissionDate', name: 'NLM Submission Date'},
-          {id: 'NLMReleaseDate', name: 'NLM Release Date'},
-          {id: 'NLMDueDate', name: 'NLM Due Date'},
-          {id: 'NLMPostedDate', name: 'NLM Posted Date'},
-          {id: 'Communications', name: 'Communications'},
-        ],
-        protocols: [],
-        currentProtocol: -1,
-
-      };
+    currentProtocolValue: function () {
+      return this.currentProtocol
     },
-///////
-    computed: {
-      createdProtocolArray: function() {
-        return this.protocols
-      },
-      currentProtocolValue: function() {
-        return this.currentProtocol
-      },
-      thisSite: function() {
-        return this.subSiteIs
-      },
-      activeComponent: function() {
-        return this.activeItem
-      },
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
+    thisSite: function () {
+      return this.subSiteIs
     },
-///////
-    mounted: function () {
-      this.generateProtocolArray();
-      this.setCurrentProtocol();
+    activeComponent: function () {
+      return this.activeItem
     },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
       },
-
-      closeModal() {
-        this.isModalVisible = false;
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
+      }
+    },
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
       },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
+    }
+  },
+  /// ////
+  mounted: function () {
+    this.generateProtocolArray()
+    this.setCurrentProtocol()
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
+    },
 
-      getRandomInt: function(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-      },
+    closeModal () {
+      this.isModalVisible = false
+    },
 
-      randomDate: function (start, end) {
+    getRandomInt: function (min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1)) + min // The maximum is inclusive and the minimum is inclusive
+    },
 
-        var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
+    randomDate: function (start, end) {
+      var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 
-          //month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-          var month = new Array();
+      // month = '' + (d.getMonth() + 1),
 
-          month[0] = "Jan";
-          month[1] = "Feb";
-          month[2] = "Mar";
-          month[3] = "Apr";
-          month[4] = "May";
-          month[5] = "Jun";
-          month[6] = "Jul";
-          month[7] = "Aug";
-          month[8] = "Sep";
-          month[9] = "Oct";
-          month[10] = "Nov";
-          month[11] = "Dec";
+      var day = '' + d.getDate()
 
-          var monthName = month[d.getMonth()];
+      var year = d.getFullYear()
+      var month = new Array()
 
-        // if (month.length < 2) month = '0' + month;
-        if (day.length < 2) day = '0' + day;
+      month[0] = 'Jan'
+      month[1] = 'Feb'
+      month[2] = 'Mar'
+      month[3] = 'Apr'
+      month[4] = 'May'
+      month[5] = 'Jun'
+      month[6] = 'Jul'
+      month[7] = 'Aug'
+      month[8] = 'Sep'
+      month[9] = 'Oct'
+      month[10] = 'Nov'
+      month[11] = 'Dec'
 
-        return [day, monthName, year].join('-');
-      },
+      var monthName = month[d.getMonth()]
 
-      generateDataCollectionEntity: function(start, end) {
+      // if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day
 
-        var DCE = new Array();
+      return [day, monthName, year].join('-')
+    },
 
-          DCE[0] = "EMMES";
-          DCE[1] = "FHI";
-          DCE[2] = "CASG";
-          DCE[3] = "CWRU";
-          DCE[4] = "CHP";
+    generateDataCollectionEntity: function (start, end) {
+      var DCE = new Array()
 
-        //var entityNum = ;
-        var entityName = DCE[this.getRandomInt(start, end)];
-        return entityName;
-      },
+      DCE[0] = 'EMMES'
+      DCE[1] = 'FHI'
+      DCE[2] = 'CASG'
+      DCE[3] = 'CWRU'
+      DCE[4] = 'CHP'
 
-      generateNCTNumber: function() {
+      // var entityNum = ;
+      var entityName = DCE[this.getRandomInt(start, end)]
+      return entityName
+    },
 
-        var NCT = 'NCT0';
-        var num = new Array();
-        var NCTLength = 8;
+    generateNCTNumber: function () {
+      var NCT = 'NCT0'
+      var num = new Array()
+      var NCTLength = 8
 
-        for (var i = 0; i < NCTLength; i++) {
-          var randomNumber = this.getRandomInt(0,9);
-          num.push(randomNumber);
-        }
-        var numOrganized = num.join('');
-        return [NCT, numOrganized].join('');
-      },
+      for (var i = 0; i < NCTLength; i++) {
+        var randomNumber = this.getRandomInt(0, 9)
+        num.push(randomNumber)
+      }
+      var numOrganized = num.join('')
+      return [NCT, numOrganized].join('')
+    },
 
-      generateProtocolNumber: function() {
-        var XX = '0' + this.getRandomInt(0,9);
-        var XXXX = '00' + this.getRandomInt(0,9) + this.getRandomInt(0,9);
-        return [XX, XXXX].join('-');
-      },
-      generateProtocolArray: function() {
+    generateProtocolNumber: function () {
+      var XX = '0' + this.getRandomInt(0, 9)
+      var XXXX = '00' + this.getRandomInt(0, 9) + this.getRandomInt(0, 9)
+      return [XX, XXXX].join('-')
+    },
+    generateProtocolArray: function () {
+      var arraySize = this.columnLength
+      var protocolList = this.createdProtocolArray
 
-          var arraySize = this.columnLength;
-          var protocolList = this.createdProtocolArray;
-
-          for(var i = 0; i <= arraySize; i++) {
-            var protocolNumber = this.generateProtocolNumber();
-            protocolList.push(protocolNumber);
-          }
-
-      },
-      clickedProtocolValue (value) {
-      return  this.currentProtocol = value
-      },
-      setCurrentProtocol: function(value){
-      this.clickedProtocolValue(value);
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(this.thisSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      },
-      stateSiteType (value) {
-      return  this.stateType = value
-      },
-      setActiveItem: function(value){
+      for (var i = 0; i <= arraySize; i++) {
+        var protocolNumber = this.generateProtocolNumber()
+        protocolList.push(protocolNumber)
+      }
+    },
+    clickedProtocolValue (value) {
+      return this.currentProtocol = value
+    },
+    setCurrentProtocol: function (value) {
+      this.clickedProtocolValue(value)
+    },
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(this.thisSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    },
+    setActiveItem: function (value) {
       return this.activeItem = value
-      },
-      activeMenuItem (itemName) {
-        this.stateActiveComponent(itemName);
-        this.setActiveItem(itemName);
-      },
-
     },
+    activeMenuItem (itemName) {
+      this.stateActiveComponent(itemName)
+      this.setActiveItem(itemName)
+    }
+
   }
+}
 
 </script>
 <style>
@@ -495,4 +492,3 @@ width :85px;
   margin: 20px auto;
 }
 </style>
-

@@ -1,11 +1,11 @@
-<template>  
+<template>
   <div class="resources-and-tools" id="RT">
     <div class="menu-row">
       <h4> Resources and Tools</h4>
-      <button @click="myFunction()" class="dropbtn">                        
+      <button @click="myFunction()" class="dropbtn">
           <span id="RATFlip" class="fa-stack RATStack-Carets">
-              <i  class="fa fa-stack fa-angle-double-down RATFlip"></i>              
-          </span>          
+              <i  class="fa fa-stack fa-angle-double-down RATFlip"></i>
+          </span>
       </button>
     </div>
     <div id="myDropdown" class="dropdown-content show">
@@ -25,21 +25,20 @@
   </div>
 </template>
 
-<script>  
- 
+<script>
 
-  export default {
-    components: {      
-      
-    },
-    methods: {
-      myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-        document.getElementById("RT").classList.toggle("shorty");
-        document.getElementById("RATFlip").classList.toggle("fa-rotate-180");
-      }
+export default {
+  components: {
+
+  },
+  methods: {
+    myFunction () {
+      document.getElementById('myDropdown').classList.toggle('show')
+      document.getElementById('RT').classList.toggle('shorty')
+      document.getElementById('RATFlip').classList.toggle('fa-rotate-180')
     }
   }
+}
 </script>
 <style scoped>
 .menu-row {
@@ -56,7 +55,7 @@
   font-weight: bold;
   line-height: 2.5em;
   vertical-align: middle;
-    
+
 }
 .dropbtn{
   width: 19px;
@@ -85,7 +84,7 @@
   padding-bottom: 3px;
 }
 .rt-nav-item a {
-border:none !important; 
+border:none !important;
 color:#000!important;
 margin:0 !important;
 text-decoration:none !important;
@@ -100,8 +99,8 @@ font-family: Calibri;
   font-weight: bold;
 }
 .rt-image {
-   height: 26px; 
-   width: 100px; 
+   height: 26px;
+   width: 100px;
 }
 .RATStack-Carets {
   font-size: 1.2em;

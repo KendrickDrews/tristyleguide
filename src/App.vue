@@ -61,54 +61,54 @@
   </div>
 </template>
 <script>
-//import routes from './routes.js'
-export default {  //name: 'mainLayout',
+// import routes from './routes.js'
+export default { // name: 'mainLayout',
   components: {
   },
   props: {
   },
-////
-  data: function(){
+  /// /
+  data: function () {
     return {
       open: true,
       currentLocation: this.$route.path,
-      topOffset: 0,
+      topOffset: 0
     }
   },
-////
+  /// /
   computed: {
     rootComponent () {
       return this.$root.ViewComponent
     },
-    ViewLocation ()  {
-        const matchingView = this.$route.path
-        return matchingView
+    ViewLocation () {
+      const matchingView = this.$route.path
+      return matchingView
     },
     siteBG () {
       const color = this.$root.store.state.siteType
       return color
     }
   },
-////
+  /// /
   mounted: function () {
-      this.SPLIT();
-    },
+    this.SPLIT()
+  },
 
-////
+  /// /
   methods: {
-      slideNav: function () {
-        this.open = !this.open
-      },
-      linkTo: function () {
-          this.$router.push({ name: 'Home'})
-      },
-      SPLIT: function (value) {
-      if (!value) return 'noValue'
-      var toSplit = value;
-      var splitString = toSplit.split("/", 2);
-      return splitString[1];
-    }
+    slideNav: function () {
+      this.open = !this.open
     },
+    linkTo: function () {
+      this.$router.push({ name: 'Home' })
+    },
+    SPLIT: function (value) {
+      if (!value) return 'noValue'
+      var toSplit = value
+      var splitString = toSplit.split('/', 2)
+      return splitString[1]
+    }
+  },
 
   filters: {
     capitalize: function (value) {
@@ -118,9 +118,9 @@ export default {  //name: 'mainLayout',
     },
     truncate: function (value) {
       if (!value) return 'noValue'
-      var toSplit = value;
-      var splitString = toSplit.split("/", 2);
-      return splitString[1];
+      var toSplit = value
+      var splitString = toSplit.split('/', 2)
+      return splitString[1]
     }
   }
 }
@@ -292,7 +292,6 @@ export default {  //name: 'mainLayout',
     width: calc(100% - 225px);
     transition: 0.4s ease-in-out;
   }
-
 
   .container-mirror {
     width: 100vw;

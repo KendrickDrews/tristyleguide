@@ -1,4 +1,4 @@
-<template>  
+<template>
 <!-- Branding Nav -->
   <div class="brandingNav">
       <div class="external">
@@ -9,17 +9,17 @@
           <hr class="vertical">
           <a href="#">Disclaimers</a>
       </div>
-  </div>  
+  </div>
 </template>
 
-<script>  
-  import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
+<script>
+import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg'
 
-  export default {
-    components: {      
-      CRS
-    }
+export default {
+  components: {
+    CRS
   }
+}
 </script>
 <style scoped>
 .policy {

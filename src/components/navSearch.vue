@@ -1,22 +1,22 @@
-<template>  
+<template>
 <!--navSearch -->
   <div class="main-headSearch">
       <h4> Clinical Research Support Search </h4>
       <input type="text" placeholder="">
       <button class="nav-button btn-Seven">
-          <h4> Go </h4>          
+          <h4> Go </h4>
           <div class="navbtn-shadow"></div>
       </button>
-  </div>  
+  </div>
 </template>
 
-<script>    
+<script>
 
-  export default {
-    components: {      
-     
-    }
+export default {
+  components: {
+
   }
+}
 </script>
 <style scoped>
 .btn-Seven h4 {
@@ -25,7 +25,7 @@
   font-family: arial;
   /*text-shadow:
        1px 1px 0 #000,
-     -1px -1px 0 #000,  
+     -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000;*/

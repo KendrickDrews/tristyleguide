@@ -1,98 +1,98 @@
-<template>  
+<template>
 <!--navButtons-->
     <div class="main-headButtons">
-      <template 
+      <template
       v-for="(item,key) in buttonList"
       >
-          <dmidbutton 
-            :buttonName="item" 
+          <dmidbutton
+            :buttonName="item"
             :key="key"
             :button-color="item"
-            :id="'nav-' + key"                                              
+            :id="'nav-' + key"
             v-show="showNav[key]"
             :height="smallIcon"
             :width="smallIcon"
-            :navIcon="true"  
-                                
+            :navIcon="true"
+
           >
-                                         
+
           </dmidbutton>
       </template>
-    </div>  
+    </div>
 </template>
 
 <script>
-  import NAVbutton from '../components/buttons.vue';     
-  import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
-  import CSRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg';
-  import GrantCapture from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
-  import Protocols from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
-  import Results from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'; 
-  import DocumentLibrary from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
-  import Home from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'; 
-  import PRT from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'; 
-  import ServiceRequests from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg';
-  import SMART from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'; 
-  import SOCSCMS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'; 
-  import Training from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg';
-  import buttonList from '../components/componentList/buttonList.js';
+import NAVbutton from '../components/buttons.vue'
+import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg'
+import CSRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CSRS.svg'
+import GrantCapture from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-GrantCapture.svg'
+import Protocols from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Protocols.svg'
+import Results from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DMART-Results.svg'
+import DocumentLibrary from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-DocumentLibrary.svg'
+import Home from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Home.svg'
+import PRT from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-PRT.svg'
+import ServiceRequests from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-ServiceRequests.svg'
+import SMART from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SMART.svg'
+import SOCSCMS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-SOCSCMS.svg'
+import Training from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-Training.svg'
+import buttonList from '../components/componentList/buttonList.js'
 
-  export default {
-    components: {      
-      NAVbutton,
-      CRS,
-      CSRS,
-      GrantCapture,
-      Protocols,
-      Results,
-      DocumentLibrary,
-      Home,
-      PRT,
-      ServiceRequests,
-      SMART,
-      SOCSCMS,
-      Training,
-      buttonList
-    },
-/* This list needs to be refactored out. navButtons and buttonLayout both use it */
-    data: function() {
-      return {
-        buttonList: buttonList,
-        smallIcon: '27px',
-      }
-    },
-    props: {
-      showNav: {             
-        default: function() {
-          return {            
-            Home: true,                    
-            CRS: true,
-            DocumentLibrary: true,
-            SOCSCMS: true,
-            Training: true,
-            ServiceRequests: true,
-            GrantCapture: true,
-            Protocols: true,
-            Results: true,
-            PRT: true,
-            SMART: true,
-            CSRS: true,
-            Development: true, 
-            InProgress: true,
-            Initiation: true,
-            CloseOut: true,            
-          }
+export default {
+  components: {
+    NAVbutton,
+    CRS,
+    CSRS,
+    GrantCapture,
+    Protocols,
+    Results,
+    DocumentLibrary,
+    Home,
+    PRT,
+    ServiceRequests,
+    SMART,
+    SOCSCMS,
+    Training,
+    buttonList
+  },
+  /* This list needs to be refactored out. navButtons and buttonLayout both use it */
+  data: function () {
+    return {
+      buttonList: buttonList,
+      smallIcon: '27px'
+    }
+  },
+  props: {
+    showNav: {
+      default: function () {
+        return {
+          Home: true,
+          CRS: true,
+          DocumentLibrary: true,
+          SOCSCMS: true,
+          Training: true,
+          ServiceRequests: true,
+          GrantCapture: true,
+          Protocols: true,
+          Results: true,
+          PRT: true,
+          SMART: true,
+          CSRS: true,
+          Development: true,
+          InProgress: true,
+          Initiation: true,
+          CloseOut: true
         }
       }
     }
   }
+}
 </script>
 <style <style scoped>
 .main-headButtons {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: center;   
+  align-items: center;
   height: 100%;
 }
 .markup {
@@ -125,7 +125,7 @@
   align-items: center;
   width: 15%;
   margin-top: 2px;
-  margin-bottom: 3px;  
+  margin-bottom: 3px;
 }
 .button-container h4 {
   color: rgba(0,0,0, 0.8);

@@ -685,476 +685,465 @@
 </template>
 
 <script>
-import autocomplete from '../../../components/autoComplete.vue';
-import siteMaster from '../CRS/siteMaster.js';
+import autocomplete from '../../../components/autoComplete.vue'
+import siteMaster from '../CRS/siteMaster.js'
 
-  export default {
-    name: 'ClinicalQualityManagement',
-    components: {
-      autocomplete,
-      siteMaster,
+export default {
+  name: 'ClinicalQualityManagement',
+  components: {
+    autocomplete,
+    siteMaster
+  },
+  data () {
+    return {
+      activeItem: 'Console',
+      columnLength: 10,
+      columnList: [
+        { id: 'ProtocolNumber', name: 'Protocol Number' },
+        { id: 'LeadSite', name: 'Lead Site' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'FundingAgreement', name: 'Funding Agreement' },
+        { id: 'DMIDBranch', name: 'DMID Branch' },
+        { id: 'DMIDCPM', name: 'DMID Clinical Project Manager' },
+        { id: 'ResourceLevel', name: 'Resource Level' },
+        { id: 'GroupAffiliation', name: 'Group Affiliation' },
+        { id: 'DMIDIND', name: 'DMID IND' },
+        { id: 'AcceptDate', name: 'Accepted Date' },
+        { id: 'VersionNum', name: 'Version Number' },
+        { id: 'VersionDate', name: 'Version Date' },
+        { id: 'CQMPStatus', name: 'CQMP Status' },
+        { id: 'EffectiveDate', name: 'Effective Date' },
+        { id: 'VersionNumber', name: 'Version Number' },
+        { id: 'VersionDT', name: 'Version Date' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments' },
+        { id: 'CurrentAcceptDate', name: 'Current Accepted Date' },
+        { id: 'DMIDAcceptVersion', name: 'DMID Accepted Version' },
+        { id: 'Monitored', name: 'Monitored by ICON?' }
+      ],
+      columnListSite: [
+        { id: 'Edit', name: 'Edit' },
+        { id: 'LeadSite', name: 'Lead Site' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'FundingAgreement', name: 'Funding Agreement' },
+        { id: 'GroupAffiliation', name: 'Group Affiliation' },
+        { id: 'CQMPStatus', name: 'CQMP Status' },
+        { id: 'EffectiveDate', name: 'Effective Date' },
+        { id: 'VersionNumber', name: 'Version Number' },
+        { id: 'VersionDT', name: 'Version Date' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments' }
+      ],
+      columnListProtocols: [
+        { id: 'Edit', name: 'Edit' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'AcceptDate', name: 'Accepted Date' },
+        { id: 'VersionNum', name: 'Version Number' },
+        { id: 'VersionDate', name: 'Version Date' },
+        { id: 'CQMPStatus', name: 'CQMP Status' },
+        { id: 'EffectiveDate', name: 'Effective Date' },
+        { id: 'VersionNumber', name: 'Version Number' },
+        { id: 'VersionDT', name: 'Version Date' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments' }
+      ],
+      protocols: [],
+      protocolRecordStatus: [
+        // Open
+        { open: true, status: 'Active' },
+        { open: true, status: 'Active-Enrollment Complete' },
+        { open: true, status: 'Concept Approved' },
+        { open: true, status: 'Concept Proposed' },
+        { open: true, status: 'On Hold' },
+        { open: true, status: 'In Development' },
+        { open: true, status: 'Completed' },
+        // Closed
+        { open: false, status: 'Closed' },
+        { open: false, status: 'Terminated by Sponsor' },
+        { open: false, status: 'Concept Deferred' },
+        { open: false, status: 'Concept Denied' },
+        { open: false, status: 'Void' }
+      ],
+      siteList: [
+        { id: 1, title: 'Crucell Holland BV', num: 'MI-0023' },
+        { id: 2, title: 'Emory University', num: 'MI-1234' },
+        { id: 3, title: 'Mayo Clinic', num: 'MI-4265' },
+        { id: 4, title: 'Quintiles, Inc.', num: 'MI-2222' }
+      ],
+      CQMPStatus: [
+        { id: 1, title: 'Accepted Initial' },
+        { id: 2, title: 'Accepted Revised' },
+        { id: 3, title: 'In Progress' },
+        { id: 4, title: 'Cancelled' },
+        { id: 5, title: 'None' }
+      ],
+      groupAffiliation: [
+        { id: 1, title: 'CEIRS' },
+        { id: 2, title: 'Phase 1' },
+        { id: 3, title: 'RPRC' },
+        { id: 4, title: 'TB-CDRC' },
+        { id: 5, title: 'TBRU' },
+        { id: 6, title: 'VTEU' },
+        { id: 7, title: 'N/A' }
+      ],
+      newTodoText: '',
+      nextTodoId: 4,
+      currentProtocol: -1,
+      planView: 'All',
+      protocolHidden: true,
+      siteHidden: true,
+      dropDownHidden: true,
+      selected: [],
+      siteMasterList: Object.keys(siteMaster).map(function (key) {
+        return siteMaster[key]
+      }),
+      siteBased: [],
+      protocolBased: []
+    }
+  },
+  /// ////
+  computed: {
+    createdProtocolArray: function () {
+      return this.protocols
     },
-    data () {
-      return {
-        activeItem: 'Console',
-        columnLength: 10,
-        columnList: [
-          {id: 'ProtocolNumber', name: 'Protocol Number'},
-          {id: 'LeadSite', name: 'Lead Site'},
-          {id: 'AffiliatedSite', name: 'Affiliated Site'},
-          {id: 'FundingAgreement', name: 'Funding Agreement'},
-          {id: 'DMIDBranch', name: 'DMID Branch'},
-          {id: 'DMIDCPM', name: 'DMID Clinical Project Manager'},
-          {id: 'ResourceLevel', name: 'Resource Level'},
-          {id: 'GroupAffiliation', name: 'Group Affiliation'},
-          {id: 'DMIDIND', name: 'DMID IND'},
-          {id: 'AcceptDate', name: 'Accepted Date'},
-          {id: 'VersionNum', name: 'Version Number'},
-          {id: 'VersionDate', name: 'Version Date'},
-          {id: 'CQMPStatus', name: 'CQMP Status'},
-          {id: 'EffectiveDate', name: 'Effective Date'},
-          {id: 'VersionNumber', name: 'Version Number'},
-          {id: 'VersionDT', name: 'Version Date'},
-          {id: 'ReviewerComments', name: 'Reviewer Comments'},
-          {id: 'CurrentAcceptDate', name: 'Current Accepted Date'},
-          {id: 'DMIDAcceptVersion', name: 'DMID Accepted Version'},
-          {id: 'Monitored', name: 'Monitored by ICON?'},
-        ],
-        columnListSite: [
-          {id: 'Edit', name: 'Edit'},
-          {id: 'LeadSite', name: 'Lead Site'},
-          {id: 'AffiliatedSite', name: 'Affiliated Site'},
-          {id: 'FundingAgreement', name: 'Funding Agreement'},
-          {id: 'GroupAffiliation', name: 'Group Affiliation'},
-          {id: 'CQMPStatus', name: 'CQMP Status'},
-          {id: 'EffectiveDate', name: 'Effective Date'},
-          {id: 'VersionNumber', name: 'Version Number'},
-          {id: 'VersionDT', name: 'Version Date', },
-          {id: 'ReviewerComments', name: 'Reviewer Comments'},
-        ],
-        columnListProtocols: [
-          {id: 'Edit', name: 'Edit'},
-          {id: 'AffiliatedSite', name: 'Affiliated Site'},
-          {id: 'AcceptDate', name: 'Accepted Date'},
-          {id: 'VersionNum', name: 'Version Number'},
-          {id: 'VersionDate', name: 'Version Date'},
-          {id: 'CQMPStatus', name: 'CQMP Status'},
-          {id: 'EffectiveDate', name: 'Effective Date'},
-          {id: 'VersionNumber', name: 'Version Number'},
-          {id: 'VersionDT', name: 'Version Date'},
-          {id: 'ReviewerComments', name: 'Reviewer Comments'},
-        ],
-        protocols: [],
-        protocolRecordStatus: [
-          //Open
-          { open: true, status: 'Active'},
-          { open: true, status: 'Active-Enrollment Complete'},
-          { open: true, status: 'Concept Approved'},
-          { open: true, status: 'Concept Proposed'},
-          { open: true, status: 'On Hold'},
-          { open: true, status: 'In Development'},
-          { open: true, status: 'Completed'},
-          //Closed
-          { open: false, status: 'Closed'},
-          { open: false, status: 'Terminated by Sponsor'},
-          { open: false, status: 'Concept Deferred'},
-          { open: false, status: 'Concept Denied'},
-          { open: false, status: 'Void'},
-        ],
-        siteList: [
-          { id: 1, title: 'Crucell Holland BV', num: 'MI-0023', },
-          { id: 2, title: 'Emory University', num: 'MI-1234', },
-          { id: 3, title: 'Mayo Clinic', num: 'MI-4265', },
-          { id: 4, title: 'Quintiles, Inc.', num: 'MI-2222', }
-        ],
-        CQMPStatus: [
-          { id: 1, title: 'Accepted Initial', },
-          { id: 2, title: 'Accepted Revised', },
-          { id: 3, title: 'In Progress', },
-          { id: 4, title: 'Cancelled', },
-          { id: 5, title: 'None' }
-        ],
-        groupAffiliation: [
-          { id: 1, title: 'CEIRS', },
-          { id: 2, title: 'Phase 1', },
-          { id: 3, title: 'RPRC', },
-          { id: 4, title: 'TB-CDRC', },
-          { id: 5, title: 'TBRU', },
-          { id: 6, title: 'VTEU', },
-          { id: 7, title: 'N/A' }
-        ],
-        newTodoText: '',
-        nextTodoId: 4,
-        currentProtocol: -1,
-        planView: "All",
-        protocolHidden: true,
-        siteHidden: true,
-        dropDownHidden: true,
-        selected: [],
-        siteMasterList: Object.keys(siteMaster).map(function(key) {
-           return siteMaster[key] }),
-        siteBased: [],
-        protocolBased: [],
-      };
+    currentProtocolValue: function () {
+      return this.currentProtocol
     },
-///////
-    computed: {
-      createdProtocolArray: function() {
-        return this.protocols
-      },
-      currentProtocolValue: function() {
-        return this.currentProtocol
-      },
-      siteBasedRecords: function () {
-        return this.siteBased
-      },
-      protocolBasedRecords: function() {
-        return this.protocolBased
+    siteBasedRecords: function () {
+      return this.siteBased
+    },
+    protocolBasedRecords: function () {
+      return this.protocolBased
+    }
+  },
+  /// ////
+  mounted: function () {
+    this.generateProtocolArray()
+    this.setCurrentProtocol()
+    this.isValueEven()
+    this.generateSiteRecords()
+    this.generateProtocolRecords()
+  },
+  /// ////
+  methods: {
+    isSelected: function () {
+      return this.selected
+    },
+    addNewTodo: function () {
+      this.siteList.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    },
+    clickedProtocolValue (value) {
+      return this.currentProtocol = value
+    },
+    setCurrentProtocol: function (value) {
+      this.clickedProtocolValue(value)
+    },
+    showModal () {
+      this.isModalVisible = true
+    },
+    closeModal () {
+      this.isModalVisible = false
+    },
+    selectedForm: function (value) {
+      if (value == 'site') {
+        this.siteHidden = false
+        this.protocolHidden = true
+      } else if (value == 'protocol') {
+        this.protocolHidden = false
+        this.siteHidden = true
+      } else {
+        return console.log(value)
       }
     },
-///////
-    mounted: function () {
-      this.generateProtocolArray();
-      this.setCurrentProtocol();
-      this.isValueEven();
-      this.generateSiteRecords();
-      this.generateProtocolRecords();
+    hideDropDown: function () {
+      return this.dropDownHidden = !this.dropDownHidden
     },
-///////
-    methods: {
-      isSelected: function() {
-        return this.selected;
-      },
-      addNewTodo: function() {
-        this.siteList.push({
-            id: this.nextTodoId++,
-            title: this.newTodoText
-        })
-        this.newTodoText = ''
-      },
-      clickedProtocolValue (value) {
-      return  this.currentProtocol = value
-      },
-      setCurrentProtocol: function(value){
-      this.clickedProtocolValue(value);
-      },
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      selectedForm: function (value) {
-        if (value == 'site') {
-          this.siteHidden = false;
-          this.protocolHidden = true;
+    getRandomInt: function (min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1)) + min // The maximum is inclusive and the minimum is inclusive
+    },
+    headsOrTails: function (a, b) {
+      var myNumber = this.getRandomInt(0, 1)
+      if (myNumber == 0) {
+        return a
+      } else {
+        return b
+      }
+    },
+    randomDate: function (start, end) {
+      var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+
+      // month = '' + (d.getMonth() + 1),
+
+      var day = '' + d.getDate()
+
+      var year = d.getFullYear()
+      year = year.toString().substr(-2)
+      var month = new Array()
+
+      month[0] = 'Jan'
+      month[1] = 'Feb'
+      month[2] = 'Mar'
+      month[3] = 'Apr'
+      month[4] = 'May'
+      month[5] = 'Jun'
+      month[6] = 'Jul'
+      month[7] = 'Aug'
+      month[8] = 'Sep'
+      month[9] = 'Oct'
+      month[10] = 'Nov'
+      month[11] = 'Dec'
+
+      var monthName = month[d.getMonth()]
+
+      // if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day
+
+      return [day, monthName, year].join('-')
+    },
+
+    generateBranch: function (start, end) {
+      var DCE = new Array()
+
+      DCE[0] = 'OBRRTR'
+      DCE[1] = 'RDB'
+      DCE[2] = 'PIPB'
+      DCE[3] = 'BMB'
+      DCE[4] = 'STDB'
+
+      // var entityNum = ;
+      var branchName = DCE[this.getRandomInt(start, end)]
+      return branchName
+    },
+    randomCPM: function (start, end) {
+      var CPM = new Array()
+
+      CPM[0] = 'Carol Ostrye'
+      CPM[1] = 'Walt Jones'
+      CPM[2] = 'Patti Gottdiener'
+      CPM[3] = 'Robin Mason'
+      CPM[4] = 'Walla Dempsey'
+
+      // var entityNum = ;
+      var entityName = CPM[this.getRandomInt(start, end)]
+      return entityName
+    },
+    randomAffiliation: function (start, end) {
+      var Aff = new Array()
+
+      Aff[0] = 'CEIRS'
+      Aff[1] = 'N/A'
+      Aff[2] = 'Phase 1'
+      Aff[3] = 'RPRC'
+      Aff[4] = 'TB-CDRC'
+      Aff[5] = 'TBRU'
+      Aff[6] = 'VTEU'
+
+      // var entityNum = ;
+      var entityName = Aff[this.getRandomInt(start, end)]
+      return entityName
+    },
+
+    generateSiteName: function (start, end) {
+      var sites = new Array()
+
+      sites[0] = 'Crucell Holland BV'
+      sites[1] = 'Emory University'
+      sites[2] = 'Mayo Clinic'
+      sites[3] = 'Quintiles, Inc.'
+      sites[4] = 'N/A'
+
+      // var entityNum = ;
+      var siteName = sites[this.getRandomInt(start, end)]
+      return siteName
+    },
+    randomCQMPStatus: function (start, end) {
+      var status = new Array()
+
+      status[0] = 'Accepted Initial'
+      status[1] = 'Accepted Revised'
+      status[2] = 'In Progress'
+      status[3] = 'Cancelled'
+      status[4] = 'None'
+
+      // var entityNum = ;
+      var recordStatus = status[this.getRandomInt(start, end)]
+      return recordStatus
+    },
+    randomResource: function (start, end) {
+      var resource = new Array()
+
+      resource[0] = '1 - Low'
+      resource[1] = '2 - Low'
+      resource[2] = '3 - Medium'
+      resource[3] = '4 - Medium'
+      resource[4] = '5 - High'
+      resource[5] = '6 - High'
+      resource[6] = '7 - High'
+      resource[7] = '8 - High'
+
+      // var entityNum = ;
+      var resourceLevel = resource[this.getRandomInt(start, end)]
+      return resourceLevel
+    },
+    shuffle: function (array) {
+      var currentIndex = array.length; var temporaryValue; var randomIndex
+
+      // While there remain elements to shuffle...
+      while (currentIndex !== 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
+      }
+      return array
+    },
+
+    generateProtocolNumber: function () {
+      var start = this.getRandomInt(0, 19)
+      var end = this.getRandomInt(0, 1150)
+      var XX = (start >= 10) ? start : '0' + start
+      var XXXX = (end >= 1000) ? end : (end >= 100) ? '0' + end : (end >= 10) ? '00' + end : '000' + end
+      return [XX, XXXX].join('-')
+    },
+    generateProtocolArray: function () {
+      var arraySize = this.columnLength
+      var protocolList = this.createdProtocolArray
+      for (var i = 0; i < arraySize; i++) {
+        var protocolNumber = this.generateProtocolNumber()
+        protocolList.push(protocolNumber)
+      }
+    },
+    generateSiteRecords: function () {
+      var sites = this.siteMasterList
+      var numOfRecords = this.columnLength
+      var output = this.siteBasedRecords
+
+      for (var i = 0; i < sites.length, i < numOfRecords; i++) {
+        var shuffledSites = this.shuffle(sites)
+        var numOfCQMPS = this.getRandomInt(0, 5)
+        var x = this.getRandomInt(1, 8)
+        var j = 1
+
+        var leadSite = {
+          leadSiteName: { id: 0, siteName: sites[i], reviewed: false },
+          CQMPS: []
         }
-        else if (value == 'protocol') {
-          this.protocolHidden = false;
-          this.siteHidden = true;
-        }
-        else {
-        return console.log(value);
-        }
-      },
-      hideDropDown: function() {
-        return this.dropDownHidden = !this.dropDownHidden;
-      },
-      getRandomInt: function(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-      },
-      headsOrTails: function(a,b) {
-        var myNumber = this.getRandomInt(0,1);
-        if (myNumber == 0) {
-          return a
-        }
-        else {
-          return b
-        }
-      },
-      randomDate: function (start, end) {
-
-        var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
-
-          //month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-          year = year.toString().substr(-2);
-          var month = new Array();
-
-          month[0] = "Jan";
-          month[1] = "Feb";
-          month[2] = "Mar";
-          month[3] = "Apr";
-          month[4] = "May";
-          month[5] = "Jun";
-          month[6] = "Jul";
-          month[7] = "Aug";
-          month[8] = "Sep";
-          month[9] = "Oct";
-          month[10] = "Nov";
-          month[11] = "Dec";
-
-          var monthName = month[d.getMonth()];
-
-        // if (month.length < 2) month = '0' + month;
-        if (day.length < 2) day = '0' + day;
-
-        return [day, monthName, year].join('-');
-      },
-
-      generateBranch: function(start, end) {
-
-        var DCE = new Array();
-
-          DCE[0] = "OBRRTR";
-          DCE[1] = "RDB";
-          DCE[2] = "PIPB";
-          DCE[3] = "BMB";
-          DCE[4] = "STDB";
-
-        //var entityNum = ;
-        var branchName = DCE[this.getRandomInt(start, end)];
-        return branchName;
-      },
-      randomCPM: function(start, end) {
-
-        var CPM = new Array();
-
-          CPM[0] = "Carol Ostrye";
-          CPM[1] = "Walt Jones";
-          CPM[2] = "Patti Gottdiener";
-          CPM[3] = "Robin Mason";
-          CPM[4] = "Walla Dempsey";
-
-        //var entityNum = ;
-        var entityName = CPM[this.getRandomInt(start, end)];
-        return entityName;
-      },
-      randomAffiliation: function(start, end) {
-
-        var Aff = new Array();
-
-          Aff[0] = "CEIRS";
-          Aff[1] = "N/A";
-          Aff[2] = "Phase 1";
-          Aff[3] = "RPRC";
-          Aff[4] = "TB-CDRC";
-          Aff[5] = "TBRU";
-          Aff[6] = "VTEU";
-
-        //var entityNum = ;
-        var entityName = Aff[this.getRandomInt(start, end)];
-        return entityName;
-      },
-
-      generateSiteName: function(start, end) {
-
-        var sites = new Array();
-
-          sites[0] = "Crucell Holland BV";
-          sites[1] = "Emory University";
-          sites[2] = "Mayo Clinic";
-          sites[3] = "Quintiles, Inc.";
-          sites[4] = "N/A";
-
-        //var entityNum = ;
-        var siteName = sites[this.getRandomInt(start, end)];
-        return siteName;
-      },
-      randomCQMPStatus: function(start, end) {
-
-         var status = new Array();
-
-          status[0] = 'Accepted Initial';
-          status[1] = 'Accepted Revised';
-          status[2] = 'In Progress';
-          status[3] = 'Cancelled';
-          status[4] = 'None';
-
-        //var entityNum = ;
-        var recordStatus = status[this.getRandomInt(start, end)];
-        return recordStatus;
-      },
-      randomResource: function(start, end) {
-
-         var resource = new Array();
-
-          resource[0] = '1 - Low';
-          resource[1] = '2 - Low';
-          resource[2] = '3 - Medium';
-          resource[3] = '4 - Medium';
-          resource[4] = '5 - High';
-          resource[5] = '6 - High';
-          resource[6] = '7 - High';
-          resource[7] = '8 - High';
-
-
-        //var entityNum = ;
-        var resourceLevel = resource[this.getRandomInt(start, end)];
-        return resourceLevel;
-      },
-      shuffle: function(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-        return array;
-      },
-
-      generateProtocolNumber: function() {
-        var start = this.getRandomInt(0,19);
-        var end = this.getRandomInt(0,1150);
-        var XX = (start >= 10 ) ? start : "0" + start;
-        var XXXX = (end >= 1000) ? end : (end >= 100) ? "0" + end :(end >= 10) ? "00" + end : "000" + end;
-        return [XX, XXXX].join('-');
-      },
-      generateProtocolArray: function() {
-        var arraySize = this.columnLength;
-        var protocolList = this.createdProtocolArray;
-        for(var i = 0; i < arraySize; i++) {
-          var protocolNumber = this.generateProtocolNumber();
-          protocolList.push(protocolNumber);
-        }
-      },
-      generateSiteRecords: function() {
-        var sites = this.siteMasterList;
-        var numOfRecords = this.columnLength;
-        var output = this.siteBasedRecords;
-
-        for (var i = 0; i < sites.length, i < numOfRecords; i++) {
-          var shuffledSites = this.shuffle(sites);
-          var numOfCQMPS = this.getRandomInt(0,5);
-          var x = this.getRandomInt(1,8);
-          var j = 1;
-
-          var leadSite = {
-            leadSiteName: { id: 0, siteName: sites[i], reviewed: false,},
-            CQMPS: [],
-          };
-          // Fills CQMPS[]
-          if ( j > numOfCQMPS){
-            // Break
-          }
-          else {
-            for( j ; j <= numOfCQMPS; j++) {
-              var aRecord =
+        // Fills CQMPS[]
+        if (j > numOfCQMPS) {
+          // Break
+        } else {
+          for (j; j <= numOfCQMPS; j++) {
+            var aRecord =
                 {
                   id: j,
-                  affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS ? true : false, siteLead: true,},],
+                  affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
                   legacyData: {
                     dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
-                    vNumber: this.getRandomInt(1,x) + ".0",
-                    vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+                    vNumber: this.getRandomInt(1, x) + '.0',
+                    vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
                   },
                   currentData: {
-                    cqmpStatus: this.randomCQMPStatus(0,4),
+                    cqmpStatus: this.randomCQMPStatus(0, 4),
                     effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                    cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1,5)))) + ".0",
+                    cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
                     cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                    Comments: "Reviewer comments go here.",
-                  },
+                    Comments: 'Reviewer comments go here.'
+                  }
                 }
-              // Fills affiliatedSites{}
-              for(var n = 1; n < numOfCQMPS; n++) {
-                var numAffSites = { id: n, siteName: shuffledSites[(n-1)], reviewed: j === n ? true : false, }
-                aRecord.affiliatedSites.push(numAffSites);
-              }
-              leadSite.CQMPS.push(aRecord);
+            // Fills affiliatedSites{}
+            for (var n = 1; n < numOfCQMPS; n++) {
+              var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n }
+              aRecord.affiliatedSites.push(numAffSites)
             }
+            leadSite.CQMPS.push(aRecord)
           }
-          output.push(leadSite);
         }
-      },
-      generateProtocolRecords: function() {
-
-        var sites = this.siteMasterList;
-        var recordStatus = this.protocolRecordStatus;
-        var groupAff = this.groupAffiliation
-        var numOfRecords = this.columnLength;
-        var output = this.protocolBasedRecords;
-        var protNum = this.protocols;
-
-        for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
-          var shuffledSites = this.shuffle(sites);
-          var numOfCQMPS = this.getRandomInt(1,5);
-          var x = this.getRandomInt(1,8);
-
-          var protocolNum = {
-            protocolNum: protNum[this.getRandomInt(i,i)],
-            protocolStatus: recordStatus[this.getRandomInt(0,recordStatus.length)],
-            leadSite:  { id: 0, siteName: sites[this.getRandomInt(0,sites.length)], reviewed: false,},
-            fundingAgreement: this.headsOrTails("Contract","Grant/Cooperative Agreement"),
-            branch: this.generateBranch(0,4),
-            cpm: this.randomCPM(0,4),
-            resourceLevel: this.randomResource(0,7),
-            groupAffiliation: this.randomAffiliation(0,6),
-            dmidIND: this.headsOrTails("Yes","No"),
-            CQMPS: [],
-          };
-          // Fills CQMPS[]
-          for(var j = 1; j <= numOfCQMPS; j++) {
-            var aRecord =
-              {
-                id: j,
-                affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS ? true : false, siteLead: true,},],
-                legacyData: {
-                  dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
-                  vNumber: this.getRandomInt(1,x) + ".0",
-                  vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
-                },
-                currentData: {
-                  cqmpStatus: this.randomCQMPStatus(0,4),
-                  effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                  cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1,5)))) + ".0",
-                  cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                  Comments: "Reviewer comments go here.",
-                },
-              }
-              // Fills affiliatedSites{}
-            for(var n = 1; n < numOfCQMPS; n++) {
-              var numAffSites = { id: n, siteName: shuffledSites[this.getRandomInt(i,i)], reviewed: j === n ? true : false, }
-              aRecord.affiliatedSites.push(numAffSites);
-            }
-            protocolNum.CQMPS.push(aRecord);
-          }
-          output.push(protocolNum);
-        }
-      },
-
-      isValueEven: function (value) {
-        var myNumber = value;
-        if (myNumber % 2 === 0) {
-          return 'striped-row'
-        }
-        else {
-          return 'odd-row'
-        }
-      },
-    },
-    filters: {
-      concatenate: function (value) {
-        if (!value) return 'noValue'
-        var toSplit = value;
-        var splitString = toSplit.split(' ');
-        return splitString.join('');
-      },
-      plus: function (value, number) {
-        if (!value) return 'noValue'
-        return value + number;
+        output.push(leadSite)
       }
     },
+    generateProtocolRecords: function () {
+      var sites = this.siteMasterList
+      var recordStatus = this.protocolRecordStatus
+      var groupAff = this.groupAffiliation
+      var numOfRecords = this.columnLength
+      var output = this.protocolBasedRecords
+      var protNum = this.protocols
+
+      for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
+        var shuffledSites = this.shuffle(sites)
+        var numOfCQMPS = this.getRandomInt(1, 5)
+        var x = this.getRandomInt(1, 8)
+
+        var protocolNum = {
+          protocolNum: protNum[this.getRandomInt(i, i)],
+          protocolStatus: recordStatus[this.getRandomInt(0, recordStatus.length)],
+          leadSite: { id: 0, siteName: sites[this.getRandomInt(0, sites.length)], reviewed: false },
+          fundingAgreement: this.headsOrTails('Contract', 'Grant/Cooperative Agreement'),
+          branch: this.generateBranch(0, 4),
+          cpm: this.randomCPM(0, 4),
+          resourceLevel: this.randomResource(0, 7),
+          groupAffiliation: this.randomAffiliation(0, 6),
+          dmidIND: this.headsOrTails('Yes', 'No'),
+          CQMPS: []
+        }
+        // Fills CQMPS[]
+        for (var j = 1; j <= numOfCQMPS; j++) {
+          var aRecord =
+              {
+                id: j,
+                affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
+                legacyData: {
+                  dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+                  vNumber: this.getRandomInt(1, x) + '.0',
+                  vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
+                },
+                currentData: {
+                  cqmpStatus: this.randomCQMPStatus(0, 4),
+                  effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                  cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
+                  cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+                  Comments: 'Reviewer comments go here.'
+                }
+              }
+              // Fills affiliatedSites{}
+          for (var n = 1; n < numOfCQMPS; n++) {
+            var numAffSites = { id: n, siteName: shuffledSites[this.getRandomInt(i, i)], reviewed: j === n }
+            aRecord.affiliatedSites.push(numAffSites)
+          }
+          protocolNum.CQMPS.push(aRecord)
+        }
+        output.push(protocolNum)
+      }
+    },
+
+    isValueEven: function (value) {
+      var myNumber = value
+      if (myNumber % 2 === 0) {
+        return 'striped-row'
+      } else {
+        return 'odd-row'
+      }
+    }
+  },
+  filters: {
+    concatenate: function (value) {
+      if (!value) return 'noValue'
+      var toSplit = value
+      var splitString = toSplit.split(' ')
+      return splitString.join('')
+    },
+    plus: function (value, number) {
+      if (!value) return 'noValue'
+      return value + number
+    }
   }
+}
 
 </script>
 

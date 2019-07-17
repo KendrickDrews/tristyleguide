@@ -30,61 +30,60 @@
 </template>
 
 <script>
-  //import routes from '../routes'
-  import componentList from '../components/componentList/componentList.js'
+// import routes from '../routes'
+import componentList from '../components/componentList/componentList.js'
 
-  export default {
+export default {
 
-    components: {
-      componentList,
+  components: {
+    componentList
+  },
+
+  /// ////
+  data: function () {
+    return {
+      componentList: componentList,
+      topSet: '',
+      activeItem: 'Colors'
+
+    }
+  },
+
+  /// ////
+  computed: {
+    scrollContainer: function () {
+      return this.topSet = document.querySelector('#scrollContainer')
     },
-
-///////
-    data: function () {
-      return {
-        componentList: componentList,
-        topSet: '',
-        activeItem: 'Colors',
-
+    activeComponent: function () {
+      return this.activeItem
+    },
+    //
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
+      },
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
       }
-    },
+    }
 
-///////
-    computed: {
-      scrollContainer: function() {
-        return this.topSet = document.querySelector('#scrollContainer')
-      },
-      activeComponent: function() {
-        return this.activeItem
-      },
-      //
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-
+  },
+  /// ////
+  mounted: function () {
+    this.stateActiveComponent('Colors')
+  },
+  /// ////
+  methods: {
+    onItemChanged (event, currentItem, lastActiveItem) {
+      const activeComponent = this.activeComponent
+      return this.stateActiveComponent(currentItem.name)
     },
-///////
-    mounted: function () {
-      this.stateActiveComponent('Colors');
-    },
-///////
-    methods: {
-      onItemChanged(event, currentItem, lastActiveItem) {
-        const activeComponent = this.activeComponent
-        return this.stateActiveComponent(currentItem.name)
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      }
-    },
-
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    }
   }
 
+}
 
 </script>
 

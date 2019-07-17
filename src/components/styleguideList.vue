@@ -1,47 +1,46 @@
 <template>
   <ul>
-    <!-- <li 
+    <!-- <li
       is="VLink"
       v-for="(item, index) in route"
       v-bind:item="item"
       v-bind:index="index"
-      v-bind:key="item.index"        
+      v-bind:key="item.index"
       v-bind:href="index"
-    > 
-      {{ item }} 
+    >
+      {{ item }}
     </li>  -->
-    <li       
+    <li
       v-for="(item, index) in route"
       v-bind:item="item"
       v-bind:index="index"
-      v-bind:key="item.index"        
+      v-bind:key="item.index"
       v-bind:to=" item "
-    > 
-      <router-link :to="item"> {{ index }}</router-link> 
-    </li> 
+    >
+      <router-link :to="item"> {{ index }}</router-link>
+    </li>
   </ul>
 </template>
 
 <script>
-  import VLink from '../components/VLink.vue'
-  
-  
-  export default {  
-     
-    components: {
-      VLink
-    },
+import VLink from '../components/VLink.vue'
 
-    data: function() {
-      return {         
-           route: [
-             { Home: '/home' },
+export default {
 
-           ],         
-      }
-    },  
-    
+  components: {
+    VLink
+  },
+
+  data: function () {
+    return {
+      route: [
+        { Home: '/home' }
+
+      ]
+    }
   }
+
+}
 </script>
 
 <style scoped>

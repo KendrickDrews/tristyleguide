@@ -1,4 +1,4 @@
-<template>  
+<template>
 <!--navUser-->
   <div class="main-headUser">
       <a href="#">Support and FAQs</a>
@@ -7,16 +7,16 @@
       <hr class="vertical">
       <h5> Current User: &emsp; </h5>
       <a href="#" class="userLog">  Last, First </a>
-  </div> 
+  </div>
 </template>
 
-<script>   
+<script>
 
-  export default {
-    components: {      
-      
-    }
+export default {
+  components: {
+
   }
+}
 </script>
 <style scoped>
 .userLog {

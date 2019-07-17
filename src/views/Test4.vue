@@ -55,7 +55,6 @@
     </div>
   </div>
 
-
   <div class="componentLayout">
  </div>
   <div class="componentLayout">
@@ -83,107 +82,106 @@
 </template>
 
 <script>
- import buttonList from '../components/componentList/buttonList.js';
- import todoItem from '../components/todo.vue';
+import buttonList from '../components/componentList/buttonList.js'
+import todoItem from '../components/todo.vue'
 
-  export default {
-    components: {
+export default {
+  components: {
+    buttonList,
+    todoItem
+  },
+
+  /// //
+  data: function () {
+    return {
+      checkedNames: [],
+      buttonName: 'CRS',
+      smallIcon: '27px',
       buttonList,
-      todoItem
-    },
+      newTodoText: '',
+      todos: [
+        { id: 1, title: 'Do the dishes' },
+        { id: 2, title: 'Take out the trash' },
+        { id: 3, title: 'Mow the lawn' }
+      ],
+      nextTodoId: 4
+    }
+  },
+  template: {
 
+  },
+  props: {
+    showNav: {
 
-/////
-    data: function(){
-      return {
-        checkedNames: [],
-        buttonName: 'CRS',
-        smallIcon: '27px',
-        buttonList,
-        newTodoText: '',
-        todos: [
-          { id: 1, title: 'Do the dishes', },
-          { id: 2, title: 'Take out the trash', },
-          { id: 3, title: 'Mow the lawn' }
-        ],
-        nextTodoId: 4
-      }
-    },
-    template: {
-
-    },
-    props: {
-      showNav:{
-
-        default: function(){
-          return {
-            Home: true,
-            CRS: true,
-            DocumentLibrary: true,
-            SOCSCMS: true,
-            Training: true,
-            ServiceRequests: true,
-            PRT: true,
-            SMART: true,
-            CSRS: true,
-            GrantCapture: true,
-            Protocols: true,
-            Results: true,
-          }
+      default: function () {
+        return {
+          Home: true,
+          CRS: true,
+          DocumentLibrary: true,
+          SOCSCMS: true,
+          Training: true,
+          ServiceRequests: true,
+          PRT: true,
+          SMART: true,
+          CSRS: true,
+          GrantCapture: true,
+          Protocols: true,
+          Results: true
         }
       }
+    }
+  },
+
+  /// //
+  computed: {
+    bLength () {
+      let list = Object.keys(buttonList)
+      return list
+    }
+  },
+  /// //
+  filters: {
+
+    // return a list of property values from an array of Objects
+    pluck: function (objects, key) {
+      return objects.map(function (object) {
+      	  return object[key]
+      })
     },
 
-/////
-    computed: {
-      bLength () {
-        let list = Object.keys(buttonList)
-        return list
-      },
+    // Return element at given index
+    atIndex: function (value, index) {
+      return value[index]
     },
-/////
-    filters: {
+    valueAt: function (object, index) {
+      return (Object.entries(object)[index])
+    }
 
-      // return a list of property values from an array of Objects
-      pluck: function (objects, key) {
-        return objects.map(function(object) {
-      	  return object[key];
-          })
-        },
+  },
 
-      // Return element at given index
-      atIndex: function (value, index) {
-        return value[index];
-      },
-      valueAt: function (object, index) {
-        return (Object.entries(object)[index])
-      }
+  /// /
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  },
 
-    },
+  /// /
+  mounted: function () {
+  },
 
- ////
-    methods: {
-      addNewTodo: function () {
-          this.todos.push({
-            id: this.nextTodoId++,
-            title: this.newTodoText
-          })
-          this.newTodoText = ''
-        }
-    },
+  /// /
+  created: function () {
+  },
 
-////
-    mounted: function () {
-    },
-
-////
-    created: function () {
-    },
-
-////
-    destroyed: function () {
-    },
+  /// /
+  destroyed: function () {
   }
+}
 </script>
 <style scoped>
 
@@ -266,7 +264,6 @@ table thead tr{
 table th,table td{
     width:100px;
 }
-
 
 table  tbody{
   display:block;

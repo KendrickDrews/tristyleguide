@@ -18,7 +18,6 @@ export default {
   KaiserAntelopeValley: 'Kaiser Antelope Valley',
   KaiserBakersfield: 'Kaiser Bakersfield',
   UnivofAZTucson: 'Univ of AZ-Tucson',
-  UnivofAZPhoenix: 'Univ of AZ-Phoenix',
+  UnivofAZPhoenix: 'Univ of AZ-Phoenix'
 
 }
-

@@ -175,129 +175,128 @@
 </template>
 
 <script>
-  import DMIDHeader from "../../../components/DMIDhead.vue";
-  import colors from "../../../layouts/colors.vue"
-  import navList from "../../../components/navLists.vue";
-  import allNav from "../../../components/DMIDsideNav.vue";
-  import Modal from "../../../components/modalTemplate.vue";
-  import buttonList from '../../../components/componentList/buttonList.js';
+import DMIDHeader from '../../../components/DMIDhead.vue'
+import colors from '../../../layouts/colors.vue'
+import navList from '../../../components/navLists.vue'
+import allNav from '../../../components/DMIDsideNav.vue'
+import Modal from '../../../components/modalTemplate.vue'
+import buttonList from '../../../components/componentList/buttonList.js'
 
+export default {
+  name: 'ServiceRequests',
+  components: {
+    DMIDHeader,
+    colors,
+    navList,
+    allNav,
+    Modal,
+    buttonList
 
-  export default {
-    name: 'ServiceRequests',
-    components: {
-      DMIDHeader,
-      colors,
-      navList,
-      allNav,
-      Modal,
-      buttonList,
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      showNav: {
+        Home: true,
+        DocumentLibrary: true,
+        CRS: true,
+        SOCSCMS: true,
+        Training: true,
+        ServiceRequests: true,
+        GrantCapture: true,
+        Protocols: true,
+        Results: true,
+        PRT: true,
+        SMART: true,
+        CSRS: true
+      },
+      subSiteIs: this.$route.name,
+      buttonList: buttonList
 
+    }
+  },
+  /// ////
+  computed: {
+    thisSite: function () {
+      return this.subSiteIs
     },
-    data () {
-      return {
-        isModalVisible: false,
-        showNav: {
-          Home: true,
-          DocumentLibrary: true,
-          CRS: true,
-          SOCSCMS: true,
-          Training: true,
-          ServiceRequests: true,
-          GrantCapture: true,
-          Protocols: true,
-          Results: true,
-          PRT: true,
-          SMART: true,
-          CSRS: true,
-        },
-        subSiteIs: this.$route.name,
-        buttonList: buttonList,
 
-      };
-    },
-///////
-    computed: {
-      thisSite: function() {
-        return this.subSiteIs
+    //
+    subSite: {
+      get: function () {
+        return this.$root.store.state.DMIDSite
       },
-
-      //
-      subSite: {
-        get: function() {
-          return this.$root.store.state.DMIDSite
-        },
-        set: function(value) {
-          this.$root.store.commit('setDMIDSubSite', value )
-        },
-
-      },
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
-
-      isActive () {
-        return this.href === this.$root.currentRoute
-      },
-
-    },
-///////
-    mounted: function () {
-      this.setStateSubSite();
-      this.stateActiveComponent('');
-      this.scrollReset(0);
-      this.stateSiteType('ServiceRequests');
-    },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(this.thisSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      },
-      stateSiteType (value) {
-      return  this.stateType = value
+      set: function (value) {
+        this.$root.store.commit('setDMIDSubSite', value)
       }
 
     },
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
+      },
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
+      }
+    },
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
+    },
+
+    isActive () {
+      return this.href === this.$root.currentRoute
+    }
+
+  },
+  /// ////
+  mounted: function () {
+    this.setStateSubSite()
+    this.stateActiveComponent('')
+    this.scrollReset(0)
+    this.stateSiteType('ServiceRequests')
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
+    },
+    closeModal () {
+      this.isModalVisible = false
+    },
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(this.thisSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    }
+
   }
+}
 
 </script>
 <style>

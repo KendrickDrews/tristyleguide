@@ -1,7 +1,6 @@
 <template>
-  
-    
-    <div> 
+
+    <div>
         <h1> Blank! </h1 ><hr/>
         <modal>
           </modal>
@@ -20,32 +19,31 @@
         <h1> Do's and Don'ts </h1> <hr/>
         <p> a paragraph explaining the component </p>
 
-    </div>       
-      
+    </div>
 
 </template>
 
-<script>   
-import modal from "../components/modal.vue"
-  export default {
-    components: {           
-      modal
-              
-    }, 
+<script>
+import modal from '../components/modal.vue'
+export default {
+  components: {
+    modal
 
-    data: function() {
-      return {
-                        
-      }
-    }, 
-    computed:{     
-      
-    },
-    methods:{     
+  },
 
-    },    
-  
+  data: function () {
+    return {
+
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+
   }
+
+}
 
 </script>
 

@@ -1,7 +1,6 @@
 <template>
-  
-    
-    <div> 
+
+    <div>
         <h1> Blank! </h1 ><hr/>
 
         <dropdowns>
@@ -21,33 +20,32 @@
         <h1> Do's and Don'ts </h1> <hr/>
         <p> a paragraph explaining the component </p>
 
-    </div>       
-      
+    </div>
 
 </template>
 
-<script> 
-import dropdowns from '../components/dropDown.vue';  
+<script>
+import dropdowns from '../components/dropDown.vue'
 
-  export default {
-    components: { 
-      dropdowns          
-              
-    }, 
+export default {
+  components: {
+    dropdowns
 
-    data: function() {
-      return {
-                        
-      }
-    }, 
-    computed:{     
-      
-    },
-    methods:{     
+  },
 
-    },    
-  
+  data: function () {
+    return {
+
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+
   }
+
+}
 
 </script>
 

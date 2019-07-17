@@ -83,14 +83,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'modal',
-    methods: {
-      close() {
-        this.$emit('close');
-      },
-    },
-  };
+export default {
+  name: 'modal',
+  methods: {
+    close () {
+      this.$emit('close')
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -138,7 +138,6 @@
     background-color: #728776;
     font-weight: bold;
     justify-content: flex-start;
-
 
   }
   .modal-header h2 {

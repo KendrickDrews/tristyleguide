@@ -4,42 +4,40 @@
       HELLO WORLD ERDG
     </div>
 
-
   </div>
 </template>
 
 <script>
 
-  export default {
-    name: 'EssentialRegulatoryDocuments',
-    components: {
+export default {
+  name: 'EssentialRegulatoryDocuments',
+  components: {
 
+  },
+  data () {
+    return {
+
+    }
+  },
+  /// ////
+  computed: {
+
+  },
+  /// ////
+  mounted: function () {
+
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
     },
-    data () {
-      return {
+    closeModal () {
+      this.isModalVisible = false
+    }
 
-      };
-    },
-///////
-    computed: {
-
-
-    },
-///////
-    mounted: function () {
-
-    },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-
-    },
   }
+}
 
 </script>
 <style>

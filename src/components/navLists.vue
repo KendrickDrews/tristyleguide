@@ -15,64 +15,64 @@
 </template>
 
 <script>
-  import pageNavigation from '../components/componentList/DMIDsideNavigation.js';
-  import { mapState } from 'vuex';
+import pageNavigation from '../components/componentList/DMIDsideNavigation.js'
+import { mapState } from 'vuex'
 
-  export default {
-    components: {
-      pageNavigation
-    },
-    props:
+export default {
+  components: {
+    pageNavigation
+  },
+  props:
       ['page'],
-    data: function () {
-      return {
-          active: 'active',
-          thisSubSite: '',
-          pageNavigation: pageNavigation,
+  data: function () {
+    return {
+      active: 'active',
+      thisSubSite: '',
+      pageNavigation: pageNavigation
+    }
+  },
+  watch: {
+    active: function () {
+      function kebabCase (value, separator, connector) {
+        if (!value) return ''
+        var stringArray = value.split(separator)
+        return stringArray.join(connector)
+      }
+      var string = this.active.text
+      var componentString = kebabCase(string, ' ', '-')
+      return this.$root.store.commit('isActiveComponent', componentString)
+    }
+  },
+  computed: {
+    subSite: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function () {
       }
     },
-    watch: {
-      active: function () {
-        function kebabCase(value, separator, connector) {
-          if (!value) return ''
-          var stringArray = value.split(separator);
-          return stringArray.join(connector);
-        }
-        var string = this.active.text;
-        var componentString = kebabCase(string,' ','-');
-        return this.$root.store.commit('isActiveComponent', componentString);
+    activeComponent: function () {
+      return this.active.text
+    },
+    //
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
+      },
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
       }
-    },
-    computed: {
-      subSite: {
-        get: function() {
-          return this.$root.store.state.siteType
-        },
-        set: function() {
-        }
-      },
-      activeComponent: function() {
-        return this.active.text
-      },
-      //
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value)
-        }
-      },
-    },
-    filters: {
-      concatenate: function (value) {
-        if (!value) return 'noValue'
-        var toSplit = value;
-        var splitString = toSplit.split(' ');
-        return splitString.join('');
-      }
-    },
+    }
+  },
+  filters: {
+    concatenate: function (value) {
+      if (!value) return 'noValue'
+      var toSplit = value
+      var splitString = toSplit.split(' ')
+      return splitString.join('')
+    }
   }
+}
 </script>
 
 <style scoped>

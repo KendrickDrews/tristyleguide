@@ -1,4 +1,4 @@
-<template>  
+<template>
   <div class="brandingNav">
       <div class="external">
           <img class="brand-icon" src="../imgs/HHS-NIH_NIAID_LogoSet_Web-Small_Black.png">
@@ -11,14 +11,13 @@
   </div>
 </template>
 
-<script>  
- 
+<script>
 
-  export default {
-    components: {      
-      
-    }
+export default {
+  components: {
+
   }
+}
 </script>
 <style scoped>
 .brandingNav {
@@ -26,7 +25,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: flex-end;
-  
+
 }
 .external {
   display: flex;
@@ -49,7 +48,7 @@
 }
 .policy a {
   width: unset;
-  font-size: 11px;  
+  font-size: 11px;
   font-weight: bold;
 }
 .pipe {

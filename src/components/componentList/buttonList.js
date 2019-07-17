@@ -1,24 +1,23 @@
 // Global Buttonlist for components that use the related icons.
 // Keep default order = render order for buttons
 
-export default {     
+export default {
 
   Home: 'Home',
   CRS: 'CRS',
-  DocumentLibrary: 'DocumentLibrary',  
+  DocumentLibrary: 'DocumentLibrary',
   Training: 'Training',
   ServiceRequests: 'ServiceRequests',
-  SOCSCMS: 'SOCSCMS',  
+  SOCSCMS: 'SOCSCMS',
   PRT: 'PRT',
   SMART: 'SMART',
   CSRS: 'CSRS',
   Protocols: 'Protocols',
-  GrantCapture: 'GrantCapture',  
+  GrantCapture: 'GrantCapture',
   Results: 'Results',
   Development: 'Development',
   Initiation: 'Initiation',
   InProgress: 'InProgress',
-  CloseOut: 'CloseOut',
-            
-     
+  CloseOut: 'CloseOut'
+
 }

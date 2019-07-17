@@ -2,11 +2,11 @@
   <div class="DMID-main">
     <div style="position: relative">
 
-      <DMIDHeader     
+      <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
         :buttonName="thisSite"
-        :showNav="{ 
+        :showNav="{
           Home: true,
           DocumentLibrary: true,
           CRS: true,
@@ -14,9 +14,9 @@
           Training: true,
           ServiceRequests: false,
           GrantCapture: true,
-          Protocols: true,         
+          Protocols: true,
         }"
-      >    
+      >
         <p slot="locationName" style="color: rgb(52, 94, 192);"> Service Requests </p>
 
       </DMIDHeader>
@@ -26,46 +26,46 @@
 
         <div class="main-bodyContent">
           <div class="locationContainer" style="background-color: rgb(62, 151, 253)">
-            <router-link to="ServiceRequestsFORM" tag="h2" class="bodyLocation">Ad Hoc Training Request Report</router-link>
+            <!--<router-link to="ServiceRequestsFORM" tag="h2" class="bodyLocation">Ad Hoc Training Request Report</router-link>-->
           </div>
           <div class="bodyContent">
-          <div class="mainContent "> 
+          <div class="mainContent ">
             <button class="excel-Btn"> Export to Excel </button>
             <!-- to implement:: Fixed header, Correct ScrollBar Styling,  -->
             <!-- <table>
                 <tr>
                   <th><div class="tableHeader long" >Name </div></th>
-                  <th><div class="tableHeader short">Created </div></th> 
+                  <th><div class="tableHeader short">Created </div></th>
                   <th><div class="tableHeader short">Requestor Name </div></th>
                   <th><div class="tableHeader short">Requestor Email </div></th>
-                  <th><div class="tableHeader short">Requestor Phone </div></th> 
+                  <th><div class="tableHeader short">Requestor Phone </div></th>
                   <th><div class="tableHeader short">Site Name </div></th>
                   <th><div class="tableHeader short">Principal Investigator </div></th>
-                  <th><div class="tableHeader long">DMID Protocol No </div></th> 
+                  <th><div class="tableHeader long">DMID Protocol No </div></th>
                   <th><div class="tableHeader long">DMID Protocol No Not Known </div></th>
                   <th><div class="tableHeader short">Training Course </div></th>
-                  <th><div class="tableHeader short">Training Materials Info </div></th> 
+                  <th><div class="tableHeader short">Training Materials Info </div></th>
                   <th><div class="tableHeader short">Approval Status </div></th>
                 </tr>
                 </table> -->
                 <img src="../../../imgs/Table_IMG.png"/>
             <!-- <div id="scrollTable" >
-              
+
               <table>
                 <thead>
                 <tr>
                   <th><div class="tableHeader long" >Name </div></th>
-                  <th><div class="tableHeader short">Created </div></th> 
+                  <th><div class="tableHeader short">Created </div></th>
                   <th><div class="tableHeader short">Requestor Name </div></th>
-                  <th><div class="tableHeader short">Requestor Phone </div></th> 
+                  <th><div class="tableHeader short">Requestor Phone </div></th>
                   <th><div class="tableHeader short">Requestor Email </div></th>
-                  
+
                   <th><div class="tableHeader short">Site Name </div></th>
                   <th><div class="tableHeader short">Principal Investigator </div></th>
-                  <th><div class="tableHeader long">DMID Protocol No </div></th> 
+                  <th><div class="tableHeader long">DMID Protocol No </div></th>
                   <th><div class="tableHeader long">DMID Protocol No Not Known </div></th>
                   <th><div class="tableHeader short">Training Course </div></th>
-                  <th><div class="tableHeader short">Training Materials Info </div></th> 
+                  <th><div class="tableHeader short">Training Materials Info </div></th>
                   <th><div class="tableHeader short">Approval Status </div></th>
                 </tr>
                 </thead>
@@ -184,7 +184,7 @@
                 </tr>
                 </tbody>
               </table>
-                 
+
             </div>
              <div class="pagination">
                 <a href="#">&laquo;</a>
@@ -196,146 +196,145 @@
                 <a href="#">6</a>
                 <a href="#">&raquo;</a>
               </div> -->
-                        
+
           </div>
-        </div>          
-    </div>        
+        </div>
+    </div>
 
       </div>
       <div class="main-footer">
-      </div> 
+      </div>
        <Modal
         v-show="isModalVisible"
         @close="closeModal"
       />
      </div>
-  </div> 
+  </div>
 </template>
 
-<script>   
-  import DMIDHeader from "../../../components/DMIDhead.vue";
-  import colors from "../../../layouts/colors.vue"
-  import navList from "../../../components/navLists.vue";
-  import allNav from "../../../components/DMIDsideNav.vue";
-  import Modal from "../../../components/modalTemplate.vue";
-  import buttonList from '../../../components/componentList/buttonList.js';
-  
+<script>
+import DMIDHeader from '../../../components/DMIDhead.vue'
+import colors from '../../../layouts/colors.vue'
+import navList from '../../../components/navLists.vue'
+import allNav from '../../../components/DMIDsideNav.vue'
+import Modal from '../../../components/modalTemplate.vue'
+import buttonList from '../../../components/componentList/buttonList.js'
 
-  export default {
-    name: 'ServiceRequests',
-    components: {      
-      DMIDHeader,
-      colors,
-      navList,
-      allNav,
-      Modal,
-      buttonList,
-      
+export default {
+  name: 'ServiceRequests',
+  components: {
+    DMIDHeader,
+    colors,
+    navList,
+    allNav,
+    Modal,
+    buttonList
+
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      showNav: {
+        Home: true,
+        DocumentLibrary: true,
+        CRS: true,
+        SOCSCMS: true,
+        Training: true,
+        ServiceRequests: true,
+        GrantCapture: true,
+        Protocols: true,
+        Results: true,
+        PRT: true,
+        SMART: true,
+        CSRS: true
+      },
+      subSiteIs: this.$route.name,
+      buttonList: buttonList
+
+    }
+  },
+  /// ////
+  computed: {
+    thisSite: function () {
+      return this.subSiteIs
     },
-    data () {
-      return {
-        isModalVisible: false,        
-        showNav: {
-          Home: true,
-          DocumentLibrary: true,
-          CRS: true,
-          SOCSCMS: true,
-          Training: true,
-          ServiceRequests: true,
-          GrantCapture: true,
-          Protocols: true,
-          Results: true,
-          PRT: true,
-          SMART: true,
-          CSRS: true, 
-        },
-        subSiteIs: this.$route.name,
-        buttonList: buttonList,
-                
-      };
-    },
-///////    
-    computed: {  
-      thisSite: function() {       
-        return this.subSiteIs
+
+    //
+    subSite: {
+      get: function () {
+        return this.$root.store.state.DMIDSite
       },
-        
-      //     
-      subSite: {
-        get: function() {
-          return this.$root.store.state.DMIDSite
-        },
-        set: function(value) {
-          this.$root.store.commit('setDMIDSubSite', value )
-        },
-        
-      },
-      stateComponent: {
-        get: function() {
-          return this.$root.store.state.activeComponent 
-        },
-        set: function(value) {
-          this.$root.store.commit('isActiveComponent', value )
-        }
-      },
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType 
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
-     
-      isActive () {
-        return this.href === this.$root.currentRoute
-      },
+      set: function (value) {
+        this.$root.store.commit('setDMIDSubSite', value)
+      }
 
     },
-///////
-    mounted: function () {
-      this.setStateSubSite();
-      this.stateActiveComponent('');
-      this.scrollReset(0);
-      this.stateSiteType('ServiceRequests');
+    stateComponent: {
+      get: function () {
+        return this.$root.store.state.activeComponent
+      },
+      set: function (value) {
+        this.$root.store.commit('isActiveComponent', value)
+      }
     },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
       },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      setStateSubSite: function (thisSite) {
-        const DMIDSite = this.thisSite
-        return this.stateSubSite(this.thisSite)
-      },
-      stateSubSite (value) {
-        return  this.subSite = value
-      },        
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },      
-      goTo (event) {
-        event.preventDefault()
-        this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          this.href
-        )
-      }, 
-      stateSiteType (value) {
-      return  this.stateType = value
-      }    
-                   
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
     },
+
+    isActive () {
+      return this.href === this.$root.currentRoute
+    }
+
+  },
+  /// ////
+  mounted: function () {
+    this.setStateSubSite()
+    this.stateActiveComponent('')
+    this.scrollReset(0)
+    this.stateSiteType('ServiceRequests')
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
+    },
+    closeModal () {
+      this.isModalVisible = false
+    },
+    setStateSubSite: function (thisSite) {
+      const DMIDSite = this.thisSite
+      return this.stateSubSite(this.thisSite)
+    },
+    stateSubSite (value) {
+      return this.subSite = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
+    },
+    goTo (event) {
+      event.preventDefault()
+      this.$root.currentRoute = this.href
+      window.history.pushState(
+        null,
+        routes[this.href],
+        this.href
+      )
+    },
+    stateSiteType (value) {
+      return this.stateType = value
+    }
+
   }
+}
 
 </script>
 <style>
@@ -344,10 +343,10 @@
 }
 .main-location {
   color: rgb(52, 94, 192);
-  
+
 }
 .locationContainer {
-  background-color: rgb(62, 151, 253); 
+  background-color: rgb(62, 151, 253);
 }
 .mainContent {
   padding: 0px 10px 10px 0px!important;
@@ -365,7 +364,7 @@
   list-style: none;
 }
 .indent2x {
-  margin-left: 45px; 
+  margin-left: 45px;
 }
 .indent2x li  {
   font-size: 13.5px;
@@ -380,7 +379,7 @@
   font-weight: bold;
   font-size: 15px;
   margin-left: -15px;
-  font-family: Verdana;  
+  font-family: Verdana;
 }
 .gray {
   background-color: #ccc;
@@ -391,7 +390,7 @@
 .F01 {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;  
+  flex-wrap: nowrap;
 }
 .form-Row {
   display: flex;
@@ -428,7 +427,7 @@
   height: 350px;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
 }
 .column {
   width: 41%;
@@ -441,10 +440,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-content: center;  
+  align-content: center;
   padding-bottom: 0px;
   margin: 0px;
-  margin-bottom: 2px; 
+  margin-bottom: 2px;
 }
 .form-Final {
   display: flex;
@@ -457,17 +456,17 @@
   margin: 0;
 }
 .form-Final .form-input {
-  width: 312px;  
+  width: 312px;
   color: #777;
 }
-.form-Column-Btn {  
-  height: 70px;  
+.form-Column-Btn {
+  height: 70px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
-  align-items: center;  
+  align-items: center;
   padding-bottom: 0px;
   margin: 0px;
   margin-top: 70px;
@@ -494,7 +493,7 @@ table {
   border-collapse: collapse;
   width: 768px;
   margin-top: -1px;
-  margin-left: -1px;  
+  margin-left: -1px;
   border: 1px solid #9F9F9F;
 }
 table thead tr {
@@ -540,11 +539,11 @@ tr:nth-child(even) {
 }
 .mostly-customized-scrollbar::-webkit-scrollbar {
   width: 10px;
-  height: 10px;  
+  height: 10px;
   background-color: #aaa; /* or add it to the track */
 }
 .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-  background: #000; 
+  background: #000;
 }
 
 .pagination {

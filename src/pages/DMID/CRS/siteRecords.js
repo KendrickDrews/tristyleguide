@@ -1,15 +1,15 @@
 
 export const
-siteBased = [
-  { leadSite_01: [
+  siteBased = [
+    { leadSite_01: [
       {
         affiliatedSites: [],
-        reviewedBy: "",
-        fundingAgreement: "",
+        reviewedBy: '',
+        fundingAgreement: '',
         legacyData: [],
-        currentData: [],
+        currentData: []
       }
 
     ]
-  }
-];
+    }
+  ]

@@ -108,7 +108,6 @@
                   <button class="submit-Btn"> Cancel </button>
                 </div>
 
-
               </div>
 
           </div>
@@ -120,49 +119,49 @@
 </template>
 
 <script>
-  import Modal from "../../../components/modalTemplate.vue";
-  export default {
-    name: 'Extensions',
-    components: {
-      Modal,
-    },
-    data () {
-      return {
-        isModalVisible: false,
-        subSiteIs: this.$route.name,
-        protNumber: 10,
+import Modal from '../../../components/modalTemplate.vue'
+export default {
+  name: 'Extensions',
+  components: {
+    Modal
+  },
+  data () {
+    return {
+      isModalVisible: false,
+      subSiteIs: this.$route.name,
+      protNumber: 10
 
-      };
-    },
-///////
-    computed: {
+    }
+  },
+  /// ////
+  computed: {
 
-    },
-///////
-    mounted: function () {
+  },
+  /// ////
+  mounted: function () {
 
+  },
+  /// ////
+  methods: {
+    showModal () {
+      this.isModalVisible = true
     },
-///////
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
-      getRandomInt: function(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-      },
-      generateProtocolNumber: function() {
-        var XX = '0' + this.getRandomInt(0,9);
-        var XXXX = '00' + this.getRandomInt(0,9) + this.getRandomInt(0,9);
-        return [XX, XXXX].join('-');
-      },
+    closeModal () {
+      this.isModalVisible = false
+    },
+    getRandomInt: function (min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1)) + min // The maximum is inclusive and the minimum is inclusive
+    },
+    generateProtocolNumber: function () {
+      var XX = '0' + this.getRandomInt(0, 9)
+      var XXXX = '00' + this.getRandomInt(0, 9) + this.getRandomInt(0, 9)
+      return [XX, XXXX].join('-')
+    }
 
-    },
   }
+}
 
 </script>
 
@@ -245,4 +244,3 @@ margin-bottom: 25px;
   background-color: #ccc;
 }
 </style>
-

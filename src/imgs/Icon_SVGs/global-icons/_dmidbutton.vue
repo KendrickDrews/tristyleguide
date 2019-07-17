@@ -1,70 +1,69 @@
-<template>  
-  <div v-bind:class="[{ 'dmid-button head-icon': siteIcon, 'nav-button': navIcon }, buttonColor ]">      
-      <component 
-        :is="buttonName" 
-        :height="height" 
-        :width="width" 
+<template>
+  <div v-bind:class="[{ 'dmid-button head-icon': siteIcon, 'nav-button': navIcon }, buttonColor ]">
+      <component
+        :is="buttonName"
+        :height="height"
+        :width="width"
         fill="white"
-        :style="{ height: height, width: width, fill: 'white',}" 
+        :style="{ height: height, width: width, fill: 'white',}"
         class="svg-icon">
         <slot></slot>
         </component>
-  </div> 
+  </div>
 </template>
-  
 
 <script>
 
-//  Loads All Navigation Icons Globally into the site. 
+//  Loads All Navigation Icons Globally into the site.
 //  Conditionally renders classes(So a large icon, or the Nav-sized icons)
 //  Based on the Truthiness of 'siteIcon' and 'navIcon' properties.
 
-  import CRS             from '../DMIDCROMS-WebIcon-CRS.svg';
-  import CSRS            from '../DMIDCROMS-WebIcon-CSRS.svg';
-  import GrantCapture    from '../DMIDCROMS-WebIcon-DMART-GrantCapture.svg'; 
-  import Protocols       from '../DMIDCROMS-WebIcon-DMART-Protocols.svg'; 
-  import Results         from '../DMIDCROMS-WebIcon-DMART-Results.svg'; 
-  import DocumentLibrary from '../DMIDCROMS-WebIcon-DocumentLibrary.svg'; 
-  import Home            from '../DMIDCROMS-WebIcon-Home.svg'; 
-  import PRT             from '../DMIDCROMS-WebIcon-PRT.svg'; 
-  import ServiceRequests from '../DMIDCROMS-WebIcon-ServiceRequests.svg';
-  import SMART           from '../DMIDCROMS-WebIcon-SMART.svg'; 
-  import SOCSCMS         from '../DMIDCROMS-WebIcon-SOCSCMS.svg'; 
-  import Training        from '../DMIDCROMS-WebIcon-Training.svg'; 
-  import Development     from '../DMIDCROMS-WebIcon-CRS-Stage-Development.svg'; 
-  import Initiation      from '../DMIDCROMS-WebIcon-CRS-Stage-Initiation.svg'; 
-  import CloseOut        from '../DMIDCROMS-WebIcon-CRS-Stage-CloseOut.svg'; 
-  import InProgress      from '../DMIDCROMS-WebIcon-CRS-Stage-InProgress.svg'; 
+import CRS from '../DMIDCROMS-WebIcon-CRS.svg'
+import CSRS from '../DMIDCROMS-WebIcon-CSRS.svg'
+import GrantCapture from '../DMIDCROMS-WebIcon-DMART-GrantCapture.svg'
+import Protocols from '../DMIDCROMS-WebIcon-DMART-Protocols.svg'
+import Results from '../DMIDCROMS-WebIcon-DMART-Results.svg'
+import DocumentLibrary from '../DMIDCROMS-WebIcon-DocumentLibrary.svg'
+import Home from '../DMIDCROMS-WebIcon-Home.svg'
+import PRT from '../DMIDCROMS-WebIcon-PRT.svg'
+import ServiceRequests from '../DMIDCROMS-WebIcon-ServiceRequests.svg'
+import SMART from '../DMIDCROMS-WebIcon-SMART.svg'
+import SOCSCMS from '../DMIDCROMS-WebIcon-SOCSCMS.svg'
+import Training from '../DMIDCROMS-WebIcon-Training.svg'
+import Development from '../DMIDCROMS-WebIcon-CRS-Stage-Development.svg'
+import Initiation from '../DMIDCROMS-WebIcon-CRS-Stage-Initiation.svg'
+import CloseOut from '../DMIDCROMS-WebIcon-CRS-Stage-CloseOut.svg'
+import InProgress from '../DMIDCROMS-WebIcon-CRS-Stage-InProgress.svg'
 
-  export default {
-    name: 'dmidButton',
-    components: { 
-      CRS,
-      CSRS,
-      GrantCapture,
-      Protocols,
-      Results,
-      DocumentLibrary,
-      Home,
-      PRT,
-      ServiceRequests,
-      SMART,
-      SOCSCMS,
-      Training,
-      Development,
-      Initiation,
-      InProgress,
-      CloseOut,     
-    },    
-    props: {
-      buttonColor: String, 
-      buttonName: String,
-      height: String, 
-      width: String, 
-      siteIcon: Boolean, 
-      navIcon: Boolean
-    },    
+export default {
+  name: 'dmidButton',
+  components: {
+    CRS,
+    CSRS,
+    GrantCapture,
+    Protocols,
+    Results,
+    DocumentLibrary,
+    Home,
+    PRT,
+    ServiceRequests,
+    SMART,
+    SOCSCMS,
+    Training,
+    Development,
+    Initiation,
+    InProgress,
+    CloseOut
+  },
+  props: {
+    buttonColor: String,
+    buttonName: String,
+    height: String,
+    width: String,
+    siteIcon: Boolean,
+    navIcon: Boolean
   }
+}
 </script>
 <style scoped>
 
@@ -77,7 +76,7 @@
   justify-content: center;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);      
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   background-image: radial-gradient(farthest-corner at 50% 25%, rgba(0,0,0,0), rgba(0,0,0,0.3) 95%);
   overflow: hidden;
   }
@@ -93,10 +92,10 @@
   box-shadow:
     2px 2px 5px rgba(0,0,0,0.5),
     inset 0px 0px 4px 2px rgba(0,0,0, 0.5);
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% -200%, transparent 67%,rgba(255,255,255,0.4) 84.5% , transparent 85% ),
-    linear-gradient(to top, rgba(0,0,0,0.6)  , transparent 45%);  
-  background-blend-mode: normal;  
+    linear-gradient(to top, rgba(0,0,0,0.6)  , transparent 45%);
+  background-blend-mode: normal;
 }
 .svg-icon {
   position: relative;
@@ -118,13 +117,13 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  text-align: center;  
-  box-shadow:    
+  text-align: center;
+  box-shadow:
     inset 0px 0px 4px 2px rgba(0,0,0, 0.5);
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% -200%, transparent 67%,rgba(255,255,255,0.4) 84.5% , transparent 85% ),
-    linear-gradient(to top, rgba(0,0,0,0.6)  , transparent 45%);  
-  background-blend-mode: normal; 
+    linear-gradient(to top, rgba(0,0,0,0.6)  , transparent 45%);
+  background-blend-mode: normal;
 }
 
 /* vv Animation controls for focus, click, hover vv */
@@ -162,7 +161,7 @@
 /* Class Names are handles by the Props in buttonLayout.vue */
 /* Keep changes here to keep scoped CSS consistent */
 .CRS {
-  background-color: rgb(27, 146, 76); 
+  background-color: rgb(27, 146, 76);
 }
 
 .CSRS {
@@ -181,31 +180,31 @@
   background-color: rgb(223, 59, 209);
 }
 
-.DocumentLibrary { 
+.DocumentLibrary {
   background-color: rgb(241, 67, 55);
 }
 
-.Home { 
+.Home {
   background-color: rgb(86, 86, 86);
 }
 
-.PRT { 
+.PRT {
   background-color: rgb(0, 51, 153);
 }
 
-.ServiceRequests { 
+.ServiceRequests {
   background-color: rgb(52, 94, 192);
 }
 
-.SMART { 
+.SMART {
   background-color: rgb(0, 114, 188);
 }
 
-.SOCSCMS { 
+.SOCSCMS {
   background-color: rgb(45, 206, 255);
 }
 
-.Training { 
+.Training {
   background-color: rgb(44, 138, 49);
 }
 .Development {

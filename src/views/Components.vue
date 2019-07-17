@@ -1,118 +1,115 @@
-<template>  
+<template>
   <div>
     <div class="outside-list">
       <div class="list">
         <FList/>
       </div>
-    </div> 
+    </div>
 
-    <div class="components-container">  
+    <div class="components-container">
 
-      <div 
-        class="componentsPage"        
+      <div
+        class="componentsPage"
         v-for="(item, key) in componentList"
         v-bind:key="key"
-        v-bind:id="item"      
+        v-bind:id="item"
       >
-        
+
         <h1> #{{ item }} </h1> <hr/>
 
         <component :is="item"/>
 
-      </div> 
-    </div> 
-  </div> 
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-  import componentList from '../components/componentList/componentList.js';
-  import buttonList from '../components/componentList/buttonList.js';
-  import FList from '../layouts/FList.vue';   
-  import Colors from '../layouts/colors.vue';
-  import Dropdowns from '../layouts/dropdownLayout.vue'; 
-  import Buttons from '../layouts/buttonLayout.vue'; 
-  import Input from '../layouts/inputLayout.vue';
-  import Navigation from '../layouts/navigationLayout.vue';
-  import Breadcrumbs from '../layouts/breadcrumbLayout.vue';
-  import Pagination from '../layouts/paginationLayout.vue';
-  import Labels from '../layouts/labelLayout.vue';
-  import Badges from '../layouts/badgeLayout.vue';
-  import Header from '../layouts/headerLayout.vue';
-  import Thumbnails from '../layouts/thumbnailLayout.vue';
-  import Alerts from '../layouts/alertLayout.vue';
-  import Modals from '../layouts/modalLayout.vue';
-  import MediaObject from '../layouts/mediaObjectLayout.vue';
-  import Lists from '../layouts/listLayout.vue';
-  import Panels from '../layouts/panelLayout.vue';  
-  
+import componentList from '../components/componentList/componentList.js'
+import buttonList from '../components/componentList/buttonList.js'
+import FList from '../layouts/FList.vue'
+import Colors from '../layouts/colors.vue'
+import Dropdowns from '../layouts/dropdownLayout.vue'
+import Buttons from '../layouts/buttonLayout.vue'
+import Input from '../layouts/inputLayout.vue'
+import Navigation from '../layouts/navigationLayout.vue'
+import Breadcrumbs from '../layouts/breadcrumbLayout.vue'
+import Pagination from '../layouts/paginationLayout.vue'
+import Labels from '../layouts/labelLayout.vue'
+import Badges from '../layouts/badgeLayout.vue'
+import Header from '../layouts/headerLayout.vue'
+import Thumbnails from '../layouts/thumbnailLayout.vue'
+import Alerts from '../layouts/alertLayout.vue'
+import Modals from '../layouts/modalLayout.vue'
+import MediaObject from '../layouts/mediaObjectLayout.vue'
+import Lists from '../layouts/listLayout.vue'
+import Panels from '../layouts/panelLayout.vue'
 
-  export default {
-    name: 'Components',
-    components: {      
-      componentList,
-      buttonList,
-      FList, 
-      Colors,
-      Dropdowns,     
-      Buttons,
-      Input,
-      Navigation,
-      Breadcrumbs,
-      Pagination,
-      Labels,
-      Badges,
-      Header,
-      Thumbnails,
-      Alerts,
-      Modals,
-      MediaObject,
-      Lists,
-      Panels,
-    }, 
+export default {
+  name: 'Components',
+  components: {
+    componentList,
+    buttonList,
+    FList,
+    Colors,
+    Dropdowns,
+    Buttons,
+    Input,
+    Navigation,
+    Breadcrumbs,
+    Pagination,
+    Labels,
+    Badges,
+    Header,
+    Thumbnails,
+    Alerts,
+    Modals,
+    MediaObject,
+    Lists,
+    Panels
+  },
 
-    data: function() {
-      return {
-        componentList: componentList,
-        buttonList: buttonList,                
+  data: function () {
+    return {
+      componentList: componentList,
+      buttonList: buttonList
+    }
+  },
+  props: [
+
+  ],
+  computed: {
+    // Set SiteType 01
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
       }
-    }, 
-    props: [
-      
-    ],
-    computed:{     
-      //Set SiteType 01
-      stateType: {
-        get: function() {
-          return this.$root.store.state.siteType 
-        },
-        set: function(value) {
-          this.$root.store.commit('setSiteType', value )
-        }
-      },
+    }
+  },
+  mounted: function () {
+    this.scrollReset(0)
+    // Set SiteType 02
+    this.stateSiteType('whiteBackground')
+  },
+  methods: {
+    scrollReset (value) {
+      var element = document.querySelector('#scrollContainer')
+      return element.scrollTop = value
     },
-    mounted: function() {
-      this.scrollReset(0);
-      //Set SiteType 02
-      this.stateSiteType('whiteBackground');
+    stateActiveComponent (value) {
+      return this.stateComponent = value
     },
-    methods:{  
-      scrollReset (value) {
-        var element = document.querySelector('#scrollContainer');
-        return element.scrollTop = value;
-      },
-      stateActiveComponent (value) {
-      return  this.stateComponent = value
-      },
-      //set SiteType 03
-      stateSiteType (value) {
-      return  this.stateType = value
-      }    
+    // set SiteType 03
+    stateSiteType (value) {
+      return this.stateType = value
+    }
 
-    },
-    
-    
-  
   }
+
+}
 </script>
 <style scoped>
 .components-container {
@@ -123,8 +120,8 @@
 .componentsPage {
   background-color: #fff;
   padding-top: 0px;
-  margin-bottom: 200px; 
-   
+  margin-bottom: 200px;
+
 }
 .componentsPage h1 {
   margin-bottom: 5px;
@@ -152,18 +149,17 @@
 }
 .outside-list {
   transition: 0.5s;
-  position: absolute;  
-  top: 0;  
+  position: absolute;
+  top: 0;
   margin-left: 0;
 }
 .list {
-  width: 120px;  
+  width: 120px;
   background-color: white;
   position: relative;
   display: sticky;
   top: 120px;
   left: 1025px;
 }
-
 
 </style>

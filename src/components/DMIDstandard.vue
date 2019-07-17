@@ -1,19 +1,19 @@
-<template>  
+<template>
 <!-- DMID Standard -->
   <div class="DMID-main">
       <heading></heading>\
       <content-body></content-body>
       <footing></footing>
-  </div>  
+  </div>
 </template>
 
-<script>  
-  import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg';
+<script>
+import CRS from '../imgs/Icon_SVGs/DMIDCROMS-WebIcon-CRS.svg'
 
-  export default {
-    components: {      
-      CRS
-    }
+export default {
+  components: {
+    CRS
   }
+}
 </script>
 <style src="../styles/main.css"></style>

@@ -14,7 +14,7 @@
 <script>
 export default {
   components: {
-    },
+  },
   props: {
     items: {
       type: Array,
@@ -28,83 +28,83 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       isOpen: false,
       results: [],
-      search: "",
+      search: '',
       isLoading: false,
       arrowCounter: 0
-    };
+    }
   },
 
   methods: {
-    onChange() {
+    onChange () {
       // Let's warn the parent that a change was made
-      this.$emit("input", this.search);
+      this.$emit('input', this.search)
 
       // Is the data given by an outside ajax request?
       if (this.isAsync) {
-        this.isLoading = true;
+        this.isLoading = true
       } else {
         // Let's search our flat array
-        this.filterResults();
-        this.isOpen = true;
+        this.filterResults()
+        this.isOpen = true
       }
     },
-    openDropDown() {
-      this.isOpen = true;
+    openDropDown () {
+      this.isOpen = true
     },
-    initiateItems(itemsArray) {
-      return this.results = itemsArray;
+    initiateItems (itemsArray) {
+      return this.results = itemsArray
     },
-    filterResults() {
+    filterResults () {
       // first uncapitalize all the things
       this.results = this.items.filter(item => {
-        return item.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
-      });
+        return item.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+      })
     },
-    setResult(result) {
-      this.search = result;
-      this.isOpen = false;
+    setResult (result) {
+      this.search = result
+      this.isOpen = false
     },
-    onArrowDown(evt) {
+    onArrowDown (evt) {
       if (this.arrowCounter < this.results.length) {
-        this.arrowCounter = this.arrowCounter + 1;
+        this.arrowCounter = this.arrowCounter + 1
       }
     },
-    onArrowUp() {
+    onArrowUp () {
       if (this.arrowCounter > 0) {
-        this.arrowCounter = this.arrowCounter - 1;
+        this.arrowCounter = this.arrowCounter - 1
       }
     },
-    onEnter() {
-      this.search = this.results[this.arrowCounter];
-      this.isOpen = false;
-      this.arrowCounter = -1;
+    onEnter () {
+      this.search = this.results[this.arrowCounter]
+      this.isOpen = false
+      this.arrowCounter = -1
     },
-    handleClickOutside(evt) {
+    handleClickOutside (evt) {
       if (!this.$el.contains(evt.target)) {
-        this.isOpen = false;
-        this.arrowCounter = -1;
+        this.isOpen = false
+        this.arrowCounter = -1
       }
     }
   },
   watch: {
-    items: function(val, oldValue) {
+    items: function (val, oldValue) {
       // actually compare them
       if (val.length !== oldValue.length) {
-        this.results = val;
-        this.isLoading = false;
+        this.results = val
+        this.isLoading = false
       }
     }
   },
-  mounted() {
-    this.initiateItems(this.items);
-    document.addEventListener("click", this.handleClickOutside);
+  mounted () {
+    this.initiateItems(this.items)
+    document.addEventListener('click', this.handleClickOutside)
   },
-  destroyed() {
-    document.removeEventListener("click", this.handleClickOutside);
+  destroyed () {
+    document.removeEventListener('click', this.handleClickOutside)
   }
 }
 </script>

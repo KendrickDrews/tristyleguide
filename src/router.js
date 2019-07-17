@@ -16,59 +16,59 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
-      path: '/components',
-      name: 'components',
-      component: () => import( './views/Components.vue')
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import( './views/Test4.vue')
-    },
-    {
       path: '/DMID',
       name: 'DMID',
-      component: () => import( './pages/DMID/DMID.vue'),
+      component: () => import('./pages/DMID/DMID.vue'),
       children: [
         {
           path: 'Home',
           name: 'DMIDHome',
-          component: () => import( './pages/DMID/DMIDHome.vue')
+          component: () => import('./pages/DMID/DMIDHome.vue')
         },
         {
           path: 'CRS',
           name: 'CRS',
-          component: () => import( './pages/DMID/CRS/CRSHome.vue'),
+          component: () => import('./pages/DMID/CRS/CRSHome.vue')
         },
         {
           path: 'Training',
           name: 'Training',
-          component: () => import( './pages/DMID/Training/trainingHome.vue'),
+          component: () => import('./pages/DMID/Training/trainingHome.vue')
         },
         {
           path: 'ServiceRequests',
           name: 'ServiceRequests',
-          component: () => import( './pages/DMID/SR/serviceRequestsHome.vue'),
+          component: () => import('./pages/DMID/SR/serviceRequestsHome.vue')
         },
         // Can be deprecated due to sidenav component switching
-        {
-          path: 'ServiceRequestsFORM',
-          name: 'ServiceRequests',
-          component: () => import('./pages/DMID/SR/adHocTrainingRequestForm.vue'),
-        },
+        // {
+        //  path: 'ServiceRequestsFORM',
+        //  name: 'ServiceRequests',
+        //  component: () => import('./pages/DMID/SR/adHocTrainingRequestForm.vue'),
+        // },
         {
           path: 'Results',
           name: 'Results',
-          component: () => import('./pages/DMID/Results/ResultsHome.vue'),
-        },
+          component: () => import('./pages/DMID/Results/ResultsHome.vue')
+        }
       ]
     },
 
+    {
+      path: '/components',
+      name: 'components',
+      component: () => import('./views/Components.vue')
+    }
+    // {
+    //  path: '/about',
+    //  name: 'about',
+    //  component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    // },
+    // {
+    //  path: '/test',
+    //  name: 'test',
+    //  component: () => import( './views/Test4.vue')
+    // },
+
   ]
 })
-
