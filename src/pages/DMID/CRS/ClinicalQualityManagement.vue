@@ -14,17 +14,113 @@
       v-bind:key="item.id"
       v-bind:id="item.id"
       class="console-col--Header">
-        <p v-bind:class="item.id">
-        {{ item.name }} </p>
+        <p v-bind:class="item.id">{{ item.name }}</p>
       </div>
     </div>
     <div class="CQMP-table--container">
-        <div class="CQMP-table--row"
-        v-for="(item, index) in protocolBasedRecords"
-        :key="index">
-        <p>{{ item.protocolNum }}</p>
-
+      <!-- This click to activate feature isn't finished -->
+      <div class="CQMP-table--row"
+      v-for="(item, index) in protocolBasedRecords"
+      :key="index"
+      @click="activeRow = !activeRow"
+      v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow}]">
+         <!-- ProtocolNumber -->
+        <div class="content--flex content--border console-col--ProtocolNumber">
+          <p class="">{{ item.protocolNum }}</p>
         </div>
+        <!-- LeadSite -->
+        <div class="content--flex content--border console-col--LeadSite ">
+          <p class="">
+            <template v-for="record in item.affiliatedSites">
+              <template v-if="record.siteLead">
+                <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
+              </template>
+            </template>
+          </p>
+        </div>
+        <!-- AffiliatedSite -->
+        <div class="content--flex content--border console-col--AffiliatedSite">
+          <p>
+            <template v-for="record in item.affiliatedSites">
+              <template v-if="!record.siteLead">
+                <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}<template v-if="(record.id + 1) !== item.affiliatedSites.length">, </template><br></span>
+              </template>
+            </template>
+          </p>
+        </div>
+        <!-- FundingAgreement -->
+        <div class="content--flex content--border console-col--FundingAgreement">
+          <p>{{ item.fundingAgreement }}</p>
+        </div>
+        <!-- DMIDBranch -->
+        <div class="content--flex content--border console-col--DMIDBranch">
+          <p>{{ item.branch }}</p>
+        </div>
+        <!-- DMIDCPM -->
+        <div class="content--flex content--border console-col--DMIDCPM">
+          <p>{{ item.cpm }} </p>
+        </div>
+        <!-- ResourceLevel -->
+        <div class="content--flex content--border console-col--ResourceLevel">
+          <p>{{ item.resourceLevel }}</p>
+        </div>
+        <!-- GroupAffiliation -->
+        <div class="content--flex content--border console-col--GroupAffiliation">
+          <p>{{ item.groupAffiliation }}</p>
+        </div>
+        <!-- DMIDIND -->
+        <div class="content--flex content--border console-col--DMIDIND">
+          <p>{{ item.dmidIND }}</p>
+        </div>
+        <!-- Legacy Data -->
+        <!-- AcceptDate -->
+        <div class="content--flex legacy-data content--border console-col--AcceptDate">
+          <p>{{ item.legacyData.dateAccept }}</p>
+        </div>
+        <!-- VersionNum -->
+        <div class="content--flex content--border console-col--VersionNum">
+          <p>{{ item.legacyData.vNumber }}</p>
+        </div>
+        <!-- VersionDate -->
+        <div class="content--flex content--border console-col--VersionDate">
+          <p>{{ item.legacyData.vDate }}</p>
+        </div>
+        <!-- Current CQMP -->
+        <!-- CQMPStatus -->
+        <div class="content--flex current-data content--border console-col--CQMPStatus">
+          <p>{{ item.currentData.cqmpStatus }}</p>
+        </div>
+        <!-- EffectiveDate -->
+        <div class="content--flex current-data  content--border console-col--EffectiveDate">
+          <p>{{ item.currentData.effDate }}</p>
+        </div>
+        <!-- VersionNumber -->
+        <div class="content--flex current-data content--border console-col--VersionNumber">
+          <p>{{ item.currentData.cvNumber }}</p>
+        </div>
+        <!-- VersionDate -->
+        <div class="content--flex current-data content--border console-col--VersionDT">
+          <p>{{ item.currentData.cvDate }}</p>
+        </div>
+        <!-- ReviewerComments -->
+        <div class="content--flex current-data content--border console-col--ReviewerComments">
+          <p>{{ item.currentData.Comments }}</p>
+        </div>
+        <!-- CRA Reference -->
+        <!-- CurrentAcceptDate -->
+        <!-- <div class="content--flex ">
+          <p class="console-col--CurrentAcceptDate content--border" >{{ item.currentData.cvDate }}</p>
+        </div> -->
+        <!-- DMIDAcceptVersion -->
+        <!-- <div class="content--flex ">
+          <p class="console-col--DMIDAcceptVersion content--border" >{{ item.currentData.cvNumber }}</p>
+        </div> -->
+        <!-- Monitored -->
+        <!-- <div class="content--flex ">
+          <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
+        </div> -->
+
+      </div>
 
     </div>
     <div class="CQMP-table--container"  style="display: none;">
@@ -706,12 +802,13 @@ export default {
   },
   data () {
     return {
+      activeRow: false,
       activeItem: 'Console',
       columnLength: 10,
       columnList: [
         { id: 'ProtocolNumber', name: 'Protocol Number' },
         { id: 'LeadSite', name: 'Lead Site' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
         { id: 'FundingAgreement', name: 'Funding Agreement' },
         { id: 'DMIDBranch', name: 'DMID Branch' },
         { id: 'DMIDCPM', name: 'DMID Clinical Project Manager' },
@@ -726,14 +823,14 @@ export default {
         { id: 'VersionNumber', name: 'Version Number' },
         { id: 'VersionDT', name: 'Version Date' },
         { id: 'ReviewerComments', name: 'Reviewer Comments' },
-        { id: 'CurrentAcceptDate', name: 'Current Accepted Date' },
-        { id: 'DMIDAcceptVersion', name: 'DMID Accepted Version' },
-        { id: 'Monitored', name: 'Monitored by ICON?' }
+        //{ id: 'CurrentAcceptDate', name: 'Current Accepted Date' },
+        //{ id: 'DMIDAcceptVersion', name: 'DMID Accepted Version' },
+        //{ id: 'Monitored', name: 'Monitored by ICON?' }
       ],
       columnListSite: [
         { id: 'Edit', name: 'Edit' },
         { id: 'LeadSite', name: 'Lead Site' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
         { id: 'FundingAgreement', name: 'Funding Agreement' },
         { id: 'GroupAffiliation', name: 'Group Affiliation' },
         { id: 'CQMPStatus', name: 'CQMP Status' },
@@ -744,7 +841,7 @@ export default {
       ],
       columnListProtocols: [
         { id: 'Edit', name: 'Edit' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
         { id: 'AcceptDate', name: 'Accepted Date' },
         { id: 'VersionNum', name: 'Version Number' },
         { id: 'VersionDate', name: 'Version Date' },
@@ -821,7 +918,7 @@ export default {
     },
     protocolBasedRecords: function () {
       return this.protocolBased
-    }
+    },
   },
   /// ////
   mounted: function () {
@@ -1071,7 +1168,7 @@ export default {
                 }
             // Fills affiliatedSites[]
             for (var n = 1; n < numOfCQMPS; n++) {
-              var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n }
+              var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n, siteLead: false}
               aRecord.affiliatedSites.push(numAffSites)
             }
             output.push(aRecord)
@@ -1090,25 +1187,25 @@ export default {
 
       for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
         var shuffledSites = this.shuffle(sites)
-        var numOfCQMPS = this.getRandomInt(1, 5)
+        var numOfCQMPS = this.getRandomInt(1, 4)
         var x = this.getRandomInt(1, 8)
 
         var protocolNum = []
 
         // Fills CQMPS[]
-        for (var j = 1; j <= numOfCQMPS; j++) {
+        for (var j = 0; j <= numOfCQMPS; j++) {
           var aRecord = {
                 protocolNum: protNum[this.getRandomInt(i, i)],
                 protocolStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
                 leadSite: shuffledSites[i],
-                fundingAgreement: this.headsOrTails('Contract', 'Grant/Cooperative Agreement'),
+                fundingAgreement: this.headsOrTails('Contract', 'Grant/ Cooperative Agreement'),
                 branch: this.generateBranch(0, 4),
                 cpm: this.randomCPM(0, 4),
                 resourceLevel: this.randomResource(0, 7),
                 groupAffiliation: this.randomAffiliation(0, 6),
                 dmidIND: this.headsOrTails('Yes', 'No'),
                 id: j,
-                affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === numOfCQMPS, siteLead: true }],
+                affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === 0, siteLead: true }],
                 legacyData: {
                   dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
                   vNumber: this.getRandomInt(1, x) + '.0',
@@ -1123,21 +1220,25 @@ export default {
                 }
               }
               // Fills affiliatedSites{}
-          for (var n = 1; n < numOfCQMPS; n++) {
-            var numAffSites = { id: n, siteName: shuffledSites[n], reviewed: j === n }
+          for (var n = 1; n <= numOfCQMPS; n++) {
+            var numAffSites = { id: n, siteName: shuffledSites[n], reviewed: j === n, siteLead: false }
             aRecord.affiliatedSites.push(numAffSites)
           }
           output.push(aRecord)
         }
       }
     },
-
+    affiliatedOnlyList: function (input) {
+      var myList = input
+      myList.shift()
+      return
+    },
     isValueEven: function (value) {
       var myNumber = value
       if (myNumber % 2 === 0) {
-        return 'striped-row'
-      } else {
         return 'odd-row'
+      } else {
+        return 'striped-row'
       }
     }
   },
@@ -1257,6 +1358,7 @@ export default {
 }
 .console-col--Header p {
   margin: 0;
+  text-align: center;
 }
 .console-body--ColumnContent {
   display: flex;
@@ -1271,9 +1373,8 @@ export default {
 .content--flex p {
   margin-top: 0;
   margin-bottom: 0;
-  padding: 3px;
+  padding: 3px 3px 3px 5px;
   color: #666666;
-  height: 24px;
   overflow: hidden;
 }
 .content--flex .edit {
@@ -1293,22 +1394,22 @@ export default {
   margin: 0 auto;
 }
 .console-col--ProtocolNumber, #ProtocolNumber {
-  width: 128px;
-}
-.console-col--LeadSite, #LeadSite {
   width: 81px;
 }
+.console-col--LeadSite, #LeadSite {
+  width: 131px;
+}
 .console-col--AffiliatedSite, #AffiliatedSite {
-  width: 106px;
+  width: 205px;
 }
 .console-col--FundingAgreement, #FundingAgreement  {
-  width: 88px;
+  width: 190px;
 }
 .console-col--DMIDBranch, #DMIDBranch {
-  width: 105px;
+  width: 75px;
 }
 .console-col--DMIDCPM, #DMIDCPM {
-  width: 206px;
+  width: 141px;
 }
 .console-col--ResourceLevel, #ResourceLevel {
   width: 114px;
@@ -1320,7 +1421,7 @@ export default {
   width: 86px;
 }
 .console-col--AcceptDate, #AcceptDate {
-  width: 78px;
+  width: 83px;
 }
 .console-col--VersionNum, #VersionNum {
   width: 69px;
@@ -1329,10 +1430,10 @@ export default {
   width: 78px;
 }
 .console-col--CQMPStatus, #CQMPStatus {
-  width: 70px;
+  width: 118px;
 }
 .console-col--EffectiveDate, #EffectiveDate {
-  width: 73px;
+  width: 78px;
 }
 .console-col--VersionNumber, #VersionNumber {
   width: 69px;
@@ -1341,7 +1442,7 @@ export default {
   width: 73px;
 }
 .console-col--ReviewerComments, #ReviewerComments {
-  width: 149px;
+  width: 151px;
   border-right: unset;
 }
 .console-col--CurrentAcceptDate, #CurrentAcceptDate {
@@ -1565,20 +1666,12 @@ input[type="radio"]:checked + label {
   /* border: 1px solid teal; */
 }
 .CQMP-table--row {
-  display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+.bold {
+  font-weight: bold;
 }
 </style>
