@@ -22,15 +22,15 @@
       <div class="CQMP-table--row"
       v-for="(item, index) in protocolBasedRecords"
       :key="index"
-      @click="activeRow = !activeRow"
-      v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow}]">
+      @click="activeRow = index"
+      v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
          <!-- ProtocolNumber -->
         <div class="content--flex content--border console-col--ProtocolNumber">
-          <p class="">{{ item.protocolNum }}</p>
+          <p>{{ item.protocolNum }}</p>
         </div>
         <!-- LeadSite -->
         <div class="content--flex content--border console-col--LeadSite ">
-          <p class="">
+          <p>
             <template v-for="record in item.affiliatedSites">
               <template v-if="record.siteLead">
                 <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
@@ -802,7 +802,7 @@ export default {
   },
   data () {
     return {
-      activeRow: false,
+      activeRow: -1,
       activeItem: 'Console',
       columnLength: 10,
       columnList: [
@@ -1189,7 +1189,12 @@ export default {
         var shuffledSites = this.shuffle(sites)
         var numOfCQMPS = this.getRandomInt(1, 4)
         var x = this.getRandomInt(1, 8)
-
+        var fundAgree = this.headsOrTails('Contract', 'Grant/ Cooperative Agreement')
+        var protBranch = this.generateBranch(0, 4)
+        var protCPM = this.randomCPM(0, 4)
+        var protResource = this.randomResource(0, 7)
+        var protGroup = this.randomAffiliation(0, 6)
+        var protDMIDIND = this.headsOrTails('Yes', 'No')
         var protocolNum = []
 
         // Fills CQMPS[]
@@ -1198,12 +1203,12 @@ export default {
                 protocolNum: protNum[this.getRandomInt(i, i)],
                 protocolStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
                 leadSite: shuffledSites[i],
-                fundingAgreement: this.headsOrTails('Contract', 'Grant/ Cooperative Agreement'),
-                branch: this.generateBranch(0, 4),
-                cpm: this.randomCPM(0, 4),
-                resourceLevel: this.randomResource(0, 7),
-                groupAffiliation: this.randomAffiliation(0, 6),
-                dmidIND: this.headsOrTails('Yes', 'No'),
+                fundingAgreement: fundAgree,
+                branch: protBranch,
+                cpm: protCPM,
+                resourceLevel: protResource,
+                groupAffiliation: protGroup,
+                dmidIND: protDMIDIND,
                 id: j,
                 affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === 0, siteLead: true }],
                 legacyData: {
@@ -1240,7 +1245,10 @@ export default {
       } else {
         return 'striped-row'
       }
-    }
+    },
+    toggleActiveRow: function(){
+      this.activeRow = !this.activeRow;
+    },
   },
   filters: {
     concatenate: function (value) {
@@ -1319,7 +1327,7 @@ export default {
   position: relative;
 }
 .striped-row {
-  background-color: #ccc;
+  background-color: rgb(211, 232, 220);
 }
 .vertical-spacer{
   width: 0px;
@@ -1386,7 +1394,6 @@ export default {
 }
 .content--border {
   border-right: 1px solid #999999;
-  border-bottom: 1px solid #999999;
 }
 .console-col--Edit {
   width: 49px;
@@ -1502,6 +1509,7 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+
 }
 .form--separator {
   margin: 15px 0;
@@ -1670,8 +1678,38 @@ input[type="radio"]:checked + label {
   flex-direction: row;
   flex-wrap: nowrap;
   width: max-content;
+  border-bottom: 1px solid #999999;
+  position: relative;
+
 }
 .bold {
   font-weight: bold;
+}
+.SelectedRow {
+  background-color: rgb(146, 222, 204);
+  position: relative;
+}
+.SelectedRow:before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
+}
+.CQMP-table--row:hover div {
+  background-color: rgba(203, 214, 212, 0.5);
+}
+.CQMP-table--row:hover:before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
 }
 </style>
