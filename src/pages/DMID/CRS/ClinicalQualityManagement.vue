@@ -1,213 +1,128 @@
 <template>
 <div class="CQMP">
-    <div class="buttonRow" style="display: none;">
-      <button > Site Specific </button>
-      <button > Protocol Specific </button>
-      <button > CRA Reference </button>
-      <button > Closed </button>
+    <div class="buttonRow">
+      <button @click="setView(siteView)" :class="{'activeButton' : siteView}"> Site Specific </button>
+      <button @click="setView(protocolView)" :class="{'activeButton' : protocolView}"> Protocol Specific </button>
+      <button @click="setView(craView)" :class="{'activeButton' : craView }"> CRA Reference </button>
+      <button @click="setView(closedView)" :class="{'activeButton' : closedView}"> Closed </button>
       <button class="addNewReport"> Add New </button>
     </div>
   <div class="CQMP-page--container">
-    <div class="console-body--columnHeaders">
-      <div
-      v-for="item in columnList"
-      v-bind:key="item.id"
-      v-bind:id="item.id"
-      class="console-col--Header">
-        <p v-bind:class="item.id">{{ item.name }}</p>
+    <div class="cqmp-table--openProtocols" v-show="protocolView">
+      <div class="console-body--columnHeaders">
+        <div
+        v-for="item in openProtocols"
+        v-bind:key="item.id"
+        v-bind:id="item.id"
+        class="console-col--Header">
+          <p v-bind:class="item.id">{{ item.name }}</p>
+          <template v-if="item.subtext != ''"  >
+            <span>{{ item.subtext }}</span>
+          </template>
+        </div>
       </div>
-    </div>
-    <div class="CQMP-table--container">
-      <!-- This click to activate feature isn't finished -->
-      <div class="CQMP-table--row"
-      v-for="(item, index) in protocolBasedRecords"
-      :key="index"
-      @click="activeRow = index"
-      v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
-         <!-- ProtocolNumber -->
-        <div class="content--flex content--border console-col--ProtocolNumber">
-          <p>{{ item.protocolNum }}</p>
-        </div>
-        <!-- LeadSite -->
-        <div class="content--flex content--border console-col--LeadSite ">
-          <p>
-            <template v-for="record in item.affiliatedSites">
-              <template v-if="record.siteLead">
-                <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
+      <div class="CQMP-table--container">
+        <div class="CQMP-table--row"
+         v-for="(item, index) in protocolBasedRecords"
+        :key="index"
+        @click="activeRow = index"
+        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
+           <!-- ProtocolNumber -->
+          <div class="content--flex content--border console-col--ProtocolNumber">
+            <p>{{ item.protocolNum }}</p>
+          </div>
+          <!-- LeadSite -->
+          <div class="content--flex content--border console-col--LeadSite ">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
+                </template>
               </template>
-            </template>
-          </p>
-        </div>
-        <!-- AffiliatedSite -->
-        <div class="content--flex content--border console-col--AffiliatedSite">
-          <p>
-            <template v-for="record in item.affiliatedSites">
-              <template v-if="!record.siteLead">
-                <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}<template v-if="(record.id + 1) !== item.affiliatedSites.length">, </template><br></span>
+            </p>
+          </div>
+          <!-- AffiliatedSite -->
+          <div class="content--flex content--border console-col--AffiliatedSite">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="!record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}<template v-if="(record.id + 1) !== item.affiliatedSites.length">, </template><br></span>
+                </template>
               </template>
-            </template>
-          </p>
-        </div>
-        <!-- FundingAgreement -->
-        <div class="content--flex content--border console-col--FundingAgreement">
-          <p>{{ item.fundingAgreement }}</p>
-        </div>
-        <!-- DMIDBranch -->
-        <div class="content--flex content--border console-col--DMIDBranch">
-          <p>{{ item.branch }}</p>
-        </div>
-        <!-- DMIDCPM -->
-        <div class="content--flex content--border console-col--DMIDCPM">
-          <p>{{ item.cpm }} </p>
-        </div>
-        <!-- ResourceLevel -->
-        <div class="content--flex content--border console-col--ResourceLevel">
-          <p>{{ item.resourceLevel }}</p>
-        </div>
-        <!-- GroupAffiliation -->
-        <div class="content--flex content--border console-col--GroupAffiliation">
-          <p>{{ item.groupAffiliation }}</p>
-        </div>
-        <!-- DMIDIND -->
-        <div class="content--flex content--border console-col--DMIDIND">
-          <p>{{ item.dmidIND }}</p>
-        </div>
-        <!-- Legacy Data -->
-        <!-- AcceptDate -->
-        <div class="content--flex legacy-data content--border console-col--AcceptDate">
-          <p>{{ item.legacyData.dateAccept }}</p>
-        </div>
-        <!-- VersionNum -->
-        <div class="content--flex content--border console-col--VersionNum">
-          <p>{{ item.legacyData.vNumber }}</p>
-        </div>
-        <!-- VersionDate -->
-        <div class="content--flex content--border console-col--VersionDate">
-          <p>{{ item.legacyData.vDate }}</p>
-        </div>
-        <!-- Current CQMP -->
-        <!-- CQMPStatus -->
-        <div class="content--flex current-data content--border console-col--CQMPStatus">
-          <p>{{ item.currentData.cqmpStatus }}</p>
-        </div>
-        <!-- EffectiveDate -->
-        <div class="content--flex current-data  content--border console-col--EffectiveDate">
-          <p>{{ item.currentData.effDate }}</p>
-        </div>
-        <!-- VersionNumber -->
-        <div class="content--flex current-data content--border console-col--VersionNumber">
-          <p>{{ item.currentData.cvNumber }}</p>
-        </div>
-        <!-- VersionDate -->
-        <div class="content--flex current-data content--border console-col--VersionDT">
-          <p>{{ item.currentData.cvDate }}</p>
-        </div>
-        <!-- ReviewerComments -->
-        <div class="content--flex current-data content--border console-col--ReviewerComments">
-          <p>{{ item.currentData.Comments }}</p>
-        </div>
-        <!-- CRA Reference -->
-        <!-- CurrentAcceptDate -->
-        <!-- <div class="content--flex ">
-          <p class="console-col--CurrentAcceptDate content--border" >{{ item.currentData.cvDate }}</p>
-        </div> -->
-        <!-- DMIDAcceptVersion -->
-        <!-- <div class="content--flex ">
-          <p class="console-col--DMIDAcceptVersion content--border" >{{ item.currentData.cvNumber }}</p>
-        </div> -->
-        <!-- Monitored -->
-        <!-- <div class="content--flex ">
-          <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
-        </div> -->
+            </p>
+          </div>
+          <!-- FundingAgreement -->
+          <div class="content--flex content--border console-col--FundingAgreement">
+            <p>{{ item.fundingAgreement }}</p>
+          </div>
+          <!-- DMIDBranch -->
+          <div class="content--flex content--border console-col--DMIDBranch">
+            <p>{{ item.branch }}</p>
+          </div>
+          <!-- DMIDCPM -->
+          <div class="content--flex content--border console-col--DMIDCPM">
+            <p>{{ item.cpm }} </p>
+          </div>
+          <!-- ResourceLevel -->
+          <div class="content--flex content--border console-col--ResourceLevel">
+            <p>{{ item.resourceLevel }}</p>
+          </div>
+          <!-- GroupAffiliation -->
+          <div class="content--flex content--border console-col--GroupAffiliation">
+            <p>{{ item.groupAffiliation }}</p>
+          </div>
+          <!-- DMIDIND -->
+          <div class="content--flex content--border console-col--DMIDIND">
+            <p>{{ item.dmidIND }}</p>
+          </div>
+          <!-- Legacy Data -->
+          <!-- AcceptDate -->
+          <div class="content--flex legacy-data content--border console-col--AcceptDate" :class="{'legacy-data' : item.legacyData.legacy}">
+            <p>{{ item.legacyData.dateAccept }}</p>
+          </div>
+          <!-- VersionNum -->
+          <div class="content--flex content--border console-col--VersionNum" :class="{'legacy-data' : item.legacyData.legacy}" >
+            <p>{{ item.legacyData.vNumber }}</p>
+          </div>
+          <!-- VersionDate -->
+          <div class="content--flex content--border console-col--VersionDate" :class="{'legacy-data' : item.legacyData.legacy}">
+            <p>{{ item.legacyData.vDate }}</p>
+          </div>
+          <!-- Current CQMP -->
+          <!-- CQMPStatus -->
+          <div class="content--flex current-data content--border console-col--CQMPStatus" :class="{'current-data' : item.currentData.current}">
+            <p>{{ item.currentData.cqmpStatus }}</p>
+          </div>
+          <!-- EffectiveDate -->
+          <div class="content--flex current-data  content--border console-col--EffectiveDate" :class="{'current-data' : item.currentData.current}">
+            <p>{{ item.currentData.effDate }}</p>
+          </div>
+          <!-- VersionNumber -->
+          <div class="content--flex current-data content--border console-col--VersionNumber" :class="{'current-data' : item.currentData.current}">
+            <p>{{ item.currentData.cvNumber }}</p>
+          </div>
+          <!-- VersionDate -->
+          <div class="content--flex current-data content--border console-col--VersionDT" :class="{'current-data' : item.currentData.current}">
+            <p>{{ item.currentData.cvDate }}</p>
+          </div>
+          <!-- ReviewerComments -->
+          <div class="content--flex current-data content--border console-col--ReviewerComments" :class="{'current-data' : item.currentData.current}">
+            <p>{{ item.currentData.Comments }}</p>
+          </div>
+          <!-- CRA Reference -->
+          <!-- CurrentAcceptDate -->
+          <!-- <div class="content--flex ">
+            <p class="console-col--CurrentAcceptDate content--border" >{{ item.currentData.cvDate }}</p>
+          </div> -->
+          <!-- DMIDAcceptVersion -->
+          <!-- <div class="content--flex ">
+            <p class="console-col--DMIDAcceptVersion content--border" >{{ item.currentData.cvNumber }}</p>
+          </div> -->
+          <!-- Monitored -->
+          <!-- <div class="content--flex ">
+            <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
+          </div> -->
 
-      </div>
-
-    </div>
-    <div class="CQMP-table--container"  style="display: none;">
-      <div
-      class="console-body--ColumnContent"
-      v-for="n in columnLength"
-      v-bind:key="n"
-      v-bind:class="isValueEven(n)">
-         <!-- ProtocolNumber -->
-        <div class="content--flex ">
-          <p class="console-col--ProtocolNumber content--border">{{ createdProtocolArray[(n-1)] }}</p>
-        </div>
-        <!-- LeadSite -->
-        <div class="content--flex ">
-          <p class="console-col--LeadSite content--border">{{ generateSiteName(0,4) }}</p>
-        </div>
-        <!-- AffiliatedSite -->
-        <div class="content--flex ">
-          <p class="console-col--AffiliatedSite content--border" >{{ generateSiteName(0,4) }}</p>
-        </div>
-        <!-- FundingAgreement -->
-        <div class="content--flex ">
-          <p class="console-col--FundingAgreement content--border" >Contract</p>
-        </div>
-        <!-- DMIDBranch -->
-        <div class="content--flex ">
-          <p class="console-col--DMIDBranch content--border" >{{ generateBranch(0,4) }}</p>
-        </div>
-        <!-- DMIDCPM -->
-        <div class="content--flex ">
-          <p class="console-col--DMIDCPM content--border" > {{ randomCPM(0,4) }} </p>
-        </div>
-        <!-- ResourceLevel -->
-        <div class="content--flex ">
-          <p class="console-col--ResourceLevel  content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- GroupAffiliation -->
-        <div class="content--flex ">
-          <p class="console-col--GroupAffiliation content--border" >{{ randomAffiliation(0,6) }}</p>
-        </div>
-        <!-- DMIDIND -->
-        <div class="content--flex ">
-          <p class="console-col--DMIDIND content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- AcceptDate -->
-        <div class="content--flex ">
-          <p class="console-col--AcceptDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- VersionNum -->
-        <div class="content--flex ">
-          <p class="console-col--VersionNum content--border" >{{ getRandomInt(1,3) }}.0</p>
-        </div>
-        <!-- VersionDate -->
-        <div class="content--flex ">
-          <p class="console-col--VersionDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- CQMPStatus -->
-        <div class="content--flex">
-          <p class="console-col--CQMPStatus content--border" > Waiting </p>
-        </div>
-        <!-- EffectiveDate -->
-        <div class="content--flex ">
-          <p class="console-col--EffectiveDate  content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- VersionNumber -->
-        <div class="content--flex ">
-          <p class="console-col--VersionNumber content--border" >{{ getRandomInt(1,3) }}.0</p>
-        </div>
-        <!-- VersionDT -->
-        <div class="content--flex ">
-          <p class="console-col--VersionDT content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- ReviewerComments -->
-        <div class="content--flex ">
-          <p class="console-col--ReviewerComments content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- CurrentAcceptDate -->
-        <div class="content--flex ">
-          <p class="console-col--CurrentAcceptDate content--border" >{{ randomDate(new Date(2012, 0, 1), new Date()) }}</p>
-        </div>
-        <!-- DMIDAcceptVersion -->
-        <div class="content--flex ">
-          <p class="console-col--DMIDAcceptVersion content--border" >{{ getRandomInt(1,3) }}.0</p>
-        </div>
-        <!-- Monitored -->
-        <div class="content--flex ">
-          <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes", "No") }}</p>
         </div>
       </div>
     </div>
@@ -793,63 +708,69 @@
 <script>
 import autocomplete from '../../../components/autoComplete.vue'
 import siteMaster from '../CRS/siteMaster.js'
+import subsiteMaster from '../CRS/subsiteMaster.js'
 
 export default {
   name: 'ClinicalQualityManagement',
   components: {
     autocomplete,
-    siteMaster
+    siteMaster,
+    subsiteMaster
   },
   data () {
     return {
       activeRow: -1,
       activeItem: 'Console',
+      siteView: true,
+      closedView: false,
+      protocolView: false,
+      craView: false,
       columnLength: 10,
-      columnList: [
-        { id: 'ProtocolNumber', name: 'Protocol Number' },
-        { id: 'LeadSite', name: 'Lead Site' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
-        { id: 'FundingAgreement', name: 'Funding Agreement' },
-        { id: 'DMIDBranch', name: 'DMID Branch' },
-        { id: 'DMIDCPM', name: 'DMID Clinical Project Manager' },
-        { id: 'ResourceLevel', name: 'Resource Level' },
-        { id: 'GroupAffiliation', name: 'Group Affiliation' },
-        { id: 'DMIDIND', name: 'DMID IND' },
-        { id: 'AcceptDate', name: 'Accepted Date' },
-        { id: 'VersionNum', name: 'Version Number' },
-        { id: 'VersionDate', name: 'Version Date' },
-        { id: 'CQMPStatus', name: 'CQMP Status' },
-        { id: 'EffectiveDate', name: 'Effective Date' },
-        { id: 'VersionNumber', name: 'Version Number' },
-        { id: 'VersionDT', name: 'Version Date' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments' },
+      openProtocols: [
+        { id: 'ProtocolNumber', name: 'Protocol Number', subtext: ''},
+        { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold Indicates Plan Reviewed)' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold Indicates Plan Reviewed)' },
+        { id: 'FundingAgreement', name: 'Funding Agreement', subtext: '' },
+        { id: 'DMIDBranch', name: 'DMID Branch', subtext: '' },
+        { id: 'DMIDCPM', name: 'DMID Clinical Project Manager', subtext: '' },
+        { id: 'ResourceLevel', name: 'Resource Level', subtext: '' },
+        { id: 'GroupAffiliation', name: 'Group Affiliation', subtext: '' },
+        { id: 'DMIDIND', name: 'DMID IND', subtext: '' },
+        { id: 'AcceptDate', name: 'Accepted Date', subtext: '' },
+        { id: 'VersionNum', name: 'Version Number', subtext: '' },
+        { id: 'VersionDate', name: 'Version Date', subtext: '' },
+        { id: 'CQMPStatus', name: 'CQMP Status', subtext: '' },
+        { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
+        { id: 'VersionNumber', name: 'Version Number', subtext: '' },
+        { id: 'VersionDT', name: 'Version Date', subtext: '' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' },
         //{ id: 'CurrentAcceptDate', name: 'Current Accepted Date' },
         //{ id: 'DMIDAcceptVersion', name: 'DMID Accepted Version' },
         //{ id: 'Monitored', name: 'Monitored by ICON?' }
       ],
       columnListSite: [
-        { id: 'Edit', name: 'Edit' },
-        { id: 'LeadSite', name: 'Lead Site' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
-        { id: 'FundingAgreement', name: 'Funding Agreement' },
-        { id: 'GroupAffiliation', name: 'Group Affiliation' },
-        { id: 'CQMPStatus', name: 'CQMP Status' },
-        { id: 'EffectiveDate', name: 'Effective Date' },
-        { id: 'VersionNumber', name: 'Version Number' },
-        { id: 'VersionDT', name: 'Version Date' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments' }
+        { id: 'Edit', name: 'Edit', subtext: '' },
+        { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold Indicates Plan Reviewed)' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold Indicates Plan Reviewed)' },
+        { id: 'FundingAgreement', name: 'Funding Agreement', subtext: '' },
+        { id: 'GroupAffiliation', name: 'Group Affiliation', subtext: '' },
+        { id: 'CQMPStatus', name: 'CQMP Status', subtext: '' },
+        { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
+        { id: 'VersionNumber', name: 'Version Number', subtext: '' },
+        { id: 'VersionDT', name: 'Version Date', subtext: '' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' }
       ],
       columnListProtocols: [
-        { id: 'Edit', name: 'Edit' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site(s)' },
-        { id: 'AcceptDate', name: 'Accepted Date' },
-        { id: 'VersionNum', name: 'Version Number' },
-        { id: 'VersionDate', name: 'Version Date' },
-        { id: 'CQMPStatus', name: 'CQMP Status' },
-        { id: 'EffectiveDate', name: 'Effective Date' },
-        { id: 'VersionNumber', name: 'Version Number' },
-        { id: 'VersionDT', name: 'Version Date' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments' }
+        { id: 'Edit', name: 'Edit', subtext: '' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold Indicates Plan Reviewed)' },
+        { id: 'AcceptDate', name: 'Accepted Date', subtext: '' },
+        { id: 'VersionNum', name: 'Version Number', subtext: '' },
+        { id: 'VersionDate', name: 'Version Date', subtext: '' },
+        { id: 'CQMPStatus', name: 'CQMP Status', subtext: '' },
+        { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
+        { id: 'VersionNumber', name: 'Version Number', subtext: '' },
+        { id: 'VersionDT', name: 'Version Date', subtext: '' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' }
       ],
       protocols: [],
       protocolRecordStatus: [
@@ -901,8 +822,12 @@ export default {
       siteMasterList: Object.keys(siteMaster).map(function (key) {
         return siteMaster[key]
       }),
+      subsiteMasterList: Object.keys(subsiteMaster).map(function (key) {
+        return subsiteMaster[key]
+      }),
       siteBased: [],
-      protocolBased: []
+      protocolBasedOpen: [],
+      protocolBasedClosed: []
     }
   },
   /// ////
@@ -917,7 +842,10 @@ export default {
       return this.siteBased
     },
     protocolBasedRecords: function () {
-      return this.protocolBased
+      return this.protocolBasedOpen
+    },
+    protocolBasedClosedRecords: function () {
+      return this.protocolBasedClosed
     },
   },
   /// ////
@@ -930,6 +858,13 @@ export default {
   },
   /// ////
   methods: {
+    setView: function(input) {
+      // Return all views = false except the clicked view!
+      // siteView
+      // craView
+      // protocolView
+      // closedView
+    },
     isSelected: function () {
       return this.selected
     },
@@ -1128,11 +1063,12 @@ export default {
     },
     generateSiteRecords: function () {
       var sites = this.siteMasterList
+      var subSites = this.subsiteMasterList
       var numOfRecords = this.columnLength
       var output = this.siteBasedRecords
 
       for (var i = 0; i < sites.length, i < numOfRecords; i++) {
-        var shuffledSites = this.shuffle(sites)
+        var shuffledSites = this.shuffle(subSites)
         var numOfCQMPS = this.getRandomInt(0, 5)
         var x = this.getRandomInt(1, 8)
         var j = 1
@@ -1154,11 +1090,13 @@ export default {
                   NumofRecords: numOfCQMPS,
                   affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
                   legacyData: {
+                    legacy: true,
                     dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
                     vNumber: this.getRandomInt(1, x) + '.0',
                     vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
                   },
                   currentData: {
+                    current: true,
                     cqmpStatus: this.randomCQMPStatus(0, 4),
                     effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
                     cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
@@ -1179,14 +1117,17 @@ export default {
 
     generateProtocolRecords: function () {
       var sites = this.siteMasterList
+      var subSites = this.subsiteMasterList
       var recordStatus = this.protocolRecordStatus
       var groupAff = this.groupAffiliation
       var numOfRecords = this.columnLength
       var output = this.protocolBasedRecords
+      var closedOutput = this.protocolBasedClosedRecords
       var protNum = this.protocols
 
       for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
         var shuffledSites = this.shuffle(sites)
+        var shuffledSubSites = this.shuffle(subSites)
         var numOfCQMPS = this.getRandomInt(1, 4)
         var x = this.getRandomInt(1, 8)
         var fundAgree = this.headsOrTails('Contract', 'Grant/ Cooperative Agreement')
@@ -1212,11 +1153,13 @@ export default {
                 id: j,
                 affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === 0, siteLead: true }],
                 legacyData: {
+                  legacy: true,
                   dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
                   vNumber: this.getRandomInt(1, x) + '.0',
                   vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
                 },
                 currentData: {
+                  current: true,
                   cqmpStatus: this.randomCQMPStatus(0, 4),
                   effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
                   cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
@@ -1226,17 +1169,17 @@ export default {
               }
               // Fills affiliatedSites{}
           for (var n = 1; n <= numOfCQMPS; n++) {
-            var numAffSites = { id: n, siteName: shuffledSites[n], reviewed: j === n, siteLead: false }
+            var numAffSites = { id: n, siteName: shuffledSubSites[n], reviewed: j === n, siteLead: false }
             aRecord.affiliatedSites.push(numAffSites)
           }
+          if ( aRecord.protocolStatus.open) {
           output.push(aRecord)
+          }
+          else {
+            closedOutput.push(aRecord)
+          }
         }
       }
-    },
-    affiliatedOnlyList: function (input) {
-      var myList = input
-      myList.shift()
-      return
     },
     isValueEven: function (value) {
       var myNumber = value
@@ -1295,9 +1238,6 @@ export default {
   width: 90%;
   margin: 5px auto;
 }
-.hidden {
-  display: none;
-}
 .CQMP-page--container {
   width: 100%;
   overflow: scroll;
@@ -1341,9 +1281,6 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   width: max-content;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
 .currentProtocol {
   color: white;
@@ -1362,11 +1299,15 @@ export default {
   font-weight: bold;
   /*max-width: fit-content;*/
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .console-col--Header p {
   margin: 0;
   text-align: center;
+}
+.console-col--Header span {
+  font-weight:normal;
 }
 .console-body--ColumnContent {
   display: flex;
@@ -1404,7 +1345,7 @@ export default {
   width: 81px;
 }
 .console-col--LeadSite, #LeadSite {
-  width: 131px;
+  width: 205px;
 }
 .console-col--AffiliatedSite, #AffiliatedSite {
   width: 205px;
@@ -1449,7 +1390,7 @@ export default {
   width: 73px;
 }
 .console-col--ReviewerComments, #ReviewerComments {
-  width: 151px;
+  width: 153px;
   border-right: unset;
 }
 .console-col--CurrentAcceptDate, #CurrentAcceptDate {
@@ -1696,10 +1637,10 @@ input[type="radio"]:checked + label {
   left: -1px;
   height: 100%;
   width: 100%;
-  border-bottom: 2px solid #000;
-  border-top: 2px solid #000;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
 }
-.CQMP-table--row:hover div {
+.CQMP-table--row:hover{
   background-color: rgba(203, 214, 212, 0.5);
 }
 .CQMP-table--row:hover:before {
@@ -1709,7 +1650,19 @@ input[type="radio"]:checked + label {
   left: -1px;
   height: 100%;
   width: 100%;
-  border-bottom: 2px solid #000;
-  border-top: 2px solid #000;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+.SelectedRow:hover {
+  background-color: rgba(146, 222, 204, 0.75);
+}
+.legacy-data {
+  background-color: rgba(207, 218, 227, 0.5);
+}
+.current-data {
+  background-color: rgba(219, 203, 180, 0.5);
+}
+.hidden {
+  display: none;
 }
 </style>
