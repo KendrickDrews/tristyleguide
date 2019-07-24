@@ -8,7 +8,7 @@
       <button class="addNewReport"> Add New </button>
     </div>
   <div class="CQMP-page--container">
-    <div class="cqmp-table--openProtocols" v-show="siteView">
+    <div class="cqmp-table--siteView" v-show="siteView">
       <div class="console-body--columnHeaders">
         <div
         v-for="item in columnSiteView"
@@ -23,7 +23,7 @@
       </div>
       <div class="CQMP-table--container">
         <div class="CQMP-table--row"
-         v-for="(item, index) in siteBased"
+         v-for="(item, index) in siteBasedRecords"
         :key="index"
         @click="activeRow = index"
         v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="cqmp-table--openProtocols" v-show="protocolView">
+    <div class="cqmp-table--protocolView" v-show="protocolView">
       <div class="console-body--columnHeaders">
         <div
         v-for="item in openProtocols"
@@ -196,11 +196,10 @@
         </div>
       </div>
     </div>
-    <!-- CRA View causing Problems with LegacyData -->
-    <div class="cqmp-table--openProtocols" v-show="craView">
-      <div class="console-body--columnHeaders">
+    <div class="cqmp-table--craView" v-show="craView">
+      <div class="console-body--columnHeaders border-bottom">
         <div
-        v-for="item in openProtocols"
+        v-for="item in columnListCRA"
         v-bind:key="item.id + 'CRA'"
         v-bind:id="item.id + 'CRA'"
         class="console-col--Header">
@@ -211,11 +210,130 @@
         </div>
       </div>
       <div class="CQMP-table--container">
+        <div class="CQMP-table--subheader">
+          <h3> Protocol-Specific CQMPs </h3>
+        </div>
         <div class="CQMP-table--row"
-         v-for="(item, index) in protocolBasedRecords"
+         v-for="(item, index) in protocolBasedCRA"
         :key="index"
-        @click="activeRow = index"
-        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
+        @click="activeRow = item"
+        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == item}]">
+          <!-- ProtocolNumber -->
+          <div class="content--flex content--border console-col--ProtocolNumber">
+            <p>{{ item.protocolNum }}</p>
+          </div>
+          <!-- LeadSite -->
+          <div class="content--flex content--border console-col--LeadSite ">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
+                </template>
+              </template>
+            </p>
+          </div>
+          <!-- AffiliatedSite -->
+          <div class="content--flex content--border console-col--AffiliatedSite">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="!record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}<template v-if="(record.id + 1) !== item.affiliatedSites.length">, </template><br></span>
+                </template>
+              </template>
+            </p>
+          </div>
+          <!-- CRA Reference -->
+          <!-- CurrentAcceptDate -->
+          <div class="content--flex console-col--CurrentAcceptDate content--border">
+            <p>{{ item.currentData.cvDate }}</p>
+          </div>
+          <!-- DMIDAcceptVersion -->
+           <div class="content--flex console-col--DMIDAcceptVersion content--border">
+            <p>{{ item.currentData.cvNumber }}</p>
+          </div>
+          <!-- ReviewerComments -->
+          <div class="content--flex content--border console-col--ReviewerComments">
+            <p>{{ item.currentData.Comments }}</p>
+          </div>
+          <!-- Monitored -->
+          <!-- <div class="content--flex ">
+            <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
+          </div> -->
+        </div>
+        <div class="CQMP-table--subheader subheader-two">
+          <h3> Site-Specific CQMPs </h3>
+          </div>
+        <div class="CQMP-table--row"
+         v-for="(item, index) in siteBasedCRA"
+        :key="'00' + index"
+        @click="activeRow = item"
+        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == item}]">
+           <!-- ProtocolNumber -->
+          <div class="content--flex content--border console-col--ProtocolNumber">
+            <p>N/A</p>
+          </div>
+          <!-- LeadSite -->
+          <div class="content--flex content--border console-col--LeadSite ">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}</span>
+                </template>
+              </template>
+            </p>
+          </div>
+          <!-- AffiliatedSite -->
+          <div class="content--flex content--border console-col--AffiliatedSite">
+            <p>
+              <template v-for="record in item.affiliatedSites">
+                <template v-if="!record.siteLead">
+                  <span :key="record.id" :class="{'bold': record.reviewed}">{{ record.siteName }}<template v-if="(record.id + 1) !== item.affiliatedSites.length">, </template><br></span>
+                </template>
+              </template>
+            </p>
+          </div>
+          <!-- CRA Reference -->
+          <!-- CurrentAcceptDate -->
+          <div class="content--flex console-col--CurrentAcceptDate content--border">
+            <p>{{ item.currentData.cvDate }}</p>
+          </div>
+          <!-- DMIDAcceptVersion -->
+           <div class="content--flex console-col--DMIDAcceptVersion content--border">
+            <p>{{ item.currentData.cvNumber }}</p>
+          </div>
+          <!-- ReviewerComments -->
+          <div class="content--flex content--border console-col--ReviewerComments">
+            <p>{{ item.currentData.Comments }}</p>
+          </div>
+          <!-- Monitored -->
+          <!-- <div class="content--flex ">
+            <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="cqmp-table--closedView" v-show="closedView">
+      <div class="console-body--columnHeaders  border-bottom">
+        <div
+        v-for="item in openProtocols"
+        v-bind:key="item.id + 'Closed'"
+        v-bind:id="item.id + 'Closed'"
+        class="console-col--Header">
+          <p v-bind:class="item.id">{{ item.name }}</p>
+          <template v-if="item.subtext != ''"  >
+            <span>{{ item.subtext }}</span>
+          </template>
+        </div>
+      </div>
+      <div class="CQMP-table--container">
+        <div class="CQMP-table--subheader">
+          <h3> Protocol-Specific CQMPs </h3>
+        </div>
+        <div class="CQMP-table--row"
+         v-for="(item, index) in protocolBasedClosed"
+        :key="'000' + index"
+        @click="activeRow = item"
+        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == item}]">
            <!-- ProtocolNumber -->
           <div class="content--flex content--border console-col--ProtocolNumber">
             <p>{{ item.protocolNum }}</p>
@@ -298,45 +416,18 @@
           <div class="content--flex current-data content--border console-col--ReviewerComments" :class="{'current-data' : item.currentData.current}">
             <p>{{ item.currentData.Comments }}</p>
           </div>
-          <!-- CRA Reference -->
-          <!-- CurrentAcceptDate -->
-          <!-- <div class="content--flex ">
-            <p class="console-col--CurrentAcceptDate content--border" >{{ item.currentData.cvDate }}</p>
-          </div> -->
-          <!-- DMIDAcceptVersion -->
-          <!-- <div class="content--flex ">
-            <p class="console-col--DMIDAcceptVersion content--border" >{{ item.currentData.cvNumber }}</p>
-          </div> -->
-          <!-- Monitored -->
-          <!-- <div class="content--flex ">
-            <p class="console-col--Monitored content--border" >{{ headsOrTails("Yes","No") }}</p>
-          </div> -->
-
         </div>
-      </div>
-    </div>
-    <div class="cqmp-table--openProtocols" v-show="closedView">
-      <div class="console-body--columnHeaders">
-        <div
-        v-for="item in openProtocols"
-        v-bind:key="item.id + 'Closed'"
-        v-bind:id="item.id + 'Closed'"
-        class="console-col--Header">
-          <p v-bind:class="item.id">{{ item.name }}</p>
-          <template v-if="item.subtext != ''"  >
-            <span>{{ item.subtext }}</span>
-          </template>
+        <div class="CQMP-table--subheader">
+          <h3> Site-Specific CQMPs </h3>
         </div>
-      </div>
-      <div class="CQMP-table--container">
         <div class="CQMP-table--row"
-         v-for="(item, index) in protocolBasedClosed"
-        :key="index"
-        @click="activeRow = index"
-        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
+         v-for="(item, index) in siteBasedClosed"
+        :key="'001' + index"
+        @click="activeRow = item"
+        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == item}]">
            <!-- ProtocolNumber -->
           <div class="content--flex content--border console-col--ProtocolNumber">
-            <p>{{ item.protocolNum }}</p>
+            <p>N/A</p>
           </div>
           <!-- LeadSite -->
           <div class="content--flex content--border console-col--LeadSite ">
@@ -1078,26 +1169,12 @@ export default {
       ],
       columnListCRA: [
         { id: 'ProtocolNumber', name: 'Protocol Number', subtext: ''},
-        { id: 'LeadSite', name: 'Lead Site', subtext: '(bold indicates accepted CQMP which should be available at the site)' },
-        { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(bold indicates accepted CQMP which should be available at the site)' },
-        { id: 'FundingAgreement', name: 'Funding Agreement', subtext: '' },
-        { id: 'DMIDBranch', name: 'DMID Branch', subtext: '' },
-        { id: 'DMIDCPM', name: 'DMID Clinical Project Manager', subtext: '' },
-        { id: 'ResourceLevel', name: 'Resource Level', subtext: '' },
-        { id: 'GroupAffiliation', name: 'Group Affiliation', subtext: '' },
-        { id: 'DMIDIND', name: 'DMID IND', subtext: '' },
-        { id: 'AcceptDate', name: 'Accepted Date', subtext: '' },
-        { id: 'VersionNum', name: 'Version Number', subtext: '' },
-        { id: 'VersionDate', name: 'Version Date', subtext: '' },
-        { id: 'CQMPStatus', name: 'CQMP Status', subtext: '' },
-        { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
-        { id: 'VersionNumber', name: 'Version Number', subtext: '' },
-        { id: 'VersionDT', name: 'Version Date', subtext: '' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' },
-        //{ id: 'CurrentAcceptDate', name: 'Current Accepted Date' },
-        //{ id: 'DMIDAcceptVersion', name: 'DMID Accepted Version' },
-        //{ id: 'Monitored', name: 'Monitored by ICON?' }
-
+        { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold indicates accepted CQMP which should be available at the site)' },
+        { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold indicates accepted CQMP which should be available at the site)' },
+        { id: 'CurrentAcceptDate', name: 'Current Accepted Date', subtext: ''  },
+        { id: 'DMIDAcceptVersion', name: 'DMID Accepted Version', subtext: ''  },
+        { id: 'ReviewerComments', name: 'Comments', subtext: '' },
+        //{ id: 'Monitored', name: 'Monitored by ICON?', subtext: ''  }
       ],
       protocols: [],
       protocolRecordStatus: [
@@ -1152,7 +1229,10 @@ export default {
       subsiteMasterList: Object.keys(subsiteMaster).map(function (key) {
         return subsiteMaster[key]
       }),
-      siteBased: [],
+      siteBasedOpen: [],
+      siteBasedClosed: [],
+      siteBasedCRA: [],
+      protocolBasedCRA: [],
       protocolBasedOpen: [],
       protocolBasedClosed: []
     }
@@ -1166,13 +1246,30 @@ export default {
       return this.currentProtocol
     },
     siteBasedRecords: function () {
-      return this.siteBased
+      //Sorts but you should be able to extract this method out so it is REUSABLE
+      function compare(a, b) {
+        if (a.leadSite < b.leadSite)
+          return -1;
+        if (a.leadSite > b.leadSite)
+          return 1;
+        return 0;
+      }
+      return this.siteBasedOpen.sort(compare)
+    },
+    siteBasedClosedRecords: function () {
+      return this.siteBasedClosed
     },
     protocolBasedRecords: function () {
       return this.protocolBasedOpen
     },
     protocolBasedClosedRecords: function () {
       return this.protocolBasedClosed
+    },
+    siteBasedCRARecords: function () {
+      return this.siteBasedCRA
+    },
+    protocolBasedCRARecords: function () {
+      return this.protocolBasedCRA
     },
   },
   /// ////
@@ -1192,27 +1289,32 @@ export default {
         this.craView = false;
         this.protocolView = false;
         this.closedView = false;
+        this.activeRow = -1;
         break;
       case 'craView':
         this.siteView = false;
         this.craView = true;
         this.protocolView = false;
         this.closedView = false;
+        this.activeRow = -1;
         break;
       case 'protocolView':
         this.siteView = false;
         this.craView = false;
         this.protocolView = true;
         this.closedView = false;
+        this.activeRow = -1;
         break;
       case 'closedView':
         this.siteView = false;
         this.craView = false;
         this.protocolView = false;
         this.closedView = true;
+        this.activeRow = -1;
         break;
       default:
         console.log('There seems to be an issue with your switch statement')
+        break;
       }
     },
     isSelected: function () {
@@ -1295,7 +1397,6 @@ export default {
 
       return [day, monthName, year].join('-')
     },
-
     generateBranch: function (start, end) {
       var DCE = new Array()
 
@@ -1337,7 +1438,6 @@ export default {
       var entityName = Aff[this.getRandomInt(start, end)]
       return entityName
     },
-
     generateSiteName: function (start, end) {
       var sites = new Array()
 
@@ -1382,7 +1482,6 @@ export default {
     },
     shuffle: function (array) {
       var currentIndex = array.length; var temporaryValue; var randomIndex
-
       // While there remain elements to shuffle...
       while (currentIndex !== 0) {
         // Pick a remaining element...
@@ -1395,7 +1494,6 @@ export default {
       }
       return array
     },
-
     generateProtocolNumber: function () {
       var start = this.getRandomInt(0, 19)
       var end = this.getRandomInt(0, 1150)
@@ -1415,54 +1513,71 @@ export default {
       var sites = this.siteMasterList
       var subSites = this.subsiteMasterList
       var numOfRecords = this.columnLength
+      var recordStatus = this.protocolRecordStatus
       var output = this.siteBasedRecords
+      var closedOutput = this.siteBasedClosedRecords
+      var outputCRA = this.siteBasedCRARecords
 
       for (var i = 0; i < sites.length, i < numOfRecords; i++) {
         var shuffledSites = this.shuffle(subSites)
+        var fundAgree = this.headsOrTails('Contract', 'Grant/ Cooperative Agreement')
+        var siteGroup = this.randomAffiliation(0, 6)
         //var numOfCQMPS = this.getRandomInt(0, 5)
         var numOfCQMPS = this.getRandomInt(1, 5)
         var x = this.getRandomInt(1, 8)
-        var j = 1
 
-        var leadSite = []
-        // Fills CQMPS[]
-        //if (j > numOfCQMPS) {
-        //  var aRecord = {
-        //    leadSite: sites[i],
-        //    NumofRecords: numOfCQMPS,
-        //  }
-        //  output.push(aRecord)
-        //}
-        //else {
-          for (j; j <= numOfCQMPS; j++) {
-            var aRecord = {
-                  leadSite: sites[i],
-                  id: j,
-                  NumofRecords: numOfCQMPS,
-                  affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === numOfCQMPS, siteLead: true }],
-                  legacyData: {
-                    legacy: true,
-                    dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
-                    vNumber: this.getRandomInt(1, x) + '.0',
-                    vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
-                  },
-                  currentData: {
-                    current: true,
-                    cqmpStatus: this.randomCQMPStatus(0, 4),
-                    effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                    cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
-                    cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                    Comments: 'Reviewer comments go here.'
-                  }
-                }
-            // Fills affiliatedSites[]
-            for (var n = 1; n < numOfCQMPS; n++) {
-              var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n, siteLead: false}
-              aRecord.affiliatedSites.push(numAffSites)
+        for (var j = 0; j <= numOfCQMPS; j++) {
+          var aRecord = {
+            leadSite: sites[i],
+            id: j,
+            siteStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
+            NumofRecords: numOfCQMPS,
+            fundingAgreement: fundAgree,
+            groupAffiliation: siteGroup,
+            branch: 'N/A',
+            cpm: 'N/A',
+            resourceLevel: 'N/A',
+            dmidIND: 'N/A',
+            affiliatedSites: [{ id: 0, siteName: sites[i], reviewed: j === 0, siteLead: true }],
+            legacyData: {
+              legacy: true,
+              dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+              vNumber: this.getRandomInt(1, x) + '.0',
+              vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
+            },
+            currentData: {
+              current: true,
+              cqmpStatus: this.randomCQMPStatus(0, 4),
+              effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+              cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
+              cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+              Comments: 'Reviewer comments go here.'
             }
-            output.push(aRecord)
           }
-        //}
+          for (var n = 1; n <= numOfCQMPS; n++) {
+            var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n, siteLead: false}
+            aRecord.affiliatedSites.push(numAffSites)
+          }
+          if ( aRecord.siteStatus.open) {
+            output.push(aRecord)
+            switch(aRecord.currentData.cqmpStatus) {
+            case 'Accepted Initial':
+              outputCRA.push(aRecord)
+              break;
+            case 'Accepted Revised':
+              outputCRA.push(aRecord)
+              break;
+            case 'In Progress':
+              outputCRA.push(aRecord)
+              break;
+            default:
+              break;
+            }
+          }
+          else {
+            closedOutput.push(aRecord)
+          }
+        }
       }
     },
 
@@ -1474,6 +1589,7 @@ export default {
       var numOfRecords = this.columnLength
       var output = this.protocolBasedRecords
       var closedOutput = this.protocolBasedClosedRecords
+      var outputCRA = this.protocolBasedCRARecords
       var protNum = this.protocols
 
       for (var i = 0; i < numOfRecords, i < protNum.length; i++) {
@@ -1525,10 +1641,24 @@ export default {
           }
           if ( aRecord.protocolStatus.open) {
           output.push(aRecord)
+            switch(aRecord.currentData.cqmpStatus) {
+            case 'Accepted Initial':
+              outputCRA.push(aRecord)
+              break;
+            case 'Accepted Revised':
+              outputCRA.push(aRecord)
+              break;
+            case 'In Progress':
+              outputCRA.push(aRecord)
+              break;
+            default:
+              break;
+            }
           }
           else {
             closedOutput.push(aRecord)
           }
+
         }
       }
     },
@@ -1561,6 +1691,12 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'DroidSans';
+  src:  url('../../../styles/Typefaces/DroidSansMono.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 .site-form--searchbox {
   padding: 5px 20px;
   margin-bottom: 15px;
@@ -1644,8 +1780,7 @@ export default {
 .console-col--Header {
   background-color: rgb(24, 24, 24);
   border-right: 1px solid white;
-  height: 52px;
-  padding: 5px 12px 5px 12px;
+  padding: 5px 12px 7px 12px;
   color: white;
   font-weight: bold;
   /*max-width: fit-content;*/
@@ -1692,65 +1827,175 @@ export default {
   height: 24px;
   margin: 0 auto;
 }
-.console-col--ProtocolNumber, #ProtocolNumber, #ProtocolNumberSite, #ProtocolNumberClosed, #ProtocolNumberCRA, #ProtocolNumberProt {
+.console-col--ProtocolNumber,
+#ProtocolNumber,
+#ProtocolNumberSite,
+#ProtocolNumberClosed,
+#ProtocolNumberCRA,
+#ProtocolNumberProt {
   width: 81px;
 }
-.console-col--LeadSite, #LeadSite, #LeadSiteSite, #LeadSiteCRA, #LeadSiteClosed, #LeadSiteProt {
-  width: 205px;
+.console-col--LeadSite,
+#LeadSite, #LeadSiteSite,
+#LeadSiteCRA,
+#LeadSiteClosed,
+#LeadSiteProt {
+  width: 235px;
 }
-.console-col--AffiliatedSite, #AffiliatedSite, #AffiliatedSiteSite, #AffiliatedSiteClosed, #AffiliatedSiteCRA, #AffiliatedSiteProt {
-  width: 205px;
+.console-col--AffiliatedSite,
+#AffiliatedSite,
+#AffiliatedSiteSite,
+#AffiliatedSiteClosed,
+#AffiliatedSiteCRA,
+#AffiliatedSiteProt {
+  width: 235px;
 }
-.console-col--FundingAgreement, #FundingAgreementSite, #FundingAgreementClosed, #FundingAgreementCRA, #FundingAgreementProt  {
+.console-col--FundingAgreement,
+#FundingAgreementSite,
+#FundingAgreementClosed,
+#FundingAgreementCRA,
+#FundingAgreementProt  {
   width: 190px;
 }
-.console-col--DMIDBranch, #DMIDBranch, #DMIDBranchSite, #DMIDBranchClosed, #DMIDBranchCRA, #DMIDBranchProt {
+.console-col--DMIDBranch,
+#DMIDBranch,
+#DMIDBranchSite,
+#DMIDBranchClosed,
+#DMIDBranchCRA,
+#DMIDBranchProt {
   width: 75px;
 }
-.console-col--DMIDCPM, #DMIDCPM, #DMIDCPMSite, #DMIDCPMClosed, #DMIDCPMCRA, #DMIDCPMProt {
+.console-col--DMIDCPM,
+#DMIDCPM,
+#DMIDCPMSite,
+#DMIDCPMClosed,
+#DMIDCPMCRA,
+#DMIDCPMProt {
   width: 141px;
 }
-.console-col--ResourceLevel, #ResourceLevelSite, #ResourceLevelClosed, #ResourceLevel, #ResourceLevelCRA, #ResourceLevelProt {
+.console-col--ResourceLevel,
+#ResourceLevelSite,
+#ResourceLevelClosed,
+#ResourceLevel,
+#ResourceLevelCRA,
+#ResourceLevelProt {
   width: 114px;
 }
-.console-col--GroupAffiliation, #GroupAffiliation, #GroupAffiliationSite, #GroupAffiliationClosed, #GroupAffiliationCRA, #GroupAffiliationProt {
+.console-col--GroupAffiliation,
+#GroupAffiliation,
+#GroupAffiliationSite,
+#GroupAffiliationClosed,
+#GroupAffiliationCRA,
+#GroupAffiliationProt {
   width: 80px;
 }
-.console-col--DMIDIND, #DMIDIND, #DMIDINDSite, #DMIDINDClosed, #DMIDINDCRA, #DMIDINDProt {
+.console-col--DMIDIND,
+#DMIDIND,
+#DMIDINDSite,
+#DMIDINDClosed,
+#DMIDINDCRA,
+#DMIDINDProt {
   width: 86px;
 }
-.console-col--AcceptDate, #AcceptDate, #AcceptDateSite, #AcceptDateClosed, #AcceptDateCRA, #AcceptDateProt {
-  width: 83px;
+.console-col--AcceptDate,
+#AcceptDate,
+#AcceptDateSite,
+#AcceptDateClosed,
+#AcceptDateCRA,
+#AcceptDateProt {
+  width: 85px;
 }
-.console-col--VersionNum, #VersionNum, #VersionNumSite, #VersionNumClosed, #VersionNumCRA, #VersionNumProt {
+.console-col--VersionNum,
+#VersionNum,
+#VersionNumSite,
+#VersionNumClosed,
+#VersionNumCRA,
+#VersionNumProt {
   width: 69px;
 }
-.console-col--VersionDate, #VersionDate, #VersionDateSite, #VersionDateClosed, #VersionDateCRA, #VersionDateProt {
-  width: 78px;
+.console-col--VersionDate,
+.console-col--VersionNum,
+.console-col--AcceptDate,
+.console-col--EffectiveDate,
+.console-col--VersionDT,
+.console-col--CurrentAcceptDate,
+.console-col--DMIDAcceptVersion   {
+  font-family: DroidSans;
+  font-size: 13px;
+  padding-top: 1px;
 }
-.console-col--CQMPStatus, #CQMPStatus, #CQMPStatusSite, #CQMPStatusClosed, #CQMPStatusCRA, #CQMPStatusProt {
+.console-col--VersionDate,
+#VersionDate,
+#VersionDateSite,
+#VersionDateClosed,
+#VersionDateCRA,
+#VersionDateProt {
+  width: 85px;
+}
+.console-col--CQMPStatus,
+#CQMPStatus,
+#CQMPStatusSite,
+#CQMPStatusClosed,
+#CQMPStatusCRA,
+#CQMPStatusProt {
   width: 118px;
 }
-.console-col--EffectiveDate, #EffectiveDate, #EffectiveDateSite, #EffectiveDateClosed, #EffectiveDateCRA, #EffectiveDateProt {
-  width: 78px;
+.console-col--EffectiveDate,
+#EffectiveDate,
+#EffectiveDateSite,
+#EffectiveDateClosed,
+#EffectiveDateCRA,
+#EffectiveDateProt {
+  width: 85px;
 }
-.console-col--VersionNumber, #VersionNumber, #VersionNumberSite, #VersionNumberClosed, #VersionNumberCRA, #VersionNumberProt {
+.console-col--VersionNumber,
+#VersionNumber,
+#VersionNumberSite,
+#VersionNumberClosed,
+#VersionNumberCRA,
+#VersionNumberProt {
   width: 69px;
 }
-.console-col--VersionDT, #VersionDT, #VersionDTSite, #VersionDTClosed, #VersionDTCRA, #VersionDTProt {
-  width: 73px;
+.console-col--VersionDT,
+#VersionDT,
+#VersionDTSite,
+#VersionDTClosed,
+#VersionDTCRA,
+#VersionDTProt {
+  width: 85px;
 }
-.console-col--ReviewerComments, #ReviewerComments, #ReviewerCommentsSite, #ReviewerCommentsClosed, #ReviewerCommentsCRA, #ReviewerCommentsProt {
+.console-col--ReviewerComments,
+#ReviewerComments,
+#ReviewerCommentsSite,
+#ReviewerCommentsClosed,
+#ReviewerCommentsCRA,
+#ReviewerCommentsProt {
   width: 153px;
   border-right: unset;
+
 }
-.console-col--CurrentAcceptDate, #CurrentAcceptDate, #CurrentAcceptDateSite, #CurrentAcceptDateClosed, #CurrentAcceptDateCRA, #CurrentAcceptDateProt {
-  width: 160px;
+.console-col--CurrentAcceptDate,
+#CurrentAcceptDate,
+#CurrentAcceptDateSite,
+#CurrentAcceptDateClosed,
+#CurrentAcceptDateCRA,
+#CurrentAcceptDateProt {
+  width: 116px;
 }
-.console-col--DMIDAcceptVersion, #DMIDAcceptVersion, #DMIDAcceptVersionSite, #DMIDAcceptVersionClosed, #DMIDAcceptVersionCRA, #DMIDAcceptVersionProt {
-  width: 165px;
+.console-col--DMIDAcceptVersion,
+#DMIDAcceptVersion,
+#DMIDAcceptVersionSite,
+#DMIDAcceptVersionClosed,
+#DMIDAcceptVersionCRA,
+#DMIDAcceptVersionProt {
+  width: 116px;
 }
-.console-col--Monitored, #Monitored, #MonitoredSite, #MonitoredClosed, #MonitoredCRA, #MonitoredProt {
+.console-col--Monitored,
+#Monitored,
+#MonitoredSite,
+#MonitoredClosed,
+#MonitoredCRA,
+#MonitoredProt {
   width: 150px;
   border-right: unset;
 }
@@ -1761,7 +2006,7 @@ export default {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin: 10px 0px;
+  margin: 0px 0px;
 
 }
 .buttonRow button {
@@ -1972,7 +2217,6 @@ input[type="radio"]:checked + label {
   width: max-content;
   border-bottom: 1px solid #999999;
   position: relative;
-
 }
 .bold {
   font-weight: bold;
@@ -1980,6 +2224,9 @@ input[type="radio"]:checked + label {
 .SelectedRow {
   background-color: rgb(146, 222, 204);
   position: relative;
+}
+.SelectedRow div p {
+  color: black;
 }
 .SelectedRow:before {
   content: '';
@@ -2015,5 +2262,25 @@ input[type="radio"]:checked + label {
 }
 .hidden {
   display: none;
+}
+.CQMP-table--subheader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: #468a68;
+  padding: 8px 5px;
+  border-bottom: 1px solid black;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
+}
+.subheader-two {
+  z-index: 55;
+}
+.border-bottom {
+  border-bottom: 1px solid #ccc;
 }
 </style>
