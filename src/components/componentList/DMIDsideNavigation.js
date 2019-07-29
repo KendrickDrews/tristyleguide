@@ -14,8 +14,8 @@ export default {
   ServiceRequests: [
     { id: 1, text: 'Clinical Monitoring' },
     { id: 2, text: 'Clinical Monitoring Report' },
-    { id: 3, text: 'Cinical Quality Management Services' },
-    { id: 4, text: 'Cinical Quality Management Services Report' },
+    { id: 3, text: 'Clinical Quality Management Services' },
+    { id: 4, text: 'Clinical Quality Management Services Report' },
     { id: 5, text: 'CROMS Quality Crosswalk Review' },
     { id: 6, text: 'CROMS Quality Crosswalk Review Report' },
     { id: 7, text: 'DSMB-SMC Coordination' },

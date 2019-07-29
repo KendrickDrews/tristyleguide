@@ -1,36 +1,6 @@
 <template>
-  <div class="DMID-main">
-    <div style="position: relative">
-
-      <DMIDHeader
-        :type="thisSite"
-        :button-Color="thisSite"
-        :buttonName="thisSite"
-        :showNav="{
-          Home: true,
-          DocumentLibrary: true,
-          CRS: true,
-          SOCSCMS: true,
-          Training: true,
-          ServiceRequests: false,
-          GrantCapture: true,
-          Protocols: true,
-        }"
-      >
-        <p slot="locationName" style="color: rgb(52, 94, 192);"> Service Requests </p>
-
-      </DMIDHeader>
-
-      <div class="main-body">
-        <allNav/>
-
-        <div class="main-bodyContent">
-          <div class="locationContainer" style="background-color: rgb(62, 151, 253)">
-            <h2 class="bodyLocation">Ad Hoc Training Request Form</h2>
-          </div>
-          <div class="bodyContent">
-          <div class="mainContent ">
-            <p style="padding: 10px 20px 10px 40px;"> Please submit any Ad Hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
+  <div>
+    <p style="padding: 10px 20px 10px 40px;"> Please submit any Ad Hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
             <br/>
           <div class="forms F01">
                 <div class="form-Row">
@@ -159,59 +129,18 @@
               -->
               </div>
             <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
-          </div>
-        </div>
-    </div>
-
-      </div>
-      <div class="main-footer">
-      </div>
-       <Modal
-        v-show="isModalVisible"
-        @close="closeModal"
-      />
-     </div>
   </div>
 </template>
 
 <script>
-import DMIDHeader from '../../../components/DMIDhead.vue'
-import colors from '../../../layouts/colors.vue'
-import navList from '../../../components/navLists.vue'
-import allNav from '../../../components/DMIDsideNav.vue'
-import Modal from '../../../components/modalTemplate.vue'
-import buttonList from '../../../components/componentList/buttonList.js'
 
 export default {
-  name: 'ServiceRequests',
+  name: 'Training',
   components: {
-    DMIDHeader,
-    colors,
-    navList,
-    allNav,
-    Modal,
-    buttonList
 
   },
   data () {
     return {
-      isModalVisible: false,
-      showNav: {
-        Home: true,
-        DocumentLibrary: true,
-        CRS: true,
-        SOCSCMS: true,
-        Training: true,
-        ServiceRequests: true,
-        GrantCapture: true,
-        Protocols: true,
-        Results: true,
-        PRT: true,
-        SMART: true,
-        CSRS: true
-      },
-      subSiteIs: this.$route.name,
-      buttonList: buttonList
 
     }
   },
@@ -220,23 +149,20 @@ export default {
     thisSite: function () {
       return this.subSiteIs
     },
-
-    //
-    subSite: {
-      get: function () {
-        return this.$root.store.state.DMIDSite
-      },
-      set: function (value) {
-        this.$root.store.commit('setDMIDSubSite', value)
-      }
-
-    },
     stateComponent: {
       get: function () {
         return this.$root.store.state.activeComponent
       },
       set: function (value) {
         this.$root.store.commit('isActiveComponent', value)
+      }
+    },
+    stateTitle: {
+      get: function () {
+        return this.$root.store.state.siteTitle
+      },
+      set: function (value) {
+        this.$root.store.commit('isSiteTitle', value)
       }
     },
     stateType: {
@@ -254,14 +180,28 @@ export default {
 
   },
   /// ////
+  //beforeMount: function () {
+  //  this.stateActiveComponent('Service-Requests-Home')
+  //},
+  /// ////
   mounted: function () {
+    this.$nextTick(function () {
+      this.stateActiveTitle('Ad-Hoc-Training-Request-Form')
+    }),
     this.setStateSubSite()
-    this.stateActiveComponent('')
+    this.stateActiveComponent('Training')
     this.scrollReset(0)
     this.stateSiteType('ServiceRequests')
+
   },
   /// ////
   methods: {
+    stateActiveTitle (value) {
+      return this.stateTitle = value
+    },
+    stateActiveComponent (value) {
+      return this.stateComponent = value
+    },
     showModal () {
       this.isModalVisible = true
     },
@@ -300,6 +240,7 @@ export default {
 
 </script>
 <style>
+
 .main-headSearch h4{
   color: #2a469d;
 }

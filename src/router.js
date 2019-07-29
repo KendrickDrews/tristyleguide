@@ -38,7 +38,7 @@ export default new Router({
         {
           path: 'ServiceRequests',
           name: 'ServiceRequests',
-          component: () => import('./pages/DMID/SR/serviceRequestsHome.vue')
+          component: () => import('./pages/DMID/SR/SRHome.vue')
         },
         {
           path: 'Results',

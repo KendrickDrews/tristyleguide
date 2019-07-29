@@ -1,6 +1,7 @@
 <template>
   <div class="DMID-main">
-    <div class="crs--home">
+    <div style="position: relative">
+
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
@@ -8,44 +9,34 @@
         :showNav="{
           Home: true,
           DocumentLibrary: true,
-          CRS: false,
+          CRS: true,
           SOCSCMS: true,
           Training: true,
-          ServiceRequests: true,
+          ServiceRequests: false,
           GrantCapture: true,
           Protocols: true,
         }"
       >
-        <p slot="locationName"> Clinical Research Support </p>
+        <p slot="locationName">Service Requests</p>
       </DMIDHeader>
 
       <div class="main-body">
-        <all-nav/>
-
+        <allNav/>
         <div class="main-bodyContent">
-          <div class="locationContainer">
-            <h2 class="bodyLocation">{{ stateComponent | splitStrings('-',' ') }}</h2>
-            <!-- <h2 class="bodyLocation">{{ stateComponent | splitStrings('-',' ') }}</h2> -->
+          <div class="locationContainer lc-serviceRequests">
+            <h2 class="bodyLocation">{{ stateTitle | splitStrings('-',' ') }}</h2>
           </div>
           <div class="bodyContent">
-            <div class="mainContent">
-            <component :is="stateComponent" />
+            <div class="mainContent ">
+              <component :is="stateComponent" />
             </div>
-            <!--<div class="servicesAndTools">
-                <h4> SERVICES AND TOOLS </h4>
-                <ul class="servicesTools-List">
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                </ul>
-              </div> -->
           </div>
         </div>
 
       </div>
-      <div class="main-footer"></div>
-      <Modal
+      <div class="main-footer">
+      </div>
+       <Modal
         v-show="isModalVisible"
         @close="closeModal"
       />
@@ -58,24 +49,34 @@ import DMIDHeader from '../../../components/DMIDhead.vue'
 import colors from '../../../layouts/colors.vue'
 import navList from '../../../components/navLists.vue'
 import allNav from '../../../components/DMIDsideNav.vue'
-import resAndTools from '../../../components/DMIDResourcesAndTools.vue'
-import brandingNav from '../../../components/DMIDBrandingNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
-import ClinicalResearchHome from '../CRS/ClinicalResearchHome.vue'
-import ClinicalMonitoring from '../CRS/ClinicalMonitoring.vue'
-import ClinicalQualityManagement from '../CRS/ClinicalQualityManagement.vue'
-import EssentialRegulatoryDocuments from '../CRS/EssentialRegulatoryDocuments.vue'
-import MedicalWriting from '../CRS/MedicalWriting.vue'
-import ProtocolDevelopment from '../CRS/ProtocolDevelopment.vue'
-import ProtocolDeviationReporting from '../CRS/ProtocolDeviationReporting.vue'
-import SAEReporting from '../CRS/SAEReporting.vue'
-import SafetyOversightCommittee from '../CRS/SafetyOversightCommittee.vue'
-import StudyProductInformation from '../CRS/StudyProductInformation.vue'
-import TeleconferenceSupport from '../CRS/TeleconferenceSupport.vue'
+import ServiceRequestsHome from '../SR/ServiceRequestsHome.vue'
+import ClinicalMonitoring from '../SR/ClinicalMonitoring.vue'
+import ClinicalMonitoringReport from '../SR/ClinicalMonitoringReport.vue'
+import ClinicalQualityManagementServices from '../SR/ClinicalQualityManagementServices.vue'
+import ClinicalQualityManagementServicesReport from '../SR/ClinicalQualityManagementServicesReport.vue'
+import CROMSQualityCrosswalkReview from '../SR/CROMSQualityCrosswalkReview.vue'
+import CROMSQualityCrosswalkReviewReport from '../SR/CROMSQualityCrosswalkReviewReport.vue'
+import DSMBSMCCoordination from '../SR/DSMB-SMCCoordination.vue'
+import DSMBSMCCoordinationReport from '../SR/DSMB-SMCCoordinationReport.vue'
+import EssentialRegulatoryDocuments from '../SR/EssentialRegulatoryDocuments.vue'
+import EssentialRegulatoryDocumentsReport from '../SR/EssentialRegulatoryDocumentsReport.vue'
+import HumanSubjectsProtection from '../SR/HumanSubjectsProtection.vue'
+import MedicalWriting from '../SR/MedicalWriting.vue'
+import MedicalWritingReport from '../SR/MedicalWritingReport.vue'
+import MiscellaneousServicesReport from '../SR/MiscellaneousServicesReport.vue'
+import MiscellaneousServices from '../SR/MiscellaneousServices.vue'
+import ReportAProtocolDeviation from '../SR/MiscellaneousServices.vue'
+import ProtocolDeviationReport from '../SR/ProtocolDeviationReport.vue'
+import ProtocolNumberRequest from '../SR/ProtocolNumberRequest.vue'
+import TeleconferenceSupport from '../SR/TeleconferenceSupport.vue'
+import TeleconferenceSupportReport from '../SR/TeleconferenceSupportReport.vue'
+import Training from '../SR/Training.vue'
+import TrainingReport from '../SR/TrainingReport.vue'
 
 export default {
-  name: 'CRS',
+  name: 'SR',
   components: {
     DMIDHeader,
     colors,
@@ -83,19 +84,29 @@ export default {
     allNav,
     Modal,
     buttonList,
-    brandingNav,
-    resAndTools,
-    ClinicalResearchHome,
+    ServiceRequestsHome,
     ClinicalMonitoring,
-    ClinicalQualityManagement,
+    ClinicalMonitoringReport,
+    ClinicalQualityManagementServices,
+    ClinicalQualityManagementServicesReport,
+    CROMSQualityCrosswalkReview,
+    CROMSQualityCrosswalkReviewReport,
+    DSMBSMCCoordination,
+    DSMBSMCCoordinationReport,
     EssentialRegulatoryDocuments,
+    EssentialRegulatoryDocumentsReport,
+    HumanSubjectsProtection,
     MedicalWriting,
-    ProtocolDevelopment,
-    ProtocolDeviationReporting,
-    SAEReporting,
-    SafetyOversightCommittee,
-    StudyProductInformation,
-    TeleconferenceSupport
+    MedicalWritingReport,
+    MiscellaneousServices,
+    MiscellaneousServicesReport,
+    ReportAProtocolDeviation,
+    ProtocolDeviationReport,
+    ProtocolNumberRequest,
+    TeleconferenceSupport,
+    TeleconferenceSupportReport,
+    Training,
+    TrainingReport
 
   },
   data () {
@@ -116,8 +127,7 @@ export default {
         CSRS: true
       },
       subSiteIs: this.$route.name,
-      buttonList: buttonList,
-
+      buttonList: buttonList
 
     }
   },
@@ -153,6 +163,14 @@ export default {
         this.$root.store.commit('setSiteType', value)
       }
     },
+    stateTitle: {
+      get: function () {
+        return this.$root.store.state.siteTitle
+      },
+      set: function (value) {
+        this.$root.store.commit('isSiteTitle', value)
+      }
+    },
 
     isActive () {
       return this.href === this.$root.currentRoute
@@ -161,16 +179,16 @@ export default {
   },
   /// ////
   beforeMount: function () {
-    this.stateActiveComponent('Clinical-Research-Home')
+    this.stateActiveComponent('Service-Requests-Home')
   },
   /// ////
   mounted: function () {
     this.setStateSubSite()
     this.$nextTick(function () {
-      this.stateActiveComponent('Clinical-Research-Home')
+      this.stateActiveComponent('Service-Requests-Home')
     })
     this.scrollReset(0)
-    this.stateSiteType('CRS')
+    this.stateSiteType('ServiceRequests')
   },
   /// ////
   methods: {
@@ -182,7 +200,7 @@ export default {
     },
     setStateSubSite: function (thisSite) {
       const DMIDSite = this.thisSite
-      return this.stateSubSite(DMIDSite)
+      return this.stateSubSite(this.thisSite)
     },
     stateSubSite (value) {
       return this.subSite = value
@@ -219,28 +237,23 @@ export default {
 
 </script>
 <style>
-.crs--home {
-  position: relative;
-  width: 100%;
+.main-headSearch h4{
+  color: #2a469d;
 }
-.locationContainer {
-  background-color: var(--green-background);
-  background-image: var(--content-gradient);
-  display: flex;
-  align-content: center;
-  min-height: 50px;
-  margin: 0;
-}
-.mainContent {
-  padding: 10px 0px 10px 0px!important;
-  font-family: calibri!important;
-  width: 100%;
+.serviceRequests-loc {
+  color: rgb(52, 94, 192);
 }
 .main-location {
-  color: var(--green-header);
+  color: rgb(52, 94, 192);
+
 }
-.main-headSearch h4 {
-  color: var(--green-header);
+.lc-serviceRequests {
+  background-color: rgb(62, 151, 253);
+}
+.mainContent {
+  padding: 0px 10px 10px 0px!important;
+  font-family: calibri!important;
+  width: 100%;
 }
 .bodyText {
   font-family: Calibri;
@@ -345,7 +358,7 @@ export default {
   margin: 0;
 }
 .form-Final .form-input {
-  width: 312px;
+
   color: #777;
 }
 .form-Column-Btn {
@@ -365,34 +378,87 @@ export default {
   height: 26px;
   margin-bottom: 5px;
 }
-.submit-Btn {
+.excel-Btn {
   width: 150px;
-  height: 26px;
-  margin-left: 40%;
+  height: 23px;
+  margin-left: 2%;
+  margin-bottom: 20px;
 }
-.lmsTitle {
-    font-family: Verdana;
-    font-size: 16px;
-    text-align: center;
-    color: #244f1e;
+#scrollTable {
+  width: 100%;
+  overflow:scroll;
+  height: 574px;
+  border: 1px solid #9F9F9F;
 }
-.LMS {
-    background-color: #4f81bd;
-    border: 2px solid #003471;
-    border-radius: 6px;
-    width: 445px;
-    height: 33px;
-    line-height: 2em;
-    vertical-align: center;
-    margin: 0 auto;
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 768px;
+  margin-top: -1px;
+  margin-left: -1px;
+  border: 1px solid #9F9F9F;
 }
-.LMS h4 {
-    color: white;
+table thead tr {
+  display:block;
 }
-.bodyNavStyleCRS{
-  background-image: linear-gradient(to bottom,rgba(36, 79, 30, 0.05), transparent)
+table tbody {
+  display: block;
+  overflow: auto;
 }
-.bodyNavStyleServiceRequests{
-  background-image: linear-gradient(to bottom,rgba(52, 94, 192, 0.05), transparent)
+.tableHeader {
+  margin: 2px 8px ;
+}
+.short {
+  width: 100px;
+}
+.long {
+  width: 180px;
+}
+th {
+  background-color: #DCDCDC;
+  border: 1px solid #9F9F9F;
+  height: 37px;
+}
+td, th {
+  font-weight: normal;
+  text-align: left;
+  padding: 0px;
+
+}
+td {
+  border: 1px solid #dddddd;
+  padding: 3px 6px 4px;
+  min-height: 50px;
+}
+tr:nth-child(even) {
+  background-color: #EDEDEB;
+}
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #aaa; /* or add it to the track */
+}
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+.pagination {
+  display: inline-block;
+  border-left: 1px solid #9F9F9F;
+  border-right: 1px solid #9F9F9F;
+  border-bottom: 1px solid #9F9F9F;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 </style>

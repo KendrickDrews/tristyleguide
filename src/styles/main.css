@@ -291,7 +291,7 @@ hr {
   display: flex;
   margin-top: 15px;
   align-self: flex-end;
-  color: var(--green-header);
+  
   font-family: 'Cinzel', 'Times New Roman', 'Times', serif;
   font-weight: bold;
   font-size: 28px;
@@ -309,7 +309,7 @@ hr {
 .main-headSearch h4 {
   font-size: 14px;
   font-weight: bold;
-  color: var(--green-header);
+  
   font-family:  Calibri, 'Trebuchet MS', sans-serif;
 
 }
@@ -610,8 +610,7 @@ hr {
   align-items: stretch;
   padding-left: 5px;
 }
-.locationContainer {
-  background-color: var(--green-background);
+.locationContainer {  
   background-image: var(--content-gradient);
   display: flex;
   align-content: center;
