@@ -42,12 +42,17 @@
             <br/>
             <p>Please reference the <a>LMS Quick Start Guide</a> for assistance with navigating through the LMS.</p>
             <br />
-            <p>To request additional Web Conference, In-Person or On-Demand training not found within the Learning Management System, please use the Ad Hoc Training Request Form found in the Services and Tools menu on the right side of this page.</p>
+            <!-- <p>To request additional Web Conference, In-Person or On-Demand training not found within the Learning Management System, please use the Ad Hoc Training Request Form found in the Services and Tools menu on the right side of this page.</p> -->
+            <p><em><strong>New</strong></em></p>
+            <p>Effective August 19, 2019, a new version of <em>45 CFR Part 46 - Protection of Human Subjects</em> will be available on the LMS. You will no longer have access to the separate courses, <em>45 CFR Part 46</em>, and <em>Informed Consent.</em></p>
+            <p><br />The new course covers the revised Common Rule and regulations in place under 45 CFR 46 for protecting the safety and welfare of prospective participants in clinical research, and includes a detailed section on the informed concent process and requirements.</p>
             <br />
-            <p> <strong>Important note: </strong></p>
+            <p><strong>Important note: </strong></p>
 
-            <p>
-Sites should maintain current documentation of completed trainings for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID).</p>
+            <!-- <p>
+Sites should maintain current documentation of completed trainings for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID).</p> -->
+<p>
+Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (MIAID). Documentation of training should be current and retained on site.</p>
 
               <br/>
               <hr style="width: 100%; margin-bottom: 20px;">
@@ -93,11 +98,15 @@ Sites should maintain current documentation of completed trainings for all cours
           <div class="servicesAndTools">
             <h4> SERVICES AND TOOLS </h4>
               <ul class="servicesTools-List">
-                  <li class="servicesTools-Item">Ad hoc Training Request Report</li>
+                  <!-- <li class="servicesTools-Item">Ad hoc Training Request Report</li>
                   <li class="servicesTools-Item">Ad Hoc Training Request Form</li>
-                  <li class="servicesTools-Item">Ad Hoc Training Registration</li>
+                  <li class="servicesTools-Item">Ad Hoc Training Registration</li> -->
                   <!-- <li class="servicesTools-Item">Ad Hoc Training Request Approval</li> -->
+                  <li class="servicesTools-Item">Training Report</li>
+                  <li class="servicesTools-Item">Request Training Services</li>
+                  <li class="servicesTools-Item">Registration Report/Training Logs</li>
                   <li class="servicesTools-Item">Training FAQ</li>
+                  <li class="servicesTools-Item">Request for Services Approval</li>
               </ul>
           </div>
 

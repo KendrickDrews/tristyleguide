@@ -319,7 +319,7 @@ export default { // name: 'mainLayout',
   .componentContent-mirror {
     padding-top: 0;
     min-width: 1000px;
-    max-width: 1000px;
+    /*max-width: 1000px;*/
     transition: 0.4s ease-in-out;
   }
   ul {

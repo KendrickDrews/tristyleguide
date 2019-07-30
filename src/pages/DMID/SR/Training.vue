@@ -5,21 +5,24 @@
           <div class="forms F01">
                 <div class="form-Row">
                   <p class="form-text">Requestor's Name<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Olson, Dorie"/>
+                  <!-- <input class="form-input" placeholder=" Olson, Dorie"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Email<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" dolson@tech-res.com"/>
+                  <!-- <input class="form-input" placeholder=" dolson@tech-res.com"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Phone<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" 301-897-7142"/>
+                  <!-- <input class="form-input" placeholder=" 301-897-7142"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Name<span class="unset"> :</span><span class="red"> *</span></p>
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
-                      <option value="select">--Select Site Name--</option>
+                      <option value="select">-- Select Site Name --</option>
                       <option value="volvo"> AAIPharma Inc.</option>
                       <option value="saab">Saab</option>
                       <option value="fiat">Fiat</option>
@@ -29,13 +32,14 @@
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Principal Investigator<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Dr. Gregory Storch"/>
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Request Type<span class="unset"> :</span><span class="red"> *</span></p>
                   <form class="form-input">
                     <select name="Protocol" class="form-input">
-                      <option value="select">--Select Request Type--</option>
+                      <option value="select">-- Select Request Type --</option>
                       <option value="volvo">Web Conference</option>
                       <option value="saab">In-Person</option>
                       <option value="fiat">On-Demand</option>
@@ -44,16 +48,44 @@
                     </select>
                   </form>
                 </div>
+                <div class="form-Row" v-show="inPerson">
+                  <p class="form-text">Location Proposed for Training<span class="unset"> :</span><span class="red"> *</span></p>
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Training Topic Area<span class="unset"> :</span><span class="red"> *</span></p>
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Protocol Number/Title<span class="unset"> :</span><span class="red"> *</span></p>
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
+                </div>
+                <div class="form-Row">
+                  <p class="form-text">Calendar<span class="unset"> :</span><span class="red"> *</span></p>
+                  <input class="form-input calendar-input" placeholder="01/01/2018"/>
+                  <!-- <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2018-12-31"> -->
+            <img src="../../../imgs/calendar.gif" alt="Calendar" class="calendar-push" height="25px" width="25px"/>
+                </div>
+
+                <div class="form-Row">
+                  <p>Select a date to indicate a desired completion date for your training. However, please note that the actual training completion date will depend on the scope and requirements of your training request.</p>
+
+                </div>
                 <br/>
-                <div>
+                <!-- <div>
                   <p class="form-text" style="width: 94%">What is the goal for the training?</p>
                   <div class="form-Final">
                     <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
                     </textarea>
                   </div>
                 </div>
-                <br/>
-                <div>
+                <br/> -->
+                <!-- <div>
                   <p class="form-text"  style="width: 94%">What are the expected learner/participant outcomes for the training? (give 2 to 3 expectations)</p>
 
                   <div class="form-Final">
@@ -61,7 +93,7 @@
                     </textarea>
                   </div>
                 </div>
-                <br/>
+                <br/> -->
                 <div>
                   <p class="form-text"  style="width: 94%">What triggered the need for this training?</p>
 
@@ -80,7 +112,7 @@
                   </div>
                 </div>
                 <br/>
-                <div>
+                <!-- <div>
                   <p class="form-text"  style="width: 94%">What is the expected training delivery date?</p>
 
                   <div class="form-Final">
@@ -88,9 +120,11 @@
                     </textarea>
                   </div>
                 </div>
-                <br/>
+                <br/> -->
                 <div>
-                  <p class="form-text"  style="width: 94%">Please provide any additional detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS.</p>
+                  <p class="form-text"  style="width: 94%" v-if="inPerson">Please provide any additional detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS. Please provide justification for In-Person Training</p>
+
+                  <p class="form-text"  style="width: 94%" v-else>Please provide any additional detail to describe the training needs or circumstances not met by the currently available DMID-CROMS training courses within the LMS.</p>
 
                   <div class="form-Final">
                     <textarea class="form-input" rows="6" cols="80" name="comment" form="usrform">
@@ -128,7 +162,9 @@
               </div>
               -->
               </div>
+              <div class="form-Row">
             <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
+            </div>
   </div>
 </template>
 
@@ -141,7 +177,7 @@ export default {
   },
   data () {
     return {
-
+      inPerson: true,
     }
   },
   /// ////
@@ -240,7 +276,15 @@ export default {
 
 </script>
 <style>
-
+.calendar-push {
+  position: absolute;
+    left: 661px;
+}
+.calendar-input {
+  padding-left: 5px;
+    width: 82px;
+    margin-right: 230px;
+}
 .main-headSearch h4{
   color: #2a469d;
 }
