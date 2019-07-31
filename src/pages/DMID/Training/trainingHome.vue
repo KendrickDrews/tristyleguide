@@ -29,42 +29,40 @@
             <h2 class="bodyLocation">Training</h2>
           </div>
           <div class="bodyContent">
-          <div class="mainContent ">
-            <p class="form-text" style="margin-bottom: 10px;">The information provided on this Training page applies to all sites and to all key personnel engaged in DMID-supported clinical research.</p>
-            <br/>
-            <h3 class="lmsTitle">TRAINING AND LEARNING MANAGEMENT SYSTEM (LMS)</h3>
-            <br/>
-            <p>Training courses are now available through the LMS allowing authorized users to access Course Completion Certificates and transcripts through a user-friendly interface. To access the LMS, please select the following button: </p>
-            <br/>
-            <div class="LMS">
+            <div class="mainContent ">
+              <p class="form-text" style="margin-bottom: 10px;">The information provided on this Training page applies to all sites and to all key personnel engaged in DMID-supported clinical research.</p>
+              <br/>
+              <h3 class="lmsTitle">TRAINING AND LEARNING MANAGEMENT SYSTEM (LMS)</h3>
+              <br/>
+              <p>Training courses are now available through the LMS allowing authorized users to access Course Completion Certificates and transcripts through a user-friendly interface. To access the LMS, please select the following button: </p>
+              <br/>
+              <div class="LMS">
                 <h4 align="center" style="font-weight: normal; font-size: 16px;"> Enter the <strong>Training and Learning Management System (LMS) </strong> </h4>
-            </div>
-            <br/>
-            <p>Please reference the <a>LMS Quick Start Guide</a> for assistance with navigating through the LMS.</p>
-            <br />
+              </div>
+              <br/>
+              <p>Please reference the <a>LMS Quick Start Guide</a> for assistance with navigating through the LMS.</p>
+              <br />
             <!-- <p>To request additional Web Conference, In-Person or On-Demand training not found within the Learning Management System, please use the Ad Hoc Training Request Form found in the Services and Tools menu on the right side of this page.</p> -->
-            <p><em><strong>New</strong></em></p>
-            <p>Effective August 19, 2019, a new version of <em>45 CFR Part 46 - Protection of Human Subjects</em> will be available on the LMS. You will no longer have access to the separate courses, <em>45 CFR Part 46</em>, and <em>Informed Consent.</em></p>
-            <p><br />The new course covers the revised Common Rule and regulations in place under 45 CFR 46 for protecting the safety and welfare of prospective participants in clinical research, and includes a detailed section on the informed concent process and requirements.</p>
-            <br />
-            <p><strong>Important note: </strong></p>
+              <p><em><strong>New</strong></em></p>
+              <p>Effective August 19, 2019, a new version of <em>45 CFR Part 46 - Protection of Human Subjects</em> will be available on the LMS. You will no longer have access to the separate courses, <em>45 CFR Part 46</em>, and <em>Informed Consent.</em></p>
+              <p><br />The new course covers the revised Common Rule and regulations in place under 45 CFR 46 for protecting the safety and welfare of prospective participants in clinical research, and includes a detailed section on the informed concent process and requirements.</p>
+              <br />
+              <p><strong>Important note: </strong></p>
 
             <!-- <p>
 Sites should maintain current documentation of completed trainings for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (NIAID).</p> -->
-<p>
-Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (MIAID). Documentation of training should be current and retained on site.</p>
+              <p>Sites should maintain training records for all courses required by the Division of Microbiology and Infectious Diseases (DMID), the National Institutes of Health (NIH), National Institute of Allergy and Infectious Diseases (MIAID). Documentation of training should be current and retained on site.</p>
 
               <br/>
               <hr style="width: 100%; margin-bottom: 20px;">
-
-              <p> <strong> Other training requirements: </strong> </p>
-                <br/>
+              <p><strong> Other training requirements: </strong> </p>
+              <br/>
               <p>All investigators and site staff responsible for the conduct, management and oversight of NIH-funded clinical trials are required to complete training in the protection of human research participants and Good Clinical Practice (GCP). </p>
               <br/>
               <p>Training may be completed through a class or course, academic training program, or certification from a recognized clinical research professional organization. GCP refresher training should be completed at least every three years in order for applicable site staff to remain current with regulations, standards and guidelines.</p>
               <br/>
               <p>The NIAID GCP and NIH Protecting Human Research Participants training may be accessed via the links provided, below, or per site institutional requirements. Please retain the certificate of completion at the end of the training course. The NIH Protecting Human Research Participants course will no longer be available after September 26, 2018. Please complete the course and/or print your certificate by this date. As of September 27, 2018, please refer to your institution, professional organization, or other training program for equivalent training, and retain certificates of courses completed.</p>
-<br/>
+              <br/>
               <div class="trainingCourses">
                 <div class="courseRow">
                   <div style="width: 70px; margin-right: 8px;">
@@ -109,10 +107,8 @@ Sites should maintain training records for all courses required by the Division 
                   <li class="servicesTools-Item">Request for Services Approval</li>
               </ul>
           </div>
-
         </div>
     </div>
-
       </div>
       <div class="main-footer">
       </div>

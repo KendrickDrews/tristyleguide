@@ -67,7 +67,7 @@ import MedicalWriting from '../SR/MedicalWriting.vue'
 import MedicalWritingReport from '../SR/MedicalWritingReport.vue'
 import MiscellaneousServicesReport from '../SR/MiscellaneousServicesReport.vue'
 import MiscellaneousServices from '../SR/MiscellaneousServices.vue'
-import ReportAProtocolDeviation from '../SR/MiscellaneousServices.vue'
+import ReportAProtocolDeviation from '../SR/ReportaProtocolDeviation.vue'
 import ProtocolDeviationReport from '../SR/ProtocolDeviationReport.vue'
 import ProtocolNumberRequest from '../SR/ProtocolNumberRequest.vue'
 import TeleconferenceSupport from '../SR/TeleconferenceSupport.vue'
@@ -107,7 +107,6 @@ export default {
     TeleconferenceSupportReport,
     Training,
     TrainingReport
-
   },
   data () {
     return {
@@ -128,7 +127,6 @@ export default {
       },
       subSiteIs: this.$route.name,
       buttonList: buttonList
-
     }
   },
   /// ////

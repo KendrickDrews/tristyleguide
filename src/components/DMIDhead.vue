@@ -3,7 +3,7 @@
     <div class="main-head">
         <div class="main-headContent">
             <div class="main-headIcon--pos1">
-                <div class="main-headIcon--pos2">
+                <router-link tag="div" :to="buttonName" class="main-headIcon--pos2">
                     <dmidbutton
                         :button-color="buttonName"
                         :buttonName="buttonName"
@@ -12,7 +12,7 @@
                         :width="bigIcon"
                     >
                     </dmidbutton>
-                </div>
+                </router-link>
             </div>
             <div class="main-headTop icon-space">
                 <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" class="brand-graphic"/>

@@ -11,7 +11,7 @@
 <script>
 
 export default {
-  name: 'ReportAProtocolDeviation',
+  name: 'ReportaProtocolDeviation',
   components: {
 
   },
