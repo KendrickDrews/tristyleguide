@@ -3,7 +3,8 @@
     <div class="main-head">
         <div class="main-headContent">
             <div class="main-headIcon--pos1">
-                <router-link tag="div" :to="buttonName" class="main-headIcon--pos2">
+              <!-- Doesn't correctly route to 'Home' of any given subsite yet because of how display works-->
+                <router-link tag="div" :to="{path: buttonName}" class="main-headIcon--pos2">
                     <dmidbutton
                         :button-color="buttonName"
                         :buttonName="buttonName"
@@ -37,7 +38,6 @@
                         :width="smallIcon"
                         :navIcon="true"
                         >
-
                         </dmidbutton>
                    </router-link>
                    <router-link tag="div" to="/DMID/CRS">
