@@ -27,7 +27,7 @@ export default {
       set: function (value) {
         this.$root.store.commit('isSiteTitle', value)
       }
-    },
+    }
   },
   /// ////
   mounted: function () {

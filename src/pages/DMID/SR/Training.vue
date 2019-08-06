@@ -177,7 +177,7 @@ export default {
   },
   data () {
     return {
-      inPerson: true,
+      inPerson: true
     }
   },
   /// ////
@@ -216,9 +216,9 @@ export default {
 
   },
   /// ////
-  //beforeMount: function () {
+  // beforeMount: function () {
   //  this.stateActiveComponent('Service-Requests-Home')
-  //},
+  // },
   /// ////
   mounted: function () {
     this.$nextTick(function () {
@@ -228,7 +228,6 @@ export default {
     this.stateActiveComponent('Training')
     this.scrollReset(0)
     this.stateSiteType('ServiceRequests')
-
   },
   /// ////
   methods: {

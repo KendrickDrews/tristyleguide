@@ -1111,7 +1111,7 @@ export default {
       craView: false,
       columnLength: 10,
       openProtocols: [
-        { id: 'ProtocolNumber', name: 'Protocol Number', subtext: ''},
+        { id: 'ProtocolNumber', name: 'Protocol Number', subtext: '' },
         { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold Indicates Plan Reviewed)' },
         { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold Indicates Plan Reviewed)' },
         { id: 'FundingAgreement', name: 'Funding Agreement', subtext: '' },
@@ -1127,7 +1127,7 @@ export default {
         { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
         { id: 'VersionNumber', name: 'Version Number', subtext: '' },
         { id: 'VersionDT', name: 'Version Date', subtext: '' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' }
       ],
       columnSiteView: [
         { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold Indicates Plan Reviewed)' },
@@ -1141,7 +1141,7 @@ export default {
         { id: 'EffectiveDate', name: 'Effective Date', subtext: '' },
         { id: 'VersionNumber', name: 'Version Number', subtext: '' },
         { id: 'VersionDT', name: 'Version Date', subtext: '' },
-        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' },
+        { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' }
       ],
       columnListSite: [
         { id: 'Edit', name: 'Edit', subtext: '' },
@@ -1168,13 +1168,13 @@ export default {
         { id: 'ReviewerComments', name: 'Reviewer Comments', subtext: '' }
       ],
       columnListCRA: [
-        { id: 'ProtocolNumber', name: 'Protocol Number', subtext: ''},
+        { id: 'ProtocolNumber', name: 'Protocol Number', subtext: '' },
         { id: 'LeadSite', name: 'Lead Site', subtext: '(Bold indicates accepted CQMP which should be available at the site)' },
         { id: 'AffiliatedSite', name: 'Affiliated Site(s)', subtext: '(Bold indicates accepted CQMP which should be available at the site)' },
-        { id: 'CurrentAcceptDate', name: 'Current Accepted Date', subtext: ''  },
-        { id: 'DMIDAcceptVersion', name: 'DMID Accepted Version', subtext: ''  },
-        { id: 'ReviewerComments', name: 'Comments', subtext: '' },
-        //{ id: 'Monitored', name: 'Monitored by ICON?', subtext: ''  }
+        { id: 'CurrentAcceptDate', name: 'Current Accepted Date', subtext: '' },
+        { id: 'DMIDAcceptVersion', name: 'DMID Accepted Version', subtext: '' },
+        { id: 'ReviewerComments', name: 'Comments', subtext: '' }
+        // { id: 'Monitored', name: 'Monitored by ICON?', subtext: ''  }
       ],
       protocols: [],
       protocolRecordStatus: [
@@ -1246,13 +1246,11 @@ export default {
       return this.currentProtocol
     },
     siteBasedRecords: function () {
-      //Sorts but you should be able to extract this method out so it is REUSABLE
-      function compare(a, b) {
-        if (a.leadSite < b.leadSite)
-          return -1;
-        if (a.leadSite > b.leadSite)
-          return 1;
-        return 0;
+      // Sorts but you should be able to extract this method out so it is REUSABLE
+      function compare (a, b) {
+        if (a.leadSite < b.leadSite) { return -1 }
+        if (a.leadSite > b.leadSite) { return 1 }
+        return 0
       }
       return this.siteBasedOpen.sort(compare)
     },
@@ -1270,7 +1268,7 @@ export default {
     },
     protocolBasedCRARecords: function () {
       return this.protocolBasedCRA
-    },
+    }
   },
   /// ////
   mounted: function () {
@@ -1282,39 +1280,39 @@ export default {
   },
   /// ////
   methods: {
-    setView: function(input) {
-      switch(input) {
-      case 'siteView':
-        this.siteView = true;
-        this.craView = false;
-        this.protocolView = false;
-        this.closedView = false;
-        this.activeRow = -1;
-        break;
-      case 'craView':
-        this.siteView = false;
-        this.craView = true;
-        this.protocolView = false;
-        this.closedView = false;
-        this.activeRow = -1;
-        break;
-      case 'protocolView':
-        this.siteView = false;
-        this.craView = false;
-        this.protocolView = true;
-        this.closedView = false;
-        this.activeRow = -1;
-        break;
-      case 'closedView':
-        this.siteView = false;
-        this.craView = false;
-        this.protocolView = false;
-        this.closedView = true;
-        this.activeRow = -1;
-        break;
-      default:
-        console.log('There seems to be an issue with your switch statement')
-        break;
+    setView: function (input) {
+      switch (input) {
+        case 'siteView':
+          this.siteView = true
+          this.craView = false
+          this.protocolView = false
+          this.closedView = false
+          this.activeRow = -1
+          break
+        case 'craView':
+          this.siteView = false
+          this.craView = true
+          this.protocolView = false
+          this.closedView = false
+          this.activeRow = -1
+          break
+        case 'protocolView':
+          this.siteView = false
+          this.craView = false
+          this.protocolView = true
+          this.closedView = false
+          this.activeRow = -1
+          break
+        case 'closedView':
+          this.siteView = false
+          this.craView = false
+          this.protocolView = false
+          this.closedView = true
+          this.activeRow = -1
+          break
+        default:
+          console.log('There seems to be an issue with your switch statement')
+          break
       }
     },
     isSelected: function () {
@@ -1522,7 +1520,7 @@ export default {
         var shuffledSites = this.shuffle(subSites)
         var fundAgree = this.headsOrTails('Contract', 'Grant/ Cooperative Agreement')
         var siteGroup = this.randomAffiliation(0, 6)
-        //var numOfCQMPS = this.getRandomInt(0, 5)
+        // var numOfCQMPS = this.getRandomInt(0, 5)
         var numOfCQMPS = this.getRandomInt(1, 5)
         var x = this.getRandomInt(1, 8)
 
@@ -1555,26 +1553,25 @@ export default {
             }
           }
           for (var n = 1; n <= numOfCQMPS; n++) {
-            var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n, siteLead: false}
+            var numAffSites = { id: n, siteName: shuffledSites[(n - 1)], reviewed: j === n, siteLead: false }
             aRecord.affiliatedSites.push(numAffSites)
           }
-          if ( aRecord.siteStatus.open) {
+          if (aRecord.siteStatus.open) {
             output.push(aRecord)
-            switch(aRecord.currentData.cqmpStatus) {
-            case 'Accepted Initial':
-              outputCRA.push(aRecord)
-              break;
-            case 'Accepted Revised':
-              outputCRA.push(aRecord)
-              break;
-            case 'In Progress':
-              outputCRA.push(aRecord)
-              break;
-            default:
-              break;
+            switch (aRecord.currentData.cqmpStatus) {
+              case 'Accepted Initial':
+                outputCRA.push(aRecord)
+                break
+              case 'Accepted Revised':
+                outputCRA.push(aRecord)
+                break
+              case 'In Progress':
+                outputCRA.push(aRecord)
+                break
+              default:
+                break
             }
-          }
-          else {
+          } else {
             closedOutput.push(aRecord)
           }
         }
@@ -1608,57 +1605,55 @@ export default {
         // Fills CQMPS[]
         for (var j = 0; j <= numOfCQMPS; j++) {
           var aRecord = {
-                protocolNum: protNum[this.getRandomInt(i, i)],
-                protocolStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
-                leadSite: shuffledSites[i],
-                fundingAgreement: fundAgree,
-                branch: protBranch,
-                cpm: protCPM,
-                resourceLevel: protResource,
-                groupAffiliation: protGroup,
-                dmidIND: protDMIDIND,
-                id: j,
-                affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === 0, siteLead: true }],
-                legacyData: {
-                  legacy: true,
-                  dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
-                  vNumber: this.getRandomInt(1, x) + '.0',
-                  vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
-                },
-                currentData: {
-                  current: true,
-                  cqmpStatus: this.randomCQMPStatus(0, 4),
-                  effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                  cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
-                  cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
-                  Comments: 'Reviewer comments go here.'
-                }
-              }
-              // Fills affiliatedSites{}
+            protocolNum: protNum[this.getRandomInt(i, i)],
+            protocolStatus: recordStatus[this.getRandomInt(0, (recordStatus.length - 1))],
+            leadSite: shuffledSites[i],
+            fundingAgreement: fundAgree,
+            branch: protBranch,
+            cpm: protCPM,
+            resourceLevel: protResource,
+            groupAffiliation: protGroup,
+            dmidIND: protDMIDIND,
+            id: j,
+            affiliatedSites: [{ id: 0, siteName: shuffledSites[i], reviewed: j === 0, siteLead: true }],
+            legacyData: {
+              legacy: true,
+              dateAccept: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31)),
+              vNumber: this.getRandomInt(1, x) + '.0',
+              vDate: this.randomDate(new Date(2012, 0, 1), new Date(2014, 11, 31))
+            },
+            currentData: {
+              current: true,
+              cqmpStatus: this.randomCQMPStatus(0, 4),
+              effDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+              cvNumber: this.getRandomInt(x, (x + (this.getRandomInt(1, 5)))) + '.0',
+              cvDate: this.randomDate(new Date(2015, 0, 1), new Date(2019, 11, 31)),
+              Comments: 'Reviewer comments go here.'
+            }
+          }
+          // Fills affiliatedSites{}
           for (var n = 1; n <= numOfCQMPS; n++) {
             var numAffSites = { id: n, siteName: shuffledSubSites[n], reviewed: j === n, siteLead: false }
             aRecord.affiliatedSites.push(numAffSites)
           }
-          if ( aRecord.protocolStatus.open) {
-          output.push(aRecord)
-            switch(aRecord.currentData.cqmpStatus) {
-            case 'Accepted Initial':
-              outputCRA.push(aRecord)
-              break;
-            case 'Accepted Revised':
-              outputCRA.push(aRecord)
-              break;
-            case 'In Progress':
-              outputCRA.push(aRecord)
-              break;
-            default:
-              break;
+          if (aRecord.protocolStatus.open) {
+            output.push(aRecord)
+            switch (aRecord.currentData.cqmpStatus) {
+              case 'Accepted Initial':
+                outputCRA.push(aRecord)
+                break
+              case 'Accepted Revised':
+                outputCRA.push(aRecord)
+                break
+              case 'In Progress':
+                outputCRA.push(aRecord)
+                break
+              default:
+                break
             }
-          }
-          else {
+          } else {
             closedOutput.push(aRecord)
           }
-
         }
       }
     },
@@ -1670,9 +1665,9 @@ export default {
         return 'striped-row'
       }
     },
-    toggleActiveRow: function(){
-      this.activeRow = !this.activeRow;
-    },
+    toggleActiveRow: function () {
+      this.activeRow = !this.activeRow
+    }
   },
   filters: {
     concatenate: function (value) {

@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     activeComponent: '',
     DMIDSite: '',
     siteType: '',
-    siteTitle: '',
+    siteTitle: ''
   },
   mutations: {
     isActiveComponent: function (state, component) {

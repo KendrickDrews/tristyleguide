@@ -116,8 +116,7 @@ export default {
         CSRS: true
       },
       subSiteIs: this.$route.name,
-      buttonList: buttonList,
-
+      buttonList: buttonList
 
     }
   },
