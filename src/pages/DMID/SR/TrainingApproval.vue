@@ -1,22 +1,23 @@
 <template>
   <div>
+    <p> TESTTESTEST</p>
     <p style="padding: 10px 20px 10px 40px;"> Please submit any Ad Hoc DMID-CROMS training request using the form below for any training needs not found within the LMS </p>
             <br/>
           <div class="forms F01">
                 <div class="form-Row">
                   <p class="form-text">Requestor's Name<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Olson, Dorie"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" Olson, Dorie"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Email<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" dolson@tech-res.com"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" dolson@tech-res.com"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Requestor's Phone<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" 301-897-7142"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" 301-897-7142"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Name<span class="unset"> :</span><span class="red"> *</span></p>
@@ -32,8 +33,8 @@
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Site Principal Investigator<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Dr. Gregory Storch"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Request Type<span class="unset"> :</span><span class="red"> *</span></p>
@@ -50,18 +51,18 @@
                 </div>
                 <div class="form-Row" v-show="inPerson">
                   <p class="form-text">Location Proposed for Training<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Emmery University"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Training Topic Area<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" Medical Supplies"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Protocol Number/Title<span class="unset"> :</span><span class="red"> *</span></p>
-                  <input class="form-input" placeholder=" 99-0000"/>
-                  <!-- <input class="form-input" placeholder=""/> -->
+                  <!-- <input class="form-input" placeholder=" Dr. Gregory Storch"/> -->
+                  <input class="form-input" placeholder=""/>
                 </div>
                 <div class="form-Row">
                   <p class="form-text">Calendar<span class="unset"> :</span><span class="red"> *</span></p>
@@ -72,10 +73,10 @@
             <img src="../../../imgs/calendar.gif" alt="Calendar" class="calendar-push" height="25px" width="25px"/>
                 </div>
 
-                <!-- <div class="form-Row">
+                <div class="form-Row">
                   <p>Select a date to indicate a desired completion date for your training. However, please note that the actual training completion date will depend on the scope and requirements of your training request.</p>
 
-                </div> -->
+                </div>
                 <br/>
                 <!-- <div>
                   <p class="form-text" style="width: 94%">What is the goal for the training?</p>
@@ -94,7 +95,7 @@
                   </div>
                 </div>
                 <br/> -->
-                <!-- <div>
+                <div>
                   <p class="form-text"  style="width: 94%">What triggered the need for this training?</p>
 
                   <div class="form-Final">
@@ -111,7 +112,7 @@
                     </textarea>
                   </div>
                 </div>
-                <br/> -->
+                <br/>
                 <!-- <div>
                   <p class="form-text"  style="width: 94%">What is the expected training delivery date?</p>
 
@@ -132,37 +133,35 @@
                   </div>
                 </div>
 
-                <div class="sr-btn--row">
+                <!-- <div class="btn-row">
                 <button class="submit-Btn"> Save </button>
                   <button class="submit-Btn"> Email </button>
-                  </div>
-
+                  </div> -->
+<!--
                 <div class="adminView">
-                 
-           <!-- <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p> -->
+                  -->
+<!--            <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p>
                     <br/>
-                   
-             <p> To accept or reject the Request, select the decision and provide your comments.</p>
+                    -->
+<!--              <p> To accept or reject the Request, select the decision and provide your comments.</p>
                     <br/>
-                <div class="decisions" style="padding-left: 38.7%">
+                <div class="decisions" style="padding-left: 40%">
                   <p  style="margin-right: 33px;" class="form-text">Decision<span class="unset"> :</span></p>
                   <input type="checkbox" id="scales" name="scales">
-                  <label  for="scales" style="font-weight: unset;margin-right: 15px; margin-left: 5px;
-    line-height: 1;">Approved</label>
+                  <label  for="scales" style="font-weight: unset;margin-right: 15px;">Approved</label>
                   <input type="checkbox" id="scales" name="scales">
-                  <label for="scales" style="font-weight: unset; margin-left: 5px;
-    line-height: 1;">Rejected</label>
+                  <label for="scales" style="font-weight: unset;">Rejected</label>
                 </div>
                     <div class="forms F01">
                 <div class="form-Final" style="justify-content: unset; margin-left: 33.4%; margin-top: 10px;">
                   <p class="form-text">Comments<span class="unset"> :</span></p>
-                  <textarea style="width: 335px; margin-left: 33px" class="form-input" rows="6" cols="20" name="comment" form="usrform">
+                  <textarea style="width: 312px; margin-left: 33px" class="form-input" rows="6" cols="20" name="comment" form="usrform">
                   </textarea>
                 </div>
                 </div>
 
               </div>
-             
+              -->
               </div>
               <div class="form-Row">
             <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
@@ -173,7 +172,7 @@
 <script>
 
 export default {
-  name: 'Training',
+  name: 'TrainingApproval',
   components: {
 
   },
@@ -224,7 +223,7 @@ export default {
   /// ////
   mounted: function () {
     this.$nextTick(function () {
-      this.stateActiveTitle('Ad-Hoc-Training-Request-Form')
+      this.stateActiveTitle('Ad-Hoc-Training-Request-Approval')
     }),
     this.setStateSubSite()
     this.stateActiveComponent('Training')
@@ -277,6 +276,15 @@ export default {
 
 </script>
 <style>
+.calendar-push {
+  position: absolute;
+    left: 661px;
+}
+.calendar-input {
+  padding-left: 5px;
+    width: 82px;
+    margin-right: 230px;
+}
 .main-headSearch h4{
   color: #2a469d;
 }
@@ -417,12 +425,11 @@ export default {
   height: 26px;
   margin-bottom: 5px;
 }
-.sr-btn--row {
+.btn-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 50%;
-    margin-left: 150px;
+  width: 663.84px;
   margin-top: 15px;
   justify-content: center;
 }
@@ -515,14 +522,5 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-}
-.calendar-push {
-  position: absolute;
-  left: 730px!important;
-}
-.calendar-input {
-  padding-left: 5px;
-  width: 82px!important;
-  margin-right: 230px!important;
 }
 </style>

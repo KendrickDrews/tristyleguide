@@ -73,6 +73,7 @@ import ProtocolNumberRequest from '../SR/ProtocolNumberRequest.vue'
 import TeleconferenceSupport from '../SR/TeleconferenceSupport.vue'
 import TeleconferenceSupportReport from '../SR/TeleconferenceSupportReport.vue'
 import Training from '../SR/Training.vue'
+import TrainingApproval from '../SR/TrainingApproval.vue'
 import TrainingReport from '../SR/TrainingReport.vue'
 
 export default {
@@ -106,6 +107,7 @@ export default {
     TeleconferenceSupport,
     TeleconferenceSupportReport,
     Training,
+    TrainingApproval,
     TrainingReport
   },
   data () {
@@ -298,7 +300,7 @@ export default {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+ 
   padding-bottom: 3px;
   margin: 0;
 }
@@ -351,7 +353,7 @@ export default {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  width: 85%;
+  /* width: 85%; */
   padding-bottom: 3px;
   margin: 0;
 }

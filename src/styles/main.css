@@ -678,7 +678,7 @@ hr {
   flex-direction: column;
   color: var(--blue-systemTools);
   margin-top: 5px;
-  font-size: 0.8em;
+  /* font-size: 0.8em; */
   padding-left: 25px;
   padding-right: 10px;
 }
