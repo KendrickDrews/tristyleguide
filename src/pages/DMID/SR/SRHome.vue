@@ -28,7 +28,7 @@
           </div>
           <div class="bodyContent">
             <div class="mainContent ">
-              <component :is="stateComponent" />
+              <router-view></router-view>
             </div>
           </div>
         </div>
@@ -51,64 +51,16 @@ import navList from '../../../components/navLists.vue'
 import allNav from '../../../components/DMIDsideNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
-import ServiceRequestsHome from '../SR/ServiceRequestsHome.vue'
-import ClinicalMonitoring from '../SR/ClinicalMonitoring.vue'
-import ClinicalMonitoringReport from '../SR/ClinicalMonitoringReport.vue'
-import ClinicalQualityManagementServices from '../SR/ClinicalQualityManagementServices.vue'
-import ClinicalQualityManagementServicesReport from '../SR/ClinicalQualityManagementServicesReport.vue'
-import CROMSQualityCrosswalkReview from '../SR/CROMSQualityCrosswalkReview.vue'
-import CROMSQualityCrosswalkReviewReport from '../SR/CROMSQualityCrosswalkReviewReport.vue'
-import DSMBSMCCoordination from '../SR/DSMB-SMCCoordination.vue'
-import DSMBSMCCoordinationReport from '../SR/DSMB-SMCCoordinationReport.vue'
-import EssentialRegulatoryDocuments from '../SR/EssentialRegulatoryDocuments.vue'
-import EssentialRegulatoryDocumentsReport from '../SR/EssentialRegulatoryDocumentsReport.vue'
-import HumanSubjectsProtection from '../SR/HumanSubjectsProtection.vue'
-import MedicalWriting from '../SR/MedicalWriting.vue'
-import MedicalWritingReport from '../SR/MedicalWritingReport.vue'
-import MiscellaneousServicesReport from '../SR/MiscellaneousServicesReport.vue'
-import MiscellaneousServices from '../SR/MiscellaneousServices.vue'
-import ReportAProtocolDeviation from '../SR/ReportaProtocolDeviation.vue'
-import ProtocolDeviationReport from '../SR/ProtocolDeviationReport.vue'
-import ProtocolNumberRequest from '../SR/ProtocolNumberRequest.vue'
-import TeleconferenceSupport from '../SR/TeleconferenceSupport.vue'
-import TeleconferenceSupportReport from '../SR/TeleconferenceSupportReport.vue'
-import Training from '../SR/Training.vue'
-import TrainingApproval from '../SR/TrainingApproval.vue'
-import TrainingReport from '../SR/TrainingReport.vue'
 
 export default {
-  name: 'SR',
+  name: 'ServiceRequests',
   components: {
     DMIDHeader,
     colors,
     navList,
     allNav,
     Modal,
-    buttonList,
-    ServiceRequestsHome,
-    ClinicalMonitoring,
-    ClinicalMonitoringReport,
-    ClinicalQualityManagementServices,
-    ClinicalQualityManagementServicesReport,
-    CROMSQualityCrosswalkReview,
-    CROMSQualityCrosswalkReviewReport,
-    DSMBSMCCoordination,
-    DSMBSMCCoordinationReport,
-    EssentialRegulatoryDocuments,
-    EssentialRegulatoryDocumentsReport,
-    HumanSubjectsProtection,
-    MedicalWriting,
-    MedicalWritingReport,
-    MiscellaneousServices,
-    MiscellaneousServicesReport,
-    ReportAProtocolDeviation,
-    ProtocolDeviationReport,
-    ProtocolNumberRequest,
-    TeleconferenceSupport,
-    TeleconferenceSupportReport,
-    Training,
-    TrainingApproval,
-    TrainingReport
+    buttonList,    
   },
   data () {
     return {
@@ -127,7 +79,7 @@ export default {
         SMART: true,
         CSRS: true
       },
-      subSiteIs: this.$route.name,
+      subSiteIs: 'ServiceRequests',
       buttonList: buttonList
     }
   },
@@ -179,13 +131,13 @@ export default {
   },
   /// ////
   beforeMount: function () {
-    this.stateActiveComponent('Service-Requests-Home')
+    this.stateActiveComponent('Service Requests')
   },
   /// ////
   mounted: function () {
     this.setStateSubSite()
     this.$nextTick(function () {
-      this.stateActiveComponent('Service-Requests-Home')
+      this.stateActiveComponent('Service Requests')
     })
     this.scrollReset(0)
     this.stateSiteType('ServiceRequests')

@@ -1,13 +1,17 @@
 <template>
   <div>
-    Service Request ServiceRequestsHome
+    <div>
+      HELLO WORLD HumanSubjectsProtectionHumanSubjectsProtection
+
+    </div>
+
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'SR',
+  name: 'HumanSubjectsProtection',
   components: {
 
   },
@@ -16,6 +20,7 @@ export default {
 
     }
   },
+  /// ////
   /// ////
   computed: {
     stateTitle: {
@@ -30,7 +35,7 @@ export default {
   /// ////
   mounted: function () {
     this.$nextTick(function () {
-      this.stateActiveTitle('Service Requests')
+      this.stateActiveTitle('HumanSubjectsProtection')
     })
   },
   /// ////

@@ -21,15 +21,28 @@ export default {
     }
   },
   /// ////
+  /// ////
   computed: {
-
+    stateTitle: {
+      get: function () {
+        return this.$root.store.state.siteTitle
+      },
+      set: function (value) {
+        this.$root.store.commit('isSiteTitle', value)
+      }
+    }
   },
   /// ////
   mounted: function () {
-
+    this.$nextTick(function () {
+      this.stateActiveTitle('ClinicalMonitoring')
+    })
   },
   /// ////
   methods: {
+    stateActiveTitle (value) {
+      return this.stateTitle = value
+    },
     showModal () {
       this.isModalVisible = true
     },

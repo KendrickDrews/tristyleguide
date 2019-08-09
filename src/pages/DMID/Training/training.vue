@@ -15,7 +15,7 @@
               <br />
             <!-- <p>To request additional Web Conference, In-Person or On-Demand training not found within the Learning Management System, please use the Ad Hoc Training Request Form found in the Services and Tools menu on the right side of this page.</p> -->
               <p><em><strong>New</strong></em></p>
-              <p>Effective August 26devdmidsql0, 2019, a new version of <em>45 CFR Part 46 - Protection of Human Subjects</em> will be available on the LMS. You will no longer have access to the separate courses, <em>45 CFR Part 46</em>, and <em>Informed Consent.</em></p>
+              <p>Effective August 26, 2019, a new version of <em>45 CFR Part 46 - Protection of Human Subjects</em> will be available on the LMS. You will no longer have access to the separate courses, <em>45 CFR Part 46</em>, and <em>Informed Consent.</em></p>
               <p><br />The new course covers the revised Common Rule and regulations in place under 45 CFR 46 for protecting the safety and welfare of prospective participants in clinical research, and includes a detailed section on the informed concent process and requirements.</p>
               <br />
               <p><strong>Important note: </strong></p>
@@ -73,7 +73,7 @@ Sites should maintain current documentation of completed trainings for all cours
                   <!-- <li class="servicesTools-Item">Ad Hoc Training Request Approval</li> -->
                   <li class="servicesTools-Item">Training Report</li>
                   <li class="servicesTools-Item">Request Training Services</li>
-                  <li class="servicesTools-Item">Registration Report/Training Logs</li>
+                  <router-link :to="{name: 'AdHocTrainingRegistration'}" tag='li' class="servicesTools-Item">Registration Report/Training Logs</router-link>
                   <li class="servicesTools-Item">Training FAQ</li>
                   <li class="servicesTools-Item">Request for Services Approval</li>
               </ul>
@@ -90,7 +90,8 @@ export default {
   },
   data () {
     return {
-      active: 'Training-Home',
+      active: 'TrainingHome',
+      subSiteIs: 'Training'
     }
   },
   watch: {
@@ -129,14 +130,14 @@ export default {
   },
    /// ////
   beforeMount: function () {
-    this.stateActiveComponent('Training-Home')
+    this.stateActiveComponent('TrainingHome')
   },
   /// ////
   mounted: function () {
     this.$nextTick(function () {
       this.stateActiveTitle('Training')
     }),
-    this.stateActiveComponent('Training-Home')
+    this.stateActiveComponent('TrainingHome')
   },
   /// ////
   methods: {

@@ -4,7 +4,7 @@
         <div class="main-headContent">
             <div class="main-headIcon--pos1">
               <!-- Doesn't correctly route to 'Home' of any given subsite yet because of how display works-->
-                <router-link tag="div" :to="{path: buttonName}" class="main-headIcon--pos2">
+                <router-link tag="div" :to="{name: buttonName}" class="main-headIcon--pos2">
                     <dmidbutton
                         :button-color="buttonName"
                         :buttonName="buttonName"
@@ -40,7 +40,7 @@
                         >
                         </dmidbutton>
                    </router-link>
-                   <router-link tag="div" to="/DMID/CRS">
+                   <router-link tag="div" to="/DMID/CRS/ClinicalResearchHome">
                         <dmidbutton
                         :buttonName="buttonList.CRS"
                         :button-color="buttonList.CRS"
@@ -64,7 +64,7 @@
                         >
                         </dmidbutton>
                     </router-link>
-                    <router-link tag="div" to="/DMID/Training">
+                    <router-link tag="div" to="/DMID/Training/TrainingHome">
                         <dmidbutton
                         :buttonName="buttonList.Training"
                         :button-color="buttonList.Training"
@@ -76,7 +76,7 @@
                         >
                         </dmidbutton>
                     </router-link>
-                    <router-link tag="div" to="/DMID/ServiceRequests">
+                    <router-link tag="div" to="/DMID/ServiceRequests/ServiceRequestsHome">
                         <dmidbutton
                         :buttonName="buttonList.ServiceRequests"
                         :button-color="buttonList.ServiceRequests"

@@ -104,7 +104,7 @@
         <button class="training-button"> Filter </button>
         <button class="training-button"> Clear </button>
       </div> 
-    </div> 
+    </div>
   </div>
 </template>
 

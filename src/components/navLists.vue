@@ -1,15 +1,15 @@
 <template>
   <div class="contextNav">
       <ul id="nav-group">
-          <li class="nav-item"
+          <router-link tag="li" class="nav-item"
           v-bind:page="page"
           v-for="(post, index) in pageNavigation[page]"
           v-bind:key="index"
-          v-on:click="active = post"
-          v-bind:class="{ active: active == post }"
-          >
-          <a v-bind:href="'#/' + post.text | concatenate">{{ post.text }}</a>
-          </li>
+          v-on:click="active = post"          
+          :to="{ name: post.name}"
+          exact>
+          <a>{{ post.text }}</a>
+          </router-link>
       </ul>
   </div>
 </template>
@@ -102,7 +102,7 @@ export default {
 .nav-item:hover {
   background-image: linear-gradient(to left,rgba(74, 179, 60, 0.2), transparent);
 }
-.active {
+.router-link-active {
   background-image: linear-gradient(to left,rgba(74, 179, 60, 0.2), transparent);
 }
 /* Service Requests List */
@@ -110,7 +110,7 @@ export default {
   background-image: linear-gradient(to left,rgba(52, 94, 192, 0.15), transparent);
 }
 /* Service Requests List */
-.bodyNavStyleServiceRequests .active {
+.bodyNavStyleServiceRequests .router-link-active {
   background-image: linear-gradient(to left,rgba(52, 94, 192, 0.25), transparent);
 }
 </style>

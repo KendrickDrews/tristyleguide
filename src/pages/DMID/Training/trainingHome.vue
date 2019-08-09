@@ -29,7 +29,7 @@
             <h2 class="bodyLocation">{{ stateTitle | splitStrings('-',' ') }}</h2>
           </div>
           <div class="bodyContent">            
-              <component :is="stateComponent" />            
+              <router-view></router-view>          
           </div>
         </div>
       </div>
@@ -50,8 +50,7 @@ import navList from '../../../components/navLists.vue'
 import allNav from '../../../components/DMIDsideNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
-import TrainingHome from '../Training/training.vue'
-import AdHocTrainingRegistration from '../Training/AdHocTrainingRegistration.vue'
+
 
 export default {
   name: 'Training',
@@ -62,8 +61,7 @@ export default {
     allNav,
     Modal,
     buttonList,
-    TrainingHome,
-    AdHocTrainingRegistration
+    
 
   },
   data () {
@@ -83,7 +81,7 @@ export default {
         SMART: true,
         CSRS: true
       },
-      subSiteIs: this.$route.name,
+      subSiteIs: 'Training',
       buttonList: buttonList
 
     }
@@ -136,15 +134,15 @@ export default {
   },
   /// ////
   beforeMount: function () {
-    //this.stateActiveComponent('Training-Home')
-    this.stateActiveComponent('Ad-Hoc-Training-Registration')
+    this.stateActiveComponent('TrainingHome')
+    //this.stateActiveComponent('Ad-Hoc-Training-Registration')
   },
   /// ////
   mounted: function () {
     this.setStateSubSite()
     this.$nextTick(function () {
-      //this.stateActiveComponent('Training-Home')
-      this.stateActiveComponent('Ad-Hoc-Training-Registration')
+      this.stateActiveComponent('TrainingHome')
+      //this.stateActiveComponent('Ad-Hoc-Training-Registration')
     })
     this.scrollReset(0)
     this.stateSiteType('CRS')

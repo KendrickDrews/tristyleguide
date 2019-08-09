@@ -29,17 +29,9 @@
           </div>
           <div class="bodyContent">
             <div class="mainContent">
-            <component :is="stateComponent" />
-            </div>
-            <!--<div class="servicesAndTools">
-                <h4> SERVICES AND TOOLS </h4>
-                <ul class="servicesTools-List">
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                    <li class="servicesTools-Item"></li>
-                </ul>
-              </div> -->
+            <!-- <component :is="stateComponent" /> -->
+            <router-view></router-view>
+            </div>            
           </div>
         </div>
 
@@ -62,17 +54,6 @@ import resAndTools from '../../../components/DMIDResourcesAndTools.vue'
 import brandingNav from '../../../components/DMIDBrandingNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
-import ClinicalResearchHome from '../CRS/ClinicalResearchHome.vue'
-import ClinicalMonitoring from '../CRS/ClinicalMonitoring.vue'
-import ClinicalQualityManagement from '../CRS/ClinicalQualityManagement.vue'
-import EssentialRegulatoryDocuments from '../CRS/EssentialRegulatoryDocuments.vue'
-import MedicalWriting from '../CRS/MedicalWriting.vue'
-import ProtocolDevelopment from '../CRS/ProtocolDevelopment.vue'
-import ProtocolDeviationReporting from '../CRS/ProtocolDeviationReporting.vue'
-import SAEReporting from '../CRS/SAEReporting.vue'
-import SafetyOversightCommittee from '../CRS/SafetyOversightCommittee.vue'
-import StudyProductInformation from '../CRS/StudyProductInformation.vue'
-import TeleconferenceSupport from '../CRS/TeleconferenceSupport.vue'
 
 export default {
   name: 'CRS',
@@ -84,19 +65,7 @@ export default {
     Modal,
     buttonList,
     brandingNav,
-    resAndTools,
-    ClinicalResearchHome,
-    ClinicalMonitoring,
-    ClinicalQualityManagement,
-    EssentialRegulatoryDocuments,
-    MedicalWriting,
-    ProtocolDevelopment,
-    ProtocolDeviationReporting,
-    SAEReporting,
-    SafetyOversightCommittee,
-    StudyProductInformation,
-    TeleconferenceSupport
-
+    resAndTools
   },
   data () {
     return {
@@ -115,7 +84,7 @@ export default {
         SMART: true,
         CSRS: true
       },
-      subSiteIs: this.$route.name,
+      subSiteIs: 'CRS',
       buttonList: buttonList
 
     }
@@ -160,13 +129,13 @@ export default {
   },
   /// ////
   beforeMount: function () {
-    this.stateActiveComponent('Clinical-Research-Home')
+    this.stateActiveComponent('Welcome to Clinical Research Support')
   },
   /// ////
   mounted: function () {
     this.setStateSubSite()
     this.$nextTick(function () {
-      this.stateActiveComponent('Clinical-Research-Home')
+      this.stateActiveComponent('Welcome to Clinical Research Support')
     })
     this.scrollReset(0)
     this.stateSiteType('CRS')

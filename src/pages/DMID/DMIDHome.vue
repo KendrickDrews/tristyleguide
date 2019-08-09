@@ -12,7 +12,7 @@
 
         <div class="row Row2">
           <div class="left icon-spacing">
-            <router-link tag="div" to="CRS" class="home-Navigation">
+            <router-link tag="div" to="CRS/ClinicalResearchHome" class="home-Navigation">
               <dmidbutton
                 :buttonName="buttonList.CRS"
                 v-if="showNavHOME[buttonList.CRS]"
@@ -38,7 +38,7 @@
               </dmidbutton>
               <h4> Document Library </h4>
             </router-link>
-            <router-link tag="div" to="Training"  class="home-Navigation">
+            <router-link tag="div" to="Training/TrainingHome"  class="home-Navigation">
               <dmidbutton
                 :buttonName="buttonList.Training"
                 v-if="showNavHOME[buttonList.Training]"
@@ -51,7 +51,7 @@
               </dmidbutton>
               <h4> Training </h4>
             </router-link>
-            <router-link tag="div" to="ServiceRequests" class="home-Navigation">
+            <router-link tag="div" to="ServiceRequests/ServiceRequestsHome" class="home-Navigation">
               <dmidbutton
                 :buttonName="buttonList.ServiceRequests"
                 v-if="showNavHOME[buttonList.ServiceRequests]"
