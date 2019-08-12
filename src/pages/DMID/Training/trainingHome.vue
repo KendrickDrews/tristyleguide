@@ -1,11 +1,11 @@
 <template>
   <div class="DMID-main">
-    <div style="position: relative">
-
+    <div class="DMID-containter--home">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
         :buttonName="thisSite"
+        :currentSite="stateType"
         :showNav="{
           Home: true,
           DocumentLibrary: true,
@@ -17,19 +17,16 @@
           Protocols: true,
         }"
       >
-        <p slot="locationName"> Training  </p>
-
+        <p slot="locationName"> Training</p>
       </DMIDHeader>
-
       <div class="main-body">
         <allNav/>
-
         <div class="main-bodyContent">
-          <div class="locationContainer lc-serviceRequests">
+          <div class="locationContainer" :class="(stateType === 'ServiceRequests') ? 'blue-bg' : 'green-bg'">
             <h2 class="bodyLocation">{{ stateTitle | splitStrings('-',' ') }}</h2>
           </div>
-          <div class="bodyContent">            
-              <router-view></router-view>          
+          <div class="bodyContent">
+              <router-view></router-view>
           </div>
         </div>
       </div>
@@ -51,7 +48,6 @@ import allNav from '../../../components/DMIDsideNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
 
-
 export default {
   name: 'Training',
   components: {
@@ -60,8 +56,7 @@ export default {
     navList,
     allNav,
     Modal,
-    buttonList,
-    
+    buttonList
 
   },
   data () {
@@ -135,14 +130,14 @@ export default {
   /// ////
   beforeMount: function () {
     this.stateActiveComponent('TrainingHome')
-    //this.stateActiveComponent('Ad-Hoc-Training-Registration')
+    // this.stateActiveComponent('Ad-Hoc-Training-Registration')
   },
   /// ////
   mounted: function () {
     this.setStateSubSite()
     this.$nextTick(function () {
       this.stateActiveComponent('TrainingHome')
-      //this.stateActiveComponent('Ad-Hoc-Training-Registration')
+      // this.stateActiveComponent('Ad-Hoc-Training-Registration')
     })
     this.scrollReset(0)
     this.stateSiteType('CRS')
@@ -194,24 +189,11 @@ export default {
 
 </script>
 <style>
-.locationContainer {
-  background-color: var(--green-background);
-  background-image: var(--content-gradient);
-  display: flex;
-  align-content: center;
-  min-height: 50px;
-  margin: 0;
-}
-.main-location {
-  color: var(--green-header);
-}
 .mainContent {
   padding: 10px 0px 10px 0px!important;
   font-family: calibri!important;
 }
-.main-headSearch h4 {
-  color: var(--green-header);
-}
+
 .bodyText {
   font-family: Calibri;
 }

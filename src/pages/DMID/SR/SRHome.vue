@@ -1,11 +1,11 @@
 <template>
   <div class="DMID-main">
-    <div style="position: relative">
-
+    <div class="DMID-containter--home">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
         :buttonName="thisSite"
+        :currentSite="stateType"
         :showNav="{
           Home: true,
           DocumentLibrary: true,
@@ -19,15 +19,14 @@
       >
         <p slot="locationName">Service Requests</p>
       </DMIDHeader>
-
       <div class="main-body">
         <allNav/>
         <div class="main-bodyContent">
-          <div class="locationContainer lc-serviceRequests">
+          <div class="locationContainer" :class="(stateType === 'ServiceRequests') ? 'blue-bg' : 'green-bg'">
             <h2 class="bodyLocation">{{ stateTitle | splitStrings('-',' ') }}</h2>
           </div>
           <div class="bodyContent">
-            <div class="mainContent ">
+            <div class="mainContent">
               <router-view></router-view>
             </div>
           </div>
@@ -60,7 +59,7 @@ export default {
     navList,
     allNav,
     Modal,
-    buttonList,    
+    buttonList
   },
   data () {
     return {
@@ -189,19 +188,6 @@ export default {
 
 </script>
 <style>
-.main-headSearch h4{
-  color: #2a469d;
-}
-.serviceRequests-loc {
-  color: rgb(52, 94, 192);
-}
-.main-location {
-  color: rgb(52, 94, 192);
-
-}
-.lc-serviceRequests {
-  background-color: rgb(62, 151, 253);
-}
 .mainContent {
   padding: 0px 10px 10px 0px!important;
   font-family: calibri!important;
@@ -252,7 +238,7 @@ export default {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
- 
+
   padding-bottom: 3px;
   margin: 0;
 }

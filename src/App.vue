@@ -68,6 +68,7 @@ export default { // name: 'mainLayout',
   /// /
   data: function () {
     return {
+      // open: this.mainMenuStatus,
       open: true,
       currentLocation: this.$route.path,
       topOffset: 0
@@ -75,6 +76,9 @@ export default { // name: 'mainLayout',
   },
   /// /
   computed: {
+    mainMenuStatus () {
+      return this.$root.store.state.mainMenu
+    },
     rootComponent () {
       return this.$root.ViewComponent
     },
@@ -255,6 +259,7 @@ export default { // name: 'mainLayout',
     justify-content: center;
     overflow-y:scroll;
     transition: 0.4s ease-in-out;
+    scrollbar-width: none;
   }
   .contentArea::-webkit-scrollbar {
     width: 0;

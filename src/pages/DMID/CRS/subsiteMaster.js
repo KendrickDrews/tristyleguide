@@ -39,7 +39,6 @@ export default {
   WashingtonUniversitySchoolofMedicine: 'Washington University School of Medicine',
   DukeUniversityHospitalandHealthCenter: 'Duke University Hospital and Health Center',
   DeKalbMedicalHospital: 'DeKalb Medical Hospital',
-  CaseWesternReserveUniversity: 'Case Western Reserve University',
   UniversityofCincinnati: 'University of Cincinnati',
   UniversityofLouisville: 'University of Louisville',
   UniversityofPittsburgh: 'University of Pittsburgh',

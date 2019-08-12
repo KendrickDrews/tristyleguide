@@ -1,10 +1,11 @@
 <template>
   <div class="DMID-main">
-    <div class="crs--home">
+    <div class="DMID-containter--home">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
         :buttonName="thisSite"
+        :currentSite="stateType"
         :showNav="{
           Home: true,
           DocumentLibrary: true,
@@ -18,20 +19,16 @@
       >
         <p slot="locationName"> Clinical Research Support </p>
       </DMIDHeader>
-
       <div class="main-body">
         <all-nav/>
-
         <div class="main-bodyContent">
-          <div class="locationContainer">
+          <div class="locationContainer" :class="(stateType === 'ServiceRequests') ? 'blue-bg' : 'green-bg'">
             <h2 class="bodyLocation">{{ stateComponent | splitStrings('-',' ') }}</h2>
-            <!-- <h2 class="bodyLocation">{{ stateComponent | splitStrings('-',' ') }}</h2> -->
           </div>
           <div class="bodyContent">
             <div class="mainContent">
-            <!-- <component :is="stateComponent" /> -->
             <router-view></router-view>
-            </div>            
+            </div>
           </div>
         </div>
 
@@ -94,7 +91,6 @@ export default {
     thisSite: function () {
       return this.subSiteIs
     },
-
     //
     subSite: {
       get: function () {
@@ -187,28 +183,10 @@ export default {
 
 </script>
 <style>
-.crs--home {
-  position: relative;
-  width: 100%;
-}
-.locationContainer {
-  background-color: var(--green-background);
-  background-image: var(--content-gradient);
-  display: flex;
-  align-content: center;
-  min-height: 50px;
-  margin: 0;
-}
 .mainContent {
   padding: 10px 0px 10px 0px!important;
   font-family: calibri!important;
   width: 100%;
-}
-.main-location {
-  color: var(--green-header);
-}
-.main-headSearch h4 {
-  color: var(--green-header);
 }
 .bodyText {
   font-family: Calibri;

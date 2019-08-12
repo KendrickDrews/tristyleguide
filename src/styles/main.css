@@ -46,7 +46,10 @@ body {
   background-color:#4017A2; 
   width: 30%;    
 }
-
+.DMID-containter--home {
+  position: relative;
+  width: 100%;
+}
 /* Content Space */
 .main {
   text-align: left;
@@ -290,11 +293,22 @@ hr {
 .main-location {
   display: flex;
   margin-top: 15px;
-  align-self: flex-end;
-  
+  align-self: flex-end;  
   font-family: 'Cinzel', 'Times New Roman', 'Times', serif;
   font-weight: bold;
   font-size: 28px;
+}
+.blue-text {
+  color: rgb(52, 94, 192);
+}
+.green-text {
+  color: var(--green-header);
+}
+.blue-bg {
+  background-color: rgb(62, 151, 253);
+}
+.green-bg {
+  background-color: var(--green-background);
 }
 .main-headBrand {
   padding-top: 10px;
@@ -610,11 +624,11 @@ hr {
   align-items: stretch;
   padding-left: 5px;
 }
-.locationContainer {  
+.locationContainer {   
   background-image: var(--content-gradient);
   display: flex;
   align-content: center;
-  min-height: 50px;  
+  min-height: 50px;
   margin: 0;
 }
 .bodyLocation {    

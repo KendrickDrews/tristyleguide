@@ -5,7 +5,7 @@
           v-bind:page="page"
           v-for="(post, index) in pageNavigation[page]"
           v-bind:key="index"
-          v-on:click="active = post"          
+          v-on:click="active = post"
           :to="{ name: post.name}"
           exact>
           <a>{{ post.text }}</a>

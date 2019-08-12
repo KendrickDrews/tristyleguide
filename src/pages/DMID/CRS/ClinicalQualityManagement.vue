@@ -1724,11 +1724,13 @@ export default {
   width: 100%;
   overflow: scroll;
   border: 1px solid black;
+  overflow-y: hidden;
 }
 .CQMP-table--container {
   overflow: scroll;
   max-height: 600px;
   width: max-content;
+  scrollbar-width: none;
 }
 .CQMP-page--container::-webkit-scrollbar {
   color: rgb(36, 36, 36);

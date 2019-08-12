@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
     activeComponent: '',
     DMIDSite: '',
     siteType: '',
-    siteTitle: ''
+    siteTitle: '',
+    mainMenu: true
   },
   mutations: {
     isActiveComponent: function (state, component) {
@@ -22,6 +23,9 @@ export const store = new Vuex.Store({
     },
     isSiteTitle: function (state, stateTitle) {
       state.siteTitle = stateTitle
+    },
+    mainMenuStatus: function (state, menuStatus) {
+      state.mainMenu = menuStatus
     }
   },
   actions: {

@@ -1,12 +1,12 @@
 <template>
 <!--navSearch -->
-  <div class="main-headSearch">
-      <h4> Clinical Research Support Search </h4>
-      <input type="text" placeholder="">
-      <button class="nav-button btn-Seven">
-          <h4> Go </h4>
-          <div class="navbtn-shadow"></div>
-      </button>
+  <div class="main-headSearch" :class="(stateType === 'ServiceRequests') ? 'blue-text' : 'green-text'">
+    <h4> Clinical Research Support Search </h4>
+    <input type="text" placeholder="">
+    <button class="nav-button btn-Seven">
+      <h4> Go </h4>
+      <div class="navbtn-shadow"></div>
+    </button>
   </div>
 </template>
 
@@ -14,7 +14,20 @@
 
 export default {
   components: {
-
+  },
+  data: function () {
+    return {
+    }
+  },
+  computed: {
+    stateType: {
+      get: function () {
+        return this.$root.store.state.siteType
+      },
+      set: function (value) {
+        this.$root.store.commit('setSiteType', value)
+      }
+    }
   }
 }
 </script>

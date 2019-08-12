@@ -20,7 +20,7 @@ export default {
     }
   },
   /// ////
-    /// ////
+  /// ////
   computed: {
     stateTitle: {
       get: function () {
@@ -40,8 +40,8 @@ export default {
       set: function (value) {
         this.$root.store.commit('isActiveComponent', value)
       }
-    },
-  },  
+    }
+  },
   /// ////
   beforeMount: function () {
     this.stateActiveComponent('Welcome to Clinical Research Support')
@@ -66,7 +66,7 @@ export default {
     },
     stateActiveComponent (value) {
       return this.stateComponent = value
-    },
+    }
 
   }
 }

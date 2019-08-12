@@ -16,7 +16,7 @@
                     </select>
                   </form>
         </div>
-      </div> 
+      </div>
       <div class="training-form--row">
         <div class="training-form--label">
           <p>Date:</p>
@@ -99,11 +99,11 @@
             </select>
           </form>
         </div>
-      </div> 
+      </div>
       <div class="training-form--row button-row">
         <button class="training-button"> Filter </button>
         <button class="training-button"> Clear </button>
-      </div> 
+      </div>
     </div>
   </div>
 </template>
@@ -172,7 +172,7 @@ export default {
 .no-pad {
   padding: unset;
 }
-.training-form--row input, 
+.training-form--row input,
 .form-input select,
 .training-form--row form,
 .training-form--input div {
@@ -194,11 +194,11 @@ form, select {
   color: #777;
 }
 .form-input {
-  width: 77%;  
+  width: 77%;
 }
 .form-input--date {
   width: 40px;
-  vertical-align: sub;  
+  vertical-align: sub;
 }
 .calendar-input {
   width: 14%;

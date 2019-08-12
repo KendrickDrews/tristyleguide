@@ -138,10 +138,10 @@
                   </div>
 
                 <div class="adminView">
-                 
+
            <!-- <p> To view details of the Request submitted for approval, <a> Click here</a> (<strong> Note:</strong> The Request will display in a separate window.) </p> -->
                     <br/>
-                   
+
              <p> To accept or reject the Request, select the decision and provide your comments.</p>
                     <br/>
                 <div class="decisions" style="padding-left: 38.7%">
@@ -162,7 +162,7 @@
                 </div>
 
               </div>
-             
+
               </div>
               <div class="form-Row">
             <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
@@ -224,7 +224,7 @@ export default {
   /// ////
   mounted: function () {
     this.$nextTick(function () {
-      this.stateActiveTitle('Ad-Hoc-Training-Request-Form')
+      this.stateActiveTitle('Ad-Hoc-Training-Request')
     }),
     this.setStateSubSite()
     this.stateActiveComponent('Training')
