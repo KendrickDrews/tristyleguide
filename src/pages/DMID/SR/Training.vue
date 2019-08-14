@@ -151,7 +151,7 @@
     line-height: 1;">Approved</label>
                   <input type="checkbox" id="scales" name="scales">
                   <label for="scales" style="font-weight: unset; margin-left: 5px;
-    line-height: 1;">Rejected</label>
+    line-height: 1;">Not Approved</label>
                 </div>
                     <div class="forms F01">
                 <div class="form-Final" style="justify-content: unset; margin-left: 33.4%; margin-top: 10px;">
@@ -165,7 +165,7 @@
 
               </div>
               <div class="form-Row">
-            <button class="submit-Btn" style="margin-top: 10px;"> Submit </button>
+            <button class="submit-Btn" style="margin-top: 10px;"> Save </button>
             </div>
   </div>
 </template>

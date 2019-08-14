@@ -1,235 +1,94 @@
 <template>
-  <!-- <div>
-            <button class="excel-Btn"> Export to Excel </button>
-            to implement:: Fixed header, Correct ScrollBar Styling,
-
-            <div id="scrollTable" >
-
-              <table>
-                <thead>
-                <tr>
-                  <th><div class="tableHeader long" >Name </div></th>
-                  <th><div class="tableHeader short">Created </div></th>
-                  <th><div class="tableHeader short">Requestor Name </div></th>
-                  <th><div class="tableHeader short">Requestor Phone </div></th>
-                  <th><div class="tableHeader short">Requestor Email </div></th>
-
-                  <th><div class="tableHeader short">Site Name </div></th>
-                  <th><div class="tableHeader short">Principal Investigator </div></th>
-                  <th><div class="tableHeader long">DMID Protocol No </div></th>
-                  <th><div class="tableHeader long">DMID Protocol No Not Known </div></th>
-                  <th><div class="tableHeader short">Training Course </div></th>
-                  <th><div class="tableHeader short">Training Materials Info </div></th>
-                  <th><div class="tableHeader short">Approval Status </div></th>
-                </tr>
-                </thead>
-                <tbody >
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a> </td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Louisiana State University Health Sciences Center - Infectious Diseases</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> We are requesting training for Emory's IRB DM-16-0017, we will need investigator responsibilities, regulatory file documents, source document standards, study protocol management. Please provide so that I can comply with their IRB requests. Thank you!</td>
-                  <td>	Email Started</td>
-                </tr>
-                <tr>
-                  <td><a>Training -2018-07-18T12_41_14 </a></td>
-                  <td>18-Jul-2018</td>
-                  <td>	Anna Example</td>
-                  <td>555801936</td>
-                  <td>aexample@altasciences.com	</td>
-                  <td>Alta Clinical Research, L.L.C.</td>
-                  <td>	DR.KAMKAN</td>
-                  <td> </td>
-                  <td>True</td>
-                  <td>	DMID Source Documentation Standards</td>
-                  <td> </td>
-                  <td>	Email Started</td>
-                </tr>
-                </tbody>
-              </table>
-
-            </div>
-             <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-              </div>
-
-  </div> -->
+  
+             <!--
+          </div> -->
   <div class="CQMP">
     <div class="buttonRow">
       <button> Export to Excel </button>
     </div>
-  <div class="CQMP-page--container">
-    <div class="cqmp-table--siteView">
-      <div class="console-body--columnHeaders">
-        <div
-        v-for="item in columnSiteView"
-        v-bind:key="item.id + 'Site'"
-        v-bind:id="item.id + 'Site'"
-        class="console-col--Header">
-          <p v-bind:class="item.id">{{ item.name }}</p>
-          <template v-if="item.subtext != ''"  >
-            <span>{{ item.subtext }}</span>
-          </template>
+    <div class="CQMP-page--container">
+      <div class="cqmp-table--siteView">
+        <div class="console-body--columnHeaders">
+          <div
+          v-for="item in columnTitles"
+          v-bind:key="item.id"
+          v-bind:id="item.id"
+          class="console-col--Header">
+            <p v-bind:class="item.id">{{ item.name }}</p>
+          </div>
+        </div>
+        <div class="CQMP-table--container">
+          <div class="CQMP-table--row"
+           v-for="(item, index) in trainingRecords"
+          :key="index"
+          @click="activeRow = index"
+          v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
+            <!-- Name -->
+            <div class="content--flex content--border console-col--LeadSite ">
+              <p>{{ record.siteName }}</p>
+            </div>
+            <!-- Created -->
+            <div class="content--flex content--border console-col--AffiliatedSite">
+              <p>{{ record.siteName }}</p>
+            </div>
+            <!-- RequestorName -->
+            <div class="content--flex content--border console-col--FundingAgreement">
+              <p>{{ item.fundingAgreement }}</p>
+            </div>
+            <!-- RequestorEmail -->
+            <div class="content--flex content--border console-col--GroupAffiliation">
+              <p>{{ item.groupAffiliation }}</p>
+            </div>
+            <!-- RequestorPhone -->
+            <div class="content--flex content--border console-col--AcceptDate">
+              <p>{{ item.legacyData.dateAccept }}</p>
+            </div>
+            <!-- SiteName -->
+            <div class="content--flex content--border console-col--VersionNum">
+              <p>{{ item.legacyData.vNumber }}</p>
+            </div>
+            <!-- VersionDate -->
+            <div class="content--flex content--border console-col--VersionDate">
+              <p>{{ item.legacyData.vDate }}</p>
+            </div>
+            <!-- PrincipalInvestigator -->
+            <div class="content--flex content--border console-col--CQMPStatus">
+              <p>{{ item.currentData.cqmpStatus }}</p>
+            </div>
+            <!-- RequestType -->
+            <div class="content--flex content--border console-col--EffectiveDate">
+              <p>{{ item.currentData.effDate }}</p>
+            </div>
+            <!-- ProposedLocation -->
+            <div class="content--flex  content--border console-col--VersionNumber">
+              <p>{{ item.currentData.cvNumber }}</p>
+            </div>
+            <!-- TopicArea -->
+            <div class="content--flex content--border console-col--VersionDT">
+              <p>{{ item.currentData.cvDate }}</p>
+            </div>
+            <!-- Date -->
+            <div class="content--flex content--border console-col--ReviewerComments">
+              <p>{{ item.currentData.Comments }}</p>
+            </div>
+            <!-- Status -->
+            <div class="content--flex content--border console-col--ReviewerComments">
+              <p>{{ item.currentData.Comments }}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="CQMP-table--container">
-        <div class="CQMP-table--row"
-         v-for="(item, index) in trainingRecords"
-        :key="index"
-        @click="activeRow = index"
-        v-bind:class="[isValueEven(index), {'SelectedRow' : activeRow == index}]">
-          <!-- LeadSite -->
-          <div class="content--flex content--border console-col--LeadSite ">
-            <p>{{ record.siteName }}</p>
-          </div>
-          <!-- AffiliatedSite -->
-          <div class="content--flex content--border console-col--AffiliatedSite">
-            <p>{{ record.siteName }}</p>
-          </div>
-          <!-- FundingAgreement -->
-          <div class="content--flex content--border console-col--FundingAgreement">
-            <p>{{ item.fundingAgreement }}</p>
-          </div>
-          <!-- GroupAffiliation -->
-          <div class="content--flex content--border console-col--GroupAffiliation">
-            <p>{{ item.groupAffiliation }}</p>
-          </div>
-          <!-- Legacy Data -->
-          <!-- AcceptDate -->
-          <div class="content--flex content--border console-col--AcceptDate">
-            <p>{{ item.legacyData.dateAccept }}</p>
-          </div>
-          <!-- VersionNum -->
-          <div class="content--flex content--border console-col--VersionNum">
-            <p>{{ item.legacyData.vNumber }}</p>
-          </div>
-          <!-- VersionDate -->
-          <div class="content--flex content--border console-col--VersionDate">
-            <p>{{ item.legacyData.vDate }}</p>
-          </div>
-          <!-- Current CQMP -->
-          <!-- CQMPStatus -->
-          <div class="content--flex content--border console-col--CQMPStatus">
-            <p>{{ item.currentData.cqmpStatus }}</p>
-          </div>
-          <!-- EffectiveDate -->
-          <div class="content--flex content--border console-col--EffectiveDate">
-            <p>{{ item.currentData.effDate }}</p>
-          </div>
-          <!-- VersionNumber -->
-          <div class="content--flex  content--border console-col--VersionNumber">
-            <p>{{ item.currentData.cvNumber }}</p>
-          </div>
-          <!-- VersionDate -->
-          <div class="content--flex content--border console-col--VersionDT">
-            <p>{{ item.currentData.cvDate }}</p>
-          </div>
-          <!-- ReviewerComments -->
-          <div class="content--flex content--border console-col--ReviewerComments">
-            <p>{{ item.currentData.Comments }}</p>
-          </div>
-        </div>
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -246,44 +105,41 @@ export default {
   data () {
     return {
       activeRow: -1,
-      activeItem: 'Console',      
-      columnLength: 10,      
-      columnSiteView: [
-        { id: 'Name', name: 'Name'},
-        { id: 'Created', name: 'Created'},
-        { id: 'RequestorName', name: 'Requestor Name'},
-        { id: 'RequestorEmail', name: 'Requestor Email'},
-        { id: 'RequestorPhone', name: 'Requestor Phone'},
-        { id: 'SiteName', name: 'Site Name'},
-        { id: 'PrincipalInvestigator', name: 'Principal Investigator'},
-        { id: 'RequestType', name: 'Request Type'},
-        { id: 'ProposedLocation', name: 'Proposed Location'},
-        { id: 'TopicArea', name: 'Topic/ Area'},
-        { id: 'ProtocolNumber', name: 'Protocol Number/ Title'},
-        { id: 'Date', name: 'Date'}
-      ],           
-      currentProtocol: -1,            
-      selected: [],
-      siteMasterList: Object.keys(siteMaster).map(function (key) {
-        return siteMaster[key]
-      }),
+      activeItem: 'Console',
+      columnTitles: [
+        { id: 'Name', name: 'Name' },
+        { id: 'Created', name: 'Created' },
+        { id: 'RequestorName', name: 'Requestor Name' },
+        { id: 'RequestorEmail', name: 'Requestor Email' },
+        { id: 'RequestorPhone', name: 'Requestor Phone' },
+        { id: 'SiteName', name: 'Site Name' },
+        { id: 'PrincipalInvestigator', name: 'Principal Investigator' },
+        { id: 'RequestType', name: 'Request Type' },
+        { id: 'ProposedLocation', name: 'Proposed Location' },
+        { id: 'TopicArea', name: 'Topic/ Area' },
+        { id: 'ProtocolNumber', name: 'Protocol Number/ Title' },
+        { id: 'Date', name: 'Date' },
+        { id: 'Status', name: 'Status' }
+      ],
+      currentProtocol: -1,
+      selected: [],      
       subsiteMasterList: Object.keys(subsiteMaster).map(function (key) {
         return subsiteMaster[key]
       }),
-      trainingRecords: []          
+      trainingRecords: []
     }
   },
   /// ////
-  computed: {    
-    trainingRecords: function () {
+  computed: {
+    sortedTrainingRecords: function () {
       // Sorts but you should be able to extract this method out so it is REUSABLE
       function compare (a, b) {
         if (a.leadSite < b.leadSite) { return -1 }
         if (a.leadSite > b.leadSite) { return 1 }
         return 0
       }
-      return this.siteBasedOpen.sort(compare)
-    },       
+      return this.trainingRecords.sort(compare)
+    },
     stateTitle: {
       get: function () {
         return this.$root.store.state.siteTitle
@@ -297,16 +153,16 @@ export default {
   mounted: function () {
     this.$nextTick(function () {
       this.stateActiveTitle('Ad-Hoc-Training-Request-Report')
-    }),    
+    }),
     this.setCurrentProtocol()
     this.isValueEven()
-    this.generateTrainingRecords()    
+    this.generateTrainingRecords()
   },
   /// ////
   methods: {
     stateActiveTitle (value) {
       return this.stateTitle = value
-    },    
+    },
     isSelected: function () {
       return this.selected
     },
@@ -334,6 +190,10 @@ export default {
       } else {
         return b
       }
+    },
+    randomValueFrom: function (Arr) {
+      var value = Arr[this.getRandomInt(Arr[0], Arr[Arr.length -1])]
+      return value
     },
     randomDate: function (start, end) {
       var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
@@ -393,19 +253,17 @@ export default {
       return entityName
     },
     randomRequestType: function (start, end) {
-      var Aff = new Array()
+      var Values = new Array()
 
-      Aff[0] = 'CEIRS'
-      Aff[1] = 'N/A'
-      Aff[2] = 'Phase 1'
-      Aff[3] = 'RPRC'
-      Aff[4] = 'TB-CDRC'
-      Aff[5] = 'TBRU'
-      Aff[6] = 'VTEU'
+      Values[0] = 'Web Conference'
+      Values[1] = 'In-Person'
+      Values[2] = 'On-Demand'
+      Values[3] = 'Job Aid'
+      Values[4] = 'Quick Start Guide'      
 
       // var entityNum = ;
-      var entityName = Aff[this.getRandomInt(start, end)]
-      return entityName
+      var outputValue = Values[this.getRandomInt(start, end)]
+      return outputValue
     },
     randomName: function (start, end) {
       var sites = new Array()
@@ -469,31 +327,38 @@ export default {
       var XX = (start >= 10) ? start : '0' + start
       var XXXX = (end >= 1000) ? end : (end >= 100) ? '0' + end : (end >= 10) ? '00' + end : '000' + end
       return [XX, XXXX].join('-')
-    },    
+    },
     generateTrainingRecords: function () {
       var output = this.trainingRecords
-      for( var i=0; i< numofRecords; i++) {
+      var numofRecords = 20
+      
+      for (var i = 0; i < numofRecords; i++) {
+        var isProtocolKnown = this.headsOrTails(true, false)        
         aRecord = {
           name: '',
           created: '',
-          user: {
+          requestor: {
             Name: '',
             Email: '',
-            Phone: '',
+            Phone: ''
           },
           site: {
             Name: '',
-            PI: '',
+            PI: ''
+          },
+          protocol: {
+            number: this.generateProtocolNumber(),
+            protocolUnknown: isProtocolKnown,
           },
           requestType: '',
           Location: '',
-          topicArea: '',
-          protocol: '',
-          date: ''          
+          topicArea: '',          
+          date: this.randomDate(new Date(2000, 0, 1), new Date(2019, 11, 31)),
+          status: ''
         }
         output.push(aRecord)
-      }     
-     },    
+      }
+    },
     isValueEven: function (value) {
       var myNumber = value
       if (myNumber % 2 === 0) {
@@ -858,7 +723,6 @@ export default {
   height: 25px;
   width: 125px;
   margin: 20px auto;}
-
 
 /* Multi-select Drop Down List */
 .select-title {
