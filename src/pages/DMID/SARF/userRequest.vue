@@ -1,4 +1,5 @@
 <template>
+<p> Hello and welcome to SARF </p>
 </template>
 <script>
 export default {

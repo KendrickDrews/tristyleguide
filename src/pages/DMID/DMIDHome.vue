@@ -147,7 +147,7 @@
                 </button>
               </div>
             </div>
-            <p class="request">To request access, please submit a request using the <a> Systems Access Request Form</a> </p>
+            <p class="request">To request access, please submit a request using the <router-link to="SARF/userRequest"> Systems Access Request Form</router-link> </p>
           </div>
           <div class="right">
             <h2> Clinical Research Support Search</h2>
