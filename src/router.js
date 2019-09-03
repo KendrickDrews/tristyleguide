@@ -22,6 +22,22 @@ export default new Router({
           component: () => import('./pages/DMID/DMIDHome.vue')
         },
         {
+          path: 'SARF/:id',
+          component: () => import('./pages/DMID/SARF/SARFHome.vue'),
+          children: [
+            {
+              path: '',
+              name: 'userRequest',
+              component: () => import('./pages/DMID/SARF/userRequest.vue')
+            },
+            {
+              path: 'userRequestList',
+              name: 'userRequestList',
+              component: () => import('./pages/DMID/SARF/userRequestList.vue')
+            }
+          ]
+        },
+        {
           path: 'CRS/:id',
           component: () => import('./pages/DMID/CRS/CRSHome.vue'),
           children: [
