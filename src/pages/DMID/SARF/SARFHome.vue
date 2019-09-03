@@ -1,5 +1,5 @@
 <template>
-  <div class="DMID-main">
+  <div class="DMID-main SARF-Main">
     <div class="DMID-containter--home">
       <SARFHeader
         :type="thisSite"
@@ -8,23 +8,11 @@
         :currentSite="stateType"
         :showNav="{
           Home: true,
-          DocumentLibrary: false,
-          CRS: false,
-          SOCSCMS: false,
-          Training: false,
-          ServiceRequests: false,
-          GrantCapture: false,
-          Protocols: false,
         }"
       >
-        <p slot="locationName">Systems Access Request Form</p>
       </SARFHeader>
       <div class="main-body">
-        <allNav/>
         <div class="main-bodyContent">
-          <div class="locationContainer" :class="(stateType === 'ServiceRequests') ? 'blue-bg' : 'green-bg'">
-            <h2 class="bodyLocation">{{ stateTitle | splitStrings('-',' ') }}</h2>
-          </div>
           <div class="bodyContent">
             <div class="mainContent">
               <router-view></router-view>
@@ -34,7 +22,18 @@
 
       </div>
       <div class="main-footer">
-      </div>
+          <!-- Branding Nav -->
+          <div class="brandingNav">
+              <div class="external">
+                  <img src="../../../imgs/HHS-NIH_NIAID_LogoSet_Web-Small_Black.png">
+              </div>
+              <div class="policy">
+                  <a href="#">Privacy Policy</a>
+                  <a class=pipe>|</a>
+                  <a href="#">Disclaimers</a>
+              </div>
+          </div>
+        </div>
        <Modal
         v-show="isModalVisible"
         @close="closeModal"
@@ -47,17 +46,15 @@
 import SARFHeader from '../../../components/SARFhead.vue'
 import colors from '../../../layouts/colors.vue'
 import navList from '../../../components/navLists.vue'
-import allNav from '../../../components/DMIDsideNav.vue'
 import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
 
 export default {
   name: 'ServiceRequests',
   components: {
-    DMIDHeader,
+    SARFHeader,
     colors,
     navList,
-    allNav,
     Modal,
     buttonList
   },
@@ -78,7 +75,7 @@ export default {
         SMART: true,
         CSRS: true
       },
-      subSiteIs: 'ServiceRequests',
+      subSiteIs: 'SARF',
       buttonList: buttonList
     }
   },
@@ -188,6 +185,19 @@ export default {
 
 </script>
 <style>
+.SARF-Main {
+  height: 800px;
+  width: 1000px;
+  padding: 20px 30px 30px 30px;
+  margin-top: 20px;
+}
+.SARF-divide {
+  margin-top: 5px;
+}
+.SARF-headTop {
+  justify-content: flex-start;
+      margin-left: 118px;
+}
 .mainContent {
   padding: 0px 10px 10px 0px!important;
   font-family: calibri!important;
@@ -196,155 +206,9 @@ export default {
 .bodyText {
   font-family: Calibri;
 }
-.indent li  {
-  font-size: 13.5px;
-  font-family: Calibri;
-  padding: 2px 0;
-  font-weight: bold;
-  list-style: none;
-}
-.indent2x {
-  margin-left: 45px;
-}
-.indent2x li  {
-  font-size: 13.5px;
-  font-family: Calibri;
-  padding: 2px 0;
-  font-weight: bold;
-  list-style: disc;
-}
 
-.titleHead {
-  color:#244f1e;
-  font-weight: bold;
-  font-size: 15px;
-  margin-left: -15px;
-  font-family: Verdana;
-}
-.gray {
-  background-color: #ccc;
-}
-.break {
-  height: 14px;
-}
-.F01 {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-.form-Row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-bottom: 3px;
-  margin: 0;
-}
-.form-text {
-  font-weight: bold;
-  margin: 0;
-}
-.form-Row .form-input {
-
-  height: 23px;
-  color: #777;
-}
-
-.input-column {
-  width: 312px;
-  height: 20px;
-  color: #777;
-}
 .red {
   color: red;
-}
-.unset {
-  font-weight: unset;
-}
-.F02 {
-  height: 350px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-.column {
-  width: 41%;
-  margin-right: 25px;
-}
-.form-Column {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
-  padding-bottom: 0px;
-  margin: 0px;
-  margin-bottom: 2px;
-}
-.form-Final {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  /* width: 85%; */
-  padding-bottom: 3px;
-  margin: 0;
-}
-.form-Final .form-input {
-
-  color: #777;
-}
-.form-Column-Btn {
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  padding-bottom: 0px;
-  margin: 0px;
-  margin-top: 70px;
-}
-.form-Btn {
-  width: 200px;
-  height: 26px;
-  margin-bottom: 5px;
-}
-.excel-Btn {
-  width: 150px;
-  height: 23px;
-  margin-left: 2%;
-  margin-bottom: 20px;
-}
-#scrollTable {
-  width: 100%;
-  overflow:scroll;
-  height: 574px;
-  border: 1px solid #9F9F9F;
-}
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 768px;
-  margin-top: -1px;
-  margin-left: -1px;
-  border: 1px solid #9F9F9F;
-}
-table thead tr {
-  display:block;
-}
-table tbody {
-  display: block;
-  overflow: auto;
-}
-.tableHeader {
-  margin: 2px 8px ;
 }
 .short {
   width: 100px;
@@ -352,51 +216,44 @@ table tbody {
 .long {
   width: 180px;
 }
-th {
-  background-color: #DCDCDC;
-  border: 1px solid #9F9F9F;
-  height: 37px;
+.main-footer {
+  min-height: 49px;
+  max-height: 49px;
 }
-td, th {
-  font-weight: normal;
-  text-align: left;
-  padding: 0px;
+.main-footer .brandingNav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 49px;
+  padding-top: 6px;
 
 }
-td {
-  border: 1px solid #dddddd;
-  padding: 3px 6px 4px;
-  min-height: 50px;
+.policy {
+  display: flex;
+  flex-direction: row;
+  line-height: 3.7em;
+  font-size: 11px;
+  font-weight: bold;
+  vertical-align: middle;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 136px;
+  font-family: Calibri;
 }
-tr:nth-child(even) {
-  background-color: #EDEDEB;
-}
-.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
-  display: block;
-  width: 10em;
-  overflow: auto;
-  height: 2em;
-}
-.mostly-customized-scrollbar::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  background-color: #aaa; /* or add it to the track */
-}
-.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-  background: #000;
-}
-
-.pagination {
-  display: inline-block;
-  border-left: 1px solid #9F9F9F;
-  border-right: 1px solid #9F9F9F;
-  border-bottom: 1px solid #9F9F9F;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
+.policy a {
+  width: unset;
+  font-size: 12px;
+  font-weight: bold;
   text-decoration: none;
+}
+.policy a:visited {
+  color: #0060ff;
+}
+.pipe {
+  width: 0px;
+  color: #0060ff;
 }
 </style>

@@ -85,7 +85,9 @@ export default {
 .PRT {
   background-color: rgb(0, 51, 153);
 }
-
+.SARF {
+  background-color: rgb(250, 170, 0);
+}
 .ServiceRequests {
   background-color: rgb(52, 94, 192);
 }

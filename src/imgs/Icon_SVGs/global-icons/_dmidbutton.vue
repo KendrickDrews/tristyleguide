@@ -34,6 +34,7 @@ import Development from '../DMIDCROMS-WebIcon-CRS-Stage-Development.svg'
 import Initiation from '../DMIDCROMS-WebIcon-CRS-Stage-Initiation.svg'
 import CloseOut from '../DMIDCROMS-WebIcon-CRS-Stage-CloseOut.svg'
 import InProgress from '../DMIDCROMS-WebIcon-CRS-Stage-InProgress.svg'
+import SARF from '../DMIDCROMS-WebIcon-SARF.svg'
 
 export default {
   name: 'dmidButton',
@@ -53,7 +54,8 @@ export default {
     Development,
     Initiation,
     InProgress,
-    CloseOut
+    CloseOut,
+    SARF
   },
   props: {
     buttonColor: String,

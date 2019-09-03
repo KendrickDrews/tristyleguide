@@ -18,6 +18,7 @@ export default {
   Development: 'Development',
   Initiation: 'Initiation',
   InProgress: 'InProgress',
-  CloseOut: 'CloseOut'
+  CloseOut: 'CloseOut',
+  SARF: 'SARF'
 
 }

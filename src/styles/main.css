@@ -97,6 +97,7 @@ body {
   width: 100%;
   background-color: #FD64D9;
 }
+
 .head-icon {
   top: 10px;
 }
@@ -282,7 +283,6 @@ hr {
   display: flex;  
   justify-content: space-around;
   margin-left: 110px; 
-
 }
 .main-headBottom {  
   height: 50%;    
@@ -297,6 +297,10 @@ hr {
   font-family: 'Cinzel', 'Times New Roman', 'Times', serif;
   font-weight: bold;
   font-size: 28px;
+}
+.SARF-header {
+  color: #213e85;
+  margin-top: unset;
 }
 .blue-text {
   color: rgb(52, 94, 192);
@@ -476,6 +480,9 @@ hr {
 }
 .PRToverlay { 
   background-color: rgba(0, 51, 153, 0.8);
+}
+.SARF {
+  background-color: rgb(250, 170, 0); 
 }
 .ServiceRequests { 
   background-color: rgb(52, 94, 192);
