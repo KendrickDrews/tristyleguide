@@ -1,6 +1,6 @@
 <template>
   <div class="DMID-main SARF-Main">
-    <div class="DMID-containter--home">
+    <div class="DMID-container--home SARF-container">
       <SARFHeader
         :type="thisSite"
         :button-Color="thisSite"
@@ -21,7 +21,7 @@
         </div>
 
       </div>
-      <div class="main-footer">
+      <div class="main-footer SARF-footer">
           <!-- Branding Nav -->
           <div class="brandingNav">
               <div class="external">
@@ -198,6 +198,9 @@ export default {
   justify-content: flex-start;
       margin-left: 118px;
 }
+.SARF-container {
+  height: 100%;
+}
 .mainContent {
   padding: 0px 10px 10px 0px!important;
   font-family: calibri!important;
@@ -255,5 +258,8 @@ export default {
 .pipe {
   width: 0px;
   color: #0060ff;
+}
+.SARF-footer {
+  border-top: 1px solid #262a9a;
 }
 </style>

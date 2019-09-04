@@ -1,6 +1,6 @@
 <template>
   <div class="DMID-main">
-    <div class="DMID-containter--home">
+    <div class="DMID-container--home">
       <DMIDHeader
         :type="thisSite"
         :button-Color="thisSite"
