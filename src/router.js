@@ -126,7 +126,7 @@ export default new Router({
             {
               path: '',
               name: 'ServiceRequests',
-              component: () => import('./pages/DMID/SR/ServiceRequestsHome.vue')
+              component: () => import('./pages/DMID/SR/serviceRequestsHome.vue')
             },
             {
               path: 'ClinicalMonitoring',
