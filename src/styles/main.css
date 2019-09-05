@@ -259,12 +259,26 @@ hr {
 .main-head--container {
   margin-bottom: 10px;
 }
+.SARF-main-headContainer {
+  margin-bottom:0px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #262a9a;
+}
+.SARF-main-head {
+  height: 100px;
+  padding: unset;
+}
 .main-headIcon--pos1 {
   position: absolute;
 }
 .main-headIcon--pos2 {
   position: relative; 
   left: 3px; 
+  top: -5px;
+}
+.SARF-headIcon--pos2 {
+  position: relative; 
+  left: 8px; 
   top: -5px;
 }
 .main-headRight {
@@ -292,7 +306,7 @@ hr {
 }
 .main-location {
   display: flex;
-  margin-top: 15px;
+  margin-top: 10px;
   align-self: flex-end;  
   font-family: 'Cinzel', 'Times New Roman', 'Times', serif;
   font-weight: bold;
@@ -350,8 +364,7 @@ hr {
 .main-headButtons {
   display: flex;
   justify-content: flex-end;
-  flex-direction: row;
-  margin-top: 5px;
+  flex-direction: row;  
   margin-right: 5px;
 }
 .nav-Divide {
@@ -481,7 +494,7 @@ hr {
 .PRToverlay { 
   background-color: rgba(0, 51, 153, 0.8);
 }
-.SARF {
+.SARF {  
   background-color: rgb(250, 170, 0); 
 }
 .ServiceRequests { 

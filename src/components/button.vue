@@ -86,7 +86,10 @@ export default {
   background-color: rgb(0, 51, 153);
 }
 .SARF {
+  height: 82px;
+  width: 81px;
   background-color: rgb(250, 170, 0);
+  box-shadow: 2px 3px 3px rgba(0,0,0,0.25), inset 0px 0px 4px 2px rgba(0,0,0, 0.25);
 }
 .ServiceRequests {
   background-color: rgb(52, 94, 192);

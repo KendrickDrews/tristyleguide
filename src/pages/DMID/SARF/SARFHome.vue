@@ -12,7 +12,7 @@
       >
       </SARFHeader>
       <div class="main-body">
-        <div class="main-bodyContent">
+        <div class="main-bodyContent SARF-mainBody-content">
           <div class="bodyContent">
             <div class="mainContent">
               <router-view></router-view>
@@ -50,7 +50,7 @@ import Modal from '../../../components/modalTemplate.vue'
 import buttonList from '../../../components/componentList/buttonList.js'
 
 export default {
-  name: 'ServiceRequests',
+  name: 'SARF',
   components: {
     SARFHeader,
     colors,
@@ -186,7 +186,7 @@ export default {
 </script>
 <style>
 .SARF-Main {
-  height: 800px;
+  min-height: 800px;
   width: 1000px;
   padding: 20px 30px 30px 30px;
   margin-top: 20px;
@@ -196,10 +196,13 @@ export default {
 }
 .SARF-headTop {
   justify-content: flex-start;
-      margin-left: 118px;
+      margin-left: 113px;
 }
 .SARF-container {
   height: 100%;
+}
+.SARF-mainBody-content {
+  width: 100%;
 }
 .mainContent {
   padding: 0px 10px 10px 0px!important;

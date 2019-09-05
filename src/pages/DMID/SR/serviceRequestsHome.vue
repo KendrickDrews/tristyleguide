@@ -36,7 +36,8 @@ export default {
   /// ////
   methods: {
     stateActiveTitle (value) {
-      return this.stateTitle = value
+      this.stateTitle = value
+      return
     },
     showModal () {
       this.isModalVisible = true

@@ -193,7 +193,14 @@ export default {
 .PRT {
   background-color: rgb(0, 51, 153);
 }
-
+.SARF {
+  border-radius: 5px;
+  height: 82px;
+  width: 81px;
+  background-color: rgb(250, 170, 0);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.45), inset 0px 0px 5px 4px rgba(150, 85, 0, 0.25);
+  background-blend-mode: color-dodge;
+}
 .ServiceRequests {
   background-color: rgb(52, 94, 192);
 }

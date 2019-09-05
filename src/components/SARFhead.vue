@@ -1,9 +1,9 @@
 <template>
-<div class="main-head--container">
-    <div class="main-head">
+<div class="main-head--container SARF-main-headContainer">
+    <div class="main-head SARF-main-head">
         <div class="main-headContent">
             <div class="main-headIcon--pos1">
-                <div class="main-headIcon--pos2">
+                <div class="SARF-headIcon--pos2">
                     <dmidbutton
                       :button-color="buttonName"
                       :buttonName="buttonName"
