@@ -244,8 +244,6 @@ export default {
         { name: 'OBRRTR'},
 		    { name: 'VB' },
         { name: 'OD' },
-        { name: 'HSP' },
-        { name: 'DAG' },
 		    { name: 'Other' },
       ],
       Products: [
@@ -276,9 +274,11 @@ export default {
         { name: 'Study Information Office(SIO)' },
         { name: 'Teleconferencing' },
         { name: 'Training &amp; Instructional Design' },
+        { name: 'Human Subjects Protection' },
+        { name: 'Data Analytics Group' },
         { name: 'Other' },
       ],
-    }     
+    }
   },
   computed: {
     stateComponent: {
@@ -380,7 +380,7 @@ legend {
   vertical-align: super;
 }
 .affiliation-menus {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(220, 220, 220);
   width: 100%;
 }
 .error {

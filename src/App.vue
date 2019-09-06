@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-bind:class="{'container-mirror' : SPLIT(ViewLocation) === 'DMID'  }">
-    <aside class="styleguide-Sidebar" v-bind:class="{ 'sg-closed' : !open }">
+    <!-- <aside class="styleguide-Sidebar" v-bind:class="{ 'sg-closed' : !open }">
       <div class="sg-openList" v-bind:class="{ 'closed' : !open }">
         <h2 class="styleguide-title"> DMID CROMS </h2>
         <h3 class="styleguide-title"> Styleguide </h3>
@@ -11,13 +11,13 @@
           <router-link tag="li" to="/DMID/Home">DMID Home</router-link>
         </ul>
       </div>
-    </aside>
+    </aside> -->
     <!-- Click Controls for StyleGuide MainMenu -->
-    <div class="mainMenuControl" v-on:click="slideNav" v-bind:class="{ 'control-closed' : !open }">
+    <!-- <div class="mainMenuControl" v-on:click="slideNav" v-bind:class="{ 'control-closed' : !open }">
       <img src='https:icon.now.sh/chevron/32/left'/>
-    </div>
+    </div> -->
 
-    <div class="styleguide-headingContainer" v-bind:class="{'sghContainer-mirror' : SPLIT(ViewLocation) === 'DMID','sgHeading-closed' : !open  }">
+    <div class="styleguide-headingContainer sghContainer-mirror" v-bind:class="{'sghContainer-mirror' : SPLIT(ViewLocation) === 'DMID','sgHeading-closed' : !open  }">
       <div class="styleguide-heading">
         <h2 v-if="this.ViewLocation === '/'" class="location-heading"> Home </h2>
         <h2 v-else-if="SPLIT(ViewLocation) === 'DMID'" class="location-heading"> </h2>
@@ -33,7 +33,7 @@
     <!-- The slot is for the 'name.vue' component content -->
     <div
       id="styleguide-content"
-      class="styleguide-Content"
+      class="styleguide-Content sgContent-mirror"
       v-bind:class="[{ 'sgContent-mirror' : SPLIT(ViewLocation) === 'DMID' }, siteBG]"
     >
 <!-- Display Component -->
@@ -276,7 +276,7 @@ export default { // name: 'mainLayout',
     display:flex;
     flex-direction:column;
     margin: 0 auto;
-    padding-top: 120px;
+    /* padding-top: 120px; */
     min-width: 1010px;
     max-width: 1018px;
     transition: 0.4s ease-in-out;

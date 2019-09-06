@@ -23,7 +23,8 @@
                     Systems Access Request Form
                 </h2>
                 <div class="main-headButtons">
-                  <router-link tag="div" to="/DMID/Home">
+                  <!-- <router-link tag="div" to="/DMID/Home"> -->
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.Home"
                     :button-color="buttonList.Home"

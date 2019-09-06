@@ -27,7 +27,8 @@
                     <slot name="locationName"> CLINICAL RESEARCH SUPPORT</slot>
                 </h2>
                 <div class="main-headButtons">
-                  <router-link tag="div" to="/DMID/Home">
+                  <!-- <router-link tag="div" to="/DMID/Home"> -->
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.Home"
                     :button-color="buttonList.Home"
@@ -39,7 +40,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/CRS/ClinicalResearchHome">
+                  <router-link tag="div" to="/CRS/ClinicalResearchHome">
                     <dmidbutton
                     :buttonName="buttonList.CRS"
                     :button-color="buttonList.CRS"
@@ -51,7 +52,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/Home">
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.DocumentLibrary"
                     :button-color="buttonList.DocumentLibrary"
@@ -63,7 +64,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/Training/TrainingHome">
+                  <router-link tag="div" to="/Training/TrainingHome">
                     <dmidbutton
                     :buttonName="buttonList.Training"
                     :button-color="buttonList.Training"
@@ -75,7 +76,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/ServiceRequests/ServiceRequestsHome">
+                  <router-link tag="div" to="/ServiceRequests/ServiceRequestsHome">
                     <dmidbutton
                     :buttonName="buttonList.ServiceRequests"
                     :button-color="buttonList.ServiceRequests"
@@ -87,7 +88,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/Home">
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.SOCSCMS"
                     :button-color="buttonList.SOCSCMS"
@@ -99,7 +100,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/Home">
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.Protocols"
                     :button-color="buttonList.Protocols"
@@ -111,7 +112,7 @@
                     >
                     </dmidbutton>
                   </router-link>
-                  <router-link tag="div" to="/DMID/Home">
+                  <router-link tag="div" to="/">
                     <dmidbutton
                     :buttonName="buttonList.GrantCapture"
                     :button-color="buttonList.GrantCapture"

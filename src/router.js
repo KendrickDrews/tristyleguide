@@ -7,17 +7,17 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/HomeSite',
       name: 'home',
       component: Home
     },
     {
-      path: '/DMID',
+      path: '/',
       name: 'DMID',
       component: () => import('./pages/DMID/DMID.vue'),
       children: [
         {
-          path: 'Home',
+          path: '',
           name: 'DMIDHome',
           component: () => import('./pages/DMID/DMIDHome.vue')
         },

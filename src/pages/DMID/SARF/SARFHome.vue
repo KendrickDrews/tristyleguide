@@ -22,13 +22,13 @@
       </div>
       <div class="main-footer SARF-footer">
           <!-- Branding Nav -->
-          <div class="brandingNav">
-              <div class="external">
+          <div class="SARF-brandingNav">
+              <div class="SARF-external">
                   <img src="../../../imgs/HHS-NIH_NIAID_LogoSet_Web-Small_Black.png">
               </div>
-              <div class="policy">
+              <div class="SARF-policy">
                   <a href="#">Privacy Policy</a>
-                  <a class=pipe>|</a>
+                  <a class=SARF-pipe>|</a>
                   <a href="#">Disclaimers</a>
               </div>
           </div>
@@ -233,7 +233,7 @@ export default {
   min-height: 49px;
   max-height: 49px;
 }
-.main-footer .brandingNav {
+.main-footer .SARF-brandingNav {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -243,7 +243,7 @@ export default {
   padding-top: 6px;
 
 }
-.policy {
+.SARF-policy {
   display: flex;
   flex-direction: row;
   line-height: 3.7em;
@@ -256,16 +256,16 @@ export default {
   width: 136px;
   font-family: Calibri;
 }
-.policy a {
+.SARF-policy a {
   width: unset;
   font-size: 12px;
   font-weight: bold;
   text-decoration: none;
 }
-.policy a:visited {
+.SARF-policy a:visited {
   color: #0060ff;
 }
-.pipe {
+.SARF-pipe {
   width: 0px;
   color: #0060ff;
 }
