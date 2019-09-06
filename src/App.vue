@@ -69,7 +69,7 @@ export default { // name: 'mainLayout',
   data: function () {
     return {
       // open: this.mainMenuStatus,
-      open: true,
+      open: false,
       currentLocation: this.$route.path,
       topOffset: 0
     }

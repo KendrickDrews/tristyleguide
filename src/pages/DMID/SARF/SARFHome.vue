@@ -1,6 +1,5 @@
 <template>
   <div class="DMID-main SARF-Main">
-    <div class="DMID-container--home SARF-container">
       <SARFHeader
         :type="thisSite"
         :button-Color="thisSite"
@@ -11,7 +10,7 @@
         }"
       >
       </SARFHeader>
-      <div class="main-body">
+      <div class="main-body SARF-main-body">
         <div class="main-bodyContent SARF-mainBody-content">
           <div class="bodyContent">
             <div class="mainContent">
@@ -39,7 +38,6 @@
         @close="closeModal"
       />
      </div>
-  </div>
 </template>
 
 <script>
@@ -190,6 +188,9 @@ export default {
   width: 1000px;
   padding: 20px 30px 30px 30px;
   margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 .SARF-divide {
   margin-top: 5px;
@@ -208,6 +209,12 @@ export default {
   padding: 0px 10px 10px 0px!important;
   font-family: calibri!important;
   width: 100%;
+}
+.SARF-main-body {
+  display: flex;
+  flex-grow: 2;
+  width: 100%;
+  height: 100%;
 }
 .bodyText {
   font-family: Calibri;
