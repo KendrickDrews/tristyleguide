@@ -309,7 +309,7 @@ export default {
 		    { name: 'Safety Oversight Committee Support(SOCS)' },
         { name: 'Study Information Office(SIO)' },
         { name: 'Teleconferencing' },
-        { name: 'Training &amp; Instructional Design' },
+        { name: 'Training & Instructional Design' },
         { name: 'Human Subjects Protection' },
         { name: 'Data Analytics Group' },
         { name: 'Other' },
@@ -440,7 +440,7 @@ legend {
   vertical-align: super;
 }
 .affiliation-menus {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(230, 230, 230);
   width: 100%;
 }
 .error {
