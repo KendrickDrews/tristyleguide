@@ -18,11 +18,11 @@
                 <img src="../imgs/DMIDCROMS_BrandGraphic_Home.png" height="33" width="67" class="brand-graphic"/>
             </div>
             <hr class="nav-Divide SARF-divide">
-            <div class="main-headBottom icon-space">
+            <div class="main-headBottom icon-space SARF-headerBottom">
                 <h2 class="main-location  SARF-header">
                     Systems Access Request Form
                 </h2>
-                <div class="main-headButtons">
+                <div class="main-headButtons SARF-Home">
                   <!-- <router-link tag="div" to="/DMID/Home"> -->
                   <router-link tag="div" to="/">
                     <dmidbutton
@@ -58,7 +58,7 @@ export default {
     return {
       buttonList: buttonList,
       navVisibiity: this.showNav,
-      bigIcon: '70px',
+      bigIcon: '65px',
       smallIcon: '27px'
     }
   },

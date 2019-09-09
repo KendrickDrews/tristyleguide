@@ -304,6 +304,10 @@ hr {
   justify-content: space-between;
   margin-left: 110px;
 }
+.SARF-headerBottom {
+  margin-left: 98px;
+}
+
 .main-location {
   display: flex;
   margin-top: 10px;
@@ -314,7 +318,7 @@ hr {
 }
 .SARF-header {
   color: #213e85;
-  margin-top: unset;
+  margin-top: -3px;
 }
 .blue-text {
   color: rgb(52, 94, 192);
@@ -366,6 +370,9 @@ hr {
   justify-content: flex-end;
   flex-direction: row;  
   margin-right: 5px;
+}
+.SARF-Home {
+  margin-right: 18px;
 }
 .nav-Divide {
   margin-top: 0px;     

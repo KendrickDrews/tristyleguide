@@ -197,7 +197,7 @@ export default {
 }
 .SARF-headTop {
   justify-content: flex-start;
-      margin-left: 113px;
+  margin-left: 105px;
 }
 .SARF-container {
   height: 100%;
@@ -244,21 +244,31 @@ export default {
 
 }
 .SARF-policy {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
-  line-height: 3.7em;
-  font-size: 11px;
+  line-height: 3em;
+  font-size: 14px;
   font-weight: bold;
   vertical-align: middle;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 136px;
+  width: 160px;
   font-family: Calibri;
 }
 .SARF-policy a {
   width: unset;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -271,5 +281,9 @@ export default {
 }
 .SARF-footer {
   border-top: 1px solid #262a9a;
+  /* margin-top: 20px; */
+  padding: 20px;
+  height: 74px;
+  max-height: 200px;
 }
 </style>

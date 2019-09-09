@@ -1,5 +1,10 @@
 <template>
 <div class="SARF-request--body">
+  <div class="Mockup-Controls">
+    <button class="mockup-control--btn" :class="(Status === 'User-Submit') ? 'active-control':''" @click="Status = 'User-Submit'"> User-Submit </button>
+    <button class="mockup-control--btn" :class="(Status === 'Pending') ? 'active-control':''" @click="Status = 'Pending'"> Pending View </button>
+    <button class="mockup-control--btn" :class="(Status === 'Pending-Approval') ? 'active-control':''" @click="Status = 'Pending-Approval'"> Approver View </button>
+  </div>
   <div class="SARF-form--row">
     <label for="ddlReqType"><strong>Request Type<span class="error">*</span>:</strong></label>
     <select name="ddlReqType" id="ddlReqType" v-model="reqType" class="required reqtype MD-input">
@@ -202,14 +207,44 @@
         <br><em>Please provide additional details to help process your request appropriately.</em>
       </div>
     </div>
+    <div class="SARF-form--row" v-show="Status === 'Pending'">
+      <label for="txtRequestUpdate"><strong>Reason for Request:</strong></label>
+      <div>
+        <textarea name="txtRequestUpdate" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
+        <input type="submit" name="btnRequestUpdate" value="Request User Update" id="btnRequestUpdate" class="submitbutton SARF-button">
+      </div>
+    </div>
+    <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
+      <label><strong>Suppress Emails?</strong></label>
+        <ul id="supressEmail" class="SARF-yesNo">
+		      <li><input id="supressEmail_0" type="radio" name="supressEmail" value="No"><label for="supressEmail_0">No</label></li>
+		      <li><input id="supressEmail_1" type="radio" name="supressEmail" value="Yes" checked><label for="supressEmail_1">Yes</label></li>
+        </ul>
+    </div>
+    <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
+      <label for="txtDisapprove"><strong>Reason for Disapproval:</strong></label>
+      <div>
+        <textarea name="txtDisapprove" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
+        <input type="submit" name="btnDisapprove" value="Disapprove" id="btnDisapprove" class="submitbutton SARF-button">
+      </div>
+    </div>
+    <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
+      <label for="txtApprove"><strong>Approver Comments:</strong></label>
+      <div>
+        <textarea name="txtApprove" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
+        <input type="submit" name="btnApproval" value="Approve" id="btnApproval" class="submitbutton SARF-button">
+      </div>
+    </div>
     <div class="SARF-form--row fill-Bottom">
       <div>
         <div class="reqmsg">Fields marked with an <span class="error">*</span> are required.</div>
         <br>
-        <input type="button" name="btnUpdateRecord" value="Update Record" id="btnUpdateRecord" class="btnupdaterecord SARF-button" disabled="">
-        <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="submitbutton SARF-button">
-        <div id="waitMessage" style="display: none;">
-            <span id="lblProcessing">Processing... Please wait.</span>
+        <div v-show="Status === 'User-Submit'">
+          <input type="button" name="btnUpdateRecord" value="Update Record" id="btnUpdateRecord" class="btnupdaterecord SARF-button" :disabled="reqType == 0 || reqType == 1">
+          <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="submitbutton SARF-button">
+          <div id="waitMessage" style="display: none;">
+              <span id="lblProcessing">Processing... Please wait.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -222,6 +257,7 @@ export default {
   data: function () {
     return {
       AffSelected: false,
+      Status: 'User-Submit',
       reqType: 0,
       affSelection: 0,
       BranchSelected: '',
@@ -278,6 +314,14 @@ export default {
         { name: 'Data Analytics Group' },
         { name: 'Other' },
       ],
+      Address: [
+        { name: 'Address Line 1' },
+		    { name: 'Address Line 2' },
+		    { name: 'City'},
+		    { name: 'Zip Code' },
+		    { name: 'State/Province' },
+        { name: 'Country' },
+      ],
     }
   },
   computed: {
@@ -302,6 +346,22 @@ export default {
 }
 </script>
 <style scoped>
+.Mockup-Controls {
+  position: absolute;
+  left: -150px;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-control--btn {
+  padding: 2px 8px;
+  margin: 2px 0;
+  background-color: white;
+  border: 1px solid black;
+}
+.active-control {
+  border-color: teal;
+  background-color: aqua;
+}
 .SubmitRow {
   display: flex;
   align-self: flex-end;
