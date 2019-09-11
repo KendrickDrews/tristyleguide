@@ -1,9 +1,11 @@
 <template>
 <div class="SARF-request--body">
   <div class="Mockup-Controls">
+    <div class="mockup-control--container">
     <button class="mockup-control--btn" :class="(Status === 'User-Submit') ? 'active-control':''" @click="Status = 'User-Submit'"> User-Submit </button>
     <button class="mockup-control--btn" :class="(Status === 'Pending') ? 'active-control':''" @click="Status = 'Pending'"> Pending View </button>
     <button class="mockup-control--btn" :class="(Status === 'Pending-Approval') ? 'active-control':''" @click="Status = 'Pending-Approval'"> Approver View </button>
+    </div>
   </div>
   <div class="SARF-form--row">
     <label for="ddlReqType"><strong>Request Type<span class="error">*</span>:</strong></label>
@@ -14,10 +16,10 @@
 				<option value="3">Account Deactivation</option>
 				<option value="4">Reactivate Account</option>
 		</select>
-    <div class="reqTextEntry requpreason" v-show="reqType !== 0">
+    <!-- <div class="reqTextEntry requpreason" v-show="reqType !== 0">
       <label for="txtUpReason"><strong>Reason for Update<span class="error">*</span>:</strong></label>
       <input name="txtUpReason" type="text" id="txtUpReason" class="reasonupdate  MD-input">
-    </div>
+    </div> -->
   </div>
   <div class="SARF-form--row">
     <label for="txtEMail"><strong>Email Address<span class="error">*</span>:</strong></label>
@@ -27,10 +29,10 @@
     <em>Must be institutional email address. If other, please provide reason.</em>
     </div>
   </div>
-  <div class="SARF-form--row">
+  <!-- <div class="SARF-form--row">
     <label for="ReasonOther"><strong>Reason, if other:</strong></label>
     <textarea name="ReasonOther" class="LG-input" rows="2" cols="20" id="ReasonOther" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
-  </div>
+  </div> -->
   <div class="SARF-form--row">
     <label for="txtFName"><strong>First Name<span class="error">*</span>:</strong></label>
     <input name="txtFName" type="text" id="txtFName" class="required fname  MD-input">
@@ -105,7 +107,7 @@
       </fieldset>
     </div>
   </div>
-  <div class="SARF-form--row" v-show="(BranchSelected === Branches.length || GroupSelected === WorkingGroups.length) && (affSelection === 1 || affSelection === 2)">
+  <div class="SARF-form--row" v-show="affSelection === 1 || affSelection === 2">
       <label for="txtDMIDOther"><strong>If Other, specify:</strong></label>
       <input name="txtDMIDOther" type="text" id="txtDMIDOther" class="other">
   </div>
@@ -160,7 +162,7 @@
       <em>Enter protocol numbers you need permissions to, separated by commas.</em>
     </div>
   </div>
-  <div class="SARF-form--row"  v-show="affSelection === 4 || affSelection === 5">
+  <div class="SARF-form--row"  v-show="( GroupSelected === 1 && affSelection === 2 ) || affSelection === 4 || affSelection === 5">
     <div class="divAddress" style="display: block;">
       <div class="SARF-form--row">
         <label for="txtAddress1"><strong>Address Line 1:<span class="error">*</span></strong></label>
@@ -196,7 +198,10 @@
         <fieldset  class="noBorder">
             <legend><p><strong>Products<span class="error">*</span>:</strong></p></legend>
               <ul id="Products" class="required SARF-list--products">
-                <li v-for="(item, index) in Products" :key="index"><input :id="'Products_'+index" type="checkbox" name="Products" :value="index + 1"><label :for="'Products_'+index"> {{ item.name }}</label></li>
+                <li v-for="(item, index) in Products" :key="index" v-show="item.visibleTo[affSelection] === true">
+                  <input :id="'Products_'+index" type="checkbox" name="Products" :value="index + 1">
+                  <label :for="'Products_'+index"> {{ item.name }}</label>
+                </li>
               </ul>
           </fieldset>
       </div>
@@ -207,6 +212,7 @@
         <br><em>Please provide additional details to help process your request appropriately.</em>
       </div>
     </div>
+    <!-- Pending View -->
     <div class="SARF-form--row" v-show="Status === 'Pending'">
       <label for="txtRequestUpdate"><strong>Reason for Request:</strong></label>
       <div>
@@ -214,25 +220,51 @@
         <input type="submit" name="btnRequestUpdate" value="Request User Update" id="btnRequestUpdate" class="submitbutton SARF-button">
       </div>
     </div>
-    <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
+    <!-- End Pending View -->
+    <!-- Approver View -->
+    <div class="SARF-form--row margin-top" v-show="Status === 'Pending-Approval'">
       <label><strong>Suppress Emails?</strong></label>
         <ul id="supressEmail" class="SARF-yesNo">
 		      <li><input id="supressEmail_0" type="radio" name="supressEmail" value="No"><label for="supressEmail_0">No</label></li>
 		      <li><input id="supressEmail_1" type="radio" name="supressEmail" value="Yes" checked><label for="supressEmail_1">Yes</label></li>
         </ul>
     </div>
-    <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
+    <!-- <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
       <label for="txtDisapprove"><strong>Reason for Disapproval:</strong></label>
       <div>
         <textarea name="txtDisapprove" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
         <input type="submit" name="btnDisapprove" value="Disapprove" id="btnDisapprove" class="submitbutton SARF-button">
       </div>
-    </div>
+    </div> -->
     <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
-      <label for="txtApprove"><strong>Approver Comments:</strong></label>
+      <label for="txtApprove"><strong>Reason for Disapproval / Approver Comments:</strong></label>
       <div>
         <textarea name="txtApprove" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
+        <input type="submit" name="btnDisapprove" value="Disapprove" id="btnDisapprove" class="submitbutton SARF-button">
         <input type="submit" name="btnApproval" value="Approve" id="btnApproval" class="submitbutton SARF-button">
+      </div>
+    </div>
+    <div class="SARF-form--row " v-show="Status === 'Pending'">
+      <div>
+        <input type="submit" name="btnUpdateUserInfo" value="Update User Information" id="btnUpdateUserInfo" class="submitbutton SARF-button">
+        <br>
+        <br>
+        <input type="submit" name="btnAccept" value="Accept" id="btnAccept" class="submitbutton SARF-button">
+      </div>
+    </div>
+    <!-- end Approver View -->
+    <div class="SARF-form--row SARF-meta--info" v-show="Status === 'Pending-Approval' || Status === 'Pending'">
+      <div id="divITAdmin" class="status">
+          <strong>Request Status:</strong> <label for="divITAdmin" id="lbStatus"><i>{{ this.Status }}</i></label>
+          <br>
+          <strong>User Roles:</strong> <label for="divITAdmin" id="lbRoles"><i>DocLibrary,Partners</i></label>
+          <br>
+      </div>
+      <div id="divStatus" class="status">
+        <a id="lnkAdminPage" href="#"><strong>Admin Page</strong></a>
+        <p class="Small">
+          You are logged in as <span id="spnUsername">UserLast, UserFirst</span>. <a name="A" href="#">Click here to sign out</a>
+		    </p>
       </div>
     </div>
     <div class="SARF-form--row fill-Bottom">
@@ -256,8 +288,7 @@ export default {
   },
   data: function () {
     return {
-      AffSelected: false,
-      Status: 'User-Submit',
+      Status: 'User-Submit', // 'Pending', 'Pending-Approval
       reqType: 0,
       affSelection: 0,
       BranchSelected: '',
@@ -283,19 +314,21 @@ export default {
 		    { name: 'Other' },
       ],
       Products: [
-        { name: 'DMID Argus' },
-		    { name: 'CEIRS ' },
-		    { name: 'CSRC  '},
-		    { name: 'CMS  ' },
-		    { name: 'LMS  ' },
-        { name: 'DART  ' },
-        { name: 'DEX  '},
-		    { name: 'WebLibrary  ' },
-		    { name: 'Document Library' },
-        { name: 'PTP' },
-        { name: 'PRT' },
-        { name: 'NLM and Results' },
-        { name: 'SMART' },
+        //visibleTo: 0: PleaseSelect, 1: Branch/Offices, 2: CROMS Team, 3: VTEU, 4: NON-VTEU, 5: Other
+        { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'DMID Argus'},
+		    { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'CEIRS'},
+		    { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'CSRC'},
+		    { visibleTo: { 0: true, 1: true, 2: true, 3: false, 4: false, 5: true }, name: 'CMS'},
+		    { visibleTo: { 0: true, 1: false, 2: false, 3: true, 4: true, 5: true }, name: 'LMS'},
+        { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'DART'},
+        { visibleTo: { 0: true, 1: false, 2: true, 3: false, 4: false, 5: true }, name: 'DEX'},
+		    { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'WebLibrary '},
+		    { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'Document Library'},
+        { visibleTo: { 0: true, 1: true, 2: true, 3: false, 4: false, 5: true }, name: 'PTP'},
+        { visibleTo: { 0: true, 1: false, 2: true, 3: false, 4: false, 5: true }, name: 'PRT'},
+        { visibleTo: { 0: true, 1: true, 2: true, 3: false, 4: false, 5: true }, name: 'NLM and Results'},
+        { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'SMART'},
+        { visibleTo: { 0: false, 1: false, 2: true, 3: false, 4: false, 5: false }, name: 'Rational'}
       ],
       WorkingGroups: [
         { name: 'Clinical Site Monitoring' },
@@ -349,6 +382,9 @@ export default {
 .Mockup-Controls {
   position: absolute;
   left: -150px;
+  }
+.mockup-control--container {
+  position: fixed;
   display: flex;
   flex-direction: column;
 }
@@ -495,15 +531,27 @@ input[type=radio] {
   margin: 2px 10px 2px 0;
 }
 li input[type="checkbox"], li input[type="radio"], li input[type="text"], li label {
-    float: left;
-    line-height: 1.6em;
-    height: 1.5em;
-    margin: 0px 2px;
-    padding: 0px;
-    font-size: inherit;
+  float: left;
+  line-height: 1.6em;
+  height: 1.5em;
+  margin: 0px 2px;
+  padding: 0px;
+  font-size: inherit;
 }
 
 li input[type="checkbox"], li input[type="radio"], li input[type="text"] {
     clear: left;
+}
+.status {
+  background-color: #EEEEEE;
+  width: 100%
+}
+.SARF-meta--info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.margin-top {
+  margin-top: 20px;
 }
 </style>
