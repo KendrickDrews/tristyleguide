@@ -1,11 +1,16 @@
 <template>
 <div class="SARF-request--body">
   <div class="Mockup-Controls">
-    <div class="mockup-control--container">
+    <div class="mockup-control--container flex-column">
     <button class="mockup-control--btn" :class="(Status === 'User-Submit') ? 'active-control':''" @click="Status = 'User-Submit'"> User-Submit </button>
     <button class="mockup-control--btn" :class="(Status === 'Pending') ? 'active-control':''" @click="Status = 'Pending'"> Pending View </button>
     <button class="mockup-control--btn" :class="(Status === 'Pending-Approval') ? 'active-control':''" @click="Status = 'Pending-Approval'"> Approver View </button>
+    <div>
+      <button class="mockup-control--btn" :class="(viewMode === 'hide-Products') ? 'active-control':''" @click="viewMode = 'hide-Products'"> Hidden </button>
+      <button class="mockup-control--btn" :class="(viewMode === 'disable-Products') ? 'active-control':''" @click="viewMode = 'disable-Products'"> Disabled </button>
     </div>
+    </div>
+
   </div>
   <div class="SARF-form--row">
     <label for="ddlReqType"><strong>Request Type<span class="error">*</span>:</strong></label>
@@ -198,8 +203,16 @@
         <fieldset  class="noBorder">
             <legend><p><strong>Products<span class="error">*</span>:</strong></p></legend>
               <ul id="Products" class="required SARF-list--products">
-                <li v-for="(item, index) in Products" :key="index" v-show="item.visibleTo[affSelection] === true">
-                  <input :id="'Products_'+index" type="checkbox" name="Products" :value="index + 1">
+                <li v-for="(item, index) in Products"
+                    :key="index"
+                    :class="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) ? 'disabled-Product':
+                            (viewMode === 'disable-Products' && affSelection === 0) ? 'disabled-Product':
+                            (viewMode === 'hide-Products' && item.visibleTo[affSelection] === false ) ? 'hidden': ''"
+                    >
+                  <input type="checkbox" name="Products"
+                    :id="'Products_'+index"
+                    :value="index + 1"
+                    :disabled="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) || (viewMode === 'disable-Products' && affSelection === 0)">
                   <label :for="'Products_'+index"> {{ item.name }}</label>
                 </li>
               </ul>
@@ -289,6 +302,7 @@ export default {
   data: function () {
     return {
       Status: 'User-Submit', // 'Pending', 'Pending-Approval
+      viewMode: 'hide-Products',
       reqType: 0,
       affSelection: 0,
       BranchSelected: '',
@@ -328,7 +342,7 @@ export default {
         { visibleTo: { 0: true, 1: false, 2: true, 3: false, 4: false, 5: false }, name: 'PRT'},
         { visibleTo: { 0: true, 1: true, 2: true, 3: false, 4: false, 5: false }, name: 'NLM and Results'},
         { visibleTo: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true }, name: 'SMART'},
-        { visibleTo: { 0: false, 1: false, 2: true, 3: false, 4: false, 5: false }, name: 'Rational'}
+        { visibleTo: { 0: true, 1: false, 2: true, 3: false, 4: false, 5: false }, name: 'Rational'}
       ],
       WorkingGroups: [
         { name: 'Clinical Site Monitoring' },
@@ -553,5 +567,11 @@ li input[type="checkbox"], li input[type="radio"], li input[type="text"] {
 }
 .margin-top {
   margin-top: 20px;
+}
+.hidden {
+  display: none;
+}
+.disabled-Product {
+  color: #666;
 }
 </style>

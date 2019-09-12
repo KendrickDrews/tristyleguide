@@ -128,7 +128,7 @@
                 <h4> Username: </h4>
                 <input type="text" placeholder="" class="sign-in-input">
                 <button class="nav-button btn-Seven btn-nonNIH">
-                  <h4> Sign IN </h4>
+                  <h4> Sign In </h4>
                 <div class="navbtn-shadow"></div>
                 </button>
               </div>
@@ -212,7 +212,7 @@
                   >
                   </dmidbutton>
                   <div class="supportRight">
-                    <h4>Development</h4>
+                    <h4 class="dev">Development</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
                       <h4> Go </h4>
@@ -232,7 +232,7 @@
                   >
                   </dmidbutton>
                   <div class="supportRight">
-                    <h4>Initiation</h4>
+                    <h4 class="ini">Initiation</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
                       <h4> Go </h4>
@@ -252,7 +252,7 @@
                   >
                   </dmidbutton>
                   <div class="supportRight">
-                    <h4>In Progress</h4>
+                    <h4 class="inp">In Progress</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
                       <h4> Go </h4>
@@ -272,7 +272,7 @@
                   >
                   </dmidbutton>
                   <div class="supportRight">
-                    <h4>Close Out</h4>
+                    <h4 class="clo">Close Out</h4>
                     <input type="text" placeholder="" class="">
                     <button class="nav-button btn-supSEARCH">
                       <h4> Go </h4>
@@ -577,8 +577,8 @@ export default {
   vertical-align: middle;
   line-height: 1.5em;
 }
-.username h4 {
-  padding-right: 6px;
+.username > h4 {
+  padding-right: 4px;
 }
 .pass {
   width: 100%;
@@ -626,11 +626,21 @@ export default {
   width: 77px;
   margin-top: -2px;
 }
+.btn-nonNIH h4 {
+  font-size: 17px;
+    /* font-weight: bolder; */
+  font-family: Calibri;
+}
 .btn-NIH {
   height: 59px;
   width: 126px;
   margin-left: 0px;
   margin-top: 5px;
+}
+.btn-NIH h3 {
+  font-family: Calibri;
+  font-size: 19px;
+  margin-left: 5px;
 }
 .password {
   color: #0060ff;
@@ -707,8 +717,8 @@ export default {
   overflow-y: scroll;
 }
 .news {
-  border-top: 10px solid #c3c5f8;
-  background-color: #a1a4f3;
+  border-top: 10px solid #dedffa;
+  background-color: #b6b8f0;
   color: #262a9a;
 }
 .tools {
@@ -757,19 +767,21 @@ font-family: Calibri;
 .supportSEARCH .dmid-button {
   height: 42px;
   width: 42px;
-  margin: 0 10px;
+  margin: 0 15px 0 14px;
   border-radius: 3px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.0), inset 0px 0px 4px 2px rgba(0,0,0, 0.5);
 }
 .btn-supSEARCH {
-  height: 16px;
-  width: 31px;
+  height: 19px;
+  width: 36px;
   border-radius: 4px;
+  border: 1px solid #888;
   -webkit-box-shadow: inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0px 3px 2px 0px rgba(255, 255, 255, 0.75);
   align-self: flex-end;
   /* background-color: var(--red-gold); */
   /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(49%, rgba(255, 200, 0, 0.5)),color-stop(61%, rgba(255, 60, 0, 0.75))); */
-  /* background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.5)49%, rgba(255, 60, 0, 0.75) 61%); */
+   background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.0)49%, rgba(0, 0, 0, 0.2) 61%);
 }
 .btn-supSEARCH h4 {
   font-weight: bold;
@@ -779,16 +791,35 @@ font-family: Calibri;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 10px;
+  font-size: 13px;
+  font-family: Calibri;
 
 }
-.btn-supSEARCH .navbtn-shadow {
-  box-shadow: inset 0px 0px 0.5px 1px rgb(82, 82, 82);
-}
-.supportRight{
+.supportRight {
   display:flex;
   flex-direction:column;
   flex-wrap:wrap;
+  width: 200px;
+  margin-top: 8px;
+}
+.supportRight > h4{
+  font-family: Calibri;
+  font-size: 16px
+}
+.supportRight .dev {
+  color: #057441;
+}
+.supportRight .ini {
+  color: #246333;
+}
+.supportRight .inp {
+  color: #324908;
+}
+.supportRight .clo {
+  color: #375c18;
+}
+.supportRight > input {
+  margin-bottom: 2px;
 }
 .main-footer {
   min-height: 49px;
@@ -857,7 +888,7 @@ font-family: Calibri;
   position: relative;
   display: block;
   padding: 5px 15px 5px 5px;
-  margin-left: -10px;
+  margin-left: -7px;
   //margin-top: 50px;
   &:before, &:after {
     content: "";
