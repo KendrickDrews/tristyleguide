@@ -532,13 +532,18 @@ hr {
   height: 16px;
   width: 31px;
   border-radius: 4px;
+  border: 1px solid rgb(255, 90, 0);
   box-shadow:inset 0px 2px 0px 1px rgba(255, 255, 255, 0.75);
-  background-color: var(--red-gold);   
-  background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.5)49%, rgba(255, 60, 0, 0.75) 61%);
+  background-color: #ffdd6f;   
+  background-image: linear-gradient(to bottom, rgba(255, 200, 0, 0.5)49%, rgba(255, 60, 0, 0.55) 70%);
 
 }
 .btn-Seven .navbtn-icon {
-  box-shadow: inset 0px 0px 0px 1px rgba(255, 29, 0, 0.5);
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 29, 0, 0.5),
+                    0px 2px 1.5px 1px rgba(255, 255,255, 0.9),
+                    4px 1px 1.5px 1px rgba(255, 255,255, 0.9),
+                    0px 1px 1.5px 1px rgba(255, 255,255, 0.9);
+
   background-image: none;
   border-radius: 2px;
 }
