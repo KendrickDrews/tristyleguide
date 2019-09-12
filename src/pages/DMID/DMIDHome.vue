@@ -578,7 +578,7 @@ export default {
   line-height: 1.5em;
 }
 .username > h4 {
-  padding-right: 4px;
+  padding-right: 5px;
 }
 .pass {
   width: 100%;
@@ -865,22 +865,26 @@ font-family: Calibri;
   margin-left: auto;
 }
 .pentagon {
-  background-color: #ccc;
-  height: 37px;
-  width: 43px;
+  background-color: #888;
+  height: 38px;
+  width: 44px;
   position: relative;
   display: block;
+  padding-top: 4px;
+  padding-left: 2px;
+  color: white;
+  font-size: 25px;
   &:after {
     content: "";
     position: absolute;
     top: 0;
-    left: 43px;
+    left: 44px;
     height: 0;
     width: 0;
     border-top: 19px solid transparent;
     border-right: 11px solid transparent;
     border-bottom: 19px solid transparent;
-    border-left: 11px solid black;
+    border-left: 8px solid #888;
 
   }
 }
@@ -893,16 +897,24 @@ font-family: Calibri;
   &:before, &:after {
     content: "";
     position: absolute;
-  	top: 49%;
-    left: 42px;
-    width: 20px;
-    height: 3px;
-    background: #000;
-    transform: rotate(65deg);
+    height: 3.5px;
+    background: #0b4db1;
+    -webkit-transform-origin: right;
     transform-origin: right;
   }
+  &:before{
+    transform: rotate(90deg) skew(0deg, -23deg);
+    left: 43.25px;
+    top: 22.5px;
+    width: 19.25px;
+    border-radius: 2px 0px;
+  }
   &:after {
-    transform: rotate(-65deg);
+    transform: rotate(-90deg) skew(0deg, 23deg);
+    left: 43.5px;
+    top: 22.5px;
+    width: 19px;
+    border-radius: 0px 2px;
   }
 }
 </style>
