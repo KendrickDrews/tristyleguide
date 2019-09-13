@@ -744,6 +744,50 @@ hr {
   border-top: 1px solid rgba(0,0,0,0.2);
 }
 
+/*````````````````*/
+/*  ##X Checkbox  */
+/*................*/
+
+input[type="checkbox"][class="xBox"]{
+  -webkit-appearance: initial;
+  appearance: initial;
+  background: #fff;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #666;
+  border-radius: 2px;
+  position: relative;
+}
+input[type="checkbox"][class="xBox"]:checked {
+  background: #fff;
+}
+input[type="checkbox"][class="xBox"]:checked:after {
+  /* Heres your symbol replacement */
+  content: "X";
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  /* The following positions my tick in the center, 
+   * but you could just overlay the entire box
+   * with a full after element with a background if you want to */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  /*
+   * If you want to fully change the check appearance, use the following:
+   * content: " ";
+   * width: 100%;
+   * height: 100%;
+   * background: blue;
+   * top: 0;
+   * left: 0;
+   */
+}
+
 /* TEST for RESPONSIVENESS FLEX FORMATTING */  
 @media all and (min-width: 600px) {
   .menu { flex: 1 auto; }

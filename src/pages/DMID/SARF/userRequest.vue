@@ -2,13 +2,13 @@
 <div class="SARF-request--body">
   <div class="Mockup-Controls">
     <div class="mockup-control--container flex-column">
-    <button class="mockup-control--btn" :class="(Status === 'User-Submit') ? 'active-control':''" @click="Status = 'User-Submit'"> User-Submit </button>
-    <button class="mockup-control--btn" :class="(Status === 'Pending') ? 'active-control':''" @click="Status = 'Pending'"> Pending View </button>
-    <button class="mockup-control--btn" :class="(Status === 'Pending-Approval') ? 'active-control':''" @click="Status = 'Pending-Approval'"> Approver View </button>
-    <div>
-      <button class="mockup-control--btn" :class="(viewMode === 'hide-Products') ? 'active-control':''" @click="viewMode = 'hide-Products'"> Hidden </button>
-      <button class="mockup-control--btn" :class="(viewMode === 'disable-Products') ? 'active-control':''" @click="viewMode = 'disable-Products'"> Disabled </button>
-    </div>
+      <button class="mockup-control--btn" :class="(Status === 'User-Submit') ? 'active-control':''" @click="Status = 'User-Submit'"> User-Submit </button>
+      <button class="mockup-control--btn" :class="(Status === 'Pending') ? 'active-control':''" @click="Status = 'Pending'"> Pending View </button>
+      <button class="mockup-control--btn" :class="(Status === 'Pending-Approval') ? 'active-control':''" @click="Status = 'Pending-Approval'"> Approver View </button>
+      <div>
+        <button class="mockup-control--btn" :class="(viewMode === 'hide-Products') ? 'active-control':''" @click="viewMode = 'hide-Products'"> Hidden </button>
+        <button class="mockup-control--btn" :class="(viewMode === 'disable-Products') ? 'active-control':''" @click="viewMode = 'disable-Products'"> Disabled </button>
+      </div>
     </div>
 
   </div>
@@ -21,10 +21,6 @@
 				<option value="3">Account Deactivation</option>
 				<option value="4">Reactivate Account</option>
 		</select>
-    <!-- <div class="reqTextEntry requpreason" v-show="reqType !== 0">
-      <label for="txtUpReason"><strong>Reason for Update<span class="error">*</span>:</strong></label>
-      <input name="txtUpReason" type="text" id="txtUpReason" class="reasonupdate  MD-input">
-    </div> -->
   </div>
   <div class="SARF-form--row">
     <label for="txtEMail"><strong>Email Address<span class="error">*</span>:</strong></label>
@@ -34,10 +30,6 @@
     <em>Must be institutional email address. If other, please provide reason.</em>
     </div>
   </div>
-  <!-- <div class="SARF-form--row">
-    <label for="ReasonOther"><strong>Reason, if other:</strong></label>
-    <textarea name="ReasonOther" class="LG-input" rows="2" cols="20" id="ReasonOther" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
-  </div> -->
   <div class="SARF-form--row">
     <label for="txtFName"><strong>First Name<span class="error">*</span>:</strong></label>
     <input name="txtFName" type="text" id="txtFName" class="required fname  MD-input">
@@ -62,7 +54,6 @@
         <option v-for="(item, index) in affiliations" :key="index" :value="index"> {{ item.value }} </option>
 	  </select>
   </div>
-
   <!-- START Affliation Types -->
   <div class="affiliation-menus" v-show="(affSelection !== 0)">
     <div class="SARF-form--row"  v-show="(affSelection === 1)">
@@ -93,7 +84,6 @@
               </ul>
           </fieldset>
       </div>
-
   <div class="SARF-form--row"  v-show="affSelection === 2">
     <div class="divTRI affSpacing">
       <fieldset class="noBorder">
@@ -103,7 +93,6 @@
 		      <li><input id="isManager_1" type="radio" name="isManager" value="Yes"><label for="isManager_1">Yes</label></li>
         </ul>
       </fieldset>
-
       <fieldset class="noBorder">
         <legend><p><strong>Working Group(s)<span class="error">*</span>:</strong></p></legend>
         <ul id="rblDMIDCROMS" class="SARF-workingGroups">
@@ -123,21 +112,7 @@
   <div class="SARF-form--row" v-show="affSelection === 3">
     <label for="ddlSite"><strong>Site Name</strong><span class="error">*</span>:</label>
       <select name="ddlSite" id="ddlSite" class="dlsite MD-input">
-	      <option value="">Please Select</option>
-	      <option value="MI-1034">Baylor College of Medicine</option>
-	      <option value="MI-1102">Children’s Hospital Medical Center</option>
-	      <option value="MI-1658">Children’s Mercy Hospital</option>
-	      <option value="MI-2475">Duke University</option>
-	      <option value="MI-1145">Duke University Medical Center</option>
-	      <option value="MI-1523">Emory University</option>
-	      <option value="Group Health Cooperative">Group Health Cooperative</option>
-	      <option value="MI-1648">Oakland Children’s Hospital</option>
-	      <option value="MI-1488">Saint Louis University</option>
-	      <option value="MI-2533">University of Cincinnati</option>
-	      <option value="MI-2395">University of Iowa</option>
-	      <option value="MI-1578">University of Maryland</option>
-	      <option value="MI-2010">University of Texas Medical Branch</option>
-	      <option value="MI-2196">Vanderbilt University</option>
+        <option v-for="(item, index) in siteList" :key="index" :value="item.value"> {{ item.name }}</option>
       </select>
   </div>
   <div class="SARF-form--row"  v-show="affSelection === 3">
@@ -198,26 +173,26 @@
     </div>
       <!-- End of affiliation Boxes -->
   </div>
-    </div>
-    <div class="SARF-form--row">
-        <fieldset  class="noBorder">
-            <legend><p><strong>Products<span class="error">*</span>:</strong></p></legend>
-              <ul id="Products" class="required SARF-list--products">
-                <li v-for="(item, index) in Products"
-                    :key="index"
-                    :class="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) ? 'disabled-Product':
-                            (viewMode === 'disable-Products' && affSelection === 0) ? 'disabled-Product':
-                            (viewMode === 'hide-Products' && item.visibleTo[affSelection] === false ) ? 'hidden': ''"
-                    >
-                  <input type="checkbox" name="Products"
-                    :id="'Products_'+index"
-                    :value="index + 1"
-                    :disabled="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) || (viewMode === 'disable-Products' && affSelection === 0)">
-                  <label :for="'Products_'+index"> {{ item.name }}</label>
-                </li>
-              </ul>
-          </fieldset>
-      </div>
+  </div>
+  <div class="SARF-form--row" v-show="affSelection !== 0">
+    <fieldset  class="noBorder">
+      <legend><p><strong>Products<span class="error">*</span>:</strong></p></legend>
+        <ul id="Products" class="required SARF-list--products">
+          <li v-for="(item, index) in Products"
+              :key="index"
+              :class="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) ? 'disabled-Product':
+                      (viewMode === 'disable-Products' && affSelection === 0) ? 'disabled-Product':
+                      (viewMode === 'hide-Products' && item.visibleTo[affSelection] === false ) ? 'hidden': ''"
+          >
+            <input type="checkbox" name="Products"
+              :id="'Products_'+index"
+              :value="index + 1"
+              :disabled="(viewMode === 'disable-Products' && item.visibleTo[affSelection] === false) || (viewMode === 'disable-Products' && affSelection === 0)">
+            <label :for="'Products_'+index"> {{ item.name }}</label>
+          </li>
+        </ul>
+    </fieldset>
+  </div>
     <div class="SARF-form--row">
       <label for="txtNote"><strong>Specify Request Details:</strong></label>
       <div>
@@ -242,13 +217,6 @@
 		      <li><input id="supressEmail_1" type="radio" name="supressEmail" value="Yes" checked><label for="supressEmail_1">Yes</label></li>
         </ul>
     </div>
-    <!-- <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
-      <label for="txtDisapprove"><strong>Reason for Disapproval:</strong></label>
-      <div>
-        <textarea name="txtDisapprove" rows="2" cols="20" id="txtNote" class="note LG-input" onkeydown="limitText(this,750);" onkeyup="limitText(this,750);"></textarea>
-        <input type="submit" name="btnDisapprove" value="Disapprove" id="btnDisapprove" class="submitbutton SARF-button">
-      </div>
-    </div> -->
     <div class="SARF-form--row" v-show="Status === 'Pending-Approval'">
       <label for="txtApprove"><strong>Reason for Disapproval / Approver Comments:</strong></label>
       <div>
@@ -266,33 +234,33 @@
       </div>
     </div>
     <!-- end Approver View -->
-    <div class="SARF-form--row SARF-meta--info" v-show="Status === 'Pending-Approval' || Status === 'Pending'">
-      <div id="divITAdmin" class="status">
-          <strong>Request Status:</strong> <label for="divITAdmin" id="lbStatus"><i>{{ this.Status }}</i></label>
-          <br>
-          <strong>User Roles:</strong> <label for="divITAdmin" id="lbRoles"><i>DocLibrary,Partners</i></label>
-          <br>
-      </div>
-      <div id="divStatus" class="status">
-        <a id="lnkAdminPage" href="#"><strong>Admin Page</strong></a>
-        <p class="Small">
-          You are logged in as <span id="spnUsername">UserLast, UserFirst</span>. <a name="A" href="#">Click here to sign out</a>
-		    </p>
-      </div>
-    </div>
-    <div class="SARF-form--row fill-Bottom">
-      <div>
-        <div class="reqmsg">Fields marked with an <span class="error">*</span> are required.</div>
+  <div class="SARF-form--row SARF-meta--info" v-show="Status === 'Pending-Approval' || Status === 'Pending'">
+    <div id="divITAdmin" class="status">
+        <strong>Request Status:</strong> <label for="divITAdmin" id="lbStatus"><i>{{ this.Status }}</i></label>
         <br>
-        <div v-show="Status === 'User-Submit'">
-          <input type="button" name="btnUpdateRecord" value="Update Record" id="btnUpdateRecord" class="btnupdaterecord SARF-button" :disabled="reqType == 0 || reqType == 1">
-          <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="submitbutton SARF-button">
-          <div id="waitMessage" style="display: none;">
-              <span id="lblProcessing">Processing... Please wait.</span>
-          </div>
+        <strong>User Roles:</strong> <label for="divITAdmin" id="lbRoles"><i>DocLibrary,Partners</i></label>
+        <br>
+    </div>
+    <div id="divStatus" class="status">
+      <a id="lnkAdminPage" href="#"><strong>Admin Page</strong></a>
+      <p class="Small">
+        You are logged in as <span id="spnUsername">UserLast, UserFirst</span>. <a name="A" href="#">Click here to sign out</a>
+	    </p>
+    </div>
+  </div>
+  <div class="SARF-form--row fill-Bottom">
+    <div>
+      <div class="reqmsg">Fields marked with an <span class="error">*</span> are required.</div>
+      <br>
+      <div v-show="Status === 'User-Submit'">
+        <input type="button" name="btnUpdateRecord" value="Update Record" id="btnUpdateRecord" class="btnupdaterecord SARF-button" :disabled="reqType == 0 || reqType == 1">
+        <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="submitbutton SARF-button">
+        <div id="waitMessage" style="display: none;">
+            <span id="lblProcessing">Processing... Please wait.</span>
         </div>
       </div>
     </div>
+  </div>
 </div>
 </template>
 <script>
@@ -314,6 +282,23 @@ export default {
 		    { value: 'Site/Institution - Vaccine and Treatment Evaluation (VTEU)' },
 		    { value: 'Site/Institution - Non-Vaccine and Treatment Evaluation (non-VTEU)' },
 		    { value: 'None of the above' },
+      ],
+      siteList: [
+        { name: 'Please Select', value: ''},
+	      { name: 'Baylor College of Medicine', value: '"MI-1034'},
+	      { name: 'Children’s Hospital Medical Center', value: '"MI-1102'},
+	      { name: 'Children’s Mercy Hospital', value: '"MI-1658'},
+	      { name: 'Duke University', value: '"MI-2475'},
+	      { name: 'Duke University Medical Center', value: '"MI-1145'},
+	      { name: 'Emory University', value: '"MI-1523'},
+	      { name: 'Group Health Cooperative', value: 'Group Health Cooperative'},
+	      { name: 'Oakland Children’s Hospital', value: '"MI-1648'},
+	      { name: 'Saint Louis University', value: '"MI-1488'},
+	      { name: 'University of Cincinnati', value: '"MI-2533'},
+	      { name: 'University of Iowa', value: '"MI-2395'},
+	      { name: 'University of Maryland', value: '"MI-1578'},
+	      { name: 'University of Texas Medical Branch', value: '"MI-2010'},
+        { name: 'Vanderbilt University', value: '"MI-2196'},
       ],
       Branches: [
         { name: 'OCRA' },
@@ -574,4 +559,5 @@ li input[type="checkbox"], li input[type="radio"], li input[type="text"] {
 .disabled-Product {
   color: #666;
 }
+
 </style>
